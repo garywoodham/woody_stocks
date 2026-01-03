@@ -19,6 +19,14 @@ except FileNotFoundError:
     df_backtest = pd.DataFrame()
     has_backtest = False
 
+# Try to load trading signals
+try:
+    df_signals = pd.read_csv('daily_signals.csv')
+    has_signals = True
+except FileNotFoundError:
+    df_signals = pd.DataFrame()
+    has_signals = False
+
 # Initialize the Dash app
 app = dash.Dash(__name__, suppress_callback_exceptions=True)
 app.title = "Stock Prediction Dashboard"
@@ -45,6 +53,8 @@ app.layout = html.Div(style={'backgroundColor': colors['background'], 'padding':
     # Tabs for different views
     dcc.Tabs(id='main-tabs', value='predictions', children=[
         dcc.Tab(label='📊 Predictions & Charts', value='predictions', style={'backgroundColor': colors['card'], 'color': colors['text']},
+                selected_style={'backgroundColor': colors['accent'], 'color': colors['background'], 'fontWeight': 'bold'}),
+        dcc.Tab(label='🚦 Trading Signals', value='signals', style={'backgroundColor': colors['card'], 'color': colors['text']},
                 selected_style={'backgroundColor': colors['accent'], 'color': colors['background'], 'fontWeight': 'bold'}),
         dcc.Tab(label='🎯 Backtest Results', value='backtest', style={'backgroundColor': colors['card'], 'color': colors['text']},
                 selected_style={'backgroundColor': colors['accent'], 'color': colors['background'], 'fontWeight': 'bold'}),
@@ -377,6 +387,266 @@ def render_tab_content(tab):
                                 'column_id': 'Excess_Return'
                             },
                             'color': colors['red'],
+                        },
+                    ],
+                    filter_action="native",
+                    sort_action="native",
+                    page_size=20,
+                )
+            ], style={'backgroundColor': colors['card'], 'padding': '20px', 'borderRadius': '10px'}),
+        ])
+    
+    elif tab == 'signals':
+        if not has_signals:
+            return html.Div([
+                html.H3('⚠️ No Trading Signals Available', 
+                       style={'textAlign': 'center', 'color': colors['red'], 'marginTop': '50px'}),
+                html.P('Generate signals first using: python generate_daily_signals.py', 
+                      style={'textAlign': 'center', 'color': colors['text'], 'fontSize': '16px'})
+            ])
+        
+        # Calculate signal summary
+        signal_summary = df_signals.groupby(['Horizon', 'Signal']).size().unstack(fill_value=0)
+        
+        # Get top BUY and SELL signals for 7d horizon
+        df_7d = df_signals[df_signals['Horizon'] == '7d'].copy()
+        df_buy = df_7d[df_7d['Signal'] == 'BUY'].nlargest(10, 'Signal_Strength')
+        df_sell = df_7d[df_7d['Signal'] == 'SELL'].nlargest(10, 'Signal_Strength')
+        
+        return html.Div([
+            # Signal Update Info
+            html.Div([
+                html.H3(f"🚦 Latest Trading Signals", 
+                       style={'color': colors['accent'], 'display': 'inline-block', 'marginRight': '20px'}),
+                html.P(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M UTC')}", 
+                      style={'color': colors['text'], 'display': 'inline-block', 'fontSize': '16px'})
+            ], style={'marginBottom': '30px'}),
+            
+            # Signal Distribution by Horizon
+            html.Div([
+                html.Div([
+                    html.H4('1-Day Signals', style={'color': colors['text'], 'marginBottom': '10px', 'textAlign': 'center'}),
+                    html.Div([
+                        html.Div([
+                            html.H2(f"{signal_summary.loc['1d', 'BUY'] if '1d' in signal_summary.index and 'BUY' in signal_summary.columns else 0}", 
+                                   style={'color': colors['green'], 'margin': '0'}),
+                            html.P('BUY', style={'color': colors['text'], 'fontSize': '14px'})
+                        ], style={'width': '33%', 'display': 'inline-block', 'textAlign': 'center'}),
+                        html.Div([
+                            html.H2(f"{signal_summary.loc['1d', 'HOLD'] if '1d' in signal_summary.index and 'HOLD' in signal_summary.columns else 0}", 
+                                   style={'color': colors['text'], 'margin': '0'}),
+                            html.P('HOLD', style={'color': colors['text'], 'fontSize': '14px'})
+                        ], style={'width': '33%', 'display': 'inline-block', 'textAlign': 'center'}),
+                        html.Div([
+                            html.H2(f"{signal_summary.loc['1d', 'SELL'] if '1d' in signal_summary.index and 'SELL' in signal_summary.columns else 0}", 
+                                   style={'color': colors['red'], 'margin': '0'}),
+                            html.P('SELL', style={'color': colors['text'], 'fontSize': '14px'})
+                        ], style={'width': '33%', 'display': 'inline-block', 'textAlign': 'center'}),
+                    ])
+                ], style={'backgroundColor': colors['background'], 'padding': '20px', 'borderRadius': '10px', 
+                         'width': '23%', 'display': 'inline-block', 'marginRight': '2%'}),
+                
+                html.Div([
+                    html.H4('7-Day Signals', style={'color': colors['text'], 'marginBottom': '10px', 'textAlign': 'center'}),
+                    html.Div([
+                        html.Div([
+                            html.H2(f"{signal_summary.loc['7d', 'BUY'] if '7d' in signal_summary.index and 'BUY' in signal_summary.columns else 0}", 
+                                   style={'color': colors['green'], 'margin': '0'}),
+                            html.P('BUY', style={'color': colors['text'], 'fontSize': '14px'})
+                        ], style={'width': '33%', 'display': 'inline-block', 'textAlign': 'center'}),
+                        html.Div([
+                            html.H2(f"{signal_summary.loc['7d', 'HOLD'] if '7d' in signal_summary.index and 'HOLD' in signal_summary.columns else 0}", 
+                                   style={'color': colors['text'], 'margin': '0'}),
+                            html.P('HOLD', style={'color': colors['text'], 'fontSize': '14px'})
+                        ], style={'width': '33%', 'display': 'inline-block', 'textAlign': 'center'}),
+                        html.Div([
+                            html.H2(f"{signal_summary.loc['7d', 'SELL'] if '7d' in signal_summary.index and 'SELL' in signal_summary.columns else 0}", 
+                                   style={'color': colors['red'], 'margin': '0'}),
+                            html.P('SELL', style={'color': colors['text'], 'fontSize': '14px'})
+                        ], style={'width': '33%', 'display': 'inline-block', 'textAlign': 'center'}),
+                    ])
+                ], style={'backgroundColor': colors['background'], 'padding': '20px', 'borderRadius': '10px', 
+                         'width': '23%', 'display': 'inline-block', 'marginRight': '2%'}),
+                
+                html.Div([
+                    html.H4('30-Day Signals', style={'color': colors['text'], 'marginBottom': '10px', 'textAlign': 'center'}),
+                    html.Div([
+                        html.Div([
+                            html.H2(f"{signal_summary.loc['30d', 'BUY'] if '30d' in signal_summary.index and 'BUY' in signal_summary.columns else 0}", 
+                                   style={'color': colors['green'], 'margin': '0'}),
+                            html.P('BUY', style={'color': colors['text'], 'fontSize': '14px'})
+                        ], style={'width': '33%', 'display': 'inline-block', 'textAlign': 'center'}),
+                        html.Div([
+                            html.H2(f"{signal_summary.loc['30d', 'HOLD'] if '30d' in signal_summary.index and 'HOLD' in signal_summary.columns else 0}", 
+                                   style={'color': colors['text'], 'margin': '0'}),
+                            html.P('HOLD', style={'color': colors['text'], 'fontSize': '14px'})
+                        ], style={'width': '33%', 'display': 'inline-block', 'textAlign': 'center'}),
+                        html.Div([
+                            html.H2(f"{signal_summary.loc['30d', 'SELL'] if '30d' in signal_summary.index and 'SELL' in signal_summary.columns else 0}", 
+                                   style={'color': colors['red'], 'margin': '0'}),
+                            html.P('SELL', style={'color': colors['text'], 'fontSize': '14px'})
+                        ], style={'width': '33%', 'display': 'inline-block', 'textAlign': 'center'}),
+                    ])
+                ], style={'backgroundColor': colors['background'], 'padding': '20px', 'borderRadius': '10px', 
+                         'width': '23%', 'display': 'inline-block', 'marginRight': '2%'}),
+                
+                html.Div([
+                    html.H4('90-Day Signals', style={'color': colors['text'], 'marginBottom': '10px', 'textAlign': 'center'}),
+                    html.Div([
+                        html.Div([
+                            html.H2(f"{signal_summary.loc['90d', 'BUY'] if '90d' in signal_summary.index and 'BUY' in signal_summary.columns else 0}", 
+                                   style={'color': colors['green'], 'margin': '0'}),
+                            html.P('BUY', style={'color': colors['text'], 'fontSize': '14px'})
+                        ], style={'width': '33%', 'display': 'inline-block', 'textAlign': 'center'}),
+                        html.Div([
+                            html.H2(f"{signal_summary.loc['90d', 'HOLD'] if '90d' in signal_summary.index and 'HOLD' in signal_summary.columns else 0}", 
+                                   style={'color': colors['text'], 'margin': '0'}),
+                            html.P('HOLD', style={'color': colors['text'], 'fontSize': '14px'})
+                        ], style={'width': '33%', 'display': 'inline-block', 'textAlign': 'center'}),
+                        html.Div([
+                            html.H2(f"{signal_summary.loc['90d', 'SELL'] if '90d' in signal_summary.index and 'SELL' in signal_summary.columns else 0}", 
+                                   style={'color': colors['red'], 'margin': '0'}),
+                            html.P('SELL', style={'color': colors['text'], 'fontSize': '14px'})
+                        ], style={'width': '33%', 'display': 'inline-block', 'textAlign': 'center'}),
+                    ])
+                ], style={'backgroundColor': colors['background'], 'padding': '20px', 'borderRadius': '10px', 
+                         'width': '23%', 'display': 'inline-block'}),
+            ], style={'marginBottom': '30px'}),
+            
+            # Top BUY Signals (7-day)
+            html.Div([
+                html.H3('🟢 Top BUY Opportunities (7-Day Horizon)', style={'color': colors['green'], 'marginBottom': '20px'}),
+                dash_table.DataTable(
+                    id='buy-signals-table',
+                    columns=[
+                        {'name': 'Stock', 'id': 'Stock'},
+                        {'name': 'Ticker', 'id': 'Ticker'},
+                        {'name': 'Sector', 'id': 'Sector'},
+                        {'name': 'Price', 'id': 'Current_Price', 'type': 'numeric', 'format': {'specifier': '$,.2f'}},
+                        {'name': 'Signal Strength', 'id': 'Signal_Strength', 'type': 'numeric', 'format': {'specifier': '.2%'}},
+                        {'name': 'Prob UP', 'id': 'Probability_Up', 'type': 'numeric', 'format': {'specifier': '.1%'}},
+                        {'name': 'Confidence', 'id': 'Model_Confidence', 'type': 'numeric', 'format': {'specifier': '.1%'}},
+                        {'name': 'Accuracy', 'id': 'Model_Accuracy', 'type': 'numeric', 'format': {'specifier': '.1%'}},
+                        {'name': 'Position Size', 'id': 'Position_Size', 'type': 'numeric', 'format': {'specifier': '$,.0f'}},
+                        {'name': 'Reason', 'id': 'Reason'},
+                    ],
+                    data=df_buy.to_dict('records') if not df_buy.empty else [],
+                    style_table={'overflowX': 'auto'},
+                    style_header={
+                        'backgroundColor': colors['background'],
+                        'color': colors['text'],
+                        'fontWeight': 'bold',
+                        'textAlign': 'center'
+                    },
+                    style_cell={
+                        'backgroundColor': colors['card'],
+                        'color': colors['text'],
+                        'textAlign': 'left',
+                        'padding': '10px',
+                        'border': '1px solid #444'
+                    },
+                    style_data_conditional=[
+                        {
+                            'if': {'column_id': 'Signal_Strength'},
+                            'color': colors['green'],
+                            'fontWeight': 'bold'
+                        },
+                    ],
+                )
+            ], style={'backgroundColor': colors['card'], 'padding': '20px', 'borderRadius': '10px', 'marginBottom': '30px'}),
+            
+            # Top SELL Signals (7-day)
+            html.Div([
+                html.H3('🔴 Top SELL Warnings (7-Day Horizon)', style={'color': colors['red'], 'marginBottom': '20px'}),
+                dash_table.DataTable(
+                    id='sell-signals-table',
+                    columns=[
+                        {'name': 'Stock', 'id': 'Stock'},
+                        {'name': 'Ticker', 'id': 'Ticker'},
+                        {'name': 'Sector', 'id': 'Sector'},
+                        {'name': 'Price', 'id': 'Current_Price', 'type': 'numeric', 'format': {'specifier': '$,.2f'}},
+                        {'name': 'Signal Strength', 'id': 'Signal_Strength', 'type': 'numeric', 'format': {'specifier': '.2%'}},
+                        {'name': 'Prob DOWN', 'id': 'Probability_Down', 'type': 'numeric', 'format': {'specifier': '.1%'}},
+                        {'name': 'Confidence', 'id': 'Model_Confidence', 'type': 'numeric', 'format': {'specifier': '.1%'}},
+                        {'name': 'Accuracy', 'id': 'Model_Accuracy', 'type': 'numeric', 'format': {'specifier': '.1%'}},
+                        {'name': 'Reason', 'id': 'Reason'},
+                    ],
+                    data=df_sell.to_dict('records') if not df_sell.empty else [],
+                    style_table={'overflowX': 'auto'},
+                    style_header={
+                        'backgroundColor': colors['background'],
+                        'color': colors['text'],
+                        'fontWeight': 'bold',
+                        'textAlign': 'center'
+                    },
+                    style_cell={
+                        'backgroundColor': colors['card'],
+                        'color': colors['text'],
+                        'textAlign': 'left',
+                        'padding': '10px',
+                        'border': '1px solid #444'
+                    },
+                    style_data_conditional=[
+                        {
+                            'if': {'column_id': 'Signal_Strength'},
+                            'color': colors['red'],
+                            'fontWeight': 'bold'
+                        },
+                    ],
+                )
+            ], style={'backgroundColor': colors['card'], 'padding': '20px', 'borderRadius': '10px', 'marginBottom': '30px'}),
+            
+            # All Signals Table with Filters
+            html.Div([
+                html.H3('📊 All Trading Signals', style={'color': colors['accent'], 'marginBottom': '20px'}),
+                dash_table.DataTable(
+                    id='all-signals-table',
+                    columns=[
+                        {'name': 'Stock', 'id': 'Stock'},
+                        {'name': 'Ticker', 'id': 'Ticker'},
+                        {'name': 'Sector', 'id': 'Sector'},
+                        {'name': 'Horizon', 'id': 'Horizon'},
+                        {'name': 'Signal', 'id': 'Signal'},
+                        {'name': 'Price', 'id': 'Current_Price', 'type': 'numeric', 'format': {'specifier': '$,.2f'}},
+                        {'name': 'Strength', 'id': 'Signal_Strength', 'type': 'numeric', 'format': {'specifier': '.2%'}},
+                        {'name': 'Prob UP', 'id': 'Probability_Up', 'type': 'numeric', 'format': {'specifier': '.1%'}},
+                        {'name': 'Prob DOWN', 'id': 'Probability_Down', 'type': 'numeric', 'format': {'specifier': '.1%'}},
+                        {'name': 'Confidence', 'id': 'Model_Confidence', 'type': 'numeric', 'format': {'specifier': '.1%'}},
+                        {'name': 'Accuracy', 'id': 'Model_Accuracy', 'type': 'numeric', 'format': {'specifier': '.1%'}},
+                        {'name': 'Position', 'id': 'Position_Size', 'type': 'numeric', 'format': {'specifier': '$,.0f'}},
+                        {'name': 'Reason', 'id': 'Reason'},
+                    ],
+                    data=df_signals.to_dict('records'),
+                    style_table={'overflowX': 'auto'},
+                    style_header={
+                        'backgroundColor': colors['background'],
+                        'color': colors['text'],
+                        'fontWeight': 'bold',
+                        'textAlign': 'center'
+                    },
+                    style_cell={
+                        'backgroundColor': colors['card'],
+                        'color': colors['text'],
+                        'textAlign': 'left',
+                        'padding': '10px',
+                        'border': '1px solid #444'
+                    },
+                    style_data_conditional=[
+                        {
+                            'if': {
+                                'filter_query': '{Signal} = "BUY"',
+                                'column_id': 'Signal'
+                            },
+                            'color': colors['green'],
+                            'fontWeight': 'bold'
+                        },
+                        {
+                            'if': {
+                                'filter_query': '{Signal} = "SELL"',
+                                'column_id': 'Signal'
+                            },
+                            'color': colors['red'],
+                            'fontWeight': 'bold'
                         },
                     ],
                     filter_action="native",
