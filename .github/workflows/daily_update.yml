@@ -1,0 +1,85 @@
+name: Daily Stock Data Update & Model Training
+
+on:
+  schedule:
+    # Run daily at 6 PM UTC (after market close for most exchanges)
+    - cron: '0 18 * * *'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+        cache: 'pip'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+    
+    - name: Download latest stock data
+      run: |
+        python download_stock_data.py
+      continue-on-error: false
+    
+    - name: Check if today is Sunday (weekly retrain day)
+      id: check_day
+      run: |
+        if [ $(date +%u) -eq 7 ]; then
+          echo "retrain=true" >> $GITHUB_OUTPUT
+        else
+          echo "retrain=false" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Retrain models (weekly)
+      if: steps.check_day.outputs.retrain == 'true'
+      run: |
+        python predict_stock.py
+      continue-on-error: true
+    
+    - name: Generate trading signals
+      run: |
+        python generate_daily_signals.py
+      continue-on-error: true
+    
+    - name: Run backtests (weekly)
+      if: steps.check_day.outputs.retrain == 'true'
+      run: |
+        python backtest_trading.py 2
+      continue-on-error: true
+    
+    - name: Generate summary report
+      run: |
+        python generate_report.py
+      continue-on-error: true
+    
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add data/*.csv predictions_summary.csv backtest_summary.csv models/*.pkl daily_signals.csv DAILY_REPORT.md || true
+        git diff --staged --quiet || git commit -m "🤖 Auto-update: Stock data and predictions ($(date +'%Y-%m-%d'))"
+        git push
+      continue-on-error: false
+    
+    - name: Create issue on failure
+      if: failure()
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: '⚠️ Daily update failed',
+            body: `Automated daily update failed on ${new Date().toISOString().split('T')[0]}.\n\nPlease check the [workflow run](${context.payload.repository.html_url}/actions/runs/${context.runId}) for details.`,
+            labels: ['automated', 'bug']
+          })
