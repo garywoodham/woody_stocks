@@ -9,7 +9,26 @@ from datetime import datetime
 
 # Load data
 df_stocks = pd.read_csv('data/multi_sector_stocks.csv', index_col=0, parse_dates=True)
-df_predictions = pd.read_csv('predictions_summary.csv')
+
+# Try to load recommendations
+try:
+    df_recommendations = pd.read_csv('stock_recommendations.csv')
+    has_recommendations = True
+    print("✓ Loaded stock recommendations")
+except FileNotFoundError:
+    df_recommendations = pd.DataFrame()
+    has_recommendations = False
+    print("⚠️  No recommendations file found")
+
+# Try to load refined predictions
+try:
+    df_predictions = pd.read_csv('predictions_refined.csv')
+    is_refined = True
+    print("✓ Loaded REFINED model predictions with trading metrics")
+except FileNotFoundError:
+    df_predictions = pd.DataFrame()
+    is_refined = False
+    print("⚠️  No predictions file found")
 
 # Try to load backtest results
 try:
@@ -31,6 +50,169 @@ except FileNotFoundError:
 app = dash.Dash(__name__, suppress_callback_exceptions=True)
 app.title = "Stock Prediction Dashboard"
 
+# Custom CSS for better dropdown visibility
+app.index_string = '''
+<!DOCTYPE html>
+<html>
+    <head>
+        {%metas%}
+        <title>{%title%}</title>
+        {%favicon%}
+        {%css%}
+        <style>
+            /* Dropdown styling for better visibility */
+            .Select-control {
+                background-color: #2d3142 !important;
+                border: 2px solid #00d4ff !important;
+                border-radius: 5px !important;
+            }
+            .Select-menu-outer {
+                background-color: #2d3142 !important;
+                border: 2px solid #00d4ff !important;
+                border-radius: 5px !important;
+            }
+            .Select-option {
+                background-color: #2d3142 !important;
+                color: #ffffff !important;
+                padding: 10px !important;
+            }
+            .Select-option:hover {
+                background-color: #00d4ff !important;
+                color: #0e1117 !important;
+            }
+            .Select-option.is-selected {
+                background-color: #00d4ff !important;
+                color: #0e1117 !important;
+            }
+            .Select-value-label {
+                color: #ffffff !important;
+            }
+            .Select-placeholder {
+                color: #aaaaaa !important;
+            }
+            .Select-input > input {
+                color: #ffffff !important;
+            }
+            /* Modern dropdown arrow */
+            .Select-arrow {
+                border-color: #00d4ff transparent transparent !important;
+            }
+        </style>
+    </head>
+    <body>
+        {%app_entry%}
+        <footer>
+            {%config%}
+            {%scripts%}
+            {%renderer%}
+        </footer>
+    </body>
+</html>
+'''
+
+# Build table columns dynamically based on available prediction data
+def build_prediction_columns():
+    """Build table columns based on available predictions"""
+    base_columns = [
+        {'name': 'Stock', 'id': 'Stock'},
+        {'name': 'Ticker', 'id': 'Ticker'},
+        {'name': 'Sector', 'id': 'Sector'},
+        {'name': 'Price', 'id': 'Latest_Price', 'type': 'numeric', 'format': {'specifier': '.2f'}},
+    ]
+    
+    # Add recommendation columns if available
+    if has_recommendations:
+        base_columns.extend([
+            {'name': '🎯 Signal', 'id': 'Signal'},
+            {'name': 'Recommendation', 'id': 'Recommendation'},
+            {'name': 'Score', 'id': 'Score', 'type': 'numeric', 'format': {'specifier': '.4f'}},
+            {'name': 'Strength', 'id': 'Strength'},
+            {'name': 'Consensus', 'id': 'Consensus'},
+        ])
+    
+    if df_predictions.empty and not has_recommendations:
+        return base_columns
+    
+    pred_columns = []
+    
+    # Daily predictions (1d, 5d, 21d)
+    for h in [1, 5, 21]:
+        key = f'd{h}'
+        if f'{key}_Direction' in df_predictions.columns:
+            pred_columns.extend([
+                {'name': f'{h}d Pred', 'id': f'{key}_Direction'},
+                {'name': f'{h}d Prob', 'id': f'{key}_Prob_Up', 'type': 'numeric', 'format': {'specifier': '.1%'}},
+            ])
+            # Add accuracy if available (from refined models)
+            if f'{key}_Accuracy' in df_predictions.columns:
+                pred_columns.append(
+                    {'name': f'{h}d Acc', 'id': f'{key}_Accuracy', 'type': 'numeric', 'format': {'specifier': '.1%'}}
+                )
+    
+    return base_columns + pred_columns
+
+def build_conditional_styles():
+    """Build conditional styles for prediction columns"""
+    styles = []
+    
+    # Recommendation styling
+    if has_recommendations:
+        styles.extend([
+            # BUY recommendations
+            {
+                'if': {'filter_query': '{Recommendation} = "BUY"', 'column_id': 'Recommendation'},
+                'backgroundColor': '#00ff8820',
+                'color': '#00ff88',
+                'fontWeight': 'bold'
+            },
+            # SELL recommendations
+            {
+                'if': {'filter_query': '{Recommendation} = "SELL"', 'column_id': 'Recommendation'},
+                'backgroundColor': '#ff444420',
+                'color': '#ff4444',
+                'fontWeight': 'bold'
+            },
+            # HOLD recommendations
+            {
+                'if': {'filter_query': '{Recommendation} = "HOLD"', 'column_id': 'Recommendation'},
+                'backgroundColor': '#ffffff10',
+                'color': '#aaaaaa',
+                'fontWeight': 'bold'
+            },
+            # Positive scores
+            {
+                'if': {'filter_query': '{Score} > 0', 'column_id': 'Score'},
+                'color': '#00ff88'
+            },
+            # Negative scores
+            {
+                'if': {'filter_query': '{Score} < 0', 'column_id': 'Score'},
+                'color': '#ff4444'
+            },
+        ])
+    
+    if df_predictions.empty:
+        return styles
+    
+    # Get all direction columns
+    dir_columns = [col for col in df_predictions.columns if col.endswith('_Direction')]
+    
+    for col in dir_columns:
+        styles.extend([
+            {
+                'if': {'filter_query': f'{{{col}}} = "UP ↑"', 'column_id': col},
+                'color': colors['green'],
+                'fontWeight': 'bold'
+            },
+            {
+                'if': {'filter_query': f'{{{col}}} = "DOWN ↓"', 'column_id': col},
+                'color': colors['red'],
+                'fontWeight': 'bold'
+            },
+        ])
+    
+    return styles
+
 # Define colors
 colors = {
     'background': '#0e1117',
@@ -42,11 +224,14 @@ colors = {
 }
 
 # App layout
+title_text = '📈 Stock Prediction & Recommendation Dashboard'
+subtitle_text = 'AI-Powered Trading Recommendations with Multi-Period Predictions'
+
 app.layout = html.Div(style={'backgroundColor': colors['background'], 'padding': '20px', 'minHeight': '100vh'}, children=[
     html.Div([
-        html.H1('📈 Stock Prediction & Trading Dashboard', 
+        html.H1(title_text, 
                 style={'textAlign': 'center', 'color': colors['accent'], 'marginBottom': '10px'}),
-        html.P('Multi-Sector Stock Analysis, AI Predictions & Backtest Results', 
+        html.P(subtitle_text, 
                style={'textAlign': 'center', 'color': colors['text'], 'fontSize': '18px', 'marginBottom': '30px'})
     ]),
     
@@ -80,7 +265,11 @@ def render_tab_content(tab):
                 options=[{'label': 'All Sectors', 'value': 'ALL'}] + 
                         [{'label': sector, 'value': sector} for sector in sorted(df_stocks['Sector'].unique())],
                 value='ALL',
-                style={'backgroundColor': colors['card'], 'color': colors['text']},
+                style={
+                    'backgroundColor': '#2d3142',
+                    'color': '#ffffff',
+                    'borderRadius': '5px'
+                },
                 className='dropdown'
             ),
         ], style={'width': '30%', 'display': 'inline-block', 'marginRight': '3%'}),
@@ -89,7 +278,11 @@ def render_tab_content(tab):
             html.Label('Select Stock:', style={'color': colors['text'], 'fontWeight': 'bold', 'marginBottom': '5px'}),
             dcc.Dropdown(
                 id='stock-dropdown',
-                style={'backgroundColor': colors['card'], 'color': colors['text']},
+                style={
+                    'backgroundColor': '#2d3142',
+                    'color': '#ffffff',
+                    'borderRadius': '5px'
+                },
                 className='dropdown'
             ),
         ], style={'width': '30%', 'display': 'inline-block', 'marginRight': '3%'}),
@@ -106,7 +299,11 @@ def render_tab_content(tab):
                     {'label': 'All Data', 'value': 9999}
                 ],
                 value=180,
-                style={'backgroundColor': colors['card'], 'color': colors['text']},
+                style={
+                    'backgroundColor': '#2d3142',
+                    'color': '#ffffff',
+                    'borderRadius': '5px'
+                },
                 className='dropdown'
             ),
         ], style={'width': '30%', 'display': 'inline-block'}),
@@ -136,24 +333,13 @@ def render_tab_content(tab):
     
     # All Stocks Summary Table
     html.Div([
-        html.H3('📊 All Stocks Overview', style={'color': colors['accent'], 'marginBottom': '20px'}),
+        html.H3('📊 All Stocks Overview with Recommendations', style={'color': colors['accent'], 'marginBottom': '20px'}),
+        html.P('BUY/HOLD/SELL recommendations based on combined 1d, 5d, 21d predictions weighted by confidence',
+               style={'color': colors['text'], 'fontSize': '14px', 'marginBottom': '15px', 'fontStyle': 'italic'}),
         dash_table.DataTable(
             id='stocks-table',
-            columns=[
-                {'name': 'Stock', 'id': 'Stock'},
-                {'name': 'Ticker', 'id': 'Ticker'},
-                {'name': 'Sector', 'id': 'Sector'},
-                {'name': 'Price', 'id': 'Latest_Price', 'type': 'numeric', 'format': {'specifier': '.2f'}},
-                {'name': '1d Pred', 'id': '1d_Direction'},
-                {'name': '1d Prob', 'id': '1d_Prob_Up', 'type': 'numeric', 'format': {'specifier': '.1%'}},
-                {'name': '7d Pred', 'id': '7d_Direction'},
-                {'name': '7d Prob', 'id': '7d_Prob_Up', 'type': 'numeric', 'format': {'specifier': '.1%'}},
-                {'name': '30d Pred', 'id': '30d_Direction'},
-                {'name': '30d Prob', 'id': '30d_Prob_Up', 'type': 'numeric', 'format': {'specifier': '.1%'}},
-                {'name': '90d Pred', 'id': '90d_Direction'},
-                {'name': '90d Prob', 'id': '90d_Prob_Up', 'type': 'numeric', 'format': {'specifier': '.1%'}},
-            ],
-            data=df_predictions.to_dict('records'),
+            columns=build_prediction_columns(),
+            data=df_recommendations.to_dict('records') if has_recommendations else df_predictions.to_dict('records'),
             style_table={'overflowX': 'auto'},
             style_header={
                 'backgroundColor': colors['background'],
@@ -168,48 +354,7 @@ def render_tab_content(tab):
                 'padding': '10px',
                 'border': '1px solid #444'
             },
-            style_data_conditional=[
-                {
-                    'if': {'filter_query': '{1d_Direction} = "UP ↑"', 'column_id': '1d_Direction'},
-                    'color': colors['green'],
-                    'fontWeight': 'bold'
-                },
-                {
-                    'if': {'filter_query': '{1d_Direction} = "DOWN ↓"', 'column_id': '1d_Direction'},
-                    'color': colors['red'],
-                    'fontWeight': 'bold'
-                },
-                {
-                    'if': {'filter_query': '{7d_Direction} = "UP ↑"', 'column_id': '7d_Direction'},
-                    'color': colors['green'],
-                    'fontWeight': 'bold'
-                },
-                {
-                    'if': {'filter_query': '{7d_Direction} = "DOWN ↓"', 'column_id': '7d_Direction'},
-                    'color': colors['red'],
-                    'fontWeight': 'bold'
-                },
-                {
-                    'if': {'filter_query': '{30d_Direction} = "UP ↑"', 'column_id': '30d_Direction'},
-                    'color': colors['green'],
-                    'fontWeight': 'bold'
-                },
-                {
-                    'if': {'filter_query': '{30d_Direction} = "DOWN ↓"', 'column_id': '30d_Direction'},
-                    'color': colors['red'],
-                    'fontWeight': 'bold'
-                },
-                {
-                    'if': {'filter_query': '{90d_Direction} = "UP ↑"', 'column_id': '90d_Direction'},
-                    'color': colors['green'],
-                    'fontWeight': 'bold'
-                },
-                {
-                    'if': {'filter_query': '{90d_Direction} = "DOWN ↓"', 'column_id': '90d_Direction'},
-                    'color': colors['red'],
-                    'fontWeight': 'bold'
-                },
-            ],
+            style_data_conditional=build_conditional_styles(),
             filter_action="native",
             sort_action="native",
             page_size=20,
@@ -405,13 +550,17 @@ def render_tab_content(tab):
                       style={'textAlign': 'center', 'color': colors['text'], 'fontSize': '16px'})
             ])
         
-        # Calculate signal summary
-        signal_summary = df_signals.groupby(['Horizon', 'Signal']).size().unstack(fill_value=0)
+        # Add Probability_Down column for display
+        df_signals_display = df_signals.copy()
+        df_signals_display['Probability_Down'] = 1 - df_signals_display['Probability_Up']
         
-        # Get top BUY and SELL signals for 7d horizon
-        df_7d = df_signals[df_signals['Horizon'] == '7d'].copy()
-        df_buy = df_7d[df_7d['Signal'] == 'BUY'].nlargest(10, 'Signal_Strength')
-        df_sell = df_7d[df_7d['Signal'] == 'SELL'].nlargest(10, 'Signal_Strength')
+        # Calculate signal summary
+        signal_summary = df_signals_display.groupby(['Horizon', 'Signal']).size().unstack(fill_value=0)
+        
+        # Get top BUY and SELL signals for 5d horizon
+        df_5d = df_signals_display[df_signals_display['Horizon'] == '5d'].copy()
+        df_buy = df_5d[df_5d['Signal'] == 'BUY'].nlargest(10, 'Signal_Strength')
+        df_sell = df_5d[df_5d['Signal'] == 'SELL'].nlargest(10, 'Signal_Strength')
         
         return html.Div([
             # Signal Update Info
@@ -444,78 +593,56 @@ def render_tab_content(tab):
                         ], style={'width': '33%', 'display': 'inline-block', 'textAlign': 'center'}),
                     ])
                 ], style={'backgroundColor': colors['background'], 'padding': '20px', 'borderRadius': '10px', 
-                         'width': '23%', 'display': 'inline-block', 'marginRight': '2%'}),
+                         'width': '31%', 'display': 'inline-block', 'marginRight': '2%'}),
                 
                 html.Div([
-                    html.H4('7-Day Signals', style={'color': colors['text'], 'marginBottom': '10px', 'textAlign': 'center'}),
+                    html.H4('5-Day Signals', style={'color': colors['text'], 'marginBottom': '10px', 'textAlign': 'center'}),
                     html.Div([
                         html.Div([
-                            html.H2(f"{signal_summary.loc['7d', 'BUY'] if '7d' in signal_summary.index and 'BUY' in signal_summary.columns else 0}", 
+                            html.H2(f"{signal_summary.loc['5d', 'BUY'] if '5d' in signal_summary.index and 'BUY' in signal_summary.columns else 0}", 
                                    style={'color': colors['green'], 'margin': '0'}),
                             html.P('BUY', style={'color': colors['text'], 'fontSize': '14px'})
                         ], style={'width': '33%', 'display': 'inline-block', 'textAlign': 'center'}),
                         html.Div([
-                            html.H2(f"{signal_summary.loc['7d', 'HOLD'] if '7d' in signal_summary.index and 'HOLD' in signal_summary.columns else 0}", 
+                            html.H2(f"{signal_summary.loc['5d', 'HOLD'] if '5d' in signal_summary.index and 'HOLD' in signal_summary.columns else 0}", 
                                    style={'color': colors['text'], 'margin': '0'}),
                             html.P('HOLD', style={'color': colors['text'], 'fontSize': '14px'})
                         ], style={'width': '33%', 'display': 'inline-block', 'textAlign': 'center'}),
                         html.Div([
-                            html.H2(f"{signal_summary.loc['7d', 'SELL'] if '7d' in signal_summary.index and 'SELL' in signal_summary.columns else 0}", 
+                            html.H2(f"{signal_summary.loc['5d', 'SELL'] if '5d' in signal_summary.index and 'SELL' in signal_summary.columns else 0}", 
                                    style={'color': colors['red'], 'margin': '0'}),
                             html.P('SELL', style={'color': colors['text'], 'fontSize': '14px'})
                         ], style={'width': '33%', 'display': 'inline-block', 'textAlign': 'center'}),
                     ])
                 ], style={'backgroundColor': colors['background'], 'padding': '20px', 'borderRadius': '10px', 
-                         'width': '23%', 'display': 'inline-block', 'marginRight': '2%'}),
+                         'width': '31%', 'display': 'inline-block', 'marginRight': '2%'}),
                 
                 html.Div([
-                    html.H4('30-Day Signals', style={'color': colors['text'], 'marginBottom': '10px', 'textAlign': 'center'}),
+                    html.H4('21-Day Signals', style={'color': colors['text'], 'marginBottom': '10px', 'textAlign': 'center'}),
                     html.Div([
                         html.Div([
-                            html.H2(f"{signal_summary.loc['30d', 'BUY'] if '30d' in signal_summary.index and 'BUY' in signal_summary.columns else 0}", 
+                            html.H2(f"{signal_summary.loc['21d', 'BUY'] if '21d' in signal_summary.index and 'BUY' in signal_summary.columns else 0}", 
                                    style={'color': colors['green'], 'margin': '0'}),
                             html.P('BUY', style={'color': colors['text'], 'fontSize': '14px'})
                         ], style={'width': '33%', 'display': 'inline-block', 'textAlign': 'center'}),
                         html.Div([
-                            html.H2(f"{signal_summary.loc['30d', 'HOLD'] if '30d' in signal_summary.index and 'HOLD' in signal_summary.columns else 0}", 
+                            html.H2(f"{signal_summary.loc['21d', 'HOLD'] if '21d' in signal_summary.index and 'HOLD' in signal_summary.columns else 0}", 
                                    style={'color': colors['text'], 'margin': '0'}),
                             html.P('HOLD', style={'color': colors['text'], 'fontSize': '14px'})
                         ], style={'width': '33%', 'display': 'inline-block', 'textAlign': 'center'}),
                         html.Div([
-                            html.H2(f"{signal_summary.loc['30d', 'SELL'] if '30d' in signal_summary.index and 'SELL' in signal_summary.columns else 0}", 
+                            html.H2(f"{signal_summary.loc['21d', 'SELL'] if '21d' in signal_summary.index and 'SELL' in signal_summary.columns else 0}", 
                                    style={'color': colors['red'], 'margin': '0'}),
                             html.P('SELL', style={'color': colors['text'], 'fontSize': '14px'})
                         ], style={'width': '33%', 'display': 'inline-block', 'textAlign': 'center'}),
                     ])
                 ], style={'backgroundColor': colors['background'], 'padding': '20px', 'borderRadius': '10px', 
-                         'width': '23%', 'display': 'inline-block', 'marginRight': '2%'}),
-                
-                html.Div([
-                    html.H4('90-Day Signals', style={'color': colors['text'], 'marginBottom': '10px', 'textAlign': 'center'}),
-                    html.Div([
-                        html.Div([
-                            html.H2(f"{signal_summary.loc['90d', 'BUY'] if '90d' in signal_summary.index and 'BUY' in signal_summary.columns else 0}", 
-                                   style={'color': colors['green'], 'margin': '0'}),
-                            html.P('BUY', style={'color': colors['text'], 'fontSize': '14px'})
-                        ], style={'width': '33%', 'display': 'inline-block', 'textAlign': 'center'}),
-                        html.Div([
-                            html.H2(f"{signal_summary.loc['90d', 'HOLD'] if '90d' in signal_summary.index and 'HOLD' in signal_summary.columns else 0}", 
-                                   style={'color': colors['text'], 'margin': '0'}),
-                            html.P('HOLD', style={'color': colors['text'], 'fontSize': '14px'})
-                        ], style={'width': '33%', 'display': 'inline-block', 'textAlign': 'center'}),
-                        html.Div([
-                            html.H2(f"{signal_summary.loc['90d', 'SELL'] if '90d' in signal_summary.index and 'SELL' in signal_summary.columns else 0}", 
-                                   style={'color': colors['red'], 'margin': '0'}),
-                            html.P('SELL', style={'color': colors['text'], 'fontSize': '14px'})
-                        ], style={'width': '33%', 'display': 'inline-block', 'textAlign': 'center'}),
-                    ])
-                ], style={'backgroundColor': colors['background'], 'padding': '20px', 'borderRadius': '10px', 
-                         'width': '23%', 'display': 'inline-block'}),
+                         'width': '31%', 'display': 'inline-block'}),
             ], style={'marginBottom': '30px'}),
             
-            # Top BUY Signals (7-day)
+            # Top BUY Signals (5-day)
             html.Div([
-                html.H3('🟢 Top BUY Opportunities (7-Day Horizon)', style={'color': colors['green'], 'marginBottom': '20px'}),
+                html.H3('🟢 Top BUY Opportunities (5-Day Horizon)', style={'color': colors['green'], 'marginBottom': '20px'}),
                 dash_table.DataTable(
                     id='buy-signals-table',
                     columns=[
@@ -525,9 +652,9 @@ def render_tab_content(tab):
                         {'name': 'Price', 'id': 'Current_Price', 'type': 'numeric', 'format': {'specifier': '$,.2f'}},
                         {'name': 'Signal Strength', 'id': 'Signal_Strength', 'type': 'numeric', 'format': {'specifier': '.2%'}},
                         {'name': 'Prob UP', 'id': 'Probability_Up', 'type': 'numeric', 'format': {'specifier': '.1%'}},
-                        {'name': 'Confidence', 'id': 'Model_Confidence', 'type': 'numeric', 'format': {'specifier': '.1%'}},
+                        {'name': 'Confidence', 'id': 'Confidence', 'type': 'numeric', 'format': {'specifier': '.1%'}},
                         {'name': 'Accuracy', 'id': 'Model_Accuracy', 'type': 'numeric', 'format': {'specifier': '.1%'}},
-                        {'name': 'Position Size', 'id': 'Position_Size', 'type': 'numeric', 'format': {'specifier': '$,.0f'}},
+                        {'name': 'Position Size', 'id': 'Recommended_Position', 'type': 'numeric', 'format': {'specifier': '$,.0f'}},
                         {'name': 'Reason', 'id': 'Reason'},
                     ],
                     data=df_buy.to_dict('records') if not df_buy.empty else [],
@@ -555,9 +682,9 @@ def render_tab_content(tab):
                 )
             ], style={'backgroundColor': colors['card'], 'padding': '20px', 'borderRadius': '10px', 'marginBottom': '30px'}),
             
-            # Top SELL Signals (7-day)
+            # Top SELL Signals (5-day)
             html.Div([
-                html.H3('🔴 Top SELL Warnings (7-Day Horizon)', style={'color': colors['red'], 'marginBottom': '20px'}),
+                html.H3('🔴 Top SELL Warnings (5-Day Horizon)', style={'color': colors['red'], 'marginBottom': '20px'}),
                 dash_table.DataTable(
                     id='sell-signals-table',
                     columns=[
@@ -567,7 +694,7 @@ def render_tab_content(tab):
                         {'name': 'Price', 'id': 'Current_Price', 'type': 'numeric', 'format': {'specifier': '$,.2f'}},
                         {'name': 'Signal Strength', 'id': 'Signal_Strength', 'type': 'numeric', 'format': {'specifier': '.2%'}},
                         {'name': 'Prob DOWN', 'id': 'Probability_Down', 'type': 'numeric', 'format': {'specifier': '.1%'}},
-                        {'name': 'Confidence', 'id': 'Model_Confidence', 'type': 'numeric', 'format': {'specifier': '.1%'}},
+                        {'name': 'Confidence', 'id': 'Confidence', 'type': 'numeric', 'format': {'specifier': '.1%'}},
                         {'name': 'Accuracy', 'id': 'Model_Accuracy', 'type': 'numeric', 'format': {'specifier': '.1%'}},
                         {'name': 'Reason', 'id': 'Reason'},
                     ],
@@ -611,12 +738,12 @@ def render_tab_content(tab):
                         {'name': 'Strength', 'id': 'Signal_Strength', 'type': 'numeric', 'format': {'specifier': '.2%'}},
                         {'name': 'Prob UP', 'id': 'Probability_Up', 'type': 'numeric', 'format': {'specifier': '.1%'}},
                         {'name': 'Prob DOWN', 'id': 'Probability_Down', 'type': 'numeric', 'format': {'specifier': '.1%'}},
-                        {'name': 'Confidence', 'id': 'Model_Confidence', 'type': 'numeric', 'format': {'specifier': '.1%'}},
+                        {'name': 'Confidence', 'id': 'Confidence', 'type': 'numeric', 'format': {'specifier': '.1%'}},
                         {'name': 'Accuracy', 'id': 'Model_Accuracy', 'type': 'numeric', 'format': {'specifier': '.1%'}},
-                        {'name': 'Position', 'id': 'Position_Size', 'type': 'numeric', 'format': {'specifier': '$,.0f'}},
+                        {'name': 'Position', 'id': 'Recommended_Position', 'type': 'numeric', 'format': {'specifier': '$,.0f'}},
                         {'name': 'Reason', 'id': 'Reason'},
                     ],
-                    data=df_signals.to_dict('records'),
+                    data=df_signals_display.to_dict('records'),
                     style_table={'overflowX': 'auto'},
                     style_header={
                         'backgroundColor': colors['background'],
@@ -809,6 +936,50 @@ def update_charts(selected_ticker, period_days):
     df_stock['SMA_20'] = df_stock['Close'].rolling(window=20).mean()
     df_stock['SMA_50'] = df_stock['Close'].rolling(window=50).mean()
     
+    # Calculate Support and Resistance Zones
+    def find_support_resistance_zones(df, window=20, num_zones=3):
+        """Identify support and resistance zones based on swing highs/lows"""
+        zones = []
+        
+        # Calculate swing highs and lows
+        df['swing_high'] = df['High'].rolling(window=window, center=True).max()
+        df['swing_low'] = df['Low'].rolling(window=window, center=True).min()
+        
+        # Identify local maxima (resistance)
+        df['is_resistance'] = (df['High'] == df['swing_high']) & (df['High'].shift(1) < df['High']) & (df['High'].shift(-1) < df['High'])
+        
+        # Identify local minima (support)
+        df['is_support'] = (df['Low'] == df['swing_low']) & (df['Low'].shift(1) > df['Low']) & (df['Low'].shift(-1) > df['Low'])
+        
+        # Get resistance levels
+        resistance_levels = df[df['is_resistance']]['High'].values
+        support_levels = df[df['is_support']]['Low'].values
+        
+        # Cluster similar levels (within 2% of each other)
+        def cluster_levels(levels, threshold=0.02):
+            if len(levels) == 0:
+                return []
+            levels = sorted(levels, reverse=True)
+            clusters = []
+            current_cluster = [levels[0]]
+            
+            for level in levels[1:]:
+                if abs(level - current_cluster[0]) / current_cluster[0] <= threshold:
+                    current_cluster.append(level)
+                else:
+                    clusters.append(np.mean(current_cluster))
+                    current_cluster = [level]
+            clusters.append(np.mean(current_cluster))
+            return clusters
+        
+        # Get top resistance and support zones
+        resistance_zones = cluster_levels(resistance_levels)[:num_zones]
+        support_zones = cluster_levels(support_levels)[:num_zones]
+        
+        return support_zones, resistance_zones
+    
+    support_zones, resistance_zones = find_support_resistance_zones(df_stock.copy(), window=20, num_zones=3)
+    
     # Create candlestick chart
     fig_candle = go.Figure()
     
@@ -837,6 +1008,52 @@ def update_charts(selected_ticker, period_days):
         name='SMA 50',
         line=dict(color='purple', width=1)
     ))
+    
+    # Add Support Zones (green shaded areas)
+    for i, support in enumerate(support_zones):
+        zone_width = support * 0.01  # 1% zone width
+        fig_candle.add_hrect(
+            y0=support - zone_width,
+            y1=support + zone_width,
+            fillcolor="rgba(0, 255, 0, 0.15)",
+            line_width=0,
+            layer="below",
+            annotation_text=f"Support {i+1}" if i == 0 else "",
+            annotation_position="right"
+        )
+        fig_candle.add_hline(
+            y=support,
+            line_dash="dot",
+            line_color="rgba(0, 255, 0, 0.5)",
+            line_width=1,
+            annotation_text=f"S: ${support:.2f}",
+            annotation_position="right",
+            annotation_font_size=10,
+            annotation_font_color="green"
+        )
+    
+    # Add Resistance Zones (red shaded areas)
+    for i, resistance in enumerate(resistance_zones):
+        zone_width = resistance * 0.01  # 1% zone width
+        fig_candle.add_hrect(
+            y0=resistance - zone_width,
+            y1=resistance + zone_width,
+            fillcolor="rgba(255, 0, 0, 0.15)",
+            line_width=0,
+            layer="below",
+            annotation_text=f"Resistance {i+1}" if i == 0 else "",
+            annotation_position="right"
+        )
+        fig_candle.add_hline(
+            y=resistance,
+            line_dash="dot",
+            line_color="rgba(255, 0, 0, 0.5)",
+            line_width=1,
+            annotation_text=f"R: ${resistance:.2f}",
+            annotation_position="right",
+            annotation_font_size=10,
+            annotation_font_color="red"
+        )
     
     fig_candle.update_layout(
         title=f'{stock_name} ({selected_ticker}) - {sector}',
@@ -936,13 +1153,17 @@ def update_charts(selected_ticker, period_days):
             'textAlign': 'center'
         }),
         
-        # Average Volume Card
+        # Average Volume Card OR Model Accuracy (if refined)
         html.Div([
-            html.H4('Avg Volume', style={'color': colors['text'], 'marginBottom': '5px'}),
-            html.H2(f'{avg_volume/1e6:.1f}M' if avg_volume >= 1e6 else f'{avg_volume/1e3:.1f}K', 
+            html.H4('Avg Model Accuracy' if is_refined and 'd21_Accuracy' in pred_data else 'Avg Volume', 
+                   style={'color': colors['text'], 'marginBottom': '5px'}),
+            html.H2(f"{pred_data.get('d21_Accuracy', pred_data.get('d1_Accuracy', 0)):.1%}" 
+                   if is_refined and ('d21_Accuracy' in pred_data or 'd1_Accuracy' in pred_data)
+                   else (f'{avg_volume/1e6:.1f}M' if avg_volume >= 1e6 else f'{avg_volume/1e3:.1f}K'), 
                    style={'color': colors['accent'], 'margin': '0'}),
-            html.P(f'Last: {df_stock["Volume"].iloc[-1]/1e6:.1f}M' if df_stock["Volume"].iloc[-1] >= 1e6 
-                   else f'Last: {df_stock["Volume"].iloc[-1]/1e3:.1f}K',
+            html.P('21-day prediction accuracy' if is_refined and 'd21_Accuracy' in pred_data
+                   else (f'Last: {df_stock["Volume"].iloc[-1]/1e6:.1f}M' if df_stock["Volume"].iloc[-1] >= 1e6 
+                   else f'Last: {df_stock["Volume"].iloc[-1]/1e3:.1f}K'),
                    style={'color': colors['text'], 'fontSize': '16px', 'marginTop': '5px'})
         ], style={
             'backgroundColor': colors['background'], 
@@ -954,69 +1175,43 @@ def update_charts(selected_ticker, period_days):
         }),
     ])
     
-    # Create predictions table
-    predictions_table = html.Div([
-        html.Div([
-            # 1-Day Prediction
-            html.Div([
-                html.H4('1-Day Prediction', style={'color': colors['text'], 'textAlign': 'center'}),
-                html.H2(pred_data['1d_Direction'], 
-                       style={'color': colors['green'] if 'UP' in pred_data['1d_Direction'] else colors['red'],
-                              'textAlign': 'center', 'fontSize': '36px'}),
-                html.P(f"Probability: {pred_data['1d_Prob_Up']:.1%}", 
-                      style={'color': colors['text'], 'textAlign': 'center'}),
-                html.P(f"Confidence: {pred_data['1d_Confidence']:.1%}", 
-                      style={'color': colors['text'], 'textAlign': 'center'}),
-                html.P(f"Accuracy: {pred_data['1d_Accuracy']:.1%}", 
-                      style={'color': colors['accent'], 'textAlign': 'center'})
-            ], style={'width': '23%', 'display': 'inline-block', 'marginRight': '2%',
-                     'backgroundColor': colors['background'], 'padding': '20px', 'borderRadius': '10px'}),
-            
-            # 7-Day Prediction
-            html.Div([
-                html.H4('7-Day Prediction', style={'color': colors['text'], 'textAlign': 'center'}),
-                html.H2(pred_data['7d_Direction'], 
-                       style={'color': colors['green'] if 'UP' in pred_data['7d_Direction'] else colors['red'],
-                              'textAlign': 'center', 'fontSize': '36px'}),
-                html.P(f"Probability: {pred_data['7d_Prob_Up']:.1%}", 
-                      style={'color': colors['text'], 'textAlign': 'center'}),
-                html.P(f"Confidence: {pred_data['7d_Confidence']:.1%}", 
-                      style={'color': colors['text'], 'textAlign': 'center'}),
-                html.P(f"Accuracy: {pred_data['7d_Accuracy']:.1%}", 
-                      style={'color': colors['accent'], 'textAlign': 'center'})
-            ], style={'width': '23%', 'display': 'inline-block', 'marginRight': '2%',
-                     'backgroundColor': colors['background'], 'padding': '20px', 'borderRadius': '10px'}),
-            
-            # 30-Day Prediction
-            html.Div([
-                html.H4('30-Day Prediction', style={'color': colors['text'], 'textAlign': 'center'}),
-                html.H2(pred_data['30d_Direction'], 
-                       style={'color': colors['green'] if 'UP' in pred_data['30d_Direction'] else colors['red'],
-                              'textAlign': 'center', 'fontSize': '36px'}),
-                html.P(f"Probability: {pred_data['30d_Prob_Up']:.1%}", 
-                      style={'color': colors['text'], 'textAlign': 'center'}),
-                html.P(f"Confidence: {pred_data['30d_Confidence']:.1%}", 
-                      style={'color': colors['text'], 'textAlign': 'center'}),
-                html.P(f"Accuracy: {pred_data['30d_Accuracy']:.1%}", 
-                      style={'color': colors['accent'], 'textAlign': 'center'})
-            ], style={'width': '23%', 'display': 'inline-block', 'marginRight': '2%',
-                     'backgroundColor': colors['background'], 'padding': '20px', 'borderRadius': '10px'}),
-            
-            # 90-Day Prediction
-            html.Div([
-                html.H4('90-Day Prediction', style={'color': colors['text'], 'textAlign': 'center'}),
-                html.H2(pred_data['90d_Direction'], 
-                       style={'color': colors['green'] if 'UP' in pred_data['90d_Direction'] else colors['red'],
-                              'textAlign': 'center', 'fontSize': '36px'}),
-                html.P(f"Probability: {pred_data['90d_Prob_Up']:.1%}", 
-                      style={'color': colors['text'], 'textAlign': 'center'}),
-                html.P(f"Confidence: {pred_data['90d_Confidence']:.1%}", 
-                      style={'color': colors['text'], 'textAlign': 'center'}),
-                html.P(f"Accuracy: {pred_data['90d_Accuracy']:.1%}", 
-                      style={'color': colors['accent'], 'textAlign': 'center'})
-            ], style={'width': '23%', 'display': 'inline-block',
-                     'backgroundColor': colors['background'], 'padding': '20px', 'borderRadius': '10px'}),
-        ])
+    # Create predictions table - show daily predictions (d1, d5, d21)
+    prediction_cards = []
+    
+    # Daily predictions configuration
+    pred_configs = [
+        ('d1', '1-Day'),
+        ('d5', '5-Day'),
+        ('d21', '21-Day'),
+    ]
+    
+    # Build cards for available predictions
+    for key, label in pred_configs:
+        dir_col = f'{key}_Direction'
+        prob_col = f'{key}_Prob_Up'
+        conf_col = f'{key}_Confidence'
+        acc_col = f'{key}_Accuracy'
+        
+        if dir_col in pred_data.index and pd.notna(pred_data[dir_col]):
+            prediction_cards.append(
+                html.Div([
+                    html.H4(f'{label} Prediction', style={'color': colors['text'], 'textAlign': 'center'}),
+                    html.H2(pred_data[dir_col], 
+                           style={'color': colors['green'] if 'UP' in str(pred_data[dir_col]) else colors['red'],
+                                  'textAlign': 'center', 'fontSize': '36px'}),
+                    html.P(f"Probability: {pred_data[prob_col]:.1%}", 
+                          style={'color': colors['text'], 'textAlign': 'center'}),
+                    html.P(f"Confidence: {pred_data[conf_col]:.1%}", 
+                          style={'color': colors['text'], 'textAlign': 'center'}),
+                    html.P(f"Accuracy: {pred_data[acc_col]:.1%}", 
+                          style={'color': colors['accent'], 'textAlign': 'center'})
+                ], style={'width': '31%', 'display': 'inline-block', 'marginRight': '2%',
+                         'backgroundColor': colors['background'], 'padding': '20px', 'borderRadius': '10px'})
+            )
+    
+    predictions_table = html.Div([html.Div(prediction_cards)]) if prediction_cards else html.Div([
+        html.P('No predictions available for this stock', 
+               style={'color': colors['text'], 'textAlign': 'center', 'padding': '20px'})
     ])
     
     return fig_candle, fig_volume, kpi_cards, predictions_table
@@ -1030,9 +1225,11 @@ if __name__ == '__main__':
     print("\n✨ Features:")
     print("   • Interactive candlestick charts with technical indicators")
     print("   • Filter by sector and stock")
-    print("   • AI-powered predictions for 1, 7, 30, and 90 days")
+    print("   • AI-powered predictions for 1, 5, 21 days ahead")
+    print("   • BUY/HOLD/SELL recommendations based on multi-period analysis")
     print("   • Real-time data visualization")
     print("   • Comprehensive stock overview table")
+    print("   • Backtest results and trading signals")
     print("\n" + "="*80 + "\n")
     
     app.run(debug=True, host='0.0.0.0', port=8050)
