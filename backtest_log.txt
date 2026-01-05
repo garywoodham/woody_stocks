@@ -1,0 +1,14 @@
+================================================================================
+🎯 STOCK TRADING SIGNAL & BACKTEST ENGINE
+================================================================================
+
+This system generates trading signals from AI predictions and
+validates them through comprehensive backtesting.
+
+Options:
+  1. Run single stock backtest
+  2. Run all stocks backtest (7-day horizon)
+  3. Run all stocks backtest (all horizons)
+================================================================================
+
+Enter choice (1-3): 

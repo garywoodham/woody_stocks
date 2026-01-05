@@ -1,0 +1,2354 @@
+================================================================================
+MULTI-STOCK PREDICTION MODEL TRAINING
+================================================================================
+
+Loading multi-sector stock data...
+Total records: 25,172
+Date range: 2021-01-04 to 2026-01-02
+
+Total stocks to train: 20
+
+Stocks by sector:
+  Technology: 5 stocks
+  Pharma: 5 stocks
+  Defence: 5 stocks
+  Banking: 5 stocks
+
+================================================================================
+STARTING TRAINING
+================================================================================
+
+================================================================================
+[1/20] Training: Alphabet (GOOGL) - Technology
+================================================================================
+Stock data: 1256 records
+Creating features...
+
+Total samples after feature engineering: 1117
+Number of features: 46
+
+============================================================
+Training model for 1-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[3]	valid_0's binary_logloss: 0.6883
+
+Test Accuracy: 53.12%
+Accuracy predicting UP: 91.67%
+Accuracy predicting DOWN: 8.65%
+
+Top 10 most important features:
+      feature  importance
+volume_change   48.022300
+        RSI_7   34.249560
+      returns   26.781539
+ volume_ratio   25.233581
+  momentum_20   22.636690
+  log_returns   18.649381
+    hl_spread   16.924020
+volatility_20   15.239070
+       EMA_50   13.988690
+     BB_upper   13.001920
+
+============================================================
+Training model for 7-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[14]	valid_0's binary_logloss: 0.640135
+
+Test Accuracy: 60.27%
+Accuracy predicting UP: 67.39%
+Accuracy predicting DOWN: 48.84%
+
+Top 10 most important features:
+      feature  importance
+       ATR_14  321.199606
+       SMA_20  223.584131
+ volume_ma_20  179.332295
+       SMA_50  174.114970
+  volume_ma_5  147.405810
+  MACD_signal  146.332968
+volatility_20  145.273120
+          ADX  141.318081
+       EMA_10  128.197800
+       SMA_10  121.820150
+
+============================================================
+Training model for 30-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[22]	valid_0's binary_logloss: 0.522752
+
+Test Accuracy: 74.55%
+Accuracy predicting UP: 69.57%
+Accuracy predicting DOWN: 87.30%
+
+Top 10 most important features:
+      feature  importance
+       EMA_50  510.050453
+       SMA_50  496.267832
+       ATR_14  446.305728
+       EMA_20  362.399379
+ volume_ma_20  352.714233
+    MACD_hist  254.332711
+     BB_upper  242.161871
+volatility_20  207.814061
+  MACD_signal  177.713440
+  volume_ma_5  140.309389
+
+============================================================
+Training model for 90-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[4]	valid_0's binary_logloss: 0.639224
+
+Test Accuracy: 71.88%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 20.25%
+
+Top 10 most important features:
+        feature  importance
+         SMA_50  304.511895
+         ATR_14  292.413466
+         SMA_20  192.880152
+  volatility_20  149.125060
+      month_cos  137.984778
+       BB_lower  105.699119
+            ADX   91.921316
+       BB_upper   85.696098
+         RSI_21   83.026699
+price_to_sma_50   70.307368
+
+✓ Completed Alphabet in 0.5s
+  Latest Price: $315.15
+  Predictions: 1d=UP ↑, 7d=DOWN ↓, 30d=DOWN ↓, 90d=UP ↑
+
+================================================================================
+[2/20] Training: Amazon (AMZN) - Technology
+================================================================================
+Stock data: 1256 records
+Creating features...
+
+Total samples after feature engineering: 1117
+Number of features: 46
+
+============================================================
+Training model for 1-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[3]	valid_0's binary_logloss: 0.685995
+
+Test Accuracy: 56.25%
+Accuracy predicting UP: 68.91%
+Accuracy predicting DOWN: 41.90%
+
+Top 10 most important features:
+        feature  importance
+price_to_sma_50   39.864980
+  volume_change   26.623361
+         RSI_21   25.298499
+        returns   24.291890
+price_to_sma_20   21.741470
+         ATR_14   20.238020
+     momentum_5   19.751150
+            ADX   16.882140
+            CCI   16.141990
+ price_to_sma_5   12.660880
+
+============================================================
+Training model for 7-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.685824
+
+Test Accuracy: 57.59%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+     feature  importance
+volume_ma_20   57.433901
+      ATR_14   56.178401
+   month_sin   45.450401
+      RSI_21   33.563690
+         ADX   27.201720
+    BB_lower   18.653999
+       RSI_7   17.611900
+      SMA_50   16.642401
+ MACD_signal    3.819530
+ volume_ma_5    3.526980
+
+============================================================
+Training model for 30-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.65634
+
+Test Accuracy: 66.96%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+     feature  importance
+    BB_upper   95.261600
+      ATR_14   74.577290
+      RSI_21   66.657202
+   month_sin   63.453952
+      EMA_10   54.112000
+volume_ma_20   48.174900
+      EMA_20   30.162100
+      EMA_50   28.096201
+   MACD_hist   24.348801
+volatility_5   17.355499
+
+============================================================
+Training model for 90-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.67184
+
+Test Accuracy: 60.27%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+        feature  importance
+         SMA_50  241.996402
+         ATR_14  129.154274
+price_to_sma_50   74.062103
+         SMA_20   49.626999
+  volatility_20   37.142200
+      MACD_hist    8.239660
+         EMA_50    6.452410
+         SMA_10    6.115878
+          SMA_5    1.170590
+       BB_lower    0.848113
+
+✓ Completed Amazon in 0.3s
+  Latest Price: $226.50
+  Predictions: 1d=UP ↑, 7d=UP ↑, 30d=UP ↑, 90d=UP ↑
+
+================================================================================
+[3/20] Training: Apple (AAPL) - Technology
+================================================================================
+Stock data: 1256 records
+Creating features...
+
+Total samples after feature engineering: 1117
+Number of features: 46
+
+============================================================
+Training model for 1-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[8]	valid_0's binary_logloss: 0.682928
+
+Test Accuracy: 56.25%
+Accuracy predicting UP: 94.12%
+Accuracy predicting DOWN: 13.33%
+
+Top 10 most important features:
+     feature  importance
+      ATR_14   67.529410
+     STOCH_K   61.092580
+   hl_spread   60.999640
+ momentum_20   60.216381
+         ADX   52.366449
+volume_ma_20   47.459620
+volume_ratio   37.279200
+     returns   33.016561
+      SMA_10   31.524159
+  momentum_5   29.933590
+
+============================================================
+Training model for 7-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[11]	valid_0's binary_logloss: 0.649724
+
+Test Accuracy: 60.27%
+Accuracy predicting UP: 55.38%
+Accuracy predicting DOWN: 67.02%
+
+Top 10 most important features:
+        feature  importance
+         SMA_50  381.406627
+            ADX  285.555279
+    momentum_20  198.017865
+    volume_ma_5  162.287771
+         EMA_20  159.646438
+price_to_sma_50  143.282238
+         EMA_10  113.791769
+    MACD_signal  105.791506
+   volume_ma_20  101.486090
+      MACD_hist  100.448456
+
+============================================================
+Training model for 30-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[7]	valid_0's binary_logloss: 0.64696
+
+Test Accuracy: 77.23%
+Accuracy predicting UP: 81.95%
+Accuracy predicting DOWN: 70.33%
+
+Top 10 most important features:
+        feature  importance
+         EMA_50  470.249350
+         SMA_50  328.065589
+         SMA_20  224.065600
+      month_cos  221.195881
+    MACD_signal  193.274157
+      month_sin  190.365823
+price_to_sma_50  176.113883
+            ADX  156.319313
+  volatility_20  124.398994
+         SMA_10   78.599998
+
+============================================================
+Training model for 90-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[2]	valid_0's binary_logloss: 0.748175
+
+Test Accuracy: 54.91%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+        feature  importance
+         EMA_50  227.972049
+         EMA_20  142.306601
+         ATR_14  111.078347
+    volume_ma_5   93.499702
+         SMA_50   78.481054
+  volatility_20   75.370272
+price_to_sma_50   55.449161
+          RSI_7   30.892900
+price_to_sma_10   29.075199
+    MACD_signal   19.741301
+
+✓ Completed Apple in 0.5s
+  Latest Price: $271.01
+  Predictions: 1d=UP ↑, 7d=UP ↑, 30d=UP ↑, 90d=UP ↑
+
+================================================================================
+[4/20] Training: AstraZeneca (AZN.L) - Pharma
+================================================================================
+Stock data: 1262 records
+Creating features...
+
+Total samples after feature engineering: 1123
+Number of features: 46
+
+============================================================
+Training model for 1-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.692776
+
+Test Accuracy: 52.44%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+        feature  importance
+price_to_sma_20    24.28147
+price_to_sma_50    11.10370
+  volume_change    11.00160
+      MACD_hist    10.61466
+        STOCH_K     8.21739
+        returns     7.12462
+    volume_ma_5     5.63465
+    momentum_20     5.44487
+    log_returns     5.27981
+          RSI_7     5.06594
+
+============================================================
+Training model for 7-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[32]	valid_0's binary_logloss: 0.662112
+
+Test Accuracy: 57.78%
+Accuracy predicting UP: 41.98%
+Accuracy predicting DOWN: 79.79%
+
+Top 10 most important features:
+      feature  importance
+          ADX  512.792439
+    month_sin  343.375088
+       SMA_50  329.427073
+       ATR_14  319.812545
+       SMA_10  303.602230
+       EMA_50  256.356980
+    MACD_hist  216.587909
+ volume_ma_20  182.909538
+volatility_10  177.357425
+  volume_ma_5  160.068186
+
+============================================================
+Training model for 30-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.660177
+
+Test Accuracy: 61.78%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+        feature  importance
+         SMA_10  123.903000
+  volatility_20   61.862177
+         SMA_50   40.329501
+      MACD_hist   39.343399
+          RSI_7   37.089298
+      month_sin   37.017329
+price_to_sma_50   36.482422
+         ATR_14   32.121161
+price_to_sma_20   15.231000
+            ADX   10.756600
+
+============================================================
+Training model for 90-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.65725
+
+Test Accuracy: 60.89%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+        feature  importance
+         EMA_50  294.579698
+         ATR_14   44.805499
+         SMA_20   30.070900
+      month_sin   26.624100
+       BB_lower   24.202101
+   volume_ma_20   22.367100
+            ADX   19.068399
+         SMA_10   10.795600
+         RSI_14   10.617200
+price_to_sma_20    8.958140
+
+✓ Completed AstraZeneca in 0.4s
+  Latest Price: $13592.00
+  Predictions: 1d=UP ↑, 7d=UP ↑, 30d=UP ↑, 90d=UP ↑
+
+================================================================================
+[5/20] Training: BAE Systems (BA.L) - Defence
+================================================================================
+Stock data: 1262 records
+Creating features...
+
+Total samples after feature engineering: 1123
+Number of features: 46
+
+============================================================
+Training model for 1-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[13]	valid_0's binary_logloss: 0.681547
+
+Test Accuracy: 55.56%
+Accuracy predicting UP: 82.54%
+Accuracy predicting DOWN: 21.21%
+
+Top 10 most important features:
+        feature  importance
+        STOCH_D   86.927901
+       BB_width   63.470820
+            ADX   62.490570
+   volatility_5   61.935679
+price_to_sma_20   55.947150
+  volume_change   54.723170
+         ATR_14   49.457380
+      MACD_hist   48.690490
+     momentum_5   44.527899
+    momentum_10   43.116560
+
+============================================================
+Training model for 7-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[10]	valid_0's binary_logloss: 0.6993
+
+Test Accuracy: 55.11%
+Accuracy predicting UP: 92.17%
+Accuracy predicting DOWN: 16.36%
+
+Top 10 most important features:
+        feature  importance
+  volatility_20  198.204926
+         SMA_50  178.181151
+    MACD_signal  165.482949
+price_to_sma_50  163.215443
+   volume_ma_20  153.325687
+      month_cos  143.058500
+      month_sin  136.924179
+            ADX  135.405339
+         RSI_21  134.496268
+price_to_sma_20  118.019120
+
+============================================================
+Training model for 30-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[3]	valid_0's binary_logloss: 0.659783
+
+Test Accuracy: 63.11%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+      feature  importance
+    month_sin  152.569401
+  momentum_20  130.309036
+volatility_20  123.699812
+        SMA_5  119.294594
+       SMA_50   97.477001
+       EMA_10   78.748199
+       EMA_20   67.764397
+        EMA_5   61.988098
+       SMA_20   60.388340
+    month_cos   48.471899
+
+============================================================
+Training model for 90-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[3]	valid_0's binary_logloss: 0.54192
+
+Test Accuracy: 75.56%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+    feature  importance
+   BB_upper  562.316301
+     SMA_50  259.178009
+     RSI_21  117.077087
+  month_cos  100.444799
+     SMA_20   67.808399
+MACD_signal   44.419503
+  MACD_hist   37.816501
+momentum_20   30.101900
+     ATR_14   13.241609
+volume_ma_5    9.477992
+
+✓ Completed BAE Systems in 0.4s
+  Latest Price: $1754.00
+  Predictions: 1d=UP ↑, 7d=UP ↑, 30d=UP ↑, 90d=UP ↑
+
+================================================================================
+[6/20] Training: Barclays (BARC.L) - Banking
+================================================================================
+Stock data: 1261 records
+Creating features...
+
+Total samples after feature engineering: 1122
+Number of features: 46
+
+============================================================
+Training model for 1-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[7]	valid_0's binary_logloss: 0.685091
+
+Test Accuracy: 57.78%
+Accuracy predicting UP: 77.17%
+Accuracy predicting DOWN: 32.65%
+
+Top 10 most important features:
+        feature  importance
+        returns   62.647800
+     momentum_5   55.340280
+    MACD_signal   54.352711
+            ADX   53.303571
+   volatility_5   50.471290
+           MACD   43.297150
+  volatility_20   39.310621
+price_to_sma_20   38.049999
+         EMA_20   36.800900
+    momentum_20   35.088670
+
+============================================================
+Training model for 7-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[14]	valid_0's binary_logloss: 0.642101
+
+Test Accuracy: 72.44%
+Accuracy predicting UP: 84.11%
+Accuracy predicting DOWN: 48.65%
+
+Top 10 most important features:
+        feature  importance
+         EMA_10  271.498132
+         ATR_14  195.041058
+  volatility_10  167.262770
+         EMA_50  161.714071
+       BB_lower  155.166491
+price_to_sma_50  130.794101
+      month_sin  116.205300
+   volume_ma_20  115.399802
+  volatility_20  108.950292
+    volume_ma_5  103.674247
+
+============================================================
+Training model for 30-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[2]	valid_0's binary_logloss: 0.583927
+
+Test Accuracy: 85.78%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+     feature  importance
+       SMA_5  162.611303
+      RSI_14  105.442299
+   month_sin   89.788498
+   month_cos   58.381858
+      SMA_50   55.060791
+    BB_upper   47.333900
+ volume_ma_5   43.667541
+ MACD_signal   40.959399
+volume_ma_20   39.813702
+      EMA_10   30.962050
+
+============================================================
+Training model for 90-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+[100]	valid_0's binary_logloss: 0.152086
+Early stopping, best iteration is:
+[93]	valid_0's binary_logloss: 0.147651
+
+Test Accuracy: 97.33%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+     feature  importance
+      EMA_50 1240.066294
+      SMA_50  890.386034
+    BB_lower  764.490622
+   month_cos  696.733389
+         ADX  674.576993
+      ATR_14  669.956230
+      EMA_20  537.806462
+      EMA_10  500.926235
+volume_ma_20  353.108561
+   month_sin  349.376730
+
+✓ Completed Barclays in 0.5s
+  Latest Price: $479.50
+  Predictions: 1d=UP ↑, 7d=DOWN ↓, 30d=UP ↑, 90d=UP ↑
+
+================================================================================
+[7/20] Training: GSK (GSK.L) - Pharma
+================================================================================
+Stock data: 1262 records
+Creating features...
+
+Total samples after feature engineering: 1123
+Number of features: 46
+
+============================================================
+Training model for 1-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[10]	valid_0's binary_logloss: 0.689824
+
+Test Accuracy: 50.67%
+Accuracy predicting UP: 70.00%
+Accuracy predicting DOWN: 28.57%
+
+Top 10 most important features:
+      feature  importance
+      STOCH_D   68.166670
+          CCI   62.921260
+ volatility_5   60.808971
+    month_sin   55.549480
+volatility_10   45.608250
+  momentum_20   44.703070
+      returns   43.598830
+  volume_ma_5   43.167530
+    hl_spread   42.019511
+ volume_ma_20   41.275180
+
+============================================================
+Training model for 7-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[14]	valid_0's binary_logloss: 0.66048
+
+Test Accuracy: 55.56%
+Accuracy predicting UP: 47.93%
+Accuracy predicting DOWN: 64.42%
+
+Top 10 most important features:
+        feature  importance
+         EMA_20  644.099884
+         SMA_20  394.157400
+  volatility_20  246.745139
+price_to_sma_10  191.250028
+    MACD_signal  122.817291
+  volatility_10  118.416140
+         SMA_50  115.531310
+     momentum_5  115.340274
+         ATR_14  111.784381
+       BB_upper  111.238080
+
+============================================================
+Training model for 30-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[4]	valid_0's binary_logloss: 0.669609
+
+Test Accuracy: 58.67%
+Accuracy predicting UP: 96.85%
+Accuracy predicting DOWN: 9.18%
+
+Top 10 most important features:
+        feature  importance
+         EMA_10  304.747103
+         SMA_50  234.848590
+         SMA_20  195.213424
+          EMA_5  189.091805
+      month_cos  151.597391
+       BB_upper  118.823469
+            ADX  101.696165
+      month_sin   90.463880
+price_to_sma_50   48.936600
+price_to_sma_10   47.057850
+
+============================================================
+Training model for 90-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[40]	valid_0's binary_logloss: 0.360096
+
+Test Accuracy: 90.67%
+Accuracy predicting UP: 98.76%
+Accuracy predicting DOWN: 70.31%
+
+Top 10 most important features:
+      feature  importance
+       EMA_50 1319.069101
+    month_sin  804.212858
+       EMA_10  686.032960
+       SMA_50  674.282695
+        SMA_5  669.518430
+       EMA_20  665.302808
+        EMA_5  653.461403
+    month_cos  549.695081
+     BB_lower  369.034563
+volatility_20  290.345423
+
+✓ Completed GSK in 0.5s
+  Latest Price: $1831.50
+  Predictions: 1d=UP ↑, 7d=DOWN ↓, 30d=DOWN ↓, 90d=UP ↑
+
+================================================================================
+[8/20] Training: HSBC (HSBA.L) - Banking
+================================================================================
+Stock data: 1262 records
+Creating features...
+
+Total samples after feature engineering: 1123
+Number of features: 46
+
+============================================================
+Training model for 1-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.686673
+
+Test Accuracy: 60.00%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+        feature  importance
+    volume_ma_5    21.08586
+price_to_sma_50    15.86900
+  volume_change    13.45982
+         ATR_14     9.92083
+ price_to_sma_5     8.93834
+    momentum_20     7.57353
+   volume_ratio     7.41252
+         EMA_20     7.41082
+    log_returns     7.39491
+         RSI_14     6.17147
+
+============================================================
+Training model for 7-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.6604
+
+Test Accuracy: 74.22%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+        feature  importance
+   volume_ma_20   51.044009
+          SMA_5   45.145700
+    MACD_signal   44.907340
+price_to_sma_50   39.039701
+         ATR_14   31.251499
+         SMA_20   29.244280
+            ADX   25.944349
+  volatility_20   21.858990
+   volatility_5   20.381920
+    momentum_20   16.589100
+
+============================================================
+Training model for 30-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.647463
+
+Test Accuracy: 84.89%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+        feature  importance
+  volatility_20   80.399399
+    MACD_signal   73.826587
+   volume_ma_20   40.031700
+         SMA_20   39.729301
+      month_sin   37.965401
+         SMA_50   25.544100
+price_to_sma_20   21.176499
+          SMA_5   14.890100
+            ADX    5.053610
+ price_to_sma_5    3.255730
+
+============================================================
+Training model for 90-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.475619
+
+Test Accuracy: 94.67%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+        feature  importance
+price_to_sma_50  141.539001
+            ADX  105.430498
+      month_sin   63.126099
+  volatility_20   51.738899
+       BB_lower   40.114700
+          SMA_5   28.355101
+       BB_upper   23.834600
+         EMA_50   22.443300
+    MACD_signal   20.019400
+   volume_ma_20   11.907290
+
+✓ Completed HSBC in 0.4s
+  Latest Price: $1191.80
+  Predictions: 1d=UP ↑, 7d=UP ↑, 30d=UP ↑, 90d=UP ↑
+
+================================================================================
+[9/20] Training: Johnson & Johnson (JNJ) - Pharma
+================================================================================
+Stock data: 1256 records
+Creating features...
+
+Total samples after feature engineering: 1117
+Number of features: 46
+
+============================================================
+Training model for 1-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[2]	valid_0's binary_logloss: 0.689581
+
+Test Accuracy: 51.79%
+Accuracy predicting UP: 51.22%
+Accuracy predicting DOWN: 52.48%
+
+Top 10 most important features:
+        feature  importance
+         EMA_10   27.861300
+   volume_ratio   27.772150
+         SMA_50   27.544140
+   volatility_5   24.884671
+          RSI_7   19.780770
+price_to_sma_20   18.970250
+         ATR_14   16.814930
+    BB_position   15.101510
+      hl_spread   14.702350
+  volatility_20   14.378100
+
+============================================================
+Training model for 7-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[15]	valid_0's binary_logloss: 0.686268
+
+Test Accuracy: 54.91%
+Accuracy predicting UP: 34.09%
+Accuracy predicting DOWN: 84.78%
+
+Top 10 most important features:
+        feature  importance
+         EMA_50  478.588665
+         ATR_14  288.005469
+         SMA_50  248.156031
+   volume_ma_20  212.692289
+            ADX  189.069710
+      month_sin  169.272089
+    volume_ma_5  167.365510
+    MACD_signal  131.217959
+  volatility_10  123.821129
+price_to_sma_20  111.899201
+
+============================================================
+Training model for 30-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[10]	valid_0's binary_logloss: 0.64714
+
+Test Accuracy: 58.04%
+Accuracy predicting UP: 46.56%
+Accuracy predicting DOWN: 74.19%
+
+Top 10 most important features:
+        feature  importance
+         SMA_20 1097.302587
+  volatility_20  383.569908
+price_to_sma_50  305.091284
+         ATR_14  244.988961
+         EMA_20  232.724547
+         SMA_50  183.852366
+         EMA_50  183.735151
+      MACD_hist  105.007952
+  volatility_10  104.931890
+price_to_sma_10   97.205524
+
+============================================================
+Training model for 90-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.680148
+
+Test Accuracy: 56.25%
+Accuracy predicting UP: 57.95%
+Accuracy predicting DOWN: 44.83%
+
+Top 10 most important features:
+        feature  importance
+    MACD_signal  210.044118
+       BB_lower   66.502296
+         SMA_50   55.510299
+price_to_sma_50   37.376801
+  volatility_20   21.367901
+   volume_ma_20   19.520599
+         ATR_14   16.922100
+      MACD_hist   14.933590
+         RSI_21   14.545500
+            ADX   12.375400
+
+✓ Completed Johnson & Johnson in 0.4s
+  Latest Price: $207.35
+  Predictions: 1d=DOWN ↓, 7d=DOWN ↓, 30d=DOWN ↓, 90d=DOWN ↓
+
+================================================================================
+[10/20] Training: Lloyds Banking (LLOY.L) - Banking
+================================================================================
+Stock data: 1262 records
+Creating features...
+
+Total samples after feature engineering: 1123
+Number of features: 46
+
+============================================================
+Training model for 1-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[14]	valid_0's binary_logloss: 0.672474
+
+Test Accuracy: 56.89%
+Accuracy predicting UP: 76.38%
+Accuracy predicting DOWN: 31.63%
+
+Top 10 most important features:
+        feature  importance
+        returns  139.847539
+    volume_ma_5  121.875480
+price_to_sma_50  121.274340
+         ATR_14   91.510641
+  volatility_20   88.100830
+            ADX   73.990559
+         RSI_21   72.796860
+         RSI_14   69.470854
+   volume_ratio   56.267041
+    BB_position   52.117560
+
+============================================================
+Training model for 7-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.67989
+
+Test Accuracy: 58.22%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+        feature  importance
+         EMA_50   44.536301
+price_to_sma_50   32.750990
+price_to_sma_10   31.248001
+     momentum_5   22.448099
+   volume_ma_20   20.034100
+  volume_change   19.499399
+        STOCH_K   18.260900
+   volatility_5   17.852200
+      month_sin   15.597200
+    momentum_20   14.614900
+
+============================================================
+Training model for 30-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[5]	valid_0's binary_logloss: 0.622446
+
+Test Accuracy: 71.56%
+Accuracy predicting UP: 75.30%
+Accuracy predicting DOWN: 61.02%
+
+Top 10 most important features:
+     feature  importance
+       EMA_5  283.022806
+    BB_lower  273.795893
+   month_cos  167.977499
+      SMA_50  147.050149
+         ADX  146.062258
+ MACD_signal  125.979624
+volume_ma_20   89.641500
+     STOCH_K   64.668600
+      ATR_14   58.370390
+   MACD_hist   57.960600
+
+============================================================
+Training model for 90-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.611594
+
+Test Accuracy: 100.00%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+      feature  importance
+       SMA_50  171.381100
+ volume_ma_20  108.058697
+  volume_ma_5   33.653301
+volatility_20   27.944500
+    MACD_hist   23.365299
+       SMA_10   20.025499
+    month_sin   17.669201
+       ATR_14   12.829400
+       EMA_50    9.914860
+       SMA_20    7.542000
+
+✓ Completed Lloyds Banking in 0.4s
+  Latest Price: $99.24
+  Predictions: 1d=UP ↑, 7d=UP ↑, 30d=DOWN ↓, 90d=UP ↑
+
+================================================================================
+[11/20] Training: Lockheed Martin (LMT) - Defence
+================================================================================
+Stock data: 1256 records
+Creating features...
+
+Total samples after feature engineering: 1117
+Number of features: 46
+
+============================================================
+Training model for 1-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.693825
+
+Test Accuracy: 51.79%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+        feature  importance
+   volume_ratio   23.144701
+    volume_ma_5   15.235750
+price_to_sma_50   12.229460
+  volume_change   10.853100
+price_to_sma_20   10.297300
+      hl_spread    9.605110
+         ATR_14    8.983310
+       BB_upper    6.959670
+      MACD_hist    6.132750
+         SMA_50    5.335540
+
+============================================================
+Training model for 7-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[10]	valid_0's binary_logloss: 0.703872
+
+Test Accuracy: 45.54%
+Accuracy predicting UP: 84.76%
+Accuracy predicting DOWN: 10.92%
+
+Top 10 most important features:
+     feature  importance
+ volume_ma_5  193.656733
+      SMA_50  188.778889
+volume_ma_20  185.120284
+       SMA_5  154.921403
+   month_cos   98.830544
+      SMA_20   98.292398
+      EMA_50   97.554631
+volatility_5   97.161211
+ momentum_20   78.469150
+         ADX   76.167961
+
+============================================================
+Training model for 30-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.731183
+
+Test Accuracy: 39.73%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+     feature  importance
+      SMA_50   75.579999
+      EMA_50   71.964100
+ volume_ma_5   51.883499
+ MACD_signal   46.024200
+   month_sin   43.332100
+       SMA_5   27.653099
+      SMA_20   15.688300
+    BB_lower   15.367200
+volatility_5   14.990900
+volume_ma_20    8.367250
+
+============================================================
+Training model for 90-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[17]	valid_0's binary_logloss: 0.64554
+
+Test Accuracy: 53.12%
+Accuracy predicting UP: 0.94%
+Accuracy predicting DOWN: 100.00%
+
+Top 10 most important features:
+      feature  importance
+       ATR_14 1085.517908
+       EMA_50  767.293296
+    month_cos  656.829793
+volatility_20  643.093568
+       SMA_50  499.686521
+          ADX  224.224361
+        SMA_5  182.242792
+     BB_upper  174.012930
+ volume_ma_20  171.385768
+       EMA_20  164.669234
+
+✓ Completed Lockheed Martin in 0.4s
+  Latest Price: $497.07
+  Predictions: 1d=UP ↑, 7d=UP ↑, 30d=UP ↑, 90d=DOWN ↓
+
+================================================================================
+[12/20] Training: Microsoft (MSFT) - Technology
+================================================================================
+Stock data: 1256 records
+Creating features...
+
+Total samples after feature engineering: 1117
+Number of features: 46
+
+============================================================
+Training model for 1-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.693326
+
+Test Accuracy: 46.43%
+Accuracy predicting UP: 72.13%
+Accuracy predicting DOWN: 15.69%
+
+Top 10 most important features:
+        feature  importance
+            ADX    25.13221
+  volume_change    20.50891
+price_to_sma_50    13.42366
+        returns     8.93721
+   volume_ratio     8.47941
+        STOCH_K     7.33988
+     momentum_5     4.72861
+        day_cos     3.75619
+   volume_ma_20     3.75386
+         SMA_10     0.00000
+
+============================================================
+Training model for 7-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[44]	valid_0's binary_logloss: 0.639641
+
+Test Accuracy: 67.86%
+Accuracy predicting UP: 70.99%
+Accuracy predicting DOWN: 63.44%
+
+Top 10 most important features:
+      feature  importance
+          ADX  636.110905
+volatility_20  439.185969
+    month_sin  307.253983
+     BB_lower  236.777541
+       ATR_14  198.975968
+ volume_ma_20  188.279510
+volatility_10  185.519926
+    MACD_hist  184.631789
+       SMA_20  173.697937
+    month_cos  172.668780
+
+============================================================
+Training model for 30-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.684956
+
+Test Accuracy: 58.93%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+        feature  importance
+         SMA_50   81.660739
+  volatility_20   55.037200
+       BB_upper   48.776100
+         EMA_50   35.382500
+         RSI_21   27.080200
+         SMA_20   25.603600
+      MACD_hist   22.689400
+          SMA_5   21.064301
+price_to_sma_20   16.564899
+            ADX   11.857400
+
+============================================================
+Training model for 90-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[8]	valid_0's binary_logloss: 0.621514
+
+Test Accuracy: 68.30%
+Accuracy predicting UP: 72.46%
+Accuracy predicting DOWN: 61.63%
+
+Top 10 most important features:
+      feature  importance
+       EMA_50 1399.245747
+     BB_lower  782.748941
+volatility_20  322.936855
+       SMA_50  259.432777
+       ATR_14  229.987010
+          ADX  168.254200
+    month_sin   65.723730
+  MACD_signal   60.656860
+       RSI_14   39.016655
+        SMA_5   37.491150
+
+✓ Completed Microsoft in 0.5s
+  Latest Price: $472.94
+  Predictions: 1d=UP ↑, 7d=DOWN ↓, 30d=UP ↑, 90d=DOWN ↓
+
+================================================================================
+[13/20] Training: Moderna (MRNA) - Pharma
+================================================================================
+Stock data: 1256 records
+Creating features...
+
+Total samples after feature engineering: 1117
+Number of features: 46
+
+============================================================
+Training model for 1-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.688991
+
+Test Accuracy: 54.46%
+Accuracy predicting UP: 0.00%
+Accuracy predicting DOWN: 100.00%
+
+Top 10 most important features:
+        feature  importance
+        STOCH_K    14.92981
+         SMA_20     9.96087
+         SMA_50     7.99944
+price_to_sma_10     7.57190
+    MACD_signal     6.45891
+   volume_ma_20     6.38293
+         RSI_14     6.02976
+      hl_spread     3.44430
+       BB_upper     3.16169
+ price_to_sma_5     0.00000
+
+============================================================
+Training model for 7-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.691985
+
+Test Accuracy: 52.23%
+Accuracy predicting UP: 8.74%
+Accuracy predicting DOWN: 89.26%
+
+Top 10 most important features:
+        feature  importance
+    momentum_20   34.217501
+   volume_ratio   27.571041
+  volatility_20   18.385450
+         SMA_20   15.706100
+ price_to_sma_5   14.381710
+price_to_sma_50   13.013300
+  volume_change   12.039700
+            ADX   11.989500
+       BB_upper   11.339200
+            CCI   10.169760
+
+============================================================
+Training model for 30-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[9]	valid_0's binary_logloss: 0.635296
+
+Test Accuracy: 68.75%
+Accuracy predicting UP: 0.00%
+Accuracy predicting DOWN: 97.47%
+
+Top 10 most important features:
+        feature  importance
+         SMA_50  726.422774
+   volume_ma_20  707.284813
+            ADX  291.188932
+         EMA_20  288.876863
+      month_cos  232.259414
+  volatility_20  156.934243
+price_to_sma_50  115.374320
+    volume_ma_5   96.750406
+         EMA_10   92.606066
+         RSI_21   75.038510
+
+============================================================
+Training model for 90-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.597292
+
+Test Accuracy: 75.45%
+Accuracy predicting UP: 0.00%
+Accuracy predicting DOWN: 100.00%
+
+Top 10 most important features:
+        feature   importance
+         SMA_50 1.813408e+02
+   volume_ma_20 1.372272e+02
+         EMA_50 1.210380e+02
+price_to_sma_50 2.570770e+01
+      month_sin 2.328670e+01
+         EMA_20 2.270340e+01
+         ATR_14 1.473070e+01
+          SMA_5 1.254337e+01
+        returns 5.155040e-01
+   volatility_5 1.421090e-14
+
+✓ Completed Moderna in 0.4s
+  Latest Price: $30.86
+  Predictions: 1d=DOWN ↓, 7d=DOWN ↓, 30d=DOWN ↓, 90d=DOWN ↓
+
+================================================================================
+[14/20] Training: NVIDIA (NVDA) - Technology
+================================================================================
+Stock data: 1256 records
+Creating features...
+
+Total samples after feature engineering: 1117
+Number of features: 46
+
+============================================================
+Training model for 1-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[2]	valid_0's binary_logloss: 0.686448
+
+Test Accuracy: 55.36%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+        feature  importance
+        returns   26.588679
+      MACD_hist   25.706500
+       BB_width   21.579490
+  volume_change   18.234480
+    momentum_20   17.826860
+         EMA_20   17.240130
+            CCI   16.001240
+price_to_sma_50   12.285000
+           MACD   11.117200
+         SMA_20   10.777900
+
+============================================================
+Training model for 7-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.661698
+
+Test Accuracy: 63.84%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+       feature  importance
+  volume_ma_20   66.136000
+        SMA_20   60.081600
+         SMA_5   46.341398
+      BB_upper   29.071400
+   volume_ma_5   27.898200
+           ADX   26.382859
+     MACD_hist   18.999390
+     month_sin   14.788600
+       returns    8.620550
+price_to_sma_5    4.657800
+
+============================================================
+Training model for 30-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[11]	valid_0's binary_logloss: 0.7317
+
+Test Accuracy: 50.00%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+      feature  importance
+          ADX  663.972375
+volatility_20  503.499166
+ volume_ma_20  320.834314
+       ATR_14  299.260515
+       SMA_50  293.811733
+    month_sin  163.919002
+     BB_upper  153.689199
+  MACD_signal  142.937115
+       SMA_20  116.149759
+    MACD_hist   83.064136
+
+============================================================
+Training model for 90-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.665751
+
+Test Accuracy: 66.07%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+        feature   importance
+          SMA_5 1.691050e+02
+   volume_ma_20 1.582094e+02
+         RSI_21 1.098460e+02
+price_to_sma_50 2.216926e+01
+      month_sin 1.364090e+01
+  volatility_20 9.424710e+00
+         ATR_14 2.508040e+00
+            ADX 1.727950e+00
+        returns 1.467740e-01
+   volatility_5 7.105430e-15
+
+✓ Completed NVIDIA in 0.4s
+  Latest Price: $188.85
+  Predictions: 1d=UP ↑, 7d=UP ↑, 30d=UP ↑, 90d=UP ↑
+
+================================================================================
+[15/20] Training: NatWest Group (NWG.L) - Banking
+================================================================================
+Stock data: 1262 records
+Creating features...
+
+Total samples after feature engineering: 1123
+Number of features: 46
+
+============================================================
+Training model for 1-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.677336
+
+Test Accuracy: 59.56%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+        feature  importance
+   volume_ratio    24.61207
+price_to_sma_20    18.52876
+   volume_ma_20    15.18036
+         SMA_20    13.92710
+         SMA_50    13.48310
+    MACD_signal     9.20349
+          SMA_5     8.97856
+         RSI_14     8.12127
+ price_to_sma_5     7.95533
+  volume_change     7.69633
+
+============================================================
+Training model for 7-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[5]	valid_0's binary_logloss: 0.639529
+
+Test Accuracy: 68.44%
+Accuracy predicting UP: 96.71%
+Accuracy predicting DOWN: 9.59%
+
+Top 10 most important features:
+      feature  importance
+volatility_20  116.449758
+volatility_10  111.997453
+    month_cos  105.438280
+       SMA_20   88.634602
+       EMA_50   85.253301
+          ADX   74.397417
+     BB_lower   70.365300
+       ATR_14   51.016120
+ volume_ma_20   46.649300
+      STOCH_D   46.335299
+
+============================================================
+Training model for 30-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+[100]	valid_0's binary_logloss: 0.519988
+Early stopping, best iteration is:
+[77]	valid_0's binary_logloss: 0.502575
+
+Test Accuracy: 76.44%
+Accuracy predicting UP: 95.40%
+Accuracy predicting DOWN: 11.76%
+
+Top 10 most important features:
+      feature  importance
+ volume_ma_20  887.674607
+     BB_lower  806.842135
+       SMA_20  769.307055
+       SMA_50  755.459131
+          ADX  490.668601
+       ATR_14  472.439829
+volatility_20  451.224002
+       EMA_50  442.992119
+       EMA_20  402.122881
+    month_cos  382.464459
+
+============================================================
+Training model for 90-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+[100]	valid_0's binary_logloss: 0.0856579
+Early stopping, best iteration is:
+[74]	valid_0's binary_logloss: 0.0807401
+
+Test Accuracy: 98.67%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+      feature  importance
+       ATR_14 1593.310555
+       SMA_50 1556.188429
+       EMA_50 1168.955928
+        EMA_5  624.919719
+    month_sin  497.164689
+       SMA_20  413.800554
+        SMA_5  407.331860
+volatility_20  375.782734
+       EMA_10  358.309839
+    month_cos  348.036652
+
+✓ Completed NatWest Group in 0.8s
+  Latest Price: $657.60
+  Predictions: 1d=UP ↑, 7d=UP ↑, 30d=UP ↑, 90d=UP ↑
+
+================================================================================
+[16/20] Training: Northrop Grumman (NOC) - Defence
+================================================================================
+Stock data: 1256 records
+Creating features...
+
+Total samples after feature engineering: 1117
+Number of features: 46
+
+============================================================
+Training model for 1-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[2]	valid_0's binary_logloss: 0.688813
+
+Test Accuracy: 55.36%
+Accuracy predicting UP: 99.19%
+Accuracy predicting DOWN: 1.98%
+
+Top 10 most important features:
+     feature  importance
+   hl_spread   30.561560
+      EMA_20   25.604381
+      SMA_20   25.540340
+volatility_5   12.674850
+      RSI_14   12.556800
+      ATR_14   11.661290
+volume_ratio   11.285640
+     STOCH_D    9.952800
+ momentum_20    9.944080
+       RSI_7    9.839320
+
+============================================================
+Training model for 7-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.688873
+
+Test Accuracy: 54.02%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+        feature  importance
+          SMA_5   41.121498
+            ADX   39.896800
+price_to_sma_50   38.330799
+   volume_ma_20   32.856330
+      month_sin   29.928699
+    momentum_20   22.773001
+        STOCH_K   19.080299
+       BB_lower   19.075270
+    MACD_signal   18.357800
+   volatility_5   16.651040
+
+============================================================
+Training model for 30-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[9]	valid_0's binary_logloss: 0.672977
+
+Test Accuracy: 58.48%
+Accuracy predicting UP: 59.52%
+Accuracy predicting DOWN: 57.14%
+
+Top 10 most important features:
+      feature  importance
+     BB_lower  210.189857
+volatility_20  206.221104
+    month_sin  194.902323
+  MACD_signal  187.901354
+       SMA_50  175.788888
+       RSI_21  172.043689
+       EMA_20  166.022696
+       EMA_50  158.968999
+    month_cos  123.428200
+       SMA_20  122.265602
+
+============================================================
+Training model for 90-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.623935
+
+Test Accuracy: 70.98%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+        feature  importance
+         EMA_50  178.826004
+         EMA_20   89.300701
+         ATR_14   42.405230
+       BB_upper   42.042599
+      MACD_hist   33.278198
+price_to_sma_50   19.514999
+            ADX   17.426300
+  volatility_20   12.842790
+   volume_ma_20   10.607900
+    MACD_signal    8.723280
+
+✓ Completed Northrop Grumman in 0.4s
+  Latest Price: $585.66
+  Predictions: 1d=UP ↑, 7d=UP ↑, 30d=UP ↑, 90d=UP ↑
+
+================================================================================
+[17/20] Training: Pfizer (PFE) - Pharma
+================================================================================
+Stock data: 1256 records
+Creating features...
+
+Total samples after feature engineering: 1117
+Number of features: 46
+
+============================================================
+Training model for 1-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[6]	valid_0's binary_logloss: 0.688867
+
+Test Accuracy: 53.57%
+Accuracy predicting UP: 46.36%
+Accuracy predicting DOWN: 60.53%
+
+Top 10 most important features:
+       feature  importance
+  volume_ratio  123.983051
+  volatility_5   78.310230
+        ATR_14   77.809330
+   momentum_20   68.085919
+           ADX   54.008391
+       returns   40.033320
+       STOCH_D   36.297750
+price_to_sma_5   31.651649
+        RSI_14   24.119180
+    momentum_5   22.176310
+
+============================================================
+Training model for 7-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[25]	valid_0's binary_logloss: 0.652351
+
+Test Accuracy: 61.16%
+Accuracy predicting UP: 73.15%
+Accuracy predicting DOWN: 50.00%
+
+Top 10 most important features:
+      feature  importance
+       SMA_50  331.996899
+       ATR_14  299.305542
+        EMA_5  224.683242
+        SMA_5  188.035115
+    month_cos  178.670643
+    MACD_hist  176.050111
+       EMA_20  157.877403
+  volume_ma_5  157.434491
+    month_sin  153.993289
+volatility_20  151.301162
+
+============================================================
+Training model for 30-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.729029
+
+Test Accuracy: 45.09%
+Accuracy predicting UP: 0.00%
+Accuracy predicting DOWN: 100.00%
+
+Top 10 most important features:
+      feature  importance
+       ATR_14  137.007478
+       SMA_50   70.413502
+    MACD_hist   63.545349
+    month_sin   38.041301
+volatility_20   31.708000
+  volume_ma_5   28.184401
+       EMA_10   23.805099
+       SMA_20   22.965500
+     BB_lower   22.567200
+  MACD_signal   15.151900
+
+============================================================
+Training model for 90-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[9]	valid_0's binary_logloss: 0.657271
+
+Test Accuracy: 62.05%
+Accuracy predicting UP: 97.14%
+Accuracy predicting DOWN: 31.09%
+
+Top 10 most important features:
+      feature  importance
+       SMA_50  573.669619
+       ATR_14  476.434877
+        SMA_5  439.988722
+        EMA_5  384.170162
+ volume_ma_20  370.656008
+    month_sin  356.345568
+       RSI_21  178.588317
+volatility_20  138.869873
+  MACD_signal  121.031914
+     BB_lower   69.120006
+
+✓ Completed Pfizer in 0.4s
+  Latest Price: $25.18
+  Predictions: 1d=DOWN ↓, 7d=UP ↑, 30d=DOWN ↓, 90d=UP ↑
+
+================================================================================
+[18/20] Training: Raytheon Technologies (RTX) - Defence
+================================================================================
+Stock data: 1256 records
+Creating features...
+
+Total samples after feature engineering: 1117
+Number of features: 46
+
+============================================================
+Training model for 1-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.689615
+
+Test Accuracy: 58.48%
+Accuracy predicting UP: 91.94%
+Accuracy predicting DOWN: 17.00%
+
+Top 10 most important features:
+        feature  importance
+        returns    18.23596
+        STOCH_K    16.43737
+          SMA_5    15.29610
+    volume_ma_5     8.27435
+     momentum_5     8.13846
+          RSI_7     7.47005
+price_to_sma_20     7.38036
+price_to_sma_10     7.11619
+         RSI_14     6.80126
+   volume_ma_20     6.67927
+
+============================================================
+Training model for 7-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.679767
+
+Test Accuracy: 59.38%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+        feature  importance
+   volume_ma_20   87.082499
+price_to_sma_50   54.863126
+            ADX   48.161600
+      MACD_hist   32.588950
+  volatility_20   16.396919
+    momentum_20   15.891600
+    MACD_signal   12.928800
+       BB_upper   12.794400
+         SMA_50   11.295200
+      month_sin   10.306200
+
+============================================================
+Training model for 30-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[24]	valid_0's binary_logloss: 0.541179
+
+Test Accuracy: 76.34%
+Accuracy predicting UP: 99.34%
+Accuracy predicting DOWN: 27.78%
+
+Top 10 most important features:
+      feature  importance
+  volume_ma_5  677.339367
+    month_cos  539.861987
+       SMA_50  538.887052
+     BB_lower  360.245091
+  MACD_signal  293.647719
+volatility_20  285.785433
+ volume_ma_20  277.181695
+       SMA_20  270.861442
+    MACD_hist  239.738326
+    month_sin  220.744790
+
+============================================================
+Training model for 90-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[40]	valid_0's binary_logloss: 0.211587
+
+Test Accuracy: 93.30%
+Accuracy predicting UP: 95.43%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+      feature  importance
+       SMA_50 2357.255593
+        EMA_5 1196.382409
+       ATR_14  525.396282
+  MACD_signal  370.641499
+       EMA_50  359.330452
+       EMA_10  297.058948
+    month_cos  227.262576
+          ADX  210.375517
+     BB_lower  209.548470
+volatility_20  192.024488
+
+✓ Completed Raytheon Technologies in 0.5s
+  Latest Price: $187.25
+  Predictions: 1d=UP ↑, 7d=UP ↑, 30d=UP ↑, 90d=UP ↑
+
+================================================================================
+[19/20] Training: Rolls-Royce (RR.L) - Defence
+================================================================================
+Stock data: 1261 records
+Creating features...
+
+Total samples after feature engineering: 1122
+Number of features: 46
+
+============================================================
+Training model for 1-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.688738
+
+Test Accuracy: 55.11%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+       feature  importance
+       returns    18.31147
+     hl_spread    17.83973
+  volume_ma_20    14.07003
+  volatility_5    11.51321
+  volume_ratio    10.25980
+ volatility_20     9.51800
+        EMA_50     8.96270
+price_to_sma_5     7.78445
+ volume_change     7.73323
+     MACD_hist     6.75832
+
+============================================================
+Training model for 7-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.658203
+
+Test Accuracy: 66.67%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+      feature  importance
+       ATR_14   73.466600
+volatility_20   66.015801
+       EMA_50   31.531700
+  momentum_20   22.540701
+  MACD_signal   13.935700
+ volume_ratio   12.937400
+  volume_ma_5   10.963000
+          ADX   10.385170
+       EMA_20   10.166900
+       SMA_20    9.223190
+
+============================================================
+Training model for 30-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[14]	valid_0's binary_logloss: 0.439441
+
+Test Accuracy: 87.56%
+Accuracy predicting UP: 98.50%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+        feature  importance
+         EMA_50  814.121477
+         SMA_50  740.178917
+            ADX  618.257507
+  volatility_20  258.440606
+   volume_ma_20  230.547356
+      month_cos  218.662298
+         ATR_14  187.410385
+      MACD_hist  178.798320
+price_to_sma_50  126.220714
+    momentum_10   90.361299
+
+============================================================
+Training model for 90-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+[100]	valid_0's binary_logloss: 0.00204182
+[200]	valid_0's binary_logloss: 9.22949e-05
+[300]	valid_0's binary_logloss: 1.9592e-05
+Early stopping, best iteration is:
+[336]	valid_0's binary_logloss: 1.10305e-05
+
+Test Accuracy: 100.00%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+      feature  importance
+       EMA_20 2225.405730
+       SMA_50 1090.012694
+       EMA_10  689.237137
+       EMA_50  672.766257
+ volume_ma_20  458.863801
+volatility_20  451.624936
+    month_cos  362.805064
+     BB_upper  267.348100
+       SMA_10  257.310647
+       SMA_20  249.875981
+
+✓ Completed Rolls-Royce in 0.7s
+  Latest Price: $1197.00
+  Predictions: 1d=UP ↑, 7d=UP ↑, 30d=UP ↑, 90d=UP ↑
+
+================================================================================
+[20/20] Training: Standard Chartered (STAN.L) - Banking
+================================================================================
+Stock data: 1262 records
+Creating features...
+
+Total samples after feature engineering: 1123
+Number of features: 46
+
+============================================================
+Training model for 1-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.689142
+
+Test Accuracy: 57.33%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+        feature  importance
+          RSI_7    37.56838
+price_to_sma_20    20.98918
+    volume_ma_5    13.98482
+ price_to_sma_5    10.73620
+         EMA_10    10.69458
+         EMA_20    10.47370
+   volume_ma_20     9.64182
+        returns     8.96711
+       BB_upper     7.77100
+       BB_lower     7.55829
+
+============================================================
+Training model for 7-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.655396
+
+Test Accuracy: 74.22%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+      feature  importance
+volatility_20   30.547201
+ volatility_5   26.582001
+       EMA_20   21.228399
+ volume_ma_20   19.816400
+        SMA_5   19.200650
+          ADX   18.819000
+       EMA_50   17.891701
+       RSI_14   17.848400
+  volume_ma_5   15.424500
+       SMA_20   13.145000
+
+============================================================
+Training model for 30-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+[100]	valid_0's binary_logloss: 0.354914
+[200]	valid_0's binary_logloss: 0.345279
+Early stopping, best iteration is:
+[175]	valid_0's binary_logloss: 0.309554
+
+Test Accuracy: 90.67%
+Accuracy predicting UP: 92.93%
+Accuracy predicting DOWN: 74.07%
+
+Top 10 most important features:
+        feature  importance
+            ADX 1085.605373
+  volatility_20  845.178880
+      month_cos  816.678692
+         SMA_50  753.621681
+    MACD_signal  745.150958
+   volume_ma_20  705.366535
+         EMA_50  463.100686
+         SMA_20  417.774610
+      month_sin  353.151842
+price_to_sma_50  307.035485
+
+============================================================
+Training model for 90-day prediction
+============================================================
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.412167
+
+Test Accuracy: 96.89%
+Accuracy predicting UP: 100.00%
+Accuracy predicting DOWN: 0.00%
+
+Top 10 most important features:
+        feature  importance
+    MACD_signal  112.600998
+  volatility_20   65.149902
+         SMA_10   58.021599
+         SMA_50   57.801800
+         ATR_14   55.691299
+            ADX   49.728699
+price_to_sma_50   38.602200
+         EMA_20   25.075600
+         EMA_50   22.138201
+   volatility_5    7.170410
+
+✓ Completed Standard Chartered in 0.7s
+  Latest Price: $1844.00
+  Predictions: 1d=UP ↑, 7d=UP ↑, 30d=UP ↑, 90d=UP ↑
+
+================================================================================
+TRAINING COMPLETE - SUMMARY
+================================================================================
+
+Total stocks processed: 20
+Successful: 20
+Failed: 0
+Total training time: 9.4s (0.2 minutes)
+
+================================================================================
+PREDICTIONS SUMMARY BY SECTOR
+================================================================================
+
+TECHNOLOGY:
+--------------------------------------------------------------------------------
+
+Alphabet (GOOGL) - $315.15
+  1-Day:  UP ↑ (57.0% prob, 53.1% acc)
+  7-Day:  DOWN ↓ (45.1% prob, 60.3% acc)
+  30-Day: DOWN ↓ (40.3% prob, 74.6% acc)
+  90-Day: UP ↑ (58.4% prob, 71.9% acc)
+
+Amazon (AMZN) - $226.50
+  1-Day:  UP ↑ (50.7% prob, 56.2% acc)
+  7-Day:  UP ↑ (51.2% prob, 57.6% acc)
+  30-Day: UP ↑ (55.8% prob, 67.0% acc)
+  90-Day: UP ↑ (62.8% prob, 60.3% acc)
+
+Apple (AAPL) - $271.01
+  1-Day:  UP ↑ (52.3% prob, 56.2% acc)
+  7-Day:  UP ↑ (52.3% prob, 60.3% acc)
+  30-Day: UP ↑ (51.7% prob, 77.2% acc)
+  90-Day: UP ↑ (73.5% prob, 54.9% acc)
+
+Microsoft (MSFT) - $472.94
+  1-Day:  UP ↑ (51.0% prob, 46.4% acc)
+  7-Day:  DOWN ↓ (20.1% prob, 67.9% acc)
+  30-Day: UP ↑ (57.0% prob, 58.9% acc)
+  90-Day: DOWN ↓ (49.9% prob, 68.3% acc)
+
+NVIDIA (NVDA) - $188.85
+  1-Day:  UP ↑ (52.3% prob, 55.4% acc)
+  7-Day:  UP ↑ (56.8% prob, 63.8% acc)
+  30-Day: UP ↑ (68.4% prob, 50.0% acc)
+  90-Day: UP ↑ (76.0% prob, 66.1% acc)
+
+PHARMA:
+--------------------------------------------------------------------------------
+
+AstraZeneca (AZN.L) - $13592.00
+  1-Day:  UP ↑ (54.9% prob, 52.4% acc)
+  7-Day:  UP ↑ (56.3% prob, 57.8% acc)
+  30-Day: UP ↑ (55.0% prob, 61.8% acc)
+  90-Day: UP ↑ (56.9% prob, 60.9% acc)
+
+GSK (GSK.L) - $1831.50
+  1-Day:  UP ↑ (54.3% prob, 50.7% acc)
+  7-Day:  DOWN ↓ (44.5% prob, 55.6% acc)
+  30-Day: DOWN ↓ (49.2% prob, 58.7% acc)
+  90-Day: UP ↑ (71.3% prob, 90.7% acc)
+
+Johnson & Johnson (JNJ) - $207.35
+  1-Day:  DOWN ↓ (48.3% prob, 51.8% acc)
+  7-Day:  DOWN ↓ (38.2% prob, 54.9% acc)
+  30-Day: DOWN ↓ (36.0% prob, 58.0% acc)
+  90-Day: DOWN ↓ (48.3% prob, 56.2% acc)
+
+Moderna (MRNA) - $30.86
+  1-Day:  DOWN ↓ (47.4% prob, 54.5% acc)
+  7-Day:  DOWN ↓ (46.3% prob, 52.2% acc)
+  30-Day: DOWN ↓ (37.8% prob, 68.8% acc)
+  90-Day: DOWN ↓ (39.0% prob, 75.4% acc)
+
+Pfizer (PFE) - $25.18
+  1-Day:  DOWN ↓ (46.9% prob, 53.6% acc)
+  7-Day:  UP ↑ (53.5% prob, 61.2% acc)
+  30-Day: DOWN ↓ (44.1% prob, 45.1% acc)
+  90-Day: UP ↑ (63.6% prob, 62.1% acc)
+
+DEFENCE:
+--------------------------------------------------------------------------------
+
+BAE Systems (BA.L) - $1754.00
+  1-Day:  UP ↑ (56.5% prob, 55.6% acc)
+  7-Day:  UP ↑ (58.5% prob, 55.1% acc)
+  30-Day: UP ↑ (60.5% prob, 63.1% acc)
+  90-Day: UP ↑ (67.2% prob, 75.6% acc)
+
+Lockheed Martin (LMT) - $497.07
+  1-Day:  UP ↑ (53.6% prob, 51.8% acc)
+  7-Day:  UP ↑ (53.4% prob, 45.5% acc)
+  30-Day: UP ↑ (57.1% prob, 39.7% acc)
+  90-Day: DOWN ↓ (31.1% prob, 53.1% acc)
+
+Northrop Grumman (NOC) - $585.66
+  1-Day:  UP ↑ (52.5% prob, 55.4% acc)
+  7-Day:  UP ↑ (59.6% prob, 54.0% acc)
+  30-Day: UP ↑ (62.1% prob, 58.5% acc)
+  90-Day: UP ↑ (60.7% prob, 71.0% acc)
+
+Raytheon Technologies (RTX) - $187.25
+  1-Day:  UP ↑ (51.0% prob, 58.5% acc)
+  7-Day:  UP ↑ (55.8% prob, 59.4% acc)
+  30-Day: UP ↑ (76.1% prob, 76.3% acc)
+  90-Day: UP ↑ (92.9% prob, 93.3% acc)
+
+Rolls-Royce (RR.L) - $1197.00
+  1-Day:  UP ↑ (53.9% prob, 55.1% acc)
+  7-Day:  UP ↑ (57.7% prob, 66.7% acc)
+  30-Day: UP ↑ (80.5% prob, 87.6% acc)
+  90-Day: UP ↑ (100.0% prob, 100.0% acc)
+
+BANKING:
+--------------------------------------------------------------------------------
+
+Barclays (BARC.L) - $479.50
+  1-Day:  UP ↑ (53.5% prob, 57.8% acc)
+  7-Day:  DOWN ↓ (42.5% prob, 72.4% acc)
+  30-Day: UP ↑ (55.7% prob, 85.8% acc)
+  90-Day: UP ↑ (98.4% prob, 97.3% acc)
+
+HSBC (HSBA.L) - $1191.80
+  1-Day:  UP ↑ (51.5% prob, 60.0% acc)
+  7-Day:  UP ↑ (54.3% prob, 74.2% acc)
+  30-Day: UP ↑ (53.3% prob, 84.9% acc)
+  90-Day: UP ↑ (63.3% prob, 94.7% acc)
+
+Lloyds Banking (LLOY.L) - $99.24
+  1-Day:  UP ↑ (60.8% prob, 56.9% acc)
+  7-Day:  UP ↑ (54.9% prob, 58.2% acc)
+  30-Day: DOWN ↓ (49.5% prob, 71.6% acc)
+  90-Day: UP ↑ (53.7% prob, 100.0% acc)
+
+NatWest Group (NWG.L) - $657.60
+  1-Day:  UP ↑ (55.9% prob, 59.6% acc)
+  7-Day:  UP ↑ (53.7% prob, 68.4% acc)
+  30-Day: UP ↑ (52.7% prob, 76.4% acc)
+  90-Day: UP ↑ (98.8% prob, 98.7% acc)
+
+Standard Chartered (STAN.L) - $1844.00
+  1-Day:  UP ↑ (51.5% prob, 57.3% acc)
+  7-Day:  UP ↑ (56.7% prob, 74.2% acc)
+  30-Day: UP ↑ (84.8% prob, 90.7% acc)
+  90-Day: UP ↑ (69.2% prob, 96.9% acc)
+
+✓ Full predictions saved to: predictions_summary.csv

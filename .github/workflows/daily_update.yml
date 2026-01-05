@@ -78,6 +78,16 @@ jobs:
         python portfolio_manager.py
       continue-on-error: true
     
+    - name: Calculate risk metrics and stop-losses
+      run: |
+        python risk_manager.py
+      continue-on-error: true
+    
+    - name: Fetch earnings calendar
+      run: |
+        python earnings_calendar.py
+      continue-on-error: true
+    
     - name: Generate trading signals
       run: |
         python generate_daily_signals.py

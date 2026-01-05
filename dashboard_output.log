@@ -1,0 +1,20 @@
+
+================================================================================
+🚀 Starting Stock Prediction Dashboard
+================================================================================
+
+📊 Dashboard will be available at: http://localhost:8050
+
+✨ Features:
+   • Interactive candlestick charts with technical indicators
+   • Filter by sector and stock
+   • AI-powered predictions for 1, 7, 30, and 90 days
+   • Real-time data visualization
+   • Comprehensive stock overview table
+
+================================================================================
+
+Dash is running on http://0.0.0.0:8050/
+
+ * Serving Flask app 'dashboard'
+ * Debug mode: on

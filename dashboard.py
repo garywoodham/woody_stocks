@@ -47,6 +47,27 @@ except FileNotFoundError:
     df_signals = pd.DataFrame()
     has_signals = False
 
+# Try to load risk metrics
+try:
+    df_risk = pd.read_csv('risk_metrics.csv')
+    df_stops = pd.read_csv('stop_losses.csv')
+    has_risk = True
+    print("✓ Loaded risk management data")
+except FileNotFoundError:
+    df_risk = pd.DataFrame()
+    df_stops = pd.DataFrame()
+    has_risk = False
+
+# Try to load earnings calendar
+try:
+    df_earnings = pd.read_csv('earnings_calendar.csv')
+    df_earnings['Earnings_Date'] = pd.to_datetime(df_earnings['Earnings_Date'], errors='coerce')
+    has_earnings = True
+    print("✓ Loaded earnings calendar")
+except FileNotFoundError:
+    df_earnings = pd.DataFrame()
+    has_earnings = False
+
 # Initialize the Dash app
 app = dash.Dash(__name__, suppress_callback_exceptions=True)
 app.title = "Stock Prediction Dashboard"
@@ -241,6 +262,8 @@ app.layout = html.Div(style={'backgroundColor': colors['background'], 'padding':
         dcc.Tab(label='📊 Predictions & Charts', value='predictions', style={'backgroundColor': colors['card'], 'color': colors['text']},
                 selected_style={'backgroundColor': colors['accent'], 'color': colors['background'], 'fontWeight': 'bold'}),
         dcc.Tab(label='� Sentiment Analytics', value='sentiment', style={'backgroundColor': colors['card'], 'color': colors['text']},
+                selected_style={'backgroundColor': colors['accent'], 'color': colors['background'], 'fontWeight': 'bold'}),
+        dcc.Tab(label='⚠️  Risk Management', value='risk', style={'backgroundColor': colors['card'], 'color': colors['text']},
                 selected_style={'backgroundColor': colors['accent'], 'color': colors['background'], 'fontWeight': 'bold'}),
         dcc.Tab(label='📈 Performance Tracking', value='performance', style={'backgroundColor': colors['card'], 'color': colors['text']},
                 selected_style={'backgroundColor': colors['accent'], 'color': colors['background'], 'fontWeight': 'bold'}),
@@ -779,6 +802,219 @@ def render_tab_content(tab):
             ], style={'backgroundColor': colors['card'], 'padding': '20px', 'borderRadius': '10px'}),
         ])
     
+    
+    elif tab == 'risk':
+        if not has_risk:
+            return html.Div([
+                html.H3('⚠️  Risk Management Data Not Available', 
+                       style={'textAlign': 'center', 'color': colors['red'], 'marginTop': '50px'}),
+                html.P('Run: python risk_manager.py && python earnings_calendar.py', 
+                      style={'textAlign': 'center', 'color': colors['text'], 'fontSize': '16px'})
+            ])
+        
+        # Calculate portfolio risk metrics
+        portfolio_volatility = (df_risk['Volatility_Annual'] * df_risk['Risk_Score']/100).mean()
+        high_risk_count = (df_risk['Risk_Score'] > 66).sum()
+        with_stops_count = len(df_stops)
+        
+        # Load warnings if available
+        try:
+            df_warnings = pd.read_csv('risk_warnings.csv')
+            warnings_count = len(df_warnings)
+        except:
+            warnings_count = 0
+        
+        # Load earnings warnings if available  
+        try:
+            df_earn_warn = pd.read_csv('earnings_warnings.csv')
+            earnings_warnings = len(df_earn_warn)
+        except:
+            earnings_warnings = 0
+        
+        # Merge sector info
+        df_risk_with_sector = df_risk.merge(
+            df_stocks[['Ticker', 'Sector']].drop_duplicates(), 
+            on='Ticker', 
+            how='left'
+        )
+        
+        # Risk distribution chart
+        fig_risk_dist = go.Figure()
+        risk_bins = pd.cut(df_risk['Risk_Score'], bins=[0, 33, 66, 100], labels=['Low', 'Medium', 'High'])
+        risk_counts = risk_bins.value_counts().sort_index()
+        
+        fig_risk_dist.add_trace(go.Bar(
+            x=risk_counts.index,
+            y=risk_counts.values,
+            marker_color=[colors['green'], colors['text'], colors['red']],
+            text=risk_counts.values,
+            textposition='auto'
+        ))
+        fig_risk_dist.update_layout(
+            title='Risk Distribution Across Portfolio',
+            xaxis_title='Risk Category',
+            yaxis_title='Number of Stocks',
+            template='plotly_dark',
+            paper_bgcolor=colors['card'],
+            plot_bgcolor=colors['background'],
+            font=dict(color=colors['text']),
+            showlegend=False
+        )
+        
+        # Volatility by sector
+        sector_volatility = df_risk_with_sector.groupby('Sector')['Volatility_Annual'].mean().sort_values(ascending=False)
+        
+        fig_vol_sector = go.Figure()
+        fig_vol_sector.add_trace(go.Bar(
+            x=sector_volatility.values * 100,
+            y=sector_volatility.index,
+            orientation='h',
+            marker_color=colors['accent'],
+            text=[f"{x:.1f}%" for x in sector_volatility.values * 100],
+            textposition='auto'
+        ))
+        fig_vol_sector.update_layout(
+            title='Annual Volatility by Sector',
+            xaxis_title='Volatility (%)',
+            yaxis_title='Sector',
+            template='plotly_dark',
+            paper_bgcolor=colors['card'],
+            plot_bgcolor=colors['background'],
+            font=dict(color=colors['text']),
+            showlegend=False
+        )
+        
+        # Top risky stocks table
+        df_high_risk = df_risk.nlargest(10, 'Risk_Score')[['Ticker', 'Stock', 'Sector', 'Risk_Score', 'Volatility_Annual', 'Max_Drawdown']]
+        df_high_risk['Volatility_Annual'] = df_high_risk['Volatility_Annual'] * 100
+        df_high_risk['Max_Drawdown'] = df_high_risk['Max_Drawdown'] * 100
+        
+        # Stop losses table
+        df_stops_display = df_stops[['Ticker', 'Stock', 'Current_Price', 'Stop_Loss', 'Stop_Loss_Pct', 'ATR_Pct']].head(35)
+        
+        return html.Div([
+            # Header
+            html.H3('⚠️  Risk Management', 
+                   style={'color': colors['accent'], 'marginBottom': '30px'}),
+            
+            # Summary cards
+            html.Div([
+                html.Div([
+                    html.H4('Portfolio Volatility', style={'color': colors['text'], 'marginBottom': '10px'}),
+                    html.H2(f"{portfolio_volatility:.1f}%", style={'color': colors['accent'], 'margin': '0'}),
+                    html.P('Risk-weighted', style={'color': colors['text'], 'marginTop': '5px', 'fontSize': '14px'})
+                ], style={'backgroundColor': colors['background'], 'padding': '20px', 'borderRadius': '10px', 
+                         'width': '23%', 'display': 'inline-block', 'marginRight': '2%'}),
+                
+                html.Div([
+                    html.H4('High Risk Stocks', style={'color': colors['text'], 'marginBottom': '10px'}),
+                    html.H2(f"{high_risk_count}", style={'color': colors['red'] if high_risk_count > 10 else colors['text'], 'margin': '0'}),
+                    html.P(f"{high_risk_count/len(df_risk)*100:.0f}% of portfolio", style={'color': colors['text'], 'marginTop': '5px', 'fontSize': '14px'})
+                ], style={'backgroundColor': colors['background'], 'padding': '20px', 'borderRadius': '10px', 
+                         'width': '23%', 'display': 'inline-block', 'marginRight': '2%'}),
+                
+                html.Div([
+                    html.H4('Risk Warnings', style={'color': colors['text'], 'marginBottom': '10px'}),
+                    html.H2(f"{warnings_count}", style={'color': colors['red'] if warnings_count > 0 else colors['green'], 'margin': '0'}),
+                    html.P('Portfolio alerts', style={'color': colors['text'], 'marginTop': '5px', 'fontSize': '14px'})
+                ], style={'backgroundColor': colors['background'], 'padding': '20px', 'borderRadius': '10px', 
+                         'width': '23%', 'display': 'inline-block', 'marginRight': '2%'}),
+                
+                html.Div([
+                    html.H4('Earnings Warnings', style={'color': colors['text'], 'marginBottom': '10px'}),
+                    html.H2(f"{earnings_warnings}", style={'color': colors['red'] if earnings_warnings > 0 else colors['green'], 'margin': '0'}),
+                    html.P('Next 5 days', style={'color': colors['text'], 'marginTop': '5px', 'fontSize': '14px'})
+                ], style={'backgroundColor': colors['background'], 'padding': '20px', 'borderRadius': '10px', 
+                         'width': '23%', 'display': 'inline-block'}),
+            ], style={'marginBottom': '30px'}),
+            
+            # Charts row
+            html.Div([
+                html.Div([
+                    dcc.Graph(figure=fig_risk_dist, style={'height': '400px'}),
+                ], style={'width': '48%', 'display': 'inline-block', 'marginRight': '2%', 'backgroundColor': colors['card'], 'padding': '20px', 'borderRadius': '10px'}),
+                
+                html.Div([
+                    dcc.Graph(figure=fig_vol_sector, style={'height': '400px'}),
+                ], style={'width': '48%', 'display': 'inline-block', 'backgroundColor': colors['card'], 'padding': '20px', 'borderRadius': '10px'}),
+            ], style={'marginBottom': '30px'}),
+            
+            # High risk stocks table
+            html.Div([
+                html.H4('⚠️  Top 10 Highest Risk Stocks', style={'color': colors['red'], 'marginBottom': '15px'}),
+                dash_table.DataTable(
+                    data=df_high_risk.to_dict('records'),
+                    columns=[
+                        {'name': 'Ticker', 'id': 'Ticker'},
+                        {'name': 'Stock', 'id': 'Stock'},
+                        {'name': 'Sector', 'id': 'Sector'},
+                        {'name': 'Risk Score', 'id': 'Risk_Score', 'type': 'numeric', 'format': {'specifier': '.0f'}},
+                        {'name': 'Volatility %', 'id': 'Volatility_Annual', 'type': 'numeric', 'format': {'specifier': '.1f'}},
+                        {'name': 'Max Drawdown %', 'id': 'Max_Drawdown', 'type': 'numeric', 'format': {'specifier': '.1f'}},
+                    ],
+                    style_table={'overflowX': 'auto'},
+                    style_cell={
+                        'backgroundColor': colors['background'],
+                        'color': colors['text'],
+                        'textAlign': 'left',
+                        'padding': '10px',
+                        'border': f"1px solid {colors['card']}"
+                    },
+                    style_header={
+                        'backgroundColor': colors['card'],
+                        'fontWeight': 'bold',
+                        'border': f"1px solid {colors['accent']}"
+                    },
+                    style_data_conditional=[
+                        {
+                            'if': {'column_id': 'Risk_Score', 'filter_query': '{Risk_Score} > 75'},
+                            'backgroundColor': '#ff444420',
+                            'color': colors['red'],
+                            'fontWeight': 'bold'
+                        },
+                    ]
+                ),
+            ], style={'backgroundColor': colors['card'], 'padding': '20px', 'borderRadius': '10px', 'marginBottom': '30px'}),
+            
+            # Stop losses table
+            html.Div([
+                html.H4('🛑 Recommended Stop-Loss Levels', style={'color': colors['accent'], 'marginBottom': '15px'}),
+                html.P('Based on 2x ATR (Average True Range)', style={'color': colors['text'], 'marginBottom': '15px', 'fontSize': '14px'}),
+                dash_table.DataTable(
+                    data=df_stops_display.to_dict('records'),
+                    columns=[
+                        {'name': 'Ticker', 'id': 'Ticker'},
+                        {'name': 'Stock', 'id': 'Stock'},
+                        {'name': 'Current Price', 'id': 'Current_Price', 'type': 'numeric', 'format': {'specifier': '.2f'}},
+                        {'name': 'Stop Loss', 'id': 'Stop_Loss', 'type': 'numeric', 'format': {'specifier': '.2f'}},
+                        {'name': 'Stop %', 'id': 'Stop_Loss_Pct', 'type': 'numeric', 'format': {'specifier': '.2f'}},
+                        {'name': 'ATR %', 'id': 'ATR_Pct', 'type': 'numeric', 'format': {'specifier': '.2f'}},
+                    ],
+                    style_table={'overflowX': 'auto', 'maxHeight': '500px', 'overflowY': 'auto'},
+                    style_cell={
+                        'backgroundColor': colors['background'],
+                        'color': colors['text'],
+                        'textAlign': 'left',
+                        'padding': '10px',
+                        'border': f"1px solid {colors['card']}"
+                    },
+                    style_header={
+                        'backgroundColor': colors['card'],
+                        'fontWeight': 'bold',
+                        'border': f"1px solid {colors['accent']}"
+                    },
+                    style_data_conditional=[
+                        {
+                            'if': {'column_id': 'Stop_Loss_Pct', 'filter_query': '{Stop_Loss_Pct} < -10'},
+                            'backgroundColor': '#ff444420',
+                            'color': colors['red']
+                        },
+                    ],
+                    page_size=20
+                ),
+            ], style={'backgroundColor': colors['card'], 'padding': '20px', 'borderRadius': '10px', 'marginBottom': '30px'}),
+        ])
+
     elif tab == 'performance':
         # Load performance data
         perf_log_exists = os.path.exists('data/predictions_log.csv')
