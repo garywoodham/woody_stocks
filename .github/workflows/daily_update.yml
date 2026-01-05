@@ -58,6 +58,16 @@ jobs:
         python predict_refined.py
       continue-on-error: true
     
+    - name: Log predictions for performance tracking
+      run: |
+        python track_performance.py 1
+      continue-on-error: true
+    
+    - name: Evaluate prediction performance (if data available)
+      run: |
+        python track_performance.py 2
+      continue-on-error: true
+    
     - name: Generate BUY/HOLD/SELL recommendations
       run: |
         python generate_recommendations.py

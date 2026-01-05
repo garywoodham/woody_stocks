@@ -6,6 +6,7 @@ from plotly.subplots import make_subplots
 import pandas as pd
 import numpy as np
 from datetime import datetime
+import os
 
 # Load data
 df_stocks = pd.read_csv('data/multi_sector_stocks.csv', index_col=0, parse_dates=True)
@@ -239,7 +240,11 @@ app.layout = html.Div(style={'backgroundColor': colors['background'], 'padding':
     dcc.Tabs(id='main-tabs', value='predictions', children=[
         dcc.Tab(label='📊 Predictions & Charts', value='predictions', style={'backgroundColor': colors['card'], 'color': colors['text']},
                 selected_style={'backgroundColor': colors['accent'], 'color': colors['background'], 'fontWeight': 'bold'}),
-        dcc.Tab(label='🚦 Trading Signals', value='signals', style={'backgroundColor': colors['card'], 'color': colors['text']},
+        dcc.Tab(label='� Sentiment Analytics', value='sentiment', style={'backgroundColor': colors['card'], 'color': colors['text']},
+                selected_style={'backgroundColor': colors['accent'], 'color': colors['background'], 'fontWeight': 'bold'}),
+        dcc.Tab(label='📈 Performance Tracking', value='performance', style={'backgroundColor': colors['card'], 'color': colors['text']},
+                selected_style={'backgroundColor': colors['accent'], 'color': colors['background'], 'fontWeight': 'bold'}),
+        dcc.Tab(label='�🚦 Trading Signals', value='signals', style={'backgroundColor': colors['card'], 'color': colors['text']},
                 selected_style={'backgroundColor': colors['accent'], 'color': colors['background'], 'fontWeight': 'bold'}),
         dcc.Tab(label='🎯 Backtest Results', value='backtest', style={'backgroundColor': colors['card'], 'color': colors['text']},
                 selected_style={'backgroundColor': colors['accent'], 'color': colors['background'], 'fontWeight': 'bold'}),
@@ -538,6 +543,383 @@ def render_tab_content(tab):
                     sort_action="native",
                     page_size=20,
                 )
+            ], style={'backgroundColor': colors['card'], 'padding': '20px', 'borderRadius': '10px'}),
+        ])
+    
+    elif tab == 'sentiment':
+        # Load sentiment data
+        sentiment_history_exists = os.path.exists('data/sentiment_history.csv')
+        sentiment_static_exists = os.path.exists('sentiment_data.csv')
+        
+        if not sentiment_history_exists and not sentiment_static_exists:
+            return html.Div([
+                html.H3('⚠️  No Sentiment Data Available', 
+                       style={'textAlign': 'center', 'color': colors['red'], 'marginTop': '50px'}),
+                html.P('Run: python fetch_sentiment_historical.py', 
+                      style={'textAlign': 'center', 'color': colors['text'], 'fontSize': '16px'})
+            ])
+        
+        # Load sentiment data
+        if sentiment_history_exists:
+            df_sent = pd.read_csv('data/sentiment_history.csv')
+            df_sent['date'] = pd.to_datetime(df_sent['date'])
+            is_historical = True
+        else:
+            df_sent = pd.read_csv('sentiment_data.csv')
+            is_historical = False
+        
+        # Sentiment summary
+        avg_sentiment = df_sent['sentiment_compound'].mean()
+        positive_count = (df_sent['sentiment_compound'] > 0.1).sum()
+        negative_count = (df_sent['sentiment_compound'] < -0.1).sum()
+        neutral_count = len(df_sent) - positive_count - negative_count
+        
+        if is_historical:
+            num_dates = df_sent['date'].nunique()
+            date_range = f"{df_sent['date'].min().date()} to {df_sent['date'].max().date()}"
+            status_text = f"📊 Historical Sentiment: {num_dates} days of data ({date_range})"
+        else:
+            status_text = "📊 Static Sentiment (one-time snapshot)"
+        
+        # Top positive/negative
+        latest_date = df_sent['date'].max() if is_historical else None
+        if is_historical:
+            df_latest = df_sent[df_sent['date'] == latest_date]
+        else:
+            df_latest = df_sent
+        
+        top_positive = df_latest.nlargest(5, 'sentiment_compound')
+        top_negative = df_latest.nsmallest(5, 'sentiment_compound')
+        
+        # Create sentiment distribution chart
+        fig_dist = go.Figure()
+        fig_dist.add_trace(go.Histogram(
+            x=df_latest['sentiment_compound'],
+            nbinsx=30,
+            marker_color=colors['accent'],
+            opacity=0.7,
+            name='Sentiment Distribution'
+        ))
+        fig_dist.update_layout(
+            title='Current Sentiment Distribution Across All Stocks',
+            xaxis_title='Sentiment Score',
+            yaxis_title='Number of Stocks',
+            template='plotly_dark',
+            paper_bgcolor=colors['card'],
+            plot_bgcolor=colors['background'],
+            font=dict(color=colors['text']),
+            showlegend=False
+        )
+        
+        # Sentiment by sector
+        df_stocks_info = pd.read_csv('data/multi_sector_stocks.csv')
+        df_stocks_info = df_stocks_info[['Ticker', 'Sector']].drop_duplicates()
+        df_sent_sector = df_latest.merge(df_stocks_info, left_on='ticker', right_on='Ticker', how='left')
+        
+        sector_sentiment = df_sent_sector.groupby('Sector')['sentiment_compound'].mean().sort_values()
+        
+        fig_sector = go.Figure()
+        colors_list = [colors['red'] if x < -0.1 else colors['green'] if x > 0.1 else colors['text'] 
+                      for x in sector_sentiment.values]
+        
+        fig_sector.add_trace(go.Bar(
+            x=sector_sentiment.values,
+            y=sector_sentiment.index,
+            orientation='h',
+            marker_color=colors_list,
+            text=[f"{x:+.3f}" for x in sector_sentiment.values],
+            textposition='auto'
+        ))
+        fig_sector.update_layout(
+            title='Average Sentiment by Sector',
+            xaxis_title='Sentiment Score',
+            yaxis_title='Sector',
+            template='plotly_dark',
+            paper_bgcolor=colors['card'],
+            plot_bgcolor=colors['background'],
+            font=dict(color=colors['text']),
+            showlegend=False
+        )
+        
+        # Time series chart (if historical)
+        if is_historical and num_dates > 1:
+            # Aggregate by date
+            daily_sentiment = df_sent.groupby('date')['sentiment_compound'].mean().reset_index()
+            
+            fig_timeline = go.Figure()
+            fig_timeline.add_trace(go.Scatter(
+                x=daily_sentiment['date'],
+                y=daily_sentiment['sentiment_compound'],
+                mode='lines+markers',
+                line=dict(color=colors['accent'], width=2),
+                marker=dict(size=6),
+                name='Avg Sentiment'
+            ))
+            fig_timeline.add_hline(y=0, line_dash="dash", line_color="gray", annotation_text="Neutral")
+            fig_timeline.update_layout(
+                title='Sentiment Trend Over Time (All Stocks Average)',
+                xaxis_title='Date',
+                yaxis_title='Average Sentiment',
+                template='plotly_dark',
+                paper_bgcolor=colors['card'],
+                plot_bgcolor=colors['background'],
+                font=dict(color=colors['text']),
+                hovermode='x unified'
+            )
+            
+            timeline_chart = html.Div([
+                dcc.Graph(figure=fig_timeline, style={'height': '400px'}),
+            ], style={'backgroundColor': colors['card'], 'padding': '20px', 'borderRadius': '10px', 'marginBottom': '30px'})
+        else:
+            timeline_chart = html.Div()
+        
+        return html.Div([
+            # Header
+            html.Div([
+                html.H3('📰 Sentiment Analytics', 
+                       style={'color': colors['accent'], 'display': 'inline-block', 'marginRight': '20px'}),
+                html.P(status_text, 
+                      style={'color': colors['text'], 'display': 'inline-block', 'fontSize': '16px'})
+            ], style={'marginBottom': '30px'}),
+            
+            # Summary cards
+            html.Div([
+                html.Div([
+                    html.H4('Average Sentiment', style={'color': colors['text'], 'marginBottom': '10px'}),
+                    html.H2(f"{avg_sentiment:+.3f}", 
+                           style={'color': colors['green'] if avg_sentiment > 0 else colors['red'], 'margin': '0'})
+                ], style={'backgroundColor': colors['background'], 'padding': '20px', 'borderRadius': '10px', 
+                         'width': '23%', 'display': 'inline-block', 'marginRight': '2%'}),
+                
+                html.Div([
+                    html.H4('Positive', style={'color': colors['text'], 'marginBottom': '10px'}),
+                    html.H2(f"{positive_count}", style={'color': colors['green'], 'margin': '0'}),
+                    html.P(f"{positive_count/len(df_latest)*100:.0f}%", style={'color': colors['text'], 'marginTop': '5px'})
+                ], style={'backgroundColor': colors['background'], 'padding': '20px', 'borderRadius': '10px', 
+                         'width': '23%', 'display': 'inline-block', 'marginRight': '2%'}),
+                
+                html.Div([
+                    html.H4('Neutral', style={'color': colors['text'], 'marginBottom': '10px'}),
+                    html.H2(f"{neutral_count}", style={'color': colors['text'], 'margin': '0'}),
+                    html.P(f"{neutral_count/len(df_latest)*100:.0f}%", style={'color': colors['text'], 'marginTop': '5px'})
+                ], style={'backgroundColor': colors['background'], 'padding': '20px', 'borderRadius': '10px', 
+                         'width': '23%', 'display': 'inline-block', 'marginRight': '2%'}),
+                
+                html.Div([
+                    html.H4('Negative', style={'color': colors['text'], 'marginBottom': '10px'}),
+                    html.H2(f"{negative_count}", style={'color': colors['red'], 'margin': '0'}),
+                    html.P(f"{negative_count/len(df_latest)*100:.0f}%", style={'color': colors['text'], 'marginTop': '5px'})
+                ], style={'backgroundColor': colors['background'], 'padding': '20px', 'borderRadius': '10px', 
+                         'width': '23%', 'display': 'inline-block'}),
+            ], style={'marginBottom': '30px'}),
+            
+            # Timeline (if available)
+            timeline_chart,
+            
+            # Charts row
+            html.Div([
+                html.Div([
+                    dcc.Graph(figure=fig_dist, style={'height': '400px'}),
+                ], style={'width': '48%', 'display': 'inline-block', 'marginRight': '2%'}),
+                
+                html.Div([
+                    dcc.Graph(figure=fig_sector, style={'height': '400px'}),
+                ], style={'width': '48%', 'display': 'inline-block'}),
+            ], style={'backgroundColor': colors['card'], 'padding': '20px', 'borderRadius': '10px', 'marginBottom': '30px'}),
+            
+            # Top stocks tables
+            html.Div([
+                html.Div([
+                    html.H4('🟢 Most Positive Sentiment', style={'color': colors['green'], 'marginBottom': '15px'}),
+                    dash_table.DataTable(
+                        columns=[
+                            {'name': 'Ticker', 'id': 'ticker'},
+                            {'name': 'Sentiment', 'id': 'sentiment_compound', 'type': 'numeric', 'format': {'specifier': '+.3f'}},
+                            {'name': 'News Count', 'id': 'news_count', 'type': 'numeric'},
+                            {'name': 'Positive %', 'id': 'sentiment_positive', 'type': 'numeric', 'format': {'specifier': '.1%'}},
+                        ],
+                        data=top_positive.to_dict('records'),
+                        style_table={'overflowX': 'auto'},
+                        style_header={
+                            'backgroundColor': colors['background'],
+                            'color': colors['text'],
+                            'fontWeight': 'bold',
+                        },
+                        style_cell={
+                            'backgroundColor': colors['card'],
+                            'color': colors['text'],
+                            'textAlign': 'center',
+                        },
+                    ),
+                ], style={'width': '48%', 'display': 'inline-block', 'marginRight': '2%'}),
+                
+                html.Div([
+                    html.H4('🔴 Most Negative Sentiment', style={'color': colors['red'], 'marginBottom': '15px'}),
+                    dash_table.DataTable(
+                        columns=[
+                            {'name': 'Ticker', 'id': 'ticker'},
+                            {'name': 'Sentiment', 'id': 'sentiment_compound', 'type': 'numeric', 'format': {'specifier': '+.3f'}},
+                            {'name': 'News Count', 'id': 'news_count', 'type': 'numeric'},
+                            {'name': 'Negative %', 'id': 'sentiment_negative', 'type': 'numeric', 'format': {'specifier': '.1%'}},
+                        ],
+                        data=top_negative.to_dict('records'),
+                        style_table={'overflowX': 'auto'},
+                        style_header={
+                            'backgroundColor': colors['background'],
+                            'color': colors['text'],
+                            'fontWeight': 'bold',
+                        },
+                        style_cell={
+                            'backgroundColor': colors['card'],
+                            'color': colors['text'],
+                            'textAlign': 'center',
+                        },
+                    ),
+                ], style={'width': '48%', 'display': 'inline-block'}),
+            ], style={'backgroundColor': colors['card'], 'padding': '20px', 'borderRadius': '10px'}),
+        ])
+    
+    elif tab == 'performance':
+        # Load performance data
+        perf_log_exists = os.path.exists('data/predictions_log.csv')
+        perf_summary_exists = os.path.exists('data/performance_summary.csv')
+        
+        if not perf_log_exists:
+            return html.Div([
+                html.H3('⚠️  No Performance Data Available', 
+                       style={'textAlign': 'center', 'color': colors['red'], 'marginTop': '50px'}),
+                html.P('Run: python track_performance.py', 
+                      style={'textAlign': 'center', 'color': colors['text'], 'fontSize': '16px'}),
+                html.P('Performance tracking requires at least 1-day of predictions to evaluate.', 
+                      style={'textAlign': 'center', 'color': colors['text'], 'fontSize': '14px', 'fontStyle': 'italic'})
+            ])
+        
+        df_log = pd.read_csv('data/predictions_log.csv')
+        df_log['prediction_date'] = pd.to_datetime(df_log['prediction_date'])
+        
+        # Summary stats
+        num_predictions = len(df_log)
+        num_dates = df_log['prediction_date'].nunique()
+        date_range = f"{df_log['prediction_date'].min().date()} to {df_log['prediction_date'].max().date()}"
+        
+        # Load performance summary if available
+        if perf_summary_exists:
+            df_perf = pd.read_csv('data/performance_summary.csv')
+            
+            # Latest metrics by horizon
+            latest_metrics = df_perf.groupby('horizon').last()
+            
+            # Create accuracy trend chart
+            fig_acc_trend = go.Figure()
+            for horizon in ['1d', '5d', '21d']:
+                horizon_data = df_perf[df_perf['horizon'] == horizon]
+                if not horizon_data.empty:
+                    fig_acc_trend.add_trace(go.Scatter(
+                        x=horizon_data['evaluation_date'],
+                        y=horizon_data['accuracy'] * 100,
+                        mode='lines+markers',
+                        name=horizon,
+                        line=dict(width=2),
+                        marker=dict(size=8)
+                    ))
+            
+            fig_acc_trend.update_layout(
+                title='Prediction Accuracy Over Time',
+                xaxis_title='Evaluation Date',
+                yaxis_title='Accuracy (%)',
+                template='plotly_dark',
+                paper_bgcolor=colors['card'],
+                plot_bgcolor=colors['background'],
+                font=dict(color=colors['text']),
+                hovermode='x unified',
+                yaxis=dict(range=[0, 100])
+            )
+            
+            acc_chart = html.Div([
+                dcc.Graph(figure=fig_acc_trend, style={'height': '400px'}),
+            ], style={'backgroundColor': colors['card'], 'padding': '20px', 'borderRadius': '10px', 'marginBottom': '30px'})
+            
+            # Metrics cards
+            metrics_cards = []
+            for horizon in ['1d', '5d', '21d']:
+                if horizon in latest_metrics.index:
+                    metrics = latest_metrics.loc[horizon]
+                    metrics_cards.append(
+                        html.Div([
+                            html.H4(f'{horizon} Predictions', style={'color': colors['text'], 'marginBottom': '15px'}),
+                            html.Div([
+                                html.P('Accuracy', style={'color': colors['text'], 'fontSize': '12px', 'margin': '0'}),
+                                html.H3(f"{metrics['accuracy']:.1%}", 
+                                       style={'color': colors['accent'], 'margin': '5px 0'}),
+                            ]),
+                            html.Div([
+                                html.P(f"UP: {metrics['up_accuracy']:.1%}", 
+                                      style={'color': colors['green'], 'fontSize': '14px', 'margin': '5px 0'}),
+                                html.P(f"DOWN: {metrics['down_accuracy']:.1%}", 
+                                      style={'color': colors['red'], 'fontSize': '14px', 'margin': '5px 0'}),
+                            ]),
+                            html.Div([
+                                html.P(f"Avg Return: {metrics['avg_return']:+.2%}", 
+                                      style={'color': colors['text'], 'fontSize': '14px', 'marginTop': '10px'}),
+                                html.P(f"{int(metrics['total_predictions'])} predictions", 
+                                      style={'color': colors['text'], 'fontSize': '12px', 'fontStyle': 'italic'})
+                            ])
+                        ], style={'backgroundColor': colors['background'], 'padding': '20px', 'borderRadius': '10px', 
+                                 'width': '31%', 'display': 'inline-block', 'marginRight': '2%', 'verticalAlign': 'top'})
+                    )
+        else:
+            acc_chart = html.Div([
+                html.P('⏳ Waiting for predictions to mature (need 1-21 days)', 
+                      style={'textAlign': 'center', 'color': colors['text'], 'padding': '40px', 'fontSize': '16px'})
+            ], style={'backgroundColor': colors['card'], 'padding': '20px', 'borderRadius': '10px', 'marginBottom': '30px'})
+            metrics_cards = []
+        
+        return html.Div([
+            # Header
+            html.Div([
+                html.H3('📈 Prediction Performance Tracking', 
+                       style={'color': colors['accent'], 'display': 'inline-block', 'marginRight': '20px'}),
+                html.P(f"{num_predictions} predictions logged across {num_dates} dates ({date_range})", 
+                      style={'color': colors['text'], 'display': 'inline-block', 'fontSize': '16px'})
+            ], style={'marginBottom': '30px'}),
+            
+            # Metrics cards
+            html.Div(metrics_cards, style={'marginBottom': '30px'}) if metrics_cards else html.Div(),
+            
+            # Accuracy trend chart
+            acc_chart,
+            
+            # Predictions log table
+            html.Div([
+                html.H4('📝 Recent Predictions Log', style={'color': colors['accent'], 'marginBottom': '15px'}),
+                dash_table.DataTable(
+                    columns=[
+                        {'name': 'Date', 'id': 'prediction_date'},
+                        {'name': 'Ticker', 'id': 'Ticker'},
+                        {'name': 'Entry Price', 'id': 'entry_price', 'type': 'numeric', 'format': {'specifier': '$.2f'}},
+                        {'name': '1d Pred', 'id': 'd1_Direction'},
+                        {'name': '1d Prob', 'id': 'd1_Prob_Up', 'type': 'numeric', 'format': {'specifier': '.1%'}},
+                        {'name': '5d Pred', 'id': 'd5_Direction'},
+                        {'name': '5d Prob', 'id': 'd5_Prob_Up', 'type': 'numeric', 'format': {'specifier': '.1%'}},
+                        {'name': '21d Pred', 'id': 'd21_Direction'},
+                        {'name': '21d Prob', 'id': 'd21_Prob_Up', 'type': 'numeric', 'format': {'specifier': '.1%'}},
+                    ],
+                    data=df_log.tail(50).to_dict('records'),
+                    style_table={'overflowX': 'auto'},
+                    style_header={
+                        'backgroundColor': colors['background'],
+                        'color': colors['text'],
+                        'fontWeight': 'bold',
+                        'textAlign': 'center'
+                    },
+                    style_cell={
+                        'backgroundColor': colors['card'],
+                        'color': colors['text'],
+                        'textAlign': 'center',
+                        'padding': '10px',
+                    },
+                    page_size=20,
+                ),
             ], style={'backgroundColor': colors['card'], 'padding': '20px', 'borderRadius': '10px'}),
         ])
     
