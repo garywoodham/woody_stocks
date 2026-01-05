@@ -4,7 +4,7 @@ from datetime import datetime
 import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# Define stocks by sector - Top 5 in each for growth potential
+# Define stocks by sector - Top 5 in each for growth potential + 15 meme/speculative
 STOCKS = {
     'Defence': {
         'BA.L': 'BAE Systems',
@@ -33,6 +33,23 @@ STOCKS = {
         'NVDA': 'NVIDIA',
         'GOOGL': 'Alphabet',
         'AMZN': 'Amazon'
+    },
+    'Meme/Speculative': {
+        'GME': 'GameStop',
+        'AMC': 'AMC Entertainment',
+        'BB': 'BlackBerry',
+        'PLTR': 'Palantir Technologies',
+        'SOFI': 'SoFi Technologies',
+        'RIVN': 'Rivian Automotive',
+        'NIO': 'NIO Inc',
+        'LCID': 'Lucid Group',
+        'SPCE': 'Virgin Galactic',
+        'PLUG': 'Plug Power',
+        'HOOD': 'Robinhood Markets',
+        'COIN': 'Coinbase Global',
+        'RIOT': 'Riot Platforms',
+        'MARA': 'Marathon Digital',
+        'TLRY': 'Tilray Brands'
     }
 }
 
@@ -44,9 +61,9 @@ def download_stock_data(ticker, stock_name, sector):
     try:
         print(f"Downloading {stock_name} ({ticker})...")
         
-        # Download last 5 years of data (daily)
+        # Download last 10 years of data (daily)
         stock = yf.Ticker(ticker)
-        df = stock.history(period="5y", interval="1d")
+        df = stock.history(period="10y", interval="1d")
         
         if df.empty:
             print(f"  ⚠️  No data found for {ticker}")
