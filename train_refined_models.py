@@ -120,13 +120,57 @@ def create_optimized_features(df, time_period='daily', sentiment_df=None):
     df['ADX'] = talib.ADX(df['High'].values, df['Low'].values, df['Close'].values, timeperiod=atr_period)
     df['ADX_strong_trend'] = (df['ADX'] > 25).astype(int)
     
-    # === VOLUME INDICATORS ===
+    # === ADVANCED VOLUME INDICATORS ===
+    # Basic volume features
+    df['volume_ma_5'] = df['Volume'].rolling(window=vol_windows[0]).mean()
+    df['volume_ma_10'] = df['Volume'].rolling(window=vol_windows[1]).mean()
     df['volume_ma_20'] = df['Volume'].rolling(window=vol_windows[2]).mean()
     df['volume_ratio'] = df['Volume'] / (df['volume_ma_20'] + 1)
     
-    # OBV
+    # Volume trend and momentum
+    df['volume_trend'] = df['Volume'].pct_change(periods=5)
+    df['volume_acceleration'] = df['volume_trend'].pct_change(periods=3)
+    df['volume_spike'] = (df['Volume'] > df['volume_ma_20'] * 2).astype(int)
+    
+    # Volume relative to recent range
+    df['volume_std_20'] = df['Volume'].rolling(window=20).std()
+    df['volume_zscore'] = (df['Volume'] - df['volume_ma_20']) / (df['volume_std_20'] + 1)
+    
+    # OBV and variants
     df['OBV'] = talib.OBV(df['Close'].astype(float).values, df['Volume'].astype(float).values)
     df['OBV_ema'] = df['OBV'].ewm(span=short_windows[1]).mean()
+    df['OBV_slope'] = df['OBV'].pct_change(periods=5)
+    
+    # Money Flow Index (volume-weighted RSI) - requires float64 for talib
+    high_arr = df['High'].astype(np.float64).values
+    low_arr = df['Low'].astype(np.float64).values
+    close_arr = df['Close'].astype(np.float64).values
+    volume_arr = df['Volume'].astype(np.float64).values
+    
+    df['MFI'] = talib.MFI(high_arr, low_arr, close_arr, volume_arr, timeperiod=14)
+    
+    # Accumulation/Distribution Line
+    df['AD'] = talib.AD(high_arr, low_arr, close_arr, volume_arr)
+    df['AD_slope'] = df['AD'].pct_change(periods=5)
+    
+    # Volume-Weighted Average Price (approximation)
+    df['VWAP_approx'] = (df['Close'] * df['Volume']).rolling(window=20).sum() / df['Volume'].rolling(window=20).sum()
+    df['price_vs_vwap'] = (df['Close'] - df['VWAP_approx']) / df['VWAP_approx']
+    
+    # Chaikin Money Flow
+    df['CMF'] = talib.ADOSC(high_arr, low_arr, close_arr, volume_arr, 
+                            fastperiod=3, slowperiod=10)
+    
+    # Volume-Price Confirmation
+    df['volume_price_trend'] = np.where(
+        (df['Close'] > df['Close'].shift(1)) & (df['Volume'] > df['volume_ma_20']),
+        1,  # Price up + High volume = bullish
+        np.where(
+            (df['Close'] < df['Close'].shift(1)) & (df['Volume'] > df['volume_ma_20']),
+            -1,  # Price down + High volume = bearish
+            0
+        )
+    )
     
     # === MOMENTUM ===
     for period in mom_periods:
@@ -145,6 +189,12 @@ def create_optimized_features(df, time_period='daily', sentiment_df=None):
     # === KEY INTERACTION FEATURES ===
     df['rsi_volume'] = df[f'RSI_{rsi_period}'] * df['volume_ratio']
     df['trend_momentum'] = df['ADX'] * df[f'momentum_{mom_periods[1]}']
+    
+    # Volume-based interactions
+    df['volume_momentum'] = df['volume_ratio'] * df[f'momentum_{mom_periods[0]}']
+    df['mfi_rsi_divergence'] = df['MFI'] - df[f'RSI_{rsi_period}']
+    df['volume_volatility'] = df['volume_ratio'] * df['ATR_pct']
+    df['obv_price_divergence'] = (df['OBV_slope'] - df['returns']) / (abs(df['returns']) + 0.01)
     
     # === TIME FEATURES ===
     if time_period == 'daily':
