@@ -1,0 +1,440 @@
+{
+  "timestamp": "2026-01-05T11:57:53.185702",
+  "top_features": {
+    "1d": [
+      {
+        "feature": "ADX",
+        "importance_mean": 15.531086826324463,
+        "importance_std": 16.153407988295008,
+        "stock_count": 35,
+        "importance_pct_mean": 4.325358935729769
+      },
+      {
+        "feature": "volume_ma_20",
+        "importance_mean": 13.542766341992786,
+        "importance_std": 19.12646955236262,
+        "stock_count": 35,
+        "importance_pct_mean": 4.9503908081786525
+      },
+      {
+        "feature": "hl_spread",
+        "importance_mean": 12.16221718447549,
+        "importance_std": 15.438911427680495,
+        "stock_count": 35,
+        "importance_pct_mean": 3.43730542677565
+      },
+      {
+        "feature": "ATR_pct",
+        "importance_mean": 11.90364522593362,
+        "importance_std": 19.023031566694918,
+        "stock_count": 35,
+        "importance_pct_mean": 4.447019853428579
+      },
+      {
+        "feature": "volatility_10",
+        "importance_mean": 11.057832928214754,
+        "importance_std": 10.045721041105741,
+        "stock_count": 35,
+        "importance_pct_mean": 4.603389701776163
+      },
+      {
+        "feature": "volume_ratio",
+        "importance_mean": 10.97995616197586,
+        "importance_std": 15.077429989956764,
+        "stock_count": 35,
+        "importance_pct_mean": 2.2800982980140385
+      },
+      {
+        "feature": "volatility_5",
+        "importance_mean": 10.961327540874482,
+        "importance_std": 15.800760678436065,
+        "stock_count": 35,
+        "importance_pct_mean": 2.367281086364648
+      },
+      {
+        "feature": "oc_spread",
+        "importance_mean": 10.863137896997587,
+        "importance_std": 15.764811453082888,
+        "stock_count": 35,
+        "importance_pct_mean": 4.256408912170018
+      },
+      {
+        "feature": "STOCH_K",
+        "importance_mean": 10.2283725636346,
+        "importance_std": 13.612366447368698,
+        "stock_count": 35,
+        "importance_pct_mean": 3.303894837371047
+      },
+      {
+        "feature": "returns",
+        "importance_mean": 9.659033804280417,
+        "importance_std": 13.065283708835619,
+        "stock_count": 35,
+        "importance_pct_mean": 3.5780393810119486
+      },
+      {
+        "feature": "BB_width",
+        "importance_mean": 9.322961715289525,
+        "importance_std": 14.250156185484666,
+        "stock_count": 35,
+        "importance_pct_mean": 2.504248911102664
+      },
+      {
+        "feature": "MACD_hist",
+        "importance_mean": 9.316805403573172,
+        "importance_std": 12.122362565681234,
+        "stock_count": 35,
+        "importance_pct_mean": 2.7321739922078723
+      },
+      {
+        "feature": "STOCH_D",
+        "importance_mean": 9.238620130292007,
+        "importance_std": 9.605893081029564,
+        "stock_count": 35,
+        "importance_pct_mean": 3.136038937516252
+      },
+      {
+        "feature": "MACD",
+        "importance_mean": 9.061297231061118,
+        "importance_std": 11.068829600336795,
+        "stock_count": 35,
+        "importance_pct_mean": 3.7539059411889966
+      },
+      {
+        "feature": "rsi_volume",
+        "importance_mean": 8.964592296736582,
+        "importance_std": 10.731135825934773,
+        "stock_count": 35,
+        "importance_pct_mean": 3.21519058335622
+      },
+      {
+        "feature": "BB_position",
+        "importance_mean": 8.926882234747922,
+        "importance_std": 13.549224272610696,
+        "stock_count": 35,
+        "importance_pct_mean": 3.0651781372998226
+      },
+      {
+        "feature": "OBV",
+        "importance_mean": 8.427365415436881,
+        "importance_std": 15.117144336252109,
+        "stock_count": 35,
+        "importance_pct_mean": 1.8052455684384736
+      },
+      {
+        "feature": "MACD_signal",
+        "importance_mean": 8.265671399661473,
+        "importance_std": 13.251818290025193,
+        "stock_count": 35,
+        "importance_pct_mean": 1.4686674684001746
+      },
+      {
+        "feature": "volatility_20",
+        "importance_mean": 8.216375149999346,
+        "importance_std": 8.587135899871893,
+        "stock_count": 35,
+        "importance_pct_mean": 2.9958665408503973
+      },
+      {
+        "feature": "OBV_ema",
+        "importance_mean": 8.11126493045262,
+        "importance_std": 15.310915179737178,
+        "stock_count": 35,
+        "importance_pct_mean": 2.0566661423693415
+      }
+    ],
+    "5d": [
+      {
+        "feature": "OBV_ema",
+        "importance_mean": 35.50182793566159,
+        "importance_std": 80.22313587827158,
+        "stock_count": 35,
+        "importance_pct_mean": 3.7392455897620973
+      },
+      {
+        "feature": "ADX",
+        "importance_mean": 30.705029156804084,
+        "importance_std": 48.45560829229488,
+        "stock_count": 35,
+        "importance_pct_mean": 6.1367098306116015
+      },
+      {
+        "feature": "volume_ma_20",
+        "importance_mean": 29.989921929155077,
+        "importance_std": 49.32272415959606,
+        "stock_count": 35,
+        "importance_pct_mean": 5.542046747645547
+      },
+      {
+        "feature": "volatility_20",
+        "importance_mean": 27.929693159035274,
+        "importance_std": 55.60074205200297,
+        "stock_count": 35,
+        "importance_pct_mean": 4.645266951504468
+      },
+      {
+        "feature": "OBV",
+        "importance_mean": 27.825196698733738,
+        "importance_std": 60.66430260662604,
+        "stock_count": 35,
+        "importance_pct_mean": 3.0413547161416385
+      },
+      {
+        "feature": "SMA_50",
+        "importance_mean": 27.35221254825592,
+        "importance_std": 52.21141451219774,
+        "stock_count": 35,
+        "importance_pct_mean": 5.085702390814706
+      },
+      {
+        "feature": "ATR_pct",
+        "importance_mean": 21.256080222768443,
+        "importance_std": 46.98263864762532,
+        "stock_count": 35,
+        "importance_pct_mean": 3.7174729886202305
+      },
+      {
+        "feature": "SMA_20",
+        "importance_mean": 19.31635548557554,
+        "importance_std": 24.995290204853656,
+        "stock_count": 35,
+        "importance_pct_mean": 5.306392982330832
+      },
+      {
+        "feature": "volatility_10",
+        "importance_mean": 18.82848415374756,
+        "importance_std": 29.296615366254752,
+        "stock_count": 35,
+        "importance_pct_mean": 3.601124768530293
+      },
+      {
+        "feature": "MACD_hist",
+        "importance_mean": 18.73389024734497,
+        "importance_std": 35.2651406614047,
+        "stock_count": 35,
+        "importance_pct_mean": 3.581993305918061
+      },
+      {
+        "feature": "BB_width",
+        "importance_mean": 18.54123050570488,
+        "importance_std": 29.293860520633633,
+        "stock_count": 35,
+        "importance_pct_mean": 4.283132039022699
+      },
+      {
+        "feature": "month_sin",
+        "importance_mean": 16.443722573348452,
+        "importance_std": 23.33391571166684,
+        "stock_count": 35,
+        "importance_pct_mean": 3.2364239439297595
+      },
+      {
+        "feature": "MACD",
+        "importance_mean": 16.42355808019638,
+        "importance_std": 27.0023504811603,
+        "stock_count": 35,
+        "importance_pct_mean": 3.370427366111217
+      },
+      {
+        "feature": "BB_upper",
+        "importance_mean": 16.385930244411743,
+        "importance_std": 37.03015859167024,
+        "stock_count": 35,
+        "importance_pct_mean": 2.532738354448909
+      },
+      {
+        "feature": "ATR",
+        "importance_mean": 16.02701242651258,
+        "importance_std": 34.62810350483645,
+        "stock_count": 35,
+        "importance_pct_mean": 2.6624629862583484
+      },
+      {
+        "feature": "MACD_signal",
+        "importance_mean": 15.245698702335357,
+        "importance_std": 40.941895232589914,
+        "stock_count": 35,
+        "importance_pct_mean": 1.4922012386454317
+      },
+      {
+        "feature": "EMA_50",
+        "importance_mean": 12.842067762783595,
+        "importance_std": 17.994584361483714,
+        "stock_count": 35,
+        "importance_pct_mean": 3.2804526583226807
+      },
+      {
+        "feature": "price_to_sma_50",
+        "importance_mean": 12.598291538442885,
+        "importance_std": 20.640017417353228,
+        "stock_count": 35,
+        "importance_pct_mean": 3.261417978717
+      },
+      {
+        "feature": "momentum_20",
+        "importance_mean": 12.080567048702921,
+        "importance_std": 22.64052845452557,
+        "stock_count": 35,
+        "importance_pct_mean": 1.8947821836490744
+      },
+      {
+        "feature": "BB_lower",
+        "importance_mean": 11.625752943754197,
+        "importance_std": 14.221205240544135,
+        "stock_count": 35,
+        "importance_pct_mean": 3.240270849040572
+      }
+    ],
+    "21d": [
+      {
+        "feature": "OBV_ema",
+        "importance_mean": 171.81879997902683,
+        "importance_std": 336.31402178638405,
+        "stock_count": 35,
+        "importance_pct_mean": 4.393544901869558
+      },
+      {
+        "feature": "SMA_50",
+        "importance_mean": 151.41092712687595,
+        "importance_std": 258.61323990328543,
+        "stock_count": 35,
+        "importance_pct_mean": 8.907380444260765
+      },
+      {
+        "feature": "volume_ma_20",
+        "importance_mean": 136.12415236490114,
+        "importance_std": 194.64650160074476,
+        "stock_count": 35,
+        "importance_pct_mean": 9.736569050852848
+      },
+      {
+        "feature": "month_sin",
+        "importance_mean": 107.8593657391412,
+        "importance_std": 150.38362080554248,
+        "stock_count": 35,
+        "importance_pct_mean": 5.32125460607423
+      },
+      {
+        "feature": "OBV",
+        "importance_mean": 106.81012086314814,
+        "importance_std": 221.01737595762802,
+        "stock_count": 35,
+        "importance_pct_mean": 3.504937437311564
+      },
+      {
+        "feature": "ADX",
+        "importance_mean": 101.00873809882573,
+        "importance_std": 163.67940937227,
+        "stock_count": 35,
+        "importance_pct_mean": 5.668859500807271
+      },
+      {
+        "feature": "volatility_20",
+        "importance_mean": 88.56137663040842,
+        "importance_std": 169.60471391188761,
+        "stock_count": 35,
+        "importance_pct_mean": 4.791934223923964
+      },
+      {
+        "feature": "EMA_50",
+        "importance_mean": 87.66904614227158,
+        "importance_std": 183.8150207499269,
+        "stock_count": 35,
+        "importance_pct_mean": 4.484297874077005
+      },
+      {
+        "feature": "ATR_pct",
+        "importance_mean": 86.82425515949726,
+        "importance_std": 152.0100092888051,
+        "stock_count": 35,
+        "importance_pct_mean": 5.441402140466782
+      },
+      {
+        "feature": "ATR",
+        "importance_mean": 76.98853850109236,
+        "importance_std": 156.388859842523,
+        "stock_count": 35,
+        "importance_pct_mean": 2.538142928031154
+      },
+      {
+        "feature": "MACD_signal",
+        "importance_mean": 76.57982273703175,
+        "importance_std": 103.89230477561412,
+        "stock_count": 35,
+        "importance_pct_mean": 4.637385945271417
+      },
+      {
+        "feature": "month_cos",
+        "importance_mean": 70.63806283899716,
+        "importance_std": 125.37858189271269,
+        "stock_count": 35,
+        "importance_pct_mean": 2.0200222231383416
+      },
+      {
+        "feature": "SMA_20",
+        "importance_mean": 65.46841996056693,
+        "importance_std": 71.42681411252673,
+        "stock_count": 35,
+        "importance_pct_mean": 5.345140678001653
+      },
+      {
+        "feature": "BB_lower",
+        "importance_mean": 61.22240443740572,
+        "importance_std": 136.54323640309232,
+        "stock_count": 35,
+        "importance_pct_mean": 2.067482894811223
+      },
+      {
+        "feature": "MACD",
+        "importance_mean": 49.30712352139609,
+        "importance_std": 68.96077677421866,
+        "stock_count": 35,
+        "importance_pct_mean": 3.434562936905798
+      },
+      {
+        "feature": "EMA_5",
+        "importance_mean": 48.09156244013991,
+        "importance_std": 82.40385930934121,
+        "stock_count": 35,
+        "importance_pct_mean": 3.5514930499397708
+      },
+      {
+        "feature": "price_to_sma_50",
+        "importance_mean": 40.89240219167301,
+        "importance_std": 71.92604467925766,
+        "stock_count": 35,
+        "importance_pct_mean": 2.125676988640989
+      },
+      {
+        "feature": "MACD_hist",
+        "importance_mean": 40.301763595427786,
+        "importance_std": 75.50003295272302,
+        "stock_count": 35,
+        "importance_pct_mean": 2.1635815871861066
+      },
+      {
+        "feature": "volatility_10",
+        "importance_mean": 38.395294475661856,
+        "importance_std": 63.27918809414314,
+        "stock_count": 35,
+        "importance_pct_mean": 2.023137698588544
+      },
+      {
+        "feature": "SMA_5",
+        "importance_mean": 34.31227383060115,
+        "importance_std": 81.57769366308929,
+        "stock_count": 35,
+        "importance_pct_mean": 1.4613910349374555
+      }
+    ]
+  },
+  "model_stats": {
+    "summary": {
+      "total_models": 105,
+      "avg_accuracy": 0.5500650331645726,
+      "avg_features": 62.0,
+      "avg_trees": 5.619047619047619
+    }
+  },
+  "confidence_analysis": {}
+}
