@@ -113,6 +113,7 @@ jobs:
         git config --local user.name "github-actions[bot]"
         git add data/*.csv predictions_refined.csv stock_recommendations.csv portfolio_allocation.csv backtest_recommendations.csv backtest_summary.csv models/*.joblib daily_signals.csv sentiment_data.csv DAILY_REPORT.md || true
         git diff --staged --quiet || git commit -m "🤖 Auto-update: Predictions, recommendations & portfolio ($(date +'%Y-%m-%d'))"
+        git pull --rebase origin main
         git push
       continue-on-error: false
     
