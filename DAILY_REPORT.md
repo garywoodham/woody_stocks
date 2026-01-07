@@ -1,11 +1,11 @@
 # Stock Prediction System - Daily Report
-## 2026-01-03
+## 2026-01-07
 
 ## 🔧 System Status
 
-- **Data Updated:** 2026-01-02
-- **Stocks Tracked:** 20
-- **Sectors:** 4
+- **Data Updated:** 2026-01-07
+- **Stocks Tracked:** 34
+- **Sectors:** 5
 - **Active Models:** 80 (4 horizons per stock)
 - **Predictions Generated:** 20
 - **Signals Generated:** 80
@@ -13,18 +13,18 @@
 ## 📊 Market Overview
 
 ### Top Gainers (Last Day)
-- **Moderna** (MRNA): +4.65%
-- **Rolls-Royce** (RR.L): +4.09%
-- **Lockheed Martin** (LMT): +2.77%
-- **Northrop Grumman** (NOC): +2.71%
-- **BAE Systems** (BA.L): +2.33%
+- **GameStop** (GME): +3.39%
+- **Palantir Technologies** (PLTR): +3.02%
+- **Alphabet** (GOOGL): +2.97%
+- **Rivian Automotive** (RIVN): +2.64%
+- **Microsoft** (MSFT): +2.06%
 
 ### Top Losers (Last Day)
-- **Microsoft** (MSFT): -2.21%
-- **Amazon** (AMZN): -1.87%
-- **AstraZeneca** (AZN.L): -1.44%
-- **Apple** (AAPL): -0.31%
-- **Johnson & Johnson** (JNJ): 0.19%
+- **Lucid Group** (LCID): -5.30%
+- **Plug Power** (PLUG): -4.81%
+- **NatWest Group** (NWG.L): -4.27%
+- **Virgin Galactic** (SPCE): -3.81%
+- **Tilray Brands** (TLRY): -2.92%
 
 ## 🎯 Trading Signals
 
@@ -36,15 +36,15 @@
 ### 🚀 Top 5 BUY Opportunities
 | Stock | Ticker | Price | Strength | Prob UP | Confidence |
 |-------|--------|-------|----------|---------|------------|
-| Northrop Grumman | NOC | $585.66 | 3.7% | 59.6% | 19.1% |
-| BAE Systems | BA.L | $1754.00 | 2.9% | 58.5% | 16.9% |
-| Rolls-Royce | RR.L | $1197.00 | 2.3% | 57.7% | 15.3% |
+| Northrop Grumman | NOC | $610.08 | 3.7% | 59.6% | 19.1% |
+| BAE Systems | BA.L | $0.00 | 2.9% | 58.5% | 16.9% |
+| Rolls-Royce | RR.L | $1259.00 | 2.3% | 57.7% | 15.3% |
 
 ### ⚠️ Top 5 SELL Signals
 | Stock | Ticker | Price | Strength | Prob DOWN | Confidence |
 |-------|--------|-------|----------|-----------|------------|
-| Microsoft | MSFT | $472.94 | 35.7% | 79.9% | 59.7% |
-| Johnson & Johnson | JNJ | $207.35 | 5.5% | 61.8% | 23.5% |
+| Microsoft | MSFT | $488.38 | 35.7% | 79.9% | 59.7% |
+| Johnson & Johnson | JNJ | $206.28 | 5.5% | 61.8% | 23.5% |
 
 ## 🏢 Sector Analysis
 
@@ -78,6 +78,6 @@
 
 ---
 
-*Report generated automatically on 2026-01-03 16:25:59 UTC*
+*Report generated automatically on 2026-01-07 18:36:34 UTC*
 
 *View dashboard: [http://localhost:8050](http://localhost:8050)*
