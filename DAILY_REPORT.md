@@ -1,9 +1,9 @@
 # Stock Prediction System - Daily Report
-## 2026-01-07
+## 2026-01-08
 
 ## 🔧 System Status
 
-- **Data Updated:** 2026-01-07
+- **Data Updated:** 2026-01-08
 - **Stocks Tracked:** 34
 - **Sectors:** 5
 - **Active Models:** 80 (4 horizons per stock)
@@ -13,18 +13,18 @@
 ## 📊 Market Overview
 
 ### Top Gainers (Last Day)
-- **GameStop** (GME): +3.39%
-- **Palantir Technologies** (PLTR): +3.02%
-- **Alphabet** (GOOGL): +2.97%
-- **Rivian Automotive** (RIVN): +2.64%
-- **Microsoft** (MSFT): +2.06%
+- **Plug Power** (PLUG): +4.58%
+- **Lockheed Martin** (LMT): +4.55%
+- **Marathon Digital** (MARA): +4.37%
+- **Northrop Grumman** (NOC): +3.30%
+- **Lucid Group** (LCID): +3.30%
 
 ### Top Losers (Last Day)
-- **Lucid Group** (LCID): -5.30%
-- **Plug Power** (PLUG): -4.81%
-- **NatWest Group** (NWG.L): -4.27%
-- **Virgin Galactic** (SPCE): -3.81%
-- **Tilray Brands** (TLRY): -2.92%
+- **Moderna** (MRNA): -4.50%
+- **Palantir Technologies** (PLTR): -2.39%
+- **NVIDIA** (NVDA): -2.28%
+- **BlackBerry** (BB): -2.19%
+- **AMC Entertainment** (AMC): -1.32%
 
 ## 🎯 Trading Signals
 
@@ -36,15 +36,15 @@
 ### 🚀 Top 5 BUY Opportunities
 | Stock | Ticker | Price | Strength | Prob UP | Confidence |
 |-------|--------|-------|----------|---------|------------|
-| Northrop Grumman | NOC | $610.08 | 3.7% | 59.6% | 19.1% |
+| Northrop Grumman | NOC | $596.07 | 3.7% | 59.6% | 19.1% |
 | BAE Systems | BA.L | $0.00 | 2.9% | 58.5% | 16.9% |
-| Rolls-Royce | RR.L | $1259.00 | 2.3% | 57.7% | 15.3% |
+| Rolls-Royce | RR.L | $1272.50 | 2.3% | 57.7% | 15.3% |
 
 ### ⚠️ Top 5 SELL Signals
 | Stock | Ticker | Price | Strength | Prob DOWN | Confidence |
 |-------|--------|-------|----------|-----------|------------|
-| Microsoft | MSFT | $488.38 | 35.7% | 79.9% | 59.7% |
-| Johnson & Johnson | JNJ | $206.28 | 5.5% | 61.8% | 23.5% |
+| Microsoft | MSFT | $477.57 | 35.7% | 79.9% | 59.7% |
+| Johnson & Johnson | JNJ | $205.71 | 5.5% | 61.8% | 23.5% |
 
 ## 🏢 Sector Analysis
 
@@ -78,6 +78,6 @@
 
 ---
 
-*Report generated automatically on 2026-01-07 18:36:34 UTC*
+*Report generated automatically on 2026-01-08 18:28:31 UTC*
 
 *View dashboard: [http://localhost:8050](http://localhost:8050)*
