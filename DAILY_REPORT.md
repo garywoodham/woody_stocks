@@ -1,5 +1,5 @@
 # Stock Prediction System - Daily Report
-## 2026-01-09
+## 2026-01-10
 
 ## 🔧 System Status
 
@@ -13,18 +13,18 @@
 ## 📊 Market Overview
 
 ### Top Gainers (Last Day)
-- **AMC Entertainment** (AMC): +11.38%
-- **Lockheed Martin** (LMT): +4.30%
-- **Northrop Grumman** (NOC): +3.80%
-- **Riot Platforms** (RIOT): +3.14%
-- **Moderna** (MRNA): +2.57%
+- **AMC Entertainment** (AMC): +13.10%
+- **Northrop Grumman** (NOC): +4.74%
+- **Lockheed Martin** (LMT): +4.72%
+- **Rolls-Royce** (RR.L): +1.65%
+- **BAE Systems** (BA.L): +1.48%
 
 ### Top Losers (Last Day)
-- **Plug Power** (PLUG): -5.21%
-- **Rivian Automotive** (RIVN): -3.24%
-- **Marathon Digital** (MARA): -2.44%
-- **Coinbase Global** (COIN): -2.40%
-- **NIO Inc** (NIO): -1.59%
+- **Plug Power** (PLUG): -5.60%
+- **Rivian Automotive** (RIVN): -3.37%
+- **Marathon Digital** (MARA): -2.11%
+- **Coinbase Global** (COIN): -1.96%
+- **NIO Inc** (NIO): -1.90%
 
 ## 🎯 Trading Signals
 
@@ -36,15 +36,15 @@
 ### 🚀 Top 5 BUY Opportunities
 | Stock | Ticker | Price | Strength | Prob UP | Confidence |
 |-------|--------|-------|----------|---------|------------|
-| Northrop Grumman | NOC | $613.24 | 3.7% | 59.6% | 19.1% |
+| Northrop Grumman | NOC | $618.82 | 3.7% | 59.6% | 19.1% |
 | BAE Systems | BA.L | $2053.00 | 2.9% | 58.5% | 16.9% |
 | Rolls-Royce | RR.L | $1293.50 | 2.3% | 57.7% | 15.3% |
 
 ### ⚠️ Top 5 SELL Signals
 | Stock | Ticker | Price | Strength | Prob DOWN | Confidence |
 |-------|--------|-------|----------|-----------|------------|
-| Microsoft | MSFT | $476.90 | 35.7% | 79.9% | 59.7% |
-| Johnson & Johnson | JNJ | $205.45 | 5.5% | 61.8% | 23.5% |
+| Microsoft | MSFT | $479.28 | 35.7% | 79.9% | 59.7% |
+| Johnson & Johnson | JNJ | $204.39 | 5.5% | 61.8% | 23.5% |
 
 ## 🏢 Sector Analysis
 
@@ -78,6 +78,6 @@
 
 ---
 
-*Report generated automatically on 2026-01-09 18:32:10 UTC*
+*Report generated automatically on 2026-01-10 18:28:49 UTC*
 
 *View dashboard: [http://localhost:8050](http://localhost:8050)*
