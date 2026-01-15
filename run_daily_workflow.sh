@@ -10,14 +10,10 @@ echo ""
 echo "Started: $(date)"
 echo ""
 
-# Step 0: Fetch sentiment data
+# Step 0: Fetch sentiment data (using FREE RSS feeds)
 echo "0️⃣  Fetching latest news sentiment..."
-if [ -n "$NEWS_API_KEY" ]; then
-    python fetch_sentiment.py
-    echo "   ✓ Sentiment data updated"
-else
-    echo "   ⚠️  NEWS_API_KEY not set, skipping sentiment (using cached data if available)"
-fi
+python collect_daily_sentiment.py
+echo "   ✓ Sentiment data updated (RSS-based, no API key needed)"
 echo ""
 
 # Step 1: Generate predictions

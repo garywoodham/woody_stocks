@@ -2,8 +2,8 @@ name: Daily Stock Prediction & Portfolio Management
 
 on:
   schedule:
-    # Run daily at 6 PM UTC (after market close for most exchanges)
-    - cron: '0 18 * * *'
+    # Run daily at 6 AM UK time (UTC) to capture previous day's data
+    - cron: '0 6 * * *'
   workflow_dispatch:  # Allow manual trigger
 
 jobs:
