@@ -159,6 +159,11 @@ class PerformanceTracker:
                 
                 # Find actual price after horizon days
                 stock_data = df_stocks[df_stocks['Ticker'] == ticker].copy()
+                # Ensure both dates are timezone-naive for comparison
+                if hasattr(stock_data['Date'].dtype, 'tz') and stock_data['Date'].dtype.tz is not None:
+                    stock_data['Date'] = stock_data['Date'].dt.tz_localize(None)
+                if hasattr(pred_date, 'tz') and pred_date.tz is not None:
+                    pred_date = pred_date.tz_localize(None)
                 stock_data = stock_data[stock_data['Date'] >= pred_date]
                 
                 if len(stock_data) >= horizon:

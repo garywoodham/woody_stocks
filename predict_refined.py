@@ -102,9 +102,9 @@ def main():
     stocks_info = df[['Stock', 'Ticker', 'Sector']].drop_duplicates()
     
     # Load sentiment data
-    sentiment_df = load_sentiment_data()
+    sentiment_df, sentiment_type = load_sentiment_data()
     if sentiment_df is not None:
-        print(f"✓ Loaded sentiment data for {len(sentiment_df)} stocks\n")
+        print(f"✓ Loaded sentiment data for {sentiment_df['ticker'].nunique()} stocks\n")
     
     all_predictions = []
     

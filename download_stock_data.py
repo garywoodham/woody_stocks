@@ -50,6 +50,41 @@ STOCKS = {
         'RIOT': 'Riot Platforms',
         'MARA': 'Marathon Digital',
         'TLRY': 'Tilray Brands'
+    },
+    'Energy': {
+        'XOM': 'Exxon Mobil',
+        'CVX': 'Chevron',
+        'COP': 'ConocoPhillips',
+        'SLB': 'Schlumberger',
+        'OXY': 'Occidental Petroleum'
+    },
+    'Consumer Staples': {
+        'WMT': 'Walmart',
+        'PG': 'Procter & Gamble',
+        'KO': 'Coca-Cola',
+        'PEP': 'PepsiCo',
+        'COST': 'Costco'
+    },
+    'Industrials': {
+        'CAT': 'Caterpillar',
+        'GE': 'General Electric',
+        'HON': 'Honeywell',
+        'UPS': 'United Parcel Service',
+        'MMM': '3M Company'
+    },
+    'Financials': {
+        'JPM': 'JPMorgan Chase',
+        'BAC': 'Bank of America',
+        'GS': 'Goldman Sachs',
+        'MS': 'Morgan Stanley',
+        'BLK': 'BlackRock'
+    },
+    'Semiconductors': {
+        'AMD': 'Advanced Micro Devices',
+        'INTC': 'Intel',
+        'TSM': 'Taiwan Semiconductor',
+        'AVGO': 'Broadcom',
+        'QCOM': 'Qualcomm'
     }
 }
 

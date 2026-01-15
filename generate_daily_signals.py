@@ -87,9 +87,9 @@ def generate_daily_signals():
     
     # Load predictions
     try:
-        df_predictions = pd.read_csv('predictions_summary.csv')
+        df_predictions = pd.read_csv('predictions_refined.csv')
     except FileNotFoundError:
-        print("❌ predictions_summary.csv not found. Run predict_stock.py first.")
+        print("❌ predictions_refined.csv not found. Run predict_stock.py first.")
         return
     
     # Load latest stock data
@@ -110,6 +110,14 @@ def generate_daily_signals():
     # Generate signals for each stock and horizon
     signals = []
     
+    # Map script horizons to file column names
+    horizon_map = {
+        '1d': 'd1',
+        '7d': 'd5',
+        '30d': 'd21',
+        '90d': 'd21'  # Use d21 as proxy for 90d
+    }
+    
     for _, row in df_predictions.iterrows():
         ticker = row['Ticker']
         stock_name = row['Stock']
@@ -118,13 +126,17 @@ def generate_daily_signals():
         current_price = latest_prices.get(ticker, 0)
         
         # Generate signals for each horizon
-        for horizon in ['1d', '7d', '30d', '90d']:
-            prob = row[f'{horizon}_Prob_Up']
-            conf = row[f'{horizon}_Confidence']
-            acc = row[f'{horizon}_Accuracy']
-            direction = row[f'{horizon}_Direction']
+        for horizon_display, horizon_col in horizon_map.items():
+            # Skip if columns don't exist
+            if f'{horizon_col}_Prob_Up' not in row.index:
+                continue
+                
+            prob = row[f'{horizon_col}_Prob_Up']
+            conf = row[f'{horizon_col}_Confidence']
+            acc = row[f'{horizon_col}_Accuracy']
+            direction = row[f'{horizon_col}_Direction']
             
-            signal_data = signal_gen.generate_signal(prob, conf, horizon)
+            signal_data = signal_gen.generate_signal(prob, conf, horizon_display)
             
             # Calculate position size
             position_size = signal_gen.calculate_position_size(signal_data['strength'])
@@ -135,7 +147,7 @@ def generate_daily_signals():
                 'Ticker': ticker,
                 'Sector': sector,
                 'Current_Price': current_price,
-                'Horizon': horizon,
+                'Horizon': horizon_display,
                 'Signal': signal_data['signal'],
                 'Signal_Strength': signal_data['strength'],
                 'Reason': signal_data['reason'],

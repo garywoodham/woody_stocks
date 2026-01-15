@@ -15,12 +15,22 @@ import os
 warnings.filterwarnings('ignore')
 
 def load_sentiment_data():
-    """Load sentiment data - historical if available, else static"""
-    # Try historical first (time-series data)
+    """Load sentiment data - complete historical if available, else partial or static"""
+    # Try complete historical first (10 years of data)
+    try:
+        sentiment_df = pd.read_csv('data/sentiment_history_complete.csv')
+        sentiment_df['date'] = pd.to_datetime(sentiment_df['date'])
+        print(f"✓ Loaded COMPLETE sentiment history")
+        print(f"  Records: {len(sentiment_df):,}, Dates: {sentiment_df['date'].nunique():,}, Range: {sentiment_df['date'].min()} to {sentiment_df['date'].max()}")
+        return sentiment_df, 'complete'
+    except FileNotFoundError:
+        pass
+    
+    # Try partial historical
     try:
         sentiment_df = pd.read_csv('data/sentiment_history.csv')
         sentiment_df['date'] = pd.to_datetime(sentiment_df['date'])
-        print(f"✓ Loaded HISTORICAL sentiment data")
+        print(f"⚠️  Using PARTIAL sentiment history")
         print(f"  Records: {len(sentiment_df)}, Dates: {sentiment_df['date'].nunique()}, Range: {sentiment_df['date'].min()} to {sentiment_df['date'].max()}")
         return sentiment_df, 'historical'
     except FileNotFoundError:
@@ -29,7 +39,7 @@ def load_sentiment_data():
     # Fall back to static sentiment
     try:
         sentiment_df = pd.read_csv('sentiment_data.csv')
-        print(f"⚠️  Using STATIC sentiment data (run fetch_sentiment_historical.py for time-series)")
+        print(f"⚠️  Using STATIC sentiment data")
         return sentiment_df, 'static'
     except FileNotFoundError:
         print("⚠️  No sentiment data found")

@@ -146,7 +146,6 @@ def build_prediction_columns():
     if has_recommendations:
         base_columns.extend([
             {'name': '🎯 Signal', 'id': 'Signal'},
-            {'name': 'Recommendation', 'id': 'Recommendation'},
             {'name': 'Score', 'id': 'Score', 'type': 'numeric', 'format': {'specifier': '.4f'}},
             {'name': 'Strength', 'id': 'Strength'},
             {'name': 'Consensus', 'id': 'Consensus'},
@@ -177,26 +176,26 @@ def build_conditional_styles():
     """Build conditional styles for prediction columns"""
     styles = []
     
-    # Recommendation styling
+    # Signal styling
     if has_recommendations:
         styles.extend([
-            # BUY recommendations
+            # BUY signals
             {
-                'if': {'filter_query': '{Recommendation} = "BUY"', 'column_id': 'Recommendation'},
+                'if': {'filter_query': '{Signal} = "BUY"', 'column_id': 'Signal'},
                 'backgroundColor': '#00ff8820',
                 'color': '#00ff88',
                 'fontWeight': 'bold'
             },
-            # SELL recommendations
+            # SELL signals
             {
-                'if': {'filter_query': '{Recommendation} = "SELL"', 'column_id': 'Recommendation'},
+                'if': {'filter_query': '{Signal} = "SELL"', 'column_id': 'Signal'},
                 'backgroundColor': '#ff444420',
                 'color': '#ff4444',
                 'fontWeight': 'bold'
             },
-            # HOLD recommendations
+            # HOLD signals
             {
-                'if': {'filter_query': '{Recommendation} = "HOLD"', 'column_id': 'Recommendation'},
+                'if': {'filter_query': '{Signal} = "HOLD"', 'column_id': 'Signal'},
                 'backgroundColor': '#ffffff10',
                 'color': '#aaaaaa',
                 'fontWeight': 'bold'
@@ -291,7 +290,7 @@ def render_tab_content(tab):
             dcc.Dropdown(
                 id='sector-dropdown',
                 options=[{'label': 'All Sectors', 'value': 'ALL'}] + 
-                        [{'label': sector, 'value': sector} for sector in sorted(df_stocks['Sector'].unique())],
+                        [{'label': sector, 'value': sector} for sector in sorted(df_predictions['Sector'].unique())],
                 value='ALL',
                 style={
                     'backgroundColor': '#2d3142',
@@ -570,11 +569,12 @@ def render_tab_content(tab):
         ])
     
     elif tab == 'sentiment':
-        # Load sentiment data
+        # Load sentiment data (prioritize complete 10-year backfill)
+        sentiment_complete_exists = os.path.exists('data/sentiment_history_complete.csv')
         sentiment_history_exists = os.path.exists('data/sentiment_history.csv')
         sentiment_static_exists = os.path.exists('sentiment_data.csv')
         
-        if not sentiment_history_exists and not sentiment_static_exists:
+        if not sentiment_complete_exists and not sentiment_history_exists and not sentiment_static_exists:
             return html.Div([
                 html.H3('⚠️  No Sentiment Data Available', 
                        style={'textAlign': 'center', 'color': colors['red'], 'marginTop': '50px'}),
@@ -582,8 +582,12 @@ def render_tab_content(tab):
                       style={'textAlign': 'center', 'color': colors['text'], 'fontSize': '16px'})
             ])
         
-        # Load sentiment data
-        if sentiment_history_exists:
+        # Load sentiment data (prefer complete backfill)
+        if sentiment_complete_exists:
+            df_sent = pd.read_csv('data/sentiment_history_complete.csv')
+            df_sent['date'] = pd.to_datetime(df_sent['date'])
+            is_historical = True
+        elif sentiment_history_exists:
             df_sent = pd.read_csv('data/sentiment_history.csv')
             df_sent['date'] = pd.to_datetime(df_sent['date'])
             is_historical = True
@@ -666,32 +670,56 @@ def render_tab_content(tab):
         
         # Time series chart (if historical)
         if is_historical and num_dates > 1:
-            # Aggregate by date
-            daily_sentiment = df_sent.groupby('date')['sentiment_compound'].mean().reset_index()
+            # Merge sector info for filtering
+            df_sent_with_sector = df_sent.merge(df_stocks_info, left_on='ticker', right_on='Ticker', how='left')
             
-            fig_timeline = go.Figure()
-            fig_timeline.add_trace(go.Scatter(
-                x=daily_sentiment['date'],
-                y=daily_sentiment['sentiment_compound'],
-                mode='lines+markers',
-                line=dict(color=colors['accent'], width=2),
-                marker=dict(size=6),
-                name='Avg Sentiment'
-            ))
-            fig_timeline.add_hline(y=0, line_dash="dash", line_color="gray", annotation_text="Neutral")
-            fig_timeline.update_layout(
-                title='Sentiment Trend Over Time (All Stocks Average)',
-                xaxis_title='Date',
-                yaxis_title='Average Sentiment',
-                template='plotly_dark',
-                paper_bgcolor=colors['card'],
-                plot_bgcolor=colors['background'],
-                font=dict(color=colors['text']),
-                hovermode='x unified'
-            )
+            # Get unique sectors and stocks for dropdowns
+            sectors = ['All Sectors'] + sorted(df_sent_with_sector['Sector'].dropna().unique().tolist())
+            all_stocks = sorted(df_sent_with_sector['ticker'].unique().tolist())
             
             timeline_chart = html.Div([
-                dcc.Graph(figure=fig_timeline, style={'height': '400px'}),
+                # Filter controls
+                html.Div([
+                    html.Div([
+                        html.Label('Sector:', style={'color': colors['text'], 'marginRight': '10px', 'fontWeight': 'bold'}),
+                        dcc.Dropdown(
+                            id='sentiment-sector-filter',
+                            options=[{'label': s, 'value': s} for s in sectors],
+                            value='All Sectors',
+                            style={'width': '200px', 'display': 'inline-block'},
+                            clearable=False
+                        ),
+                    ], style={'display': 'inline-block', 'marginRight': '20px'}),
+                    
+                    html.Div([
+                        html.Label('Stock:', style={'color': colors['text'], 'marginRight': '10px', 'fontWeight': 'bold'}),
+                        dcc.Dropdown(
+                            id='sentiment-stock-filter',
+                            options=[{'label': 'All Stocks', 'value': 'All Stocks'}] + [{'label': s, 'value': s} for s in all_stocks],
+                            value='All Stocks',
+                            style={'width': '200px', 'display': 'inline-block'},
+                            clearable=False
+                        ),
+                    ], style={'display': 'inline-block', 'marginRight': '20px'}),
+                    
+                    html.Div([
+                        html.Label('View:', style={'color': colors['text'], 'marginRight': '10px', 'fontWeight': 'bold'}),
+                        dcc.Dropdown(
+                            id='sentiment-view-mode',
+                            options=[
+                                {'label': 'Daily', 'value': 'daily'},
+                                {'label': 'Rolling 7-Day Avg', 'value': 'rolling_7'},
+                                {'label': 'Rolling 30-Day Avg', 'value': 'rolling_30'}
+                            ],
+                            value='daily',
+                            style={'width': '180px', 'display': 'inline-block'},
+                            clearable=False
+                        ),
+                    ], style={'display': 'inline-block'}),
+                ], style={'marginBottom': '20px', 'padding': '15px', 'backgroundColor': colors['background'], 'borderRadius': '10px'}),
+                
+                # Chart
+                dcc.Graph(id='sentiment-timeline-chart', style={'height': '400px'}),
             ], style={'backgroundColor': colors['card'], 'padding': '20px', 'borderRadius': '10px', 'marginBottom': '30px'})
         else:
             timeline_chart = html.Div()
@@ -1512,9 +1540,9 @@ def update_backtest_charts(tab):
 )
 def update_stock_dropdown(selected_sector):
     if selected_sector == 'ALL':
-        stocks = df_stocks.groupby(['Stock', 'Ticker']).size().reset_index()[['Stock', 'Ticker']]
+        stocks = df_predictions[['Stock', 'Ticker']].drop_duplicates()
     else:
-        stocks = df_stocks[df_stocks['Sector'] == selected_sector].groupby(['Stock', 'Ticker']).size().reset_index()[['Stock', 'Ticker']]
+        stocks = df_predictions[df_predictions['Sector'] == selected_sector][['Stock', 'Ticker']].drop_duplicates()
     
     options = [{'label': f"{row['Stock']} ({row['Ticker']})", 'value': row['Ticker']} for _, row in stocks.iterrows()]
     default_value = options[0]['value'] if options else None
@@ -1755,39 +1783,55 @@ def update_charts(selected_ticker, period_days):
             'textAlign': 'center'
         }),
         
-        # Period Low Card
+        # Period Low & AI Prediction Combined Card (side by side)
         html.Div([
-            html.H4('Period Low', style={'color': colors['text'], 'marginBottom': '5px'}),
-            html.H2(f'${period_low:.2f}', style={'color': colors['red'], 'margin': '0'}),
-            html.P(f'{((period_low/latest_price - 1) * 100):.1f}%', 
-                   style={'color': colors['text'], 'fontSize': '16px', 'marginTop': '5px'})
+            # Left side - Period Low
+            html.Div([
+                html.H4('Period Low', style={'color': colors['text'], 'marginBottom': '5px'}),
+                html.H2(f'${period_low:.2f}', style={'color': colors['red'], 'margin': '0'}),
+                html.P(f'{((period_low/latest_price - 1) * 100):.1f}%', 
+                       style={'color': colors['text'], 'fontSize': '14px', 'marginTop': '5px'})
+            ], style={'display': 'inline-block', 'verticalAlign': 'middle', 'width': '35%', 'textAlign': 'center'}),
+            
+            # Divider
+            html.Div(style={'display': 'inline-block', 'width': '1px', 'height': '60px', 'backgroundColor': colors['text'], 
+                           'opacity': '0.3', 'verticalAlign': 'middle', 'margin': '0 10px'}),
+            
+            # Right side - AI Prediction (one line)
+            html.Div([
+                html.H4('AI Prediction', style={'color': colors['text'], 'marginBottom': '8px', 'fontSize': '14px'}),
+                html.Div([
+                    html.Span('1d: ', style={'color': colors['text'], 'fontSize': '11px'}),
+                    html.Span(pred_data.get('d1_Direction', 'N/A'), 
+                             style={'color': colors['green'] if 'UP' in str(pred_data.get('d1_Direction', '')) else colors['red'],
+                                    'fontWeight': 'bold', 'fontSize': '12px'}),
+                    html.Span(f" {pred_data.get('d1_Prob_Up', 0):.0%}", 
+                             style={'color': colors['text'], 'fontSize': '10px'}),
+                    html.Br(),
+                    
+                    html.Span('5d: ', style={'color': colors['text'], 'fontSize': '11px'}),
+                    html.Span(pred_data.get('d5_Direction', 'N/A'), 
+                             style={'color': colors['green'] if 'UP' in str(pred_data.get('d5_Direction', '')) else colors['red'],
+                                    'fontWeight': 'bold', 'fontSize': '12px'}),
+                    html.Span(f" {pred_data.get('d5_Prob_Up', 0):.0%}", 
+                             style={'color': colors['text'], 'fontSize': '10px'}),
+                    html.Br(),
+                    
+                    html.Span('21d: ', style={'color': colors['text'], 'fontSize': '11px'}),
+                    html.Span(pred_data.get('d21_Direction', 'N/A'), 
+                             style={'color': colors['green'] if 'UP' in str(pred_data.get('d21_Direction', '')) else colors['red'],
+                                    'fontWeight': 'bold', 'fontSize': '12px'}),
+                    html.Span(f" {pred_data.get('d21_Prob_Up', 0):.0%}", 
+                             style={'color': colors['text'], 'fontSize': '10px'}),
+                ]),
+                html.P(f"Acc: {pred_data.get('d21_Accuracy', pred_data.get('d1_Accuracy', 0)):.0%}" if is_refined else '',
+                       style={'color': colors['accent'], 'fontSize': '11px', 'marginTop': '5px'})
+            ], style={'display': 'inline-block', 'verticalAlign': 'middle', 'width': '55%', 'textAlign': 'left'}),
         ], style={
             'backgroundColor': colors['background'], 
             'padding': '20px', 
             'borderRadius': '10px', 
-            'width': '23%', 
-            'display': 'inline-block',
-            'marginRight': '2%',
-            'textAlign': 'center'
-        }),
-        
-        # Average Volume Card OR Model Accuracy (if refined)
-        html.Div([
-            html.H4('Avg Model Accuracy' if is_refined and 'd21_Accuracy' in pred_data else 'Avg Volume', 
-                   style={'color': colors['text'], 'marginBottom': '5px'}),
-            html.H2(f"{pred_data.get('d21_Accuracy', pred_data.get('d1_Accuracy', 0)):.1%}" 
-                   if is_refined and ('d21_Accuracy' in pred_data or 'd1_Accuracy' in pred_data)
-                   else (f'{avg_volume/1e6:.1f}M' if avg_volume >= 1e6 else f'{avg_volume/1e3:.1f}K'), 
-                   style={'color': colors['accent'], 'margin': '0'}),
-            html.P('21-day prediction accuracy' if is_refined and 'd21_Accuracy' in pred_data
-                   else (f'Last: {df_stock["Volume"].iloc[-1]/1e6:.1f}M' if df_stock["Volume"].iloc[-1] >= 1e6 
-                   else f'Last: {df_stock["Volume"].iloc[-1]/1e3:.1f}K'),
-                   style={'color': colors['text'], 'fontSize': '16px', 'marginTop': '5px'})
-        ], style={
-            'backgroundColor': colors['background'], 
-            'padding': '20px', 
-            'borderRadius': '10px', 
-            'width': '23%', 
+            'width': '31%', 
             'display': 'inline-block',
             'textAlign': 'center'
         }),
@@ -1833,6 +1877,113 @@ def update_charts(selected_ticker, period_days):
     ])
     
     return fig_candle, fig_volume, kpi_cards, predictions_table
+
+# Callback to update stock dropdown based on selected sector (Sentiment tab)
+@app.callback(
+    Output('sentiment-stock-filter', 'options'),
+    Output('sentiment-stock-filter', 'value'),
+    Input('sentiment-sector-filter', 'value')
+)
+def update_sentiment_stock_options(selected_sector):
+    # Load sentiment data
+    sentiment_complete_exists = os.path.exists('data/sentiment_history_complete.csv')
+    sentiment_history_exists = os.path.exists('data/sentiment_history.csv')
+    
+    if sentiment_complete_exists:
+        df_sent = pd.read_csv('data/sentiment_history_complete.csv')
+    elif sentiment_history_exists:
+        df_sent = pd.read_csv('data/sentiment_history.csv')
+    else:
+        return [{'label': 'All Stocks', 'value': 'All Stocks'}], 'All Stocks'
+    
+    # Load sector info
+    df_stocks_info = pd.read_csv('data/multi_sector_stocks.csv')
+    df_stocks_info = df_stocks_info[['Ticker', 'Sector']].drop_duplicates()
+    df_sent_with_sector = df_sent.merge(df_stocks_info, left_on='ticker', right_on='Ticker', how='left')
+    
+    # Filter stocks by sector
+    if selected_sector and selected_sector != 'All Sectors':
+        available_stocks = sorted(df_sent_with_sector[df_sent_with_sector['Sector'] == selected_sector]['ticker'].unique().tolist())
+    else:
+        available_stocks = sorted(df_sent_with_sector['ticker'].unique().tolist())
+    
+    options = [{'label': 'All Stocks', 'value': 'All Stocks'}] + [{'label': s, 'value': s} for s in available_stocks]
+    
+    return options, 'All Stocks'
+
+# Callback for sentiment timeline chart filtering
+@app.callback(
+    Output('sentiment-timeline-chart', 'figure'),
+    Input('sentiment-sector-filter', 'value'),
+    Input('sentiment-stock-filter', 'value'),
+    Input('sentiment-view-mode', 'value')
+)
+def update_sentiment_timeline(selected_sector, selected_stock, view_mode):
+    # Load sentiment data
+    sentiment_complete_exists = os.path.exists('data/sentiment_history_complete.csv')
+    sentiment_history_exists = os.path.exists('data/sentiment_history.csv')
+    
+    if sentiment_complete_exists:
+        df_sent = pd.read_csv('data/sentiment_history_complete.csv')
+    elif sentiment_history_exists:
+        df_sent = pd.read_csv('data/sentiment_history.csv')
+    else:
+        return {}
+    
+    df_sent['date'] = pd.to_datetime(df_sent['date'])
+    
+    # Load sector info
+    df_stocks_info = pd.read_csv('data/multi_sector_stocks.csv')
+    df_stocks_info = df_stocks_info[['Ticker', 'Sector']].drop_duplicates()
+    df_sent_with_sector = df_sent.merge(df_stocks_info, left_on='ticker', right_on='Ticker', how='left')
+    
+    # Apply filters
+    df_filtered = df_sent_with_sector.copy()
+    
+    if selected_stock and selected_stock != 'All Stocks':
+        df_filtered = df_filtered[df_filtered['ticker'] == selected_stock]
+        title = f'Sentiment Trend Over Time - {selected_stock}'
+    elif selected_sector and selected_sector != 'All Sectors':
+        df_filtered = df_filtered[df_filtered['Sector'] == selected_sector]
+        title = f'Sentiment Trend Over Time - {selected_sector} Sector'
+    else:
+        title = 'Sentiment Trend Over Time (All Stocks Average)'
+    
+    # Aggregate by date
+    daily_sentiment = df_filtered.groupby('date')['sentiment_compound'].mean().reset_index()
+    daily_sentiment = daily_sentiment.sort_values('date')
+    
+    # Apply rolling average if selected
+    if view_mode == 'rolling_7':
+        daily_sentiment['sentiment_compound'] = daily_sentiment['sentiment_compound'].rolling(window=7, min_periods=1).mean()
+        title += ' (7-Day Rolling Average)'
+    elif view_mode == 'rolling_30':
+        daily_sentiment['sentiment_compound'] = daily_sentiment['sentiment_compound'].rolling(window=30, min_periods=1).mean()
+        title += ' (30-Day Rolling Average)'
+    
+    # Create figure
+    fig_timeline = go.Figure()
+    fig_timeline.add_trace(go.Scatter(
+        x=daily_sentiment['date'],
+        y=daily_sentiment['sentiment_compound'],
+        mode='lines+markers',
+        line=dict(color=colors['accent'], width=2),
+        marker=dict(size=4 if view_mode == 'daily' else 3),
+        name='Avg Sentiment'
+    ))
+    fig_timeline.add_hline(y=0, line_dash="dash", line_color="gray", annotation_text="Neutral")
+    fig_timeline.update_layout(
+        title=title,
+        xaxis_title='Date',
+        yaxis_title='Average Sentiment',
+        template='plotly_dark',
+        paper_bgcolor=colors['card'],
+        plot_bgcolor=colors['background'],
+        font=dict(color=colors['text']),
+        hovermode='x unified'
+    )
+    
+    return fig_timeline
 
 # Run the app
 if __name__ == '__main__':
