@@ -1,60 +1,69 @@
 # Stock Prediction System - Daily Report
-## 2026-01-14
+## 2026-01-16
 
 ## 🔧 System Status
 
-- **Data Updated:** 2026-01-14
-- **Stocks Tracked:** 35
-- **Sectors:** 5
-- **Active Models:** 80 (4 horizons per stock)
-- **Predictions Generated:** 20
-- **Signals Generated:** 80
+- **Data Updated:** 2026-01-15
+- **Stocks Tracked:** 60
+- **Sectors:** 10
+- **Active Models:** 140 (4 horizons per stock)
+- **Predictions Generated:** 35
+- **Signals Generated:** 240
 
 ## 📊 Market Overview
 
 ### Top Gainers (Last Day)
-- **Riot Platforms** (RIOT): +4.90%
-- **Northrop Grumman** (NOC): +3.58%
-- **Tilray Brands** (TLRY): +3.30%
-- **Plug Power** (PLUG): +3.22%
-- **Lockheed Martin** (LMT): +2.87%
+- **BlackRock** (BLK): +5.93%
+- **Morgan Stanley** (MS): +5.78%
+- **Goldman Sachs** (GS): +4.63%
+- **Taiwan Semiconductor** (TSM): +4.44%
+- **AMC Entertainment** (AMC): +3.23%
 
 ### Top Losers (Last Day)
-- **Rivian Automotive** (RIVN): -8.86%
-- **AMC Entertainment** (AMC): -2.80%
-- **SoFi Technologies** (SOFI): -2.75%
-- **Amazon** (AMZN): -2.46%
-- **Microsoft** (MSFT): -2.32%
+- **Robinhood Markets** (HOOD): -7.79%
+- **Lucid Group** (LCID): -7.29%
+- **Coinbase Global** (COIN): -6.48%
+- **Riot Platforms** (RIOT): -4.27%
+- **Marathon Digital** (MARA): -4.05%
 
 ## 🎯 Trading Signals
 
 ### 7-Day Horizon Signals
-- 🟢 **BUY:** 3 signals
-- 🔴 **SELL:** 2 signals
-- ⚪ **HOLD:** 15 signals
+- 🟢 **BUY:** 7 signals
+- 🔴 **SELL:** 3 signals
+- ⚪ **HOLD:** 50 signals
 
 ### 🚀 Top 5 BUY Opportunities
 | Stock | Ticker | Price | Strength | Prob UP | Confidence |
 |-------|--------|-------|----------|---------|------------|
-| Northrop Grumman | NOC | $647.89 | 3.7% | 59.6% | 19.1% |
-| BAE Systems | BA.L | $2038.00 | 2.9% | 58.5% | 16.9% |
-| Rolls-Royce | RR.L | $1275.00 | 2.3% | 57.7% | 15.3% |
+| Costco | COST | $956.75 | 4.7% | 60.9% | 21.8% |
+| Palantir Technologies | PLTR | $177.07 | 4.3% | 60.4% | 20.8% |
+| Microsoft | MSFT | $456.66 | 3.8% | 59.7% | 19.4% |
+| PepsiCo | PEP | $146.57 | 3.7% | 59.7% | 19.3% |
+| NVIDIA | NVDA | $187.05 | 3.2% | 58.9% | 17.9% |
 
 ### ⚠️ Top 5 SELL Signals
 | Stock | Ticker | Price | Strength | Prob DOWN | Confidence |
 |-------|--------|-------|----------|-----------|------------|
-| Microsoft | MSFT | $459.74 | 35.7% | 79.9% | 59.7% |
-| Johnson & Johnson | JNJ | $217.01 | 5.5% | 61.8% | 23.5% |
+| GameStop | GME | $21.36 | 6.2% | 62.4% | 24.9% |
+| GSK | GSK.L | $1848.00 | 4.8% | 60.9% | 21.8% |
+| Marathon Digital | MARA | $10.66 | 3.7% | 59.6% | 19.2% |
 
 ## 🏢 Sector Analysis
 
 ### Average Metrics by Sector (7-day)
 | Sector | Avg Strength | Avg Prob UP | Avg Confidence |
 |--------|--------------|-------------|----------------|
-| Banking | 0.0% | 52.4% | 10.8% |
-| Defence | 1.8% | 57.0% | 13.9% |
-| Pharma | 1.1% | 47.8% | 12.3% |
-| Technology | 7.1% | 45.1% | 18.0% |
+| Banking | 0.0% | 48.8% | 6.2% |
+| Consumer Staples | 1.7% | 53.8% | 13.7% |
+| Defence | 0.0% | 53.1% | 6.8% |
+| Energy | 0.0% | 51.7% | 4.5% |
+| Financials | 0.0% | 54.4% | 8.8% |
+| Industrials | 0.5% | 52.1% | 9.9% |
+| Meme/Speculative | 0.9% | 47.8% | 9.2% |
+| Pharma | 1.0% | 49.2% | 8.0% |
+| Semiconductors | 0.5% | 52.6% | 7.8% |
+| Technology | 1.4% | 56.0% | 11.9% |
 
 ## 📈 Backtest Performance Summary
 
@@ -71,13 +80,13 @@
 
 ## 🤖 Model Performance
 
-- **1d Average Accuracy:** 54.91%
-- **7d Average Accuracy:** 60.99%
-- **30d Average Accuracy:** 67.73%
-- **90d Average Accuracy:** 77.36%
+- **1d Average Accuracy:** 53.35%
+- **7d Average Accuracy:** 55.74%
+- **30d Average Accuracy:** 54.37%
+- **90d Average Accuracy:** 61.17%
 
 ---
 
-*Report generated automatically on 2026-01-14 18:33:23 UTC*
+*Report generated automatically on 2026-01-16 06:43:33 UTC*
 
 *View dashboard: [http://localhost:8050](http://localhost:8050)*
