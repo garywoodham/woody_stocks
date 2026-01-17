@@ -1,9 +1,9 @@
 # Stock Prediction System - Daily Report
-## 2026-01-16
+## 2026-01-17
 
 ## 🔧 System Status
 
-- **Data Updated:** 2026-01-15
+- **Data Updated:** 2026-01-16
 - **Stocks Tracked:** 60
 - **Sectors:** 10
 - **Active Models:** 140 (4 horizons per stock)
@@ -13,18 +13,18 @@
 ## 📊 Market Overview
 
 ### Top Gainers (Last Day)
-- **BlackRock** (BLK): +5.93%
-- **Morgan Stanley** (MS): +5.78%
-- **Goldman Sachs** (GS): +4.63%
-- **Taiwan Semiconductor** (TSM): +4.44%
-- **AMC Entertainment** (AMC): +3.23%
+- **Riot Platforms** (RIOT): +16.11%
+- **Marathon Digital** (MARA): +6.57%
+- **Moderna** (MRNA): +6.28%
+- **Plug Power** (PLUG): +4.42%
+- **Broadcom** (AVGO): +2.53%
 
 ### Top Losers (Last Day)
-- **Robinhood Markets** (HOOD): -7.79%
-- **Lucid Group** (LCID): -7.29%
-- **Coinbase Global** (COIN): -6.48%
-- **Riot Platforms** (RIOT): -4.27%
-- **Marathon Digital** (MARA): -4.05%
+- **Palantir Technologies** (PLTR): -3.45%
+- **Intel** (INTC): -2.81%
+- **Tilray Brands** (TLRY): -2.57%
+- **Rivian Automotive** (RIVN): -2.29%
+- **3M Company** (MMM): -1.93%
 
 ## 🎯 Trading Signals
 
@@ -36,18 +36,18 @@
 ### 🚀 Top 5 BUY Opportunities
 | Stock | Ticker | Price | Strength | Prob UP | Confidence |
 |-------|--------|-------|----------|---------|------------|
-| Costco | COST | $956.75 | 4.7% | 60.9% | 21.8% |
-| Palantir Technologies | PLTR | $177.07 | 4.3% | 60.4% | 20.8% |
-| Microsoft | MSFT | $456.66 | 3.8% | 59.7% | 19.4% |
-| PepsiCo | PEP | $146.57 | 3.7% | 59.7% | 19.3% |
-| NVIDIA | NVDA | $187.05 | 3.2% | 58.9% | 17.9% |
+| Costco | COST | $963.61 | 4.7% | 60.9% | 21.8% |
+| Palantir Technologies | PLTR | $170.96 | 4.3% | 60.4% | 20.8% |
+| Microsoft | MSFT | $459.86 | 3.8% | 59.7% | 19.4% |
+| PepsiCo | PEP | $146.32 | 3.7% | 59.7% | 19.3% |
+| NVIDIA | NVDA | $186.23 | 3.2% | 58.9% | 17.9% |
 
 ### ⚠️ Top 5 SELL Signals
 | Stock | Ticker | Price | Strength | Prob DOWN | Confidence |
 |-------|--------|-------|----------|-----------|------------|
-| GameStop | GME | $21.36 | 6.2% | 62.4% | 24.9% |
-| GSK | GSK.L | $1848.00 | 4.8% | 60.9% | 21.8% |
-| Marathon Digital | MARA | $10.66 | 3.7% | 59.6% | 19.2% |
+| GameStop | GME | $21.10 | 6.2% | 62.4% | 24.9% |
+| GSK | GSK.L | $1816.50 | 4.8% | 60.9% | 21.8% |
+| Marathon Digital | MARA | $11.36 | 3.7% | 59.6% | 19.2% |
 
 ## 🏢 Sector Analysis
 
@@ -87,6 +87,6 @@
 
 ---
 
-*Report generated automatically on 2026-01-16 06:43:33 UTC*
+*Report generated automatically on 2026-01-17 06:39:36 UTC*
 
 *View dashboard: [http://localhost:8050](http://localhost:8050)*
