@@ -1,9 +1,9 @@
 # Stock Prediction System - Daily Report
-## 2026-01-19
+## 2026-01-20
 
 ## 🔧 System Status
 
-- **Data Updated:** 2026-01-16
+- **Data Updated:** 2026-01-19
 - **Stocks Tracked:** 60
 - **Sectors:** 10
 - **Active Models:** 140 (4 horizons per stock)
@@ -46,7 +46,7 @@
 | Stock | Ticker | Price | Strength | Prob DOWN | Confidence |
 |-------|--------|-------|----------|-----------|------------|
 | GameStop | GME | $21.10 | 6.2% | 62.4% | 24.9% |
-| GSK | GSK.L | $1816.50 | 4.8% | 60.9% | 21.8% |
+| GSK | GSK.L | $1816.00 | 4.8% | 60.9% | 21.8% |
 | Marathon Digital | MARA | $11.36 | 3.7% | 59.6% | 19.2% |
 
 ## 🏢 Sector Analysis
@@ -87,6 +87,6 @@
 
 ---
 
-*Report generated automatically on 2026-01-19 06:50:36 UTC*
+*Report generated automatically on 2026-01-20 06:47:55 UTC*
 
 *View dashboard: [http://localhost:8050](http://localhost:8050)*
