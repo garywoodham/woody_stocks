@@ -1,2 +1,2 @@
 Ticker,Stock,Recommendation,Score,Earnings_Date,Days_Until,Severity,Message,Action
-PG,Procter & Gamble,BUY,0.0742,2026-01-22,2,HIGH,Earnings in 2 days - expect high volatility,WAIT
+PG,Procter & Gamble,BUY,0.0742,2026-01-22,1,HIGH,Earnings in 1 days - expect high volatility,WAIT
