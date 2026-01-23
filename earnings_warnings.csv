@@ -1,4 +1,4 @@
 Ticker,Stock,Recommendation,Score,Earnings_Date,Days_Until,Severity,Message,Action
-UPS,United Parcel Service,BUY,0.092,2026-01-27,5,MEDIUM,Earnings in 5 days - expect high volatility,REDUCE_SIZE
-PG,Procter & Gamble,BUY,0.0742,2026-01-22,0,HIGH,Earnings in 0 days - expect high volatility,WAIT
-NOC,Northrop Grumman,BUY,0.0652,2026-01-27,5,MEDIUM,Earnings in 5 days - expect high volatility,REDUCE_SIZE
+MSFT,Microsoft,BUY,0.1341,2026-01-28,5,MEDIUM,Earnings in 5 days - expect high volatility,REDUCE_SIZE
+UPS,United Parcel Service,BUY,0.092,2026-01-27,4,MEDIUM,Earnings in 4 days - expect high volatility,REDUCE_SIZE
+NOC,Northrop Grumman,BUY,0.0652,2026-01-27,4,MEDIUM,Earnings in 4 days - expect high volatility,REDUCE_SIZE
