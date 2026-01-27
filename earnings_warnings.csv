@@ -1,7 +1,7 @@
 Ticker,Stock,Recommendation,Score,Earnings_Date,Days_Until,Severity,Message,Action
-AAPL,Apple,BUY,0.1435,2026-01-29,3,MEDIUM,Earnings in 3 days - expect high volatility,REDUCE_SIZE
-MSFT,Microsoft,BUY,0.1341,2026-01-28,2,HIGH,Earnings in 2 days - expect high volatility,WAIT
-CAT,Caterpillar,BUY,0.1046,2026-01-29,3,MEDIUM,Earnings in 3 days - expect high volatility,REDUCE_SIZE
-UPS,United Parcel Service,BUY,0.092,2026-01-27,1,HIGH,Earnings in 1 days - expect high volatility,WAIT
-LMT,Lockheed Martin,BUY,0.0804,2026-01-29,3,MEDIUM,Earnings in 3 days - expect high volatility,REDUCE_SIZE
-NOC,Northrop Grumman,BUY,0.0652,2026-01-27,1,HIGH,Earnings in 1 days - expect high volatility,WAIT
+AAPL,Apple,BUY,0.1435,2026-01-29,2,HIGH,Earnings in 2 days - expect high volatility,WAIT
+MSFT,Microsoft,BUY,0.1341,2026-01-28,1,HIGH,Earnings in 1 days - expect high volatility,WAIT
+CAT,Caterpillar,BUY,0.1046,2026-01-29,2,HIGH,Earnings in 2 days - expect high volatility,WAIT
+UPS,United Parcel Service,BUY,0.092,2026-01-27,0,HIGH,Earnings in 0 days - expect high volatility,WAIT
+LMT,Lockheed Martin,BUY,0.0804,2026-01-29,2,HIGH,Earnings in 2 days - expect high volatility,WAIT
+NOC,Northrop Grumman,BUY,0.0652,2026-01-27,0,HIGH,Earnings in 0 days - expect high volatility,WAIT
