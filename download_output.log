@@ -1,0 +1,264 @@
+================================================================================
+DOWNLOADING MULTI-SECTOR STOCK DATA
+================================================================================
+Sectors: Defence, Banking, Pharma, Technology, Meme/Speculative, Energy, Consumer Staples, Industrials, Financials, Semiconductors
+Total stocks: 60
+================================================================================
+
+
+[DEFENCE]
+Downloading BAE Systems (BA.L)...
+Downloading Lockheed Martin (LMT)...
+Downloading Northrop Grumman (NOC)...
+Downloading Raytheon Technologies (RTX)...
+Downloading Rolls-Royce (RR.L)...
+
+[BANKING]
+
+[PHARMA]
+
+[TECHNOLOGY]
+
+[MEME/SPECULATIVE]
+
+[ENERGY]
+
+[CONSUMER STAPLES]
+
+[INDUSTRIALS]
+
+[FINANCIALS]
+
+[SEMICONDUCTORS]
+  ✓ Downloaded 2514 records for Northrop Grumman
+Downloading Barclays (BARC.L)...
+  ✓ Downloaded 2527 records for BAE Systems
+Downloading HSBC (HSBA.L)...
+  ✓ Downloaded 2514 records for Raytheon Technologies
+Downloading Lloyds Banking (LLOY.L)...
+  ✓ Downloaded 2526 records for Rolls-Royce
+Downloading NatWest Group (NWG.L)...
+  ✓ Downloaded 2514 records for Lockheed Martin
+Downloading Standard Chartered (STAN.L)...
+  ✓ Downloaded 2527 records for Lloyds Banking
+Downloading AstraZeneca (AZN.L)...
+  ✓ Downloaded 2527 records for NatWest Group
+Downloading GSK (GSK.L)...
+  ✓ Downloaded 2527 records for HSBC
+Downloading Pfizer (PFE)...
+  ✓ Downloaded 2526 records for Barclays
+Downloading Johnson & Johnson (JNJ)...
+  ✓ Downloaded 2527 records for Standard Chartered
+Downloading Moderna (MRNA)...
+  ✓ Downloaded 1786 records for Moderna
+Downloading Apple (AAPL)...
+  ✓ Downloaded 2527 records for AstraZeneca
+Downloading Microsoft (MSFT)...
+  ✓ Downloaded 2527 records for GSK
+Downloading NVIDIA (NVDA)...
+  ✓ Downloaded 2514 records for Pfizer
+Downloading Alphabet (GOOGL)...
+  ✓ Downloaded 2514 records for Johnson & Johnson
+Downloading Amazon (AMZN)...
+  ✓ Downloaded 2514 records for Apple
+Downloading GameStop (GME)...
+  ✓ Downloaded 2514 records for Microsoft
+Downloading AMC Entertainment (AMC)...
+  ✓ Downloaded 2514 records for NVIDIA
+Downloading BlackBerry (BB)...
+  ✓ Downloaded 2514 records for Alphabet
+Downloading Palantir Technologies (PLTR)...
+  ✓ Downloaded 2514 records for Amazon
+Downloading SoFi Technologies (SOFI)...
+  ✓ Downloaded 2514 records for GameStop
+Downloading Rivian Automotive (RIVN)...
+  ✓ Downloaded 1330 records for Palantir Technologies
+Downloading NIO Inc (NIO)...
+  ✓ Downloaded 2514 records for BlackBerry
+Downloading Lucid Group (LCID)...
+  ✓ Downloaded 2514 records for AMC Entertainment
+Downloading Virgin Galactic (SPCE)...
+  ✓ Downloaded 1049 records for Rivian Automotive
+Downloading Plug Power (PLUG)...
+  ✓ Downloaded 1265 records for SoFi Technologies
+Downloading Robinhood Markets (HOOD)...
+  ✓ Downloaded 1338 records for Lucid Group
+Downloading Coinbase Global (COIN)...
+  ✓ Downloaded 1846 records for NIO Inc
+Downloading Riot Platforms (RIOT)...
+  ✓ Downloaded 1122 records for Robinhood Markets
+Downloading Marathon Digital (MARA)...
+  ✓ Downloaded 1196 records for Coinbase Global
+Downloading Tilray Brands (TLRY)...
+  ✓ Downloaded 2085 records for Virgin Galactic
+Downloading Exxon Mobil (XOM)...
+  ✓ Downloaded 2514 records for Plug Power
+Downloading Chevron (CVX)...
+  ✓ Downloaded 2464 records for Riot Platforms
+Downloading ConocoPhillips (COP)...
+  ✓ Downloaded 2514 records for Marathon Digital
+Downloading Schlumberger (SLB)...
+  ✓ Downloaded 1884 records for Tilray Brands
+Downloading Occidental Petroleum (OXY)...
+  ✓ Downloaded 2514 records for ConocoPhillips
+Downloading Walmart (WMT)...
+  ✓ Downloaded 2514 records for Chevron
+Downloading Procter & Gamble (PG)...
+  ✓ Downloaded 2514 records for Exxon Mobil
+Downloading Coca-Cola (KO)...
+  ✓ Downloaded 2514 records for Schlumberger
+Downloading PepsiCo (PEP)...
+  ✓ Downloaded 2514 records for Occidental Petroleum
+Downloading Costco (COST)...
+  ✓ Downloaded 2514 records for Walmart
+Downloading Caterpillar (CAT)...
+  ✓ Downloaded 2514 records for Costco
+Downloading General Electric (GE)...
+  ✓ Downloaded 2514 records for Procter & Gamble
+Downloading Honeywell (HON)...
+  ✓ Downloaded 2514 records for Coca-Cola
+Downloading United Parcel Service (UPS)...
+  ✓ Downloaded 2514 records for PepsiCo
+Downloading 3M Company (MMM)...
+  ✓ Downloaded 2515 records for Caterpillar
+Downloading JPMorgan Chase (JPM)...
+  ✓ Downloaded 2514 records for United Parcel Service
+Downloading Bank of America (BAC)...
+  ✓ Downloaded 2514 records for General Electric
+Downloading Goldman Sachs (GS)...
+  ✓ Downloaded 2514 records for Honeywell
+Downloading Morgan Stanley (MS)...
+  ✓ Downloaded 2514 records for JPMorgan Chase
+Downloading BlackRock (BLK)...
+  ✓ Downloaded 2514 records for 3M Company
+Downloading Advanced Micro Devices (AMD)...
+  ✓ Downloaded 2514 records for Bank of America
+Downloading Intel (INTC)...
+  ✓ Downloaded 2514 records for Goldman Sachs
+Downloading Taiwan Semiconductor (TSM)...
+  ✓ Downloaded 2514 records for BlackRock
+Downloading Broadcom (AVGO)...
+  ✓ Downloaded 2514 records for Advanced Micro Devices
+Downloading Qualcomm (QCOM)...
+  ✓ Downloaded 2514 records for Morgan Stanley
+  ✓ Downloaded 2514 records for Intel
+  ✓ Downloaded 2514 records for Taiwan Semiconductor
+  ✓ Downloaded 2514 records for Broadcom
+  ✓ Downloaded 2514 records for Qualcomm
+
+================================================================================
+CONSOLIDATING DATA
+================================================================================
+
+✓ All data saved to: data/multi_sector_stocks.csv
+Total records: 140,667
+Date range: 2016-01-15 to 2026-01-16
+Stocks downloaded: 60
+
+================================================================================
+SUMMARY BY SECTOR
+================================================================================
+
+Defence:
+  Stocks: 5
+  Records: 12,595
+    • Rolls-Royce (RR.L): 2526 days, Latest: $1288.50
+    • BAE Systems (BA.L): 2527 days, Latest: $2079.36
+    • Northrop Grumman (NOC): 2514 days, Latest: $654.61
+    • Lockheed Martin (LMT): 2514 days, Latest: $577.89
+    • Raytheon Technologies (RTX): 2514 days, Latest: $199.83
+
+Banking:
+  Stocks: 5
+  Records: 12,634
+    • Barclays (BARC.L): 2526 days, Latest: $484.60
+    • NatWest Group (NWG.L): 2527 days, Latest: $639.00
+    • Standard Chartered (STAN.L): 2527 days, Latest: $1859.87
+    • Lloyds Banking (LLOY.L): 2527 days, Latest: $101.25
+    • HSBC (HSBA.L): 2527 days, Latest: $1231.26
+
+Pharma:
+  Stocks: 5
+  Records: 11,868
+    • AstraZeneca (AZN.L): 2527 days, Latest: $14124.95
+    • GSK (GSK.L): 2527 days, Latest: $1822.00
+    • Johnson & Johnson (JNJ): 2514 days, Latest: $219.57
+    • Pfizer (PFE): 2514 days, Latest: $25.89
+    • Moderna (MRNA): 1786 days, Latest: $39.36
+
+Technology:
+  Stocks: 5
+  Records: 12,570
+    • Amazon (AMZN): 2514 days, Latest: $238.18
+    • Apple (AAPL): 2514 days, Latest: $258.21
+    • Alphabet (GOOGL): 2514 days, Latest: $332.78
+    • NVIDIA (NVDA): 2514 days, Latest: $187.05
+    • Microsoft (MSFT): 2514 days, Latest: $456.66
+
+Meme/Speculative:
+  Stocks: 15
+  Records: 28,149
+    • GameStop (GME): 2514 days, Latest: $21.36
+    • BlackBerry (BB): 2514 days, Latest: $3.92
+    • AMC Entertainment (AMC): 2514 days, Latest: $1.60
+    • Marathon Digital (MARA): 2514 days, Latest: $10.66
+    • Plug Power (PLUG): 2514 days, Latest: $2.26
+    • Riot Platforms (RIOT): 2464 days, Latest: $16.57
+    • Virgin Galactic (SPCE): 2085 days, Latest: $3.03
+    • Tilray Brands (TLRY): 1884 days, Latest: $9.71
+    • NIO Inc (NIO): 1846 days, Latest: $4.64
+    • Lucid Group (LCID): 1338 days, Latest: $10.05
+    • Palantir Technologies (PLTR): 1330 days, Latest: $177.07
+    • SoFi Technologies (SOFI): 1265 days, Latest: $26.44
+    • Coinbase Global (COIN): 1196 days, Latest: $239.28
+    • Robinhood Markets (HOOD): 1122 days, Latest: $110.35
+    • Rivian Automotive (RIVN): 1049 days, Latest: $17.06
+
+Energy:
+  Stocks: 5
+  Records: 12,570
+    • ConocoPhillips (COP): 2514 days, Latest: $98.93
+    • Schlumberger (SLB): 2514 days, Latest: $46.57
+    • Exxon Mobil (XOM): 2514 days, Latest: $129.13
+    • Chevron (CVX): 2514 days, Latest: $166.16
+    • Occidental Petroleum (OXY): 2514 days, Latest: $43.17
+
+Consumer Staples:
+  Stocks: 5
+  Records: 12,570
+    • Procter & Gamble (PG): 2514 days, Latest: $144.63
+    • Costco (COST): 2514 days, Latest: $956.75
+    • Walmart (WMT): 2514 days, Latest: $119.20
+    • Coca-Cola (KO): 2514 days, Latest: $70.48
+    • PepsiCo (PEP): 2514 days, Latest: $146.57
+
+Industrials:
+  Stocks: 5
+  Records: 12,571
+    • Caterpillar (CAT): 2515 days, Latest: $647.18
+    • United Parcel Service (UPS): 2514 days, Latest: $108.62
+    • General Electric (GE): 2514 days, Latest: $319.94
+    • 3M Company (MMM): 2514 days, Latest: $171.10
+    • Honeywell (HON): 2514 days, Latest: $215.02
+
+Financials:
+  Stocks: 5
+  Records: 12,570
+    • BlackRock (BLK): 2514 days, Latest: $1156.65
+    • Morgan Stanley (MS): 2514 days, Latest: $191.23
+    • Bank of America (BAC): 2514 days, Latest: $52.59
+    • JPMorgan Chase (JPM): 2514 days, Latest: $309.26
+    • Goldman Sachs (GS): 2514 days, Latest: $975.86
+
+Semiconductors:
+  Stocks: 5
+  Records: 12,570
+    • Advanced Micro Devices (AMD): 2514 days, Latest: $227.92
+    • Broadcom (AVGO): 2514 days, Latest: $343.02
+    • Intel (INTC): 2514 days, Latest: $48.32
+    • Taiwan Semiconductor (TSM): 2514 days, Latest: $341.64
+    • Qualcomm (QCOM): 2514 days, Latest: $161.39
+
+================================================================================
+✓ DOWNLOAD COMPLETE!
+================================================================================

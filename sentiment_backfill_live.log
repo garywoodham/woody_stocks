@@ -1,0 +1,76 @@
+nohup: ignoring input
+================================================================================
+FULL HISTORICAL SENTIMENT BACKFILL
+================================================================================
+Date range: 2016-01-06 to 2026-01-09
+Total stocks: 60
+Strategy: Weekly batches, daily granularity
+================================================================================
+
+✓ Found existing data: data/sentiment_history_complete.csv
+  Records: 7226
+  Already completed: 2 stocks
+    BA.L, LMT
+
+================================================================================
+SECTOR: DEFENCE
+================================================================================
+
+[1/60] BAE Systems (BA.L) - ✓ ALREADY COMPLETE (skipping)
+
+[2/60] Lockheed Martin (LMT) - ✓ ALREADY COMPLETE (skipping)
+
+[3/60] Northrop Grumman (NOC)
+────────────────────────────────────────────────────────────
+  Week 50: 2016-12-14 | Records: 250
+  Week 100: 2017-11-29 | Records: 500
+  Week 150: 2018-11-14 | Records: 750
+  Week 200: 2019-10-30 | Records: 1000
+  Week 250: 2020-10-14 | Records: 1250
+  Week 300: 2021-09-29 | Records: 1500
+  Week 350: 2022-09-14 | Records: 1750
+  Week 400: 2023-08-30 | Records: 2000
+  Week 450: 2024-08-14 | Records: 2250
+  Week 500: 2025-07-30 | Records: 2500
+  ✓ Completed: 2613 daily records
+
+[4/60] Raytheon Technologies (RTX)
+────────────────────────────────────────────────────────────
+  Week 50: 2016-12-14 | Records: 250
+  Week 100: 2017-11-29 | Records: 500
+  Week 150: 2018-11-14 | Records: 750
+  Week 200: 2019-10-30 | Records: 1000
+  Week 250: 2020-10-14 | Records: 1250
+  Week 300: 2021-09-29 | Records: 1500
+  Week 350: 2022-09-14 | Records: 1750
+  Week 400: 2023-08-30 | Records: 2000
+  Week 450: 2024-08-14 | Records: 2250
+  Week 500: 2025-07-30 | Records: 2500
+  ✓ Completed: 2613 daily records
+
+[5/60] Rolls-Royce (RR.L)
+────────────────────────────────────────────────────────────
+  Week 50: 2016-12-14 | Records: 250
+  Week 100: 2017-11-29 | Records: 500
+  Week 150: 2018-11-14 | Records: 750
+  Week 200: 2019-10-30 | Records: 1000
+  Week 250: 2020-10-14 | Records: 1250
+  Week 300: 2021-09-29 | Records: 1500
+  Week 350: 2022-09-14 | Records: 1750
+  Week 400: 2023-08-30 | Records: 2000
+  Week 450: 2024-08-14 | Records: 2250
+  Week 500: 2025-07-30 | Records: 2500
+  ✓ Completed: 2613 daily records
+
+================================================================================
+SECTOR: BANKING
+================================================================================
+
+[6/60] Barclays (BARC.L)
+────────────────────────────────────────────────────────────
+  Week 50: 2016-12-14 | Records: 250
+  Week 100: 2017-11-29 | Records: 500
+  Week 150: 2018-11-14 | Records: 750
+  Week 200: 2019-10-30 | Records: 1000
+  Week 250: 2020-10-14 | Records: 1250
+  Week 300: 2021-09-29 | Records: 1500

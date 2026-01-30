@@ -1,0 +1,888 @@
+================================================================================
+🤖 AUTOMATED STOCK PREDICTION & PORTFOLIO WORKFLOW
+================================================================================
+
+Started: Sun Jan 25 17:19:32 UTC 2026
+
+0️⃣  Downloading latest stock price data...
+================================================================================
+DOWNLOADING MULTI-SECTOR STOCK DATA
+================================================================================
+Sectors: Defence, Banking, Pharma, Technology, Meme/Speculative, Energy, Consumer Staples, Industrials, Financials, Semiconductors
+Total stocks: 60
+================================================================================
+
+
+[DEFENCE]
+Downloading BAE Systems (BA.L)...
+Downloading Lockheed Martin (LMT)...
+Downloading Northrop Grumman (NOC)...
+Downloading Raytheon Technologies (RTX)...
+Downloading Rolls-Royce (RR.L)...
+
+[BANKING]
+
+[PHARMA]
+
+[TECHNOLOGY]
+
+[MEME/SPECULATIVE]
+
+[ENERGY]
+
+[CONSUMER STAPLES]
+
+[INDUSTRIALS]
+
+[FINANCIALS]
+
+[SEMICONDUCTORS]
+  ✓ Downloaded 2515 records for Lockheed Martin
+Downloading Barclays (BARC.L)...
+  ✓ Downloaded 2515 records for Northrop Grumman
+Downloading HSBC (HSBA.L)...
+  ✓ Downloaded 2527 records for BAE Systems
+Downloading Lloyds Banking (LLOY.L)...
+  ✓ Downloaded 2526 records for Rolls-Royce
+Downloading NatWest Group (NWG.L)...
+  ✓ Downloaded 2515 records for Raytheon Technologies
+Downloading Standard Chartered (STAN.L)...
+  ✓ Downloaded 2526 records for Barclays
+Downloading AstraZeneca (AZN.L)...
+  ✓ Downloaded 2527 records for HSBC
+Downloading GSK (GSK.L)...
+  ✓ Downloaded 2527 records for Standard Chartered
+Downloading Pfizer (PFE)...
+  ✓ Downloaded 2527 records for Lloyds Banking
+Downloading Johnson & Johnson (JNJ)...
+  ✓ Downloaded 2527 records for AstraZeneca
+Downloading Moderna (MRNA)...
+  ✓ Downloaded 2527 records for NatWest Group
+Downloading Apple (AAPL)...
+  ✓ Downloaded 2527 records for GSK
+Downloading Microsoft (MSFT)...
+  ✓ Downloaded 1791 records for Moderna
+Downloading NVIDIA (NVDA)...
+  ✓ Downloaded 2515 records for Microsoft
+Downloading Alphabet (GOOGL)...
+  ✓ Downloaded 2515 records for Pfizer
+Downloading Amazon (AMZN)...
+  ✓ Downloaded 2515 records for Apple
+Downloading GameStop (GME)...
+  ✓ Downloaded 2515 records for NVIDIA
+Downloading AMC Entertainment (AMC)...
+  ✓ Downloaded 2515 records for Alphabet
+Downloading BlackBerry (BB)...
+  ✓ Downloaded 2515 records for Johnson & Johnson
+  ✓ Downloaded 2515 records for AMC Entertainment
+Downloading Palantir Technologies (PLTR)...
+Downloading SoFi Technologies (SOFI)...
+  ✓ Downloaded 2515 records for GameStop
+Downloading Rivian Automotive (RIVN)...
+  ✓ Downloaded 2515 records for Amazon
+Downloading NIO Inc (NIO)...
+  ✓ Downloaded 1270 records for SoFi Technologies
+Downloading Lucid Group (LCID)...
+  ✓ Downloaded 1054 records for Rivian Automotive
+Downloading Virgin Galactic (SPCE)...
+  ✓ Downloaded 1851 records for NIO Inc
+Downloading Plug Power (PLUG)...
+  ✓ Downloaded 1335 records for Palantir Technologies
+Downloading Robinhood Markets (HOOD)...
+  ✓ Downloaded 2515 records for BlackBerry
+Downloading Coinbase Global (COIN)...
+  ✓ Downloaded 1201 records for Coinbase Global
+Downloading Riot Platforms (RIOT)...
+  ✓ Downloaded 2515 records for Plug Power
+  ✓ Downloaded 1127 records for Robinhood Markets
+Downloading Marathon Digital (MARA)...
+Downloading Tilray Brands (TLRY)...
+  ✓ Downloaded 2090 records for Virgin Galactic
+Downloading Exxon Mobil (XOM)...
+  ✓ Downloaded 1343 records for Lucid Group
+Downloading Chevron (CVX)...
+  ✓ Downloaded 2469 records for Riot Platforms
+Downloading ConocoPhillips (COP)...
+  ✓ Downloaded 1889 records for Tilray Brands
+Downloading Schlumberger (SLB)...
+  ✓ Downloaded 2515 records for Marathon Digital
+Downloading Occidental Petroleum (OXY)...
+  ✓ Downloaded 2515 records for Exxon Mobil
+Downloading Walmart (WMT)...
+  ✓ Downloaded 2515 records for Chevron
+Downloading Procter & Gamble (PG)...
+  ✓ Downloaded 2515 records for ConocoPhillips
+Downloading Coca-Cola (KO)...
+  ✓ Downloaded 2515 records for Occidental Petroleum
+Downloading PepsiCo (PEP)...
+  ✓ Downloaded 2515 records for Walmart
+  ✓ Downloaded 2515 records for Procter & Gamble
+Downloading Costco (COST)...
+Downloading Caterpillar (CAT)...
+  ✓ Downloaded 2515 records for Schlumberger
+Downloading General Electric (GE)...
+  ✓ Downloaded 2515 records for Coca-Cola
+Downloading Honeywell (HON)...
+  ✓ Downloaded 2515 records for PepsiCo
+Downloading United Parcel Service (UPS)...
+  ✓ Downloaded 2515 records for Costco
+Downloading 3M Company (MMM)...
+  ✓ Downloaded 2515 records for Caterpillar
+Downloading JPMorgan Chase (JPM)...
+  ✓ Downloaded 2515 records for United Parcel Service
+Downloading Bank of America (BAC)...
+  ✓ Downloaded 2515 records for Honeywell
+Downloading Goldman Sachs (GS)...
+  ✓ Downloaded 2515 records for JPMorgan Chase
+Downloading Morgan Stanley (MS)...
+  ✓ Downloaded 2515 records for General Electric
+Downloading BlackRock (BLK)...
+  ✓ Downloaded 2515 records for Bank of America
+Downloading Advanced Micro Devices (AMD)...
+  ✓ Downloaded 2515 records for 3M Company
+Downloading Intel (INTC)...
+  ✓ Downloaded 2515 records for Goldman Sachs
+Downloading Taiwan Semiconductor (TSM)...
+  ✓ Downloaded 2515 records for Advanced Micro Devices
+Downloading Broadcom (AVGO)...
+  ✓ Downloaded 2515 records for Morgan Stanley
+Downloading Qualcomm (QCOM)...
+  ✓ Downloaded 2515 records for BlackRock
+  ✓ Downloaded 2515 records for Intel
+  ✓ Downloaded 2515 records for Taiwan Semiconductor
+  ✓ Downloaded 2515 records for Qualcomm
+  ✓ Downloaded 2515 records for Broadcom
+
+================================================================================
+CONSOLIDATING DATA
+================================================================================
+
+✓ All data saved to: data/multi_sector_stocks.csv
+Total records: 140,761
+Date range: 2016-01-25 to 2026-01-23
+Stocks downloaded: 60
+
+================================================================================
+SUMMARY BY SECTOR
+================================================================================
+
+Defence:
+  Stocks: 5
+  Records: 12,598
+    • BAE Systems (BA.L): 2527 days, Latest: $2027.00
+    • Rolls-Royce (RR.L): 2526 days, Latest: $1253.00
+    • Raytheon Technologies (RTX): 2515 days, Latest: $195.93
+    • Lockheed Martin (LMT): 2515 days, Latest: $590.82
+    • Northrop Grumman (NOC): 2515 days, Latest: $672.95
+
+Banking:
+  Stocks: 5
+  Records: 12,634
+    • NatWest Group (NWG.L): 2527 days, Latest: $646.60
+    • Lloyds Banking (LLOY.L): 2527 days, Latest: $101.65
+    • Standard Chartered (STAN.L): 2527 days, Latest: $1829.00
+    • HSBC (HSBA.L): 2527 days, Latest: $1231.00
+    • Barclays (BARC.L): 2526 days, Latest: $480.30
+
+Pharma:
+  Stocks: 5
+  Records: 11,875
+    • GSK (GSK.L): 2527 days, Latest: $1801.00
+    • AstraZeneca (AZN.L): 2527 days, Latest: $13580.00
+    • Johnson & Johnson (JNJ): 2515 days, Latest: $220.14
+    • Pfizer (PFE): 2515 days, Latest: $25.65
+    • Moderna (MRNA): 1791 days, Latest: $48.71
+
+Technology:
+  Stocks: 5
+  Records: 12,575
+    • Alphabet (GOOGL): 2515 days, Latest: $327.93
+    • NVIDIA (NVDA): 2515 days, Latest: $187.67
+    • Apple (AAPL): 2515 days, Latest: $248.04
+    • Microsoft (MSFT): 2515 days, Latest: $465.95
+    • Amazon (AMZN): 2515 days, Latest: $239.16
+
+Meme/Speculative:
+  Stocks: 15
+  Records: 28,204
+    • AMC Entertainment (AMC): 2515 days, Latest: $1.56
+    • GameStop (GME): 2515 days, Latest: $22.99
+    • Marathon Digital (MARA): 2515 days, Latest: $10.50
+    • Plug Power (PLUG): 2515 days, Latest: $2.50
+    • BlackBerry (BB): 2515 days, Latest: $3.82
+    • Riot Platforms (RIOT): 2469 days, Latest: $17.28
+    • Virgin Galactic (SPCE): 2090 days, Latest: $3.07
+    • Tilray Brands (TLRY): 1889 days, Latest: $9.05
+    • NIO Inc (NIO): 1851 days, Latest: $4.64
+    • Lucid Group (LCID): 1343 days, Latest: $11.06
+    • Palantir Technologies (PLTR): 1335 days, Latest: $169.60
+    • SoFi Technologies (SOFI): 1270 days, Latest: $25.85
+    • Coinbase Global (COIN): 1201 days, Latest: $216.95
+    • Robinhood Markets (HOOD): 1127 days, Latest: $106.99
+    • Rivian Automotive (RIVN): 1054 days, Latest: $15.95
+
+Energy:
+  Stocks: 5
+  Records: 12,575
+    • Schlumberger (SLB): 2515 days, Latest: $49.15
+    • Occidental Petroleum (OXY): 2515 days, Latest: $44.10
+    • ConocoPhillips (COP): 2515 days, Latest: $98.35
+    • Exxon Mobil (XOM): 2515 days, Latest: $134.97
+    • Chevron (CVX): 2515 days, Latest: $166.72
+
+Consumer Staples:
+  Stocks: 5
+  Records: 12,575
+    • Costco (COST): 2515 days, Latest: $983.25
+    • PepsiCo (PEP): 2515 days, Latest: $144.58
+    • Coca-Cola (KO): 2515 days, Latest: $72.88
+    • Walmart (WMT): 2515 days, Latest: $117.73
+    • Procter & Gamble (PG): 2515 days, Latest: $150.15
+
+Industrials:
+  Stocks: 5
+  Records: 12,575
+    • United Parcel Service (UPS): 2515 days, Latest: $107.98
+    • Honeywell (HON): 2515 days, Latest: $221.46
+    • General Electric (GE): 2515 days, Latest: $293.87
+    • 3M Company (MMM): 2515 days, Latest: $162.68
+    • Caterpillar (CAT): 2515 days, Latest: $626.62
+
+Financials:
+  Stocks: 5
+  Records: 12,575
+    • Morgan Stanley (MS): 2515 days, Latest: $179.00
+    • BlackRock (BLK): 2515 days, Latest: $1129.91
+    • JPMorgan Chase (JPM): 2515 days, Latest: $297.72
+    • Bank of America (BAC): 2515 days, Latest: $51.72
+    • Goldman Sachs (GS): 2515 days, Latest: $918.88
+
+Semiconductors:
+  Stocks: 5
+  Records: 12,575
+    • Intel (INTC): 2515 days, Latest: $45.07
+    • Broadcom (AVGO): 2515 days, Latest: $320.05
+    • Taiwan Semiconductor (TSM): 2515 days, Latest: $334.87
+    • Qualcomm (QCOM): 2515 days, Latest: $155.82
+    • Advanced Micro Devices (AMD): 2515 days, Latest: $259.68
+
+================================================================================
+✓ DOWNLOAD COMPLETE!
+================================================================================
+   ✓ Stock data updated
+
+1️⃣  Fetching latest news sentiment...
+================================================================================
+COLLECTING SENTIMENT DATA - 2026-01-25
+================================================================================
+
+Collecting sentiment for 35 stocks using NewsAPI...
+
+[1/35] NatWest Group (NWG.L)... ✓ 4 articles, POSITIVE (0.694)
+
+[2/35] GSK (GSK.L)... ✓ 10 articles, POSITIVE (0.155)
+
+[3/35] AstraZeneca (AZN.L)... ✓ 10 articles, POSITIVE (0.314)
+
+[4/35] Lloyds Banking (LLOY.L)... ✓ 6 articles, POSITIVE (0.686)
+
+[5/35] Standard Chartered (STAN.L)... ✓ 9 articles, POSITIVE (0.079)
+
+[6/35] HSBC (HSBA.L)... ✓ 10 articles, POSITIVE (0.370)
+
+[7/35] BAE Systems (BA.L)... ✓ 8 articles, POSITIVE (0.601)
+
+[8/35] Barclays (BARC.L)... ✓ 10 articles, POSITIVE (0.439)
+
+[9/35] Rolls-Royce (RR.L)... ✓ 9 articles, POSITIVE (0.238)
+
+[10/35] Johnson & Johnson (JNJ)... ✓ 10 articles, POSITIVE (0.401)
+
+[11/35] Morgan Stanley (MS)... ✓ 10 articles, NEGATIVE (-0.347)
+
+[12/35] Alphabet (GOOGL)... ✓ 10 articles, POSITIVE (0.197)
+
+[13/35] NVIDIA (NVDA)... ✓ 10 articles, NEUTRAL (-0.007)
+
+[14/35] Apple (AAPL)... ✓ 10 articles, POSITIVE (0.317)
+
+[15/35] BlackRock (BLK)... ✓ 10 articles, POSITIVE (0.312)
+
+[16/35] Pfizer (PFE)... ✓ 10 articles, POSITIVE (0.346)
+
+[17/35] Microsoft (MSFT)... ✓ 10 articles, POSITIVE (0.093)
+
+[18/35] Intel (INTC)... ✓ 10 articles, POSITIVE (0.197)
+
+[19/35] Broadcom (AVGO)... ✓ 10 articles, NEGATIVE (-0.098)
+
+[20/35] AMC Entertainment (AMC)... ✓ 10 articles, POSITIVE (0.361)
+
+[21/35] Taiwan Semiconductor (TSM)... ✓ 10 articles, POSITIVE (0.354)
+
+[22/35] Raytheon Technologies (RTX)... ✓ 10 articles, POSITIVE (0.120)
+
+[23/35] Qualcomm (QCOM)... ✓ 10 articles, POSITIVE (0.435)
+
+[24/35] Lockheed Martin (LMT)... ✓ 10 articles, POSITIVE (0.440)
+
+[25/35] GameStop (GME)... ✓ 10 articles, NEUTRAL (0.037)
+
+[26/35] Amazon (AMZN)... ✓ 9 articles, POSITIVE (0.444)
+
+[27/35] Costco (COST)... ✓ 10 articles, POSITIVE (0.170)
+
+[28/35] PepsiCo (PEP)... ✓ 10 articles, POSITIVE (0.358)
+
+[29/35] Coca-Cola (KO)... ✓ 10 articles, POSITIVE (0.285)
+
+[30/35] United Parcel Service (UPS)... ✓ 10 articles, POSITIVE (0.256)
+
+[31/35] Schlumberger (SLB)... ✓ 10 articles, NEGATIVE (-0.109)
+
+[32/35] Walmart (WMT)... ✓ 10 articles, NEGATIVE (-0.075)
+
+[33/35] Procter & Gamble (PG)... ✓ 10 articles, POSITIVE (0.113)
+
+[34/35] Honeywell (HON)... ✓ 10 articles, POSITIVE (0.140)
+
+[35/35] Occidental Petroleum (OXY)... ✓ 10 articles, POSITIVE (0.091)
+
+================================================================================
+✅ SENTIMENT DATA SAVED
+================================================================================
+
+Total stocks: 35
+With news: 35
+
+Sentiment distribution:
+sentiment_label
+POSITIVE    29
+NEGATIVE     4
+NEUTRAL      2
+Name: count, dtype: int64
+
+Average sentiment score: 0.240
+
+Saved to: sentiment_data.csv
+================================================================================
+   ✓ Sentiment data updated (RSS-based, no API key needed)
+
+2️⃣  Generating stock predictions...
+================================================================================
+GENERATING REFINED MODEL PREDICTIONS
+================================================================================
+✓ Loaded COMPLETE sentiment history
+  Records: 156,926, Dates: 2,616, Range: 2016-01-06 00:00:00 to 2026-01-14 00:00:00
+✓ Loaded sentiment data for 60 stocks
+
+Processing NatWest Group (NWG.L)... ✓
+Processing GSK (GSK.L)... ✓
+Processing AstraZeneca (AZN.L)... ✓
+Processing Lloyds Banking (LLOY.L)... ✓
+Processing Standard Chartered (STAN.L)... ✓
+Processing HSBC (HSBA.L)... ✓
+Processing BAE Systems (BA.L)... ✓
+Processing Barclays (BARC.L)... ✓
+Processing Rolls-Royce (RR.L)... ✓
+Processing Johnson & Johnson (JNJ)... ✓
+Processing Morgan Stanley (MS)... ✓
+Processing Alphabet (GOOGL)... ✓
+Processing NVIDIA (NVDA)... ✓
+Processing Apple (AAPL)... ✓
+Processing BlackRock (BLK)... ✓
+Processing Pfizer (PFE)... ✓
+Processing Microsoft (MSFT)... ✓
+Processing Intel (INTC)... ✓
+Processing Broadcom (AVGO)... ✓
+Processing AMC Entertainment (AMC)... ✓
+Processing Taiwan Semiconductor (TSM)... ✓
+Processing Raytheon Technologies (RTX)... ✓
+Processing Qualcomm (QCOM)... ✓
+Processing Lockheed Martin (LMT)... ✓
+Processing GameStop (GME)... ✓
+Processing Amazon (AMZN)... ✓
+Processing Costco (COST)... ✓
+Processing PepsiCo (PEP)... ✓
+Processing Coca-Cola (KO)... ✓
+Processing United Parcel Service (UPS)... ✓
+Processing Schlumberger (SLB)... ✓
+Processing Walmart (WMT)... ✓
+Processing Procter & Gamble (PG)... ✓
+Processing Honeywell (HON)... ✓
+Processing Occidental Petroleum (OXY)... ✓
+Processing Advanced Micro Devices (AMD)... ✓
+Processing ConocoPhillips (COP)... ✓
+Processing JPMorgan Chase (JPM)... ✓
+Processing Exxon Mobil (XOM)... ✓
+Processing Marathon Digital (MARA)... ✓
+Processing General Electric (GE)... ✓
+Processing Bank of America (BAC)... ✓
+Processing Plug Power (PLUG)... ✓
+Processing 3M Company (MMM)... ✓
+Processing BlackBerry (BB)... ✓
+Processing Goldman Sachs (GS)... ✓
+Processing Chevron (CVX)... ✓
+Processing Northrop Grumman (NOC)... ✓
+Processing Caterpillar (CAT)... ✓
+Processing Riot Platforms (RIOT)... ✓
+Processing Virgin Galactic (SPCE)... ✓
+Processing Tilray Brands (TLRY)... ✓
+Processing NIO Inc (NIO)... ✓
+Processing Moderna (MRNA)... ✓
+Processing Lucid Group (LCID)... ✓
+Processing Palantir Technologies (PLTR)... ✓
+Processing SoFi Technologies (SOFI)... ✓
+Processing Coinbase Global (COIN)... ✓
+Processing Robinhood Markets (HOOD)... ✓
+Processing Rivian Automotive (RIVN)... ✓
+
+================================================================================
+✓ Saved 60 stock predictions to predictions_refined.csv
+================================================================================
+
+Predictions by horizon:
+  1d: 35 UP, 25 DOWN
+  5d: 41 UP, 19 DOWN
+  21d: 37 UP, 23 DOWN
+
+Stocks by sector:
+Sector
+Banking              5
+Consumer Staples     5
+Defence              5
+Energy               5
+Financials           5
+Industrials          5
+Meme/Speculative    15
+Pharma               5
+Semiconductors       5
+Technology           5
+   ✓ Predictions complete
+
+3️⃣  Generating BUY/HOLD/SELL recommendations...
+
+============================
+================================================================================
+GENERATING STOCK RECOMMENDATIONS
+================================================================================
+
+✓ Loaded predictions for 60 stocks
+
+✓ Saved recommendations to stock_recommendations.csv
+
+================================================================================
+RECOMMENDATION SUMMARY
+================================================================================
+
+Overall Recommendations:
+  🟢 BUY: 24 stocks
+  ⚪ HOLD: 22 stocks
+  🟠 SELL: 14 stocks
+
+By Strength:
+  BUY (Moderate): 17 stocks
+  BUY (Strong): 7 stocks
+  HOLD (Neutral): 22 stocks
+  SELL (Moderate): 13 stocks
+  SELL (Strong): 1 stocks
+
+================================================================================
+TOP BUY RECOMMENDATIONS
+================================================================================
+
+Stock                     Ticker     Score    Strength     Consensus    Price     
+--------------------------------------------------------------------------------
+🟢 Palantir Technologies  PLTR       0.2571   Strong       2/3 UP       $169.60   
+🟢 NVIDIA                 NVDA       0.2371   Strong       3/3 UP       $187.67   
+🟢 PepsiCo                PEP        0.2206   Strong       3/3 UP       $144.58   
+🟢 Pfizer                 PFE        0.2199   Strong       3/3 UP       $25.65    
+🟢 ConocoPhillips         COP        0.1804   Strong       3/3 UP       $98.35    
+🟢 Broadcom               AVGO       0.1710   Strong       3/3 UP       $320.05   
+🟢 Costco                 COST       0.1678   Strong       3/3 UP       $983.25   
+🟡 Apple                  AAPL       0.1371   Moderate     3/3 UP       $248.04   
+🟡 Microsoft              MSFT       0.1208   Moderate     3/3 UP       $465.95   
+🟡 Alphabet               GOOGL      0.1207   Moderate     3/3 UP       $327.93   
+
+================================================================================
+TOP SELL RECOMMENDATIONS
+================================================================================
+
+Stock                     Ticker     Score    Strength     Consensus    Price     
+--------------------------------------------------------------------------------
+🔴 AMC Entertainment      AMC        -0.1518  Strong       0/3 UP       $1.56     
+🟠 Tilray Brands          TLRY       -0.1454  Moderate     0/3 UP       $9.05     
+🟠 Chevron                CVX        -0.1433  Moderate     1/3 UP       $166.72   
+🟠 Marathon Digital       MARA       -0.1419  Moderate     0/3 UP       $10.50    
+🟠 Schlumberger           SLB        -0.1274  Moderate     0/3 UP       $49.15    
+🟠 NIO Inc                NIO        -0.0953  Moderate     1/3 UP       $4.64     
+🟠 Rivian Automotive      RIVN       -0.0888  Moderate     0/3 UP       $15.95    
+🟠 Virgin Galactic        SPCE       -0.0694  Moderate     0/3 UP       $3.07     
+🟠 GameStop               GME        -0.0675  Moderate     0/3 UP       $22.99    
+🟠 Riot Platforms         RIOT       -0.0670  Moderate     1/3 UP       $17.28    
+
+================================================================================
+HOLD POSITIONS
+================================================================================
+
+Stock                     Ticker     Score    Strength     Consensus    Price     
+--------------------------------------------------------------------------------
+⚪ BAE Systems            BA.L       0.0482   Neutral      3/3 UP       $2027.00  
+⚪ Intel                  INTC       0.0402   Neutral      3/3 UP       $45.07    
+⚪ Raytheon Technologies  RTX        0.0397   Neutral      3/3 UP       $195.93   
+⚪ 3M Company             MMM        0.0329   Neutral      3/3 UP       $162.68   
+⚪ Robinhood Markets      HOOD       0.0279   Neutral      3/3 UP       $106.99   
+⚪ Goldman Sachs          GS         0.0275   Neutral      3/3 UP       $918.88   
+⚪ Coca-Cola              KO         0.0268   Neutral      1/3 UP       $72.88    
+⚪ Qualcomm               QCOM       0.0267   Neutral      2/3 UP       $155.82   
+⚪ Exxon Mobil            XOM        0.0177   Neutral      3/3 UP       $134.97   
+⚪ Standard Chartered     STAN.L     0.0161   Neutral      2/3 UP       $1829.00  
+⚪ Barclays               BARC.L     0.0135   Neutral      3/3 UP       $480.30   
+⚪ General Electric       GE         0.0109   Neutral      2/3 UP       $293.87   
+⚪ NatWest Group          NWG.L      0.0094   Neutral      3/3 UP       $646.60   
+⚪ BlackBerry             BB         0.0091   Neutral      1/3 UP       $3.82     
+⚪ Advanced Micro Devices AMD        0.0039   Neutral      1/3 UP       $259.68   
+⚪ Honeywell              HON        0.0033   Neutral      2/3 UP       $221.46   
+⚪ HSBC                   HSBA.L     0.0027   Neutral      2/3 UP       $1231.00  
+⚪ Moderna                MRNA       -0.0042  Neutral      1/3 UP       $48.71    
+⚪ Procter & Gamble       PG         -0.0061  Neutral      2/3 UP       $150.15   
+⚪ Johnson & Johnson      JNJ        -0.0080  Neutral      1/3 UP       $220.14   
+⚪ Rolls-Royce            RR.L       -0.0255  Neutral      0/3 UP       $1253.00  
+⚪ Lloyds Banking         LLOY.L     -0.0286  Neutral      0/3 UP       $101.65   
+
+================================================================================
+SECTOR ANALYSIS
+================================================================================
+
+Recommendation    BUY  HOLD  SELL
+Sector                           
+Banking             0     5     0
+Consumer Staples    3     2     0
+Defence             2     3     0
+Energy              2     1     2
+Financials          4     1     0
+Industrials         2     3     0
+Meme/Speculative    2     2    11
+Pharma              2     2     1
+Semiconductors      2     3     0
+Technology          5     0     0
+
+================================================================================
+✓ COMPLETE!
+================================================================================
+
+Scoring Methodology:
+  • Combines 1d (20%), 5d (30%), 21d (50%) predictions
+  • Weights by prediction confidence
+  • Score range: -1.0 (strong sell) to +1.0 (strong buy)
+  • BUY: Score > 0.05 | HOLD: -0.05 to 0.05 | SELL: Score < -0.05
+  • Str   ✓ Recommendations comple   ✓ Recommendations complete
+
+4️⃣  Generating opt
+============================
+================================================================================
+PORTFOLIO MANAGEMENT SYSTEM
+================================================================================
+
+Loading recommendations...
+✓ Loaded 60 stock recommendations
+
+Portfolio Configuration:
+  Total Capital:        $100,000
+  Max Position:         15.0% per stock
+  Max Sector:           35.0% per sector
+  Min BUY Score:        0.05
+  Cash Reserve:         10.0%
+
+Generating optimal portfolio allocation...
+--------------------------------------------------------------------------------
+
+Stock                     Ticker   Sector         Score  Alloc %       Amount   Shares
+--------------------------------------------------------------------------------
+Broadcom                  AVGO     Semiconductors  0.1710   5.76% $      5,761       18
+Pfizer                    PFE      Pharma        0.2199   5.75% $      5,746      224
+ConocoPhillips            COP      Energy        0.1804   5.70% $      5,704       58
+PepsiCo                   PEP      Consumer Staples  0.2206   5.64% $      5,639       39
+NVIDIA                    NVDA     Technology    0.2371   5.63% $      5,630       30
+Palantir Technologies     PLTR     Meme/Speculative  0.2571   5.60% $      5,597       33
+Costco                    COST     Consumer Staples  0.1678   4.92% $      4,916        5
+Apple                     AAPL     Technology    0.1371   4.71% $      4,713       19
+United Parcel Service     UPS      Industrials   0.1183   4.00% $      3,995       37
+Alphabet                  GOOGL    Technology    0.1207   3.94% $      3,935       12
+Caterpillar               CAT      Industrials   0.1171   3.76% $      3,760        6
+Microsoft                 MSFT     Technology    0.1208   3.73% $      3,728        8
+Walmart                   WMT      Consumer Staples  0.0918   3.06% $      3,061       26
+JPMorgan Chase            JPM      Financials    0.1096   2.98% $      2,977       10
+Amazon                    AMZN     Technology    0.0885   2.39% $      2,392       10
+Bank of America           BAC      Financials    0.0693   2.38% $      2,379       46
+Lockheed Martin           LMT      Defence       0.0804   2.36% $      2,363        4
+BlackRock                 BLK      Financials    0.0766   2.26% $      2,260        2
+Northrop Grumman          NOC      Defence       0.0599   2.02% $      2,019        3
+Taiwan Semiconductor      TSM      Semiconductors  0.0613   2.01% $      2,009        6
+Morgan Stanley            MS       Financials    0.0601   1.97% $      1,969       11
+Coinbase Global           COIN     Meme/Speculative  0.0559   1.52% $      1,519        7
+Occidental Petroleum      OXY      Energy        0.0535   1.19% $      1,191       27
+AstraZeneca               AZN.L    Pharma        0.0759   0.00% $          0        0
+
+================================================================================
+PORTFOLIO SUMMARY
+================================================================================
+
+Capital Allocation:
+  Total Capital:        $     100,000
+  Total Invested:       $      83,261  (83.3%)
+  Cash Reserve:         $      16,739  (16.7%)
+
+Diversification:
+  Number of Positions:            24
+  Number of Sectors:               9
+  Largest Position:            5.76%
+  Average Position:            3.47%
+  Smallest Position:           0.00%
+
+Sector Allocation:
+  Technology                20.40%
+  Consumer Staples          13.62%
+  Financials                 9.59%
+  Semiconductors             7.77%
+  Industrials                7.75%
+  Meme/Speculative           7.12%
+  Energy                     6.89%
+  Pharma                     5.75%
+  Defence                    4.38%
+
+Risk Metrics:
+  Average Score:              0.1229
+  Weighted Avg Score:         0.1497
+  Largest Sector:         Technology (20.4%)
+
+================================================================================
+✓ Portfolio saved to portfolio_allocation.csv
+================================================================================
+
+📋 TRADING INSTRUCTIONS
+================================================================================
+
+1. BUY 18 shares of Broadcom (AVGO)
+   → $5,761 at ~$320.05/share
+   Rationale: Strong BUY (Score: 0.1710, 3/3 UP)
+
+2. BUY 224 shares of Pfizer (PFE)
+   → $5,746 at ~$25.65/share
+   Rationale: Strong BUY (Score: 0.2199, 3/3 UP)
+
+3. BUY 58 shares of ConocoPhillips (COP)
+   → $5,704 at ~$98.35/share
+   Rationale: Strong BUY (Score: 0.1804, 3/3 UP)
+
+4. BUY 39 shares of PepsiCo (PEP)
+   → $5,639 at ~$144.58/share
+   Rationale: Strong BUY (Score: 0.2206, 3/3 UP)
+
+5. BUY 30 shares of NVIDIA (NVDA)
+   → $5,630 at ~$187.67/share
+   Rationale: Strong BUY (Score: 0.2371, 3/3 UP)
+
+6. BUY 33 shares of Palantir Technologies (PLTR)
+   → $5,597 at ~$169.60/share
+   Rationale: Strong BUY (Score: 0.2571, 2/3 UP)
+
+7. BUY 5 shares of Costco (COST)
+   → $4,916 at ~$983.25/share
+   Rationale: Strong BUY (Score: 0.1678, 3/3 UP)
+
+8. BUY 19 shares of Apple (AAPL)
+   → $4,713 at ~$248.04/share
+   Rationale: Moderate BUY (Score: 0.1371, 3/3 UP)
+
+9. BUY 37 shares of United Parcel Service (UPS)
+   → $3,995 at ~$107.98/share
+   Rationale: Moderate BUY (Score: 0.1183, 3/3 UP)
+
+10. BUY 12 shares of Alphabet (GOOGL)
+   → $3,935 at ~$327.93/share
+   Rationale: Moderate BUY (Score: 0.1207, 3/3 UP)
+
+11. BUY 6 shares of Caterpillar (CAT)
+   → $3,760 at ~$626.62/share
+   Rationale: Moderate BUY (Score: 0.1171, 3/3 UP)
+
+12. BUY 8 shares of Microsoft (MSFT)
+   → $3,728 at ~$465.95/share
+   Rationale: Moderate BUY (Score: 0.1208, 3/3 UP)
+
+13. BUY 26 shares of Walmart (WMT)
+   → $3,061 at ~$117.73/share
+   Rationale: Moderate BUY (Score: 0.0918, 3/3 UP)
+
+14. BUY 10 shares of JPMorgan Chase (JPM)
+   → $2,977 at ~$297.72/share
+   Rationale: Moderate BUY (Score: 0.1096, 2/3 UP)
+
+15. BUY 10 shares of Amazon (AMZN)
+   → $2,392 at ~$239.16/share
+   Rationale: Moderate BUY (Score: 0.0885, 2/3 UP)
+
+16. BUY 46 shares of Bank of America (BAC)
+   → $2,379 at ~$51.72/share
+   Rationale: Moderate BUY (Score: 0.0693, 3/3 UP)
+
+17. BUY 4 shares of Lockheed Martin (LMT)
+   → $2,363 at ~$590.82/share
+   Rationale: Moderate BUY (Score: 0.0804, 3/3 UP)
+
+18. BUY 2 shares of BlackRock (BLK)
+   → $2,260 at ~$1129.91/share
+   Rationale: Moderate BUY (Score: 0.0766, 3/3 UP)
+
+19. BUY 3 shares of Northrop Grumman (NOC)
+   → $2,019 at ~$672.95/share
+   Rationale: Moderate BUY (Score: 0.0599, 3/3 UP)
+
+20. BUY 6 shares of Taiwan Semiconductor (TSM)
+   → $2,009 at ~$334.87/share
+   Rationale: Moderate BUY (Score: 0.0613, 3/3 UP)
+
+21. BUY 11 shares of Morgan Stanley (MS)
+   → $1,969 at ~$179.00/share
+   Rationale: Moderate BUY (Score: 0.0601, 3/3 UP)
+
+22. BUY 7 shares of Coinbase Global (COIN)
+   → $1,519 at ~$216.95/share
+   Rationale: Moderate BUY (Score: 0.0559, 2/3 UP)
+
+23. BUY 27 shares of Occidental Petroleum (OXY)
+   → $1,191 at ~$44.10/share
+   Rationale: Moderate BUY (Score: 0.0535, 1/3 UP)
+
+24. BUY 0 shares of AstraZeneca (AZN.L)
+   → $0 at ~$13580.00/share
+   Rationale: Moderate    ✓ Portfolio allocation c   ✓ P
+5️⃣  Generating daily trading signals...
+================================================================================
+📊 GENERATING DAILY TRADING SIGNALS - 2026-01-25
+================================================================================
+
+✅ Generated 240 signals
+
+Signal Distribution:
+
+1d Horizon:
+  BUY:   2 signals
+  SELL:  2 signals
+  HOLD: 56 signals
+
+7d Horizon:
+  BUY:   8 signals
+  SELL:  2 signals
+  HOLD: 50 signals
+
+30d Horizon:
+  BUY:  21 signals
+  SELL: 10 signals
+  HOLD: 29 signals
+
+90d Horizon:
+  BUY:  21 signals
+  SELL: 10 signals
+  HOLD: 29 signals
+
+================================================================================
+🚀 TOP 5 BUY SIGNALS (7-day horizon)
+================================================================================
+
+United Parcel Service (UPS) - Industrials
+  Current Price:     $107.98
+  Signal Strength:   13.95%
+  Probability UP:    68.7%
+  Model Confidence:  37.4%
+  Model Accuracy:    58.1%
+  Position Size:     $1140
+  Reason:            High upside probability (68.7%)
+
+Advanced Micro Devices (AMD) - Semiconductors
+  Current Price:     $259.68
+  Signal Strength:   11.02%
+  Probability UP:    66.6%
+  Model Confidence:  33.2%
+  Model Accuracy:    54.4%
+  Position Size:     $1110
+  Reason:            High upside probability (66.6%)
+
+PepsiCo (PEP) - Consumer Staples
+  Current Price:     $144.58
+  Signal Strength:   5.93%
+  Probability UP:    62.2%
+  Model Confidence:  24.4%
+  Model Accuracy:    51.7%
+  Position Size:     $1059
+  Reason:            High upside probability (62.2%)
+
+NVIDIA (NVDA) - Technology
+  Current Price:     $187.67
+  Signal Strength:   5.22%
+  Probability UP:    61.4%
+  Model Confidence:  22.9%
+  Model Accuracy:    60.9%
+  Position Size:     $1052
+  Reason:            High upside probability (61.4%)
+
+Costco (COST) - Consumer Staples
+  Current Price:     $983.25
+  Signal Strength:   4.74%
+  Probability UP:    60.9%
+  Model Confidence:  21.8%
+  Model Accuracy:    57.1%
+  Position Size:     $1047
+  Reason:            High upside probability (60.9%)
+
+================================================================================
+⚠️  TOP 5 SELL SIGNALS (7-day horizon)
+================================================================================
+
+Marathon Digital (MARA) - Meme/Speculative
+  Current Price:     $10.50
+  Signal Strength:   4.98%
+  Probability DOWN:  61.2%
+  Model Confidence:  22.3%
+  Reason:            High downside probability (61.2%)
+
+AMC Entertainment (AMC) - Meme/Speculative
+  Current Price:     $1.56
+  Signal Strength:   4.73%
+  Probability DOWN:  60.9%
+  Model Confidence:  21.7%
+  Reason:            High downside probability (60.9%)
+
+================================================================================
+📊 SIGNALS BY SECTOR (7-day horizon)
+================================================================================
+Signal            BUY  HOLD  SELL
+Sector                           
+Banking             0     5     0
+Consumer Staples    2     3     0
+Defence             0     5     0
+Energy              0     5     0
+Financials          0     5     0
+Industrials         1     4     0
+Meme/Speculative    1    12     2
+Pharma              0     5     0
+Semiconductors      2     3     0
+Technology          2     3     0
+
+✅ Signals saved to: daily_signals.csv
+================================================================================
+   ✓ Trading signals complete
+
+================================================================================
+✅ WORKFLOW COMPLETE!
+================================================================================
+
+Generated files:
+  📊 pred
+Generated files:
+  📊 predictions_refined.csv        - Individual stock predictions
+  🎯 stock_recommendations.csv      - BUY/HOLD/SELL recommendations
+  💼 portfolio_allocation.csv       - Optimal portfolio allocation
+  🚦 daily_signals.csv    Completed: Sun Jan 25 17:20:3Completed: Sun Jan 25 17:20:30 UTC 2026
+

@@ -1,0 +1,486 @@
+nohup: ignoring input
+================================================================================
+INTELLIGENT SENTIMENT BACKFILL - ALL 60 STOCKS
+================================================================================
+Date range: 2016-01-06 to 2026-01-11
+Total stocks: 60
+Strategy: Detect gaps and fill only missing data
+================================================================================
+
+✓ Found existing data: data/sentiment_history_complete.csv
+  Total records: 66025
+  Stocks with data: 26
+
+Total trading days in range: 2613
+From 2016-01-06 to 2026-01-09
+
+================================================================================
+WORK PLAN: 35 stocks need updates
+================================================================================
+Total dates to fill: 90,755
+
+Stocks needing updates:
+  RIVN     Rivian Automotive              - 1913 dates
+  NIO      NIO Inc                        - 2613 dates
+  LCID     Lucid Group                    - 2613 dates
+  SPCE     Virgin Galactic                - 2613 dates
+  PLUG     Plug Power                     - 2613 dates
+  HOOD     Robinhood Markets              - 2613 dates
+  COIN     Coinbase Global                - 2613 dates
+  RIOT     Riot Platforms                 - 2613 dates
+  MARA     Marathon Digital               - 2613 dates
+  TLRY     Tilray Brands                  - 2613 dates
+  ... and 25 more
+
+
+================================================================================
+SECTOR: DEFENCE
+================================================================================
+
+[1/60] BAE Systems (BA.L)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[2/60] Lockheed Martin (LMT)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[3/60] Northrop Grumman (NOC)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[4/60] Raytheon Technologies (RTX)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[5/60] Rolls-Royce (RR.L)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+================================================================================
+SECTOR: BANKING
+================================================================================
+
+[6/60] Barclays (BARC.L)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[7/60] HSBC (HSBA.L)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[8/60] Lloyds Banking (LLOY.L)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[9/60] NatWest Group (NWG.L)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[10/60] Standard Chartered (STAN.L)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+================================================================================
+SECTOR: PHARMA
+================================================================================
+
+[11/60] AstraZeneca (AZN.L)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[12/60] GSK (GSK.L)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[13/60] Pfizer (PFE)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[14/60] Johnson & Johnson (JNJ)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[15/60] Moderna (MRNA)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+================================================================================
+SECTOR: TECHNOLOGY
+================================================================================
+
+[16/60] Apple (AAPL)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[17/60] Microsoft (MSFT)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[18/60] NVIDIA (NVDA)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[19/60] Alphabet (GOOGL)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[20/60] Amazon (AMZN)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+================================================================================
+SECTOR: MEME/SPECULATIVE
+================================================================================
+
+[21/60] GameStop (GME)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[22/60] AMC Entertainment (AMC)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[23/60] BlackBerry (BB)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[24/60] Palantir Technologies (PLTR)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[25/60] SoFi Technologies (SOFI)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[26/60] Rivian Automotive (RIVN)
+  Existing: 700 records
+  Range: 2016-01-06 to 2018-09-11
+  Missing: 1913 dates
+  ────────────────────────────────────────────────────────────
+  Week 50: 2020-01-06 | Filled: 350
+  💾 Checkpoint saved: 66375 total records
+  Week 100: 2021-05-10 | Filled: 700
+  💾 Checkpoint saved: 66725 total records
+  Week 150: 2022-09-12 | Filled: 1050
+  💾 Checkpoint saved: 67075 total records
+  Week 200: 2024-01-15 | Filled: 1400
+  💾 Checkpoint saved: 67425 total records
+  Week 250: 2025-05-19 | Filled: 1750
+  💾 Checkpoint saved: 67775 total records
+  ✓ Filled 1913 missing dates
+
+[27/60] NIO Inc (NIO)
+  NEW STOCK - Need all 2613 dates
+  ────────────────────────────────────────────────────────────
+  Week 50: 2017-05-01 | Filled: 350
+  💾 Checkpoint saved: 68288 total records
+  Week 100: 2018-09-03 | Filled: 700
+  💾 Checkpoint saved: 68638 total records
+  Week 150: 2020-01-06 | Filled: 1050
+  💾 Checkpoint saved: 68988 total records
+  Week 200: 2021-05-10 | Filled: 1400
+  💾 Checkpoint saved: 69338 total records
+  Week 250: 2022-09-12 | Filled: 1750
+  💾 Checkpoint saved: 69688 total records
+  Week 300: 2024-01-15 | Filled: 2100
+  💾 Checkpoint saved: 70038 total records
+  Week 350: 2025-05-19 | Filled: 2450
+  💾 Checkpoint saved: 70388 total records
+  ✓ Filled 2613 missing dates
+
+[28/60] Lucid Group (LCID)
+  NEW STOCK - Need all 2613 dates
+  ────────────────────────────────────────────────────────────
+  Week 50: 2017-05-01 | Filled: 350
+  💾 Checkpoint saved: 70901 total records
+  Week 100: 2018-09-03 | Filled: 700
+  💾 Checkpoint saved: 71251 total records
+  Week 150: 2020-01-06 | Filled: 1050
+  💾 Checkpoint saved: 71601 total records
+  Week 200: 2021-05-10 | Filled: 1400
+  💾 Checkpoint saved: 71951 total records
+  Week 250: 2022-09-12 | Filled: 1750
+  💾 Checkpoint saved: 72301 total records
+  Week 300: 2024-01-15 | Filled: 2100
+  💾 Checkpoint saved: 72651 total records
+  Week 350: 2025-05-19 | Filled: 2450
+  💾 Checkpoint saved: 73001 total records
+  ✓ Filled 2613 missing dates
+
+[29/60] Virgin Galactic (SPCE)
+  NEW STOCK - Need all 2613 dates
+  ────────────────────────────────────────────────────────────
+  Week 50: 2017-05-01 | Filled: 350
+  💾 Checkpoint saved: 73514 total records
+  Week 100: 2018-09-03 | Filled: 700
+  💾 Checkpoint saved: 73864 total records
+  Week 150: 2020-01-06 | Filled: 1050
+  💾 Checkpoint saved: 74214 total records
+  Week 200: 2021-05-10 | Filled: 1400
+  💾 Checkpoint saved: 74564 total records
+  Week 250: 2022-09-12 | Filled: 1750
+  💾 Checkpoint saved: 74914 total records
+  Week 300: 2024-01-15 | Filled: 2100
+  💾 Checkpoint saved: 75264 total records
+  Week 350: 2025-05-19 | Filled: 2450
+  💾 Checkpoint saved: 75614 total records
+  ✓ Filled 2613 missing dates
+
+[30/60] Plug Power (PLUG)
+  NEW STOCK - Need all 2613 dates
+  ────────────────────────────────────────────────────────────
+  Week 50: 2017-05-01 | Filled: 350
+  💾 Checkpoint saved: 76127 total records
+  Week 100: 2018-09-03 | Filled: 700
+  💾 Checkpoint saved: 76477 total records
+  Week 150: 2020-01-06 | Filled: 1050
+  💾 Checkpoint saved: 76827 total records
+  Week 200: 2021-05-10 | Filled: 1400
+  💾 Checkpoint saved: 77177 total records
+  Week 250: 2022-09-12 | Filled: 1750
+  💾 Checkpoint saved: 77527 total records
+  Week 300: 2024-01-15 | Filled: 2100
+  💾 Checkpoint saved: 77877 total records
+  Week 350: 2025-05-19 | Filled: 2450
+  💾 Checkpoint saved: 78227 total records
+  ✓ Filled 2613 missing dates
+
+[31/60] Robinhood Markets (HOOD)
+  NEW STOCK - Need all 2613 dates
+  ────────────────────────────────────────────────────────────
+  Week 50: 2017-05-01 | Filled: 350
+  💾 Checkpoint saved: 78740 total records
+  Week 100: 2018-09-03 | Filled: 700
+  💾 Checkpoint saved: 79090 total records
+  Week 150: 2020-01-06 | Filled: 1050
+  💾 Checkpoint saved: 79440 total records
+  Week 200: 2021-05-10 | Filled: 1400
+  💾 Checkpoint saved: 79790 total records
+  Week 250: 2022-09-12 | Filled: 1750
+  💾 Checkpoint saved: 80140 total records
+  Week 300: 2024-01-15 | Filled: 2100
+  💾 Checkpoint saved: 80490 total records
+  Week 350: 2025-05-19 | Filled: 2450
+  💾 Checkpoint saved: 80840 total records
+  ✓ Filled 2613 missing dates
+
+[32/60] Coinbase Global (COIN)
+  NEW STOCK - Need all 2613 dates
+  ────────────────────────────────────────────────────────────
+  Week 50: 2017-05-01 | Filled: 350
+  💾 Checkpoint saved: 81353 total records
+  Week 100: 2018-09-03 | Filled: 700
+  💾 Checkpoint saved: 81703 total records
+  Week 150: 2020-01-06 | Filled: 1050
+  💾 Checkpoint saved: 82053 total records
+  Week 200: 2021-05-10 | Filled: 1400
+  💾 Checkpoint saved: 82403 total records
+  Week 250: 2022-09-12 | Filled: 1750
+  💾 Checkpoint saved: 82753 total records
+  Week 300: 2024-01-15 | Filled: 2100
+  💾 Checkpoint saved: 83103 total records
+  Week 350: 2025-05-19 | Filled: 2450
+  💾 Checkpoint saved: 83453 total records
+  ✓ Filled 2613 missing dates
+
+[33/60] Riot Platforms (RIOT)
+  NEW STOCK - Need all 2613 dates
+  ────────────────────────────────────────────────────────────
+  Week 50: 2017-05-01 | Filled: 350
+  💾 Checkpoint saved: 83966 total records
+  Week 100: 2018-09-03 | Filled: 700
+  💾 Checkpoint saved: 84316 total records
+  Week 150: 2020-01-06 | Filled: 1050
+  💾 Checkpoint saved: 84666 total records
+  Week 200: 2021-05-10 | Filled: 1400
+  💾 Checkpoint saved: 85016 total records
+  Week 250: 2022-09-12 | Filled: 1750
+  💾 Checkpoint saved: 85366 total records
+  Week 300: 2024-01-15 | Filled: 2100
+  💾 Checkpoint saved: 85716 total records
+  Week 350: 2025-05-19 | Filled: 2450
+  💾 Checkpoint saved: 86066 total records
+  ✓ Filled 2613 missing dates
+
+[34/60] Marathon Digital (MARA)
+  NEW STOCK - Need all 2613 dates
+  ────────────────────────────────────────────────────────────
+  Week 50: 2017-05-01 | Filled: 350
+  💾 Checkpoint saved: 86579 total records
+  Week 100: 2018-09-03 | Filled: 700
+  💾 Checkpoint saved: 86929 total records
+  Week 150: 2020-01-06 | Filled: 1050
+  💾 Checkpoint saved: 87279 total records
+  Week 200: 2021-05-10 | Filled: 1400
+  💾 Checkpoint saved: 87629 total records
+  Week 250: 2022-09-12 | Filled: 1750
+  💾 Checkpoint saved: 87979 total records
+  Week 300: 2024-01-15 | Filled: 2100
+  💾 Checkpoint saved: 88329 total records
+  Week 350: 2025-05-19 | Filled: 2450
+  💾 Checkpoint saved: 88679 total records
+  ✓ Filled 2613 missing dates
+
+[35/60] Tilray Brands (TLRY)
+  NEW STOCK - Need all 2613 dates
+  ────────────────────────────────────────────────────────────
+  Week 50: 2017-05-01 | Filled: 350
+  💾 Checkpoint saved: 89192 total records
+  Week 100: 2018-09-03 | Filled: 700
+  💾 Checkpoint saved: 89542 total records
+  Week 150: 2020-01-06 | Filled: 1050
+  💾 Checkpoint saved: 89892 total records
+  Week 200: 2021-05-10 | Filled: 1400
+  💾 Checkpoint saved: 90242 total records
+  Week 250: 2022-09-12 | Filled: 1750
+  💾 Checkpoint saved: 90592 total records
+  Week 300: 2024-01-15 | Filled: 2100
+  💾 Checkpoint saved: 90942 total records
+  Week 350: 2025-05-19 | Filled: 2450
+  💾 Checkpoint saved: 91292 total records
+  ✓ Filled 2613 missing dates
+
+================================================================================
+SECTOR: ENERGY
+================================================================================
+
+[36/60] Exxon Mobil (XOM)
+  NEW STOCK - Need all 2613 dates
+  ────────────────────────────────────────────────────────────
+  Week 50: 2017-05-01 | Filled: 350
+  💾 Checkpoint saved: 91805 total records
+  Week 100: 2018-09-03 | Filled: 700
+  💾 Checkpoint saved: 92155 total records
+  Week 150: 2020-01-06 | Filled: 1050
+  💾 Checkpoint saved: 92505 total records
+  Week 200: 2021-05-10 | Filled: 1400
+  💾 Checkpoint saved: 92855 total records
+  Week 250: 2022-09-12 | Filled: 1750
+  💾 Checkpoint saved: 93205 total records
+  Week 300: 2024-01-15 | Filled: 2100
+  💾 Checkpoint saved: 93555 total records
+  Week 350: 2025-05-19 | Filled: 2450
+  💾 Checkpoint saved: 93905 total records
+  ✓ Filled 2613 missing dates
+
+[37/60] Chevron (CVX)
+  NEW STOCK - Need all 2613 dates
+  ────────────────────────────────────────────────────────────
+  Week 50: 2017-05-01 | Filled: 350
+  💾 Checkpoint saved: 94418 total records
+  Week 100: 2018-09-03 | Filled: 700
+  💾 Checkpoint saved: 94768 total records
+  Week 150: 2020-01-06 | Filled: 1050
+  💾 Checkpoint saved: 95118 total records
+  Week 200: 2021-05-10 | Filled: 1400
+  💾 Checkpoint saved: 95468 total records
+  Week 250: 2022-09-12 | Filled: 1750
+  💾 Checkpoint saved: 95818 total records
+  Week 300: 2024-01-15 | Filled: 2100
+  💾 Checkpoint saved: 96168 total records
+  Week 350: 2025-05-19 | Filled: 2450
+  💾 Checkpoint saved: 96518 total records
+  ✓ Filled 2613 missing dates
+
+[38/60] ConocoPhillips (COP)
+  NEW STOCK - Need all 2613 dates
+  ────────────────────────────────────────────────────────────
+  Week 50: 2017-05-01 | Filled: 350
+  💾 Checkpoint saved: 97031 total records
+  Week 100: 2018-09-03 | Filled: 700
+  💾 Checkpoint saved: 97381 total records
+  Week 150: 2020-01-06 | Filled: 1050
+  💾 Checkpoint saved: 97731 total records
+  Week 200: 2021-05-10 | Filled: 1400
+  💾 Checkpoint saved: 98081 total records
+  Week 250: 2022-09-12 | Filled: 1750
+  💾 Checkpoint saved: 98431 total records
+  Week 300: 2024-01-15 | Filled: 2100
+  💾 Checkpoint saved: 98781 total records
+  Week 350: 2025-05-19 | Filled: 2450
+  💾 Checkpoint saved: 99131 total records
+  ✓ Filled 2613 missing dates
+
+[39/60] Schlumberger (SLB)
+  NEW STOCK - Need all 2613 dates
+  ────────────────────────────────────────────────────────────
+  Week 50: 2017-05-01 | Filled: 350
+  💾 Checkpoint saved: 99644 total records
+  Week 100: 2018-09-03 | Filled: 700
+  💾 Checkpoint saved: 99994 total records
+  Week 150: 2020-01-06 | Filled: 1050
+  💾 Checkpoint saved: 100344 total records
+  Week 200: 2021-05-10 | Filled: 1400
+  💾 Checkpoint saved: 100694 total records
+  Week 250: 2022-09-12 | Filled: 1750
+  💾 Checkpoint saved: 101044 total records
+  Week 300: 2024-01-15 | Filled: 2100
+  💾 Checkpoint saved: 101394 total records
+  Week 350: 2025-05-19 | Filled: 2450
+  💾 Checkpoint saved: 101744 total records
+  ✓ Filled 2613 missing dates
+
+[40/60] Occidental Petroleum (OXY)
+  NEW STOCK - Need all 2613 dates
+  ────────────────────────────────────────────────────────────
+  Week 50: 2017-05-01 | Filled: 350
+  💾 Checkpoint saved: 102257 total records
+  Week 100: 2018-09-03 | Filled: 700
+  💾 Checkpoint saved: 102607 total records
+  Week 150: 2020-01-06 | Filled: 1050
+  💾 Checkpoint saved: 102957 total records
+  Week 200: 2021-05-10 | Filled: 1400
+  💾 Checkpoint saved: 103307 total records
+  Week 250: 2022-09-12 | Filled: 1750
+  💾 Checkpoint saved: 103657 total records

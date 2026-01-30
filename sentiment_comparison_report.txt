@@ -1,0 +1,45 @@
+======================================================================
+SENTIMENT IMPACT COMPARISON
+======================================================================
+
+Comparing accuracy of models trained WITH vs WITHOUT sentiment
+
+Loading WITH sentiment results from training log...
+✓ Loaded 4 stocks with sentiment results
+
+Training models WITHOUT sentiment features...
+
+Training NVIDIA (NVDA) WITHOUT sentiment...
+  ✗ Error: [Errno 2] No such file or directory: 'data/NVDA_data.csv'
+Training Apple (AAPL) WITHOUT sentiment...
+  ✗ Error: [Errno 2] No such file or directory: 'data/AAPL_data.csv'
+Training BAE Systems (BA.L) WITHOUT sentiment...
+  ✗ Error: [Errno 2] No such file or directory: 'data/BA_L_data.csv'
+Training Barclays (BARC.L) WITHOUT sentiment...
+  ✗ Error: [Errno 2] No such file or directory: 'data/BARC_L_data.csv'
+
+======================================================================
+RESULTS COMPARISON
+======================================================================
+
+Stock           Horizon    WITHOUT      WITH         Difference
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+Stock           WITHOUT Avg     WITH Avg        Difference
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+OVERALL                                          +0.00%
+
+======================================================================
+CONCLUSION
+======================================================================
+
+➖ Sentiment has NEUTRAL impact (+0.00%)
+
+Stock breakdown:
+  Improved with sentiment: 0/0
+  Neutral:                 0/0
+  Worse with sentiment:    0/0
+
+======================================================================

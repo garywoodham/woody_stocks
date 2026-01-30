@@ -1,0 +1,55 @@
+{
+  "tier_1_elite": [],
+  "tier_2_good": [
+    "TLRY",
+    "RTX",
+    "STAN.L",
+    "GOOGL",
+    "NVDA",
+    "PLTR",
+    "SPCE",
+    "PFE",
+    "AMC",
+    "PLUG",
+    "NWG.L",
+    "AAPL",
+    "AMZN",
+    "JNJ",
+    "GSK.L",
+    "NIO",
+    "MSFT",
+    "NOC",
+    "LMT",
+    "BA.L",
+    "LCID"
+  ],
+  "tier_3_mediocre": [
+    "AZN.L",
+    "MARA",
+    "HOOD",
+    "BB",
+    "BARC.L",
+    "COIN",
+    "GME",
+    "HSBA.L",
+    "RIOT",
+    "RIVN",
+    "MRNA"
+  ],
+  "tier_4_avoid": [
+    "LLOY.L",
+    "SOFI",
+    "RR.L"
+  ],
+  "thresholds": {
+    "tier_1": 65,
+    "tier_2": 55,
+    "tier_3": 45
+  },
+  "position_sizing": {
+    "tier_1": 1.0,
+    "tier_2": 0.65,
+    "tier_3": 0.35,
+    "tier_4": 0.0
+  }
+}

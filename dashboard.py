@@ -1,6 +1,7 @@
 import dash
 from dash import dcc, html, dash_table
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
+from dash.exceptions import PreventUpdate
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import pandas as pd
@@ -333,6 +334,25 @@ def render_tab_content(tab):
                 },
                 className='dropdown'
             ),
+        ], style={'width': '30%', 'display': 'inline-block', 'marginRight': '3%'}),
+        
+        html.Div([
+            html.Label('Time Interval:', style={'color': colors['text'], 'fontWeight': 'bold', 'marginBottom': '5px'}),
+            dcc.Dropdown(
+                id='interval-dropdown',
+                options=[
+                    {'label': '📅 Daily', 'value': 'D'},
+                    {'label': '📊 Weekly', 'value': 'W'},
+                    {'label': '📈 Monthly', 'value': 'M'}
+                ],
+                value='D',
+                style={
+                    'backgroundColor': '#2d3142',
+                    'color': '#ffffff',
+                    'borderRadius': '5px'
+                },
+                className='dropdown'
+            ),
         ], style={'width': '30%', 'display': 'inline-block'}),
     ], style={'marginBottom': '30px'}),
     
@@ -351,12 +371,6 @@ def render_tab_content(tab):
     html.Div([
         dcc.Graph(id='volume-chart', style={'height': '200px'}),
     ], style={'width': '100%', 'backgroundColor': colors['card'], 'padding': '20px', 'borderRadius': '10px', 'marginBottom': '30px'}),
-    
-    # Predictions Table
-    html.Div([
-        html.H3('🎯 AI Predictions Summary', style={'color': colors['accent'], 'marginBottom': '20px'}),
-        html.Div(id='predictions-table')
-    ], style={'backgroundColor': colors['card'], 'padding': '20px', 'borderRadius': '10px', 'marginBottom': '30px'}),
     
     # All Stocks Summary Table
     html.Div([
@@ -1549,34 +1563,174 @@ def update_stock_dropdown(selected_sector):
     
     return options, default_value
 
+# Callback to handle table row clicks and update filters
+@app.callback(
+    Output('sector-dropdown', 'value'),
+    Output('stock-dropdown', 'value', allow_duplicate=True),
+    Input('stocks-table', 'active_cell'),
+    State('stocks-table', 'data'),
+    prevent_initial_call=True
+)
+def update_filters_from_table_click(active_cell, table_data):
+    if active_cell is None or table_data is None:
+        raise PreventUpdate
+    
+    # Get the clicked row
+    row_index = active_cell['row']
+    clicked_row = table_data[row_index]
+    
+    # Extract ticker and sector from the clicked row
+    ticker = clicked_row.get('Ticker')
+    sector = clicked_row.get('Sector')
+    
+    if ticker and sector:
+        return sector, ticker
+    
+    raise PreventUpdate
+
 # Callback to update all charts and tables
 @app.callback(
     Output('candlestick-chart', 'figure'),
     Output('volume-chart', 'figure'),
     Output('kpi-cards', 'children'),
-    Output('predictions-table', 'children'),
     Input('stock-dropdown', 'value'),
-    Input('period-dropdown', 'value')
+    Input('period-dropdown', 'value'),
+    Input('interval-dropdown', 'value')
 )
-def update_charts(selected_ticker, period_days):
+def update_charts(selected_ticker, period_days, interval):
     if not selected_ticker:
-        return {}, {}, [], []
+        return {}, {}, []
+    
+    # Set defaults if None
+    if period_days is None:
+        period_days = 180
+    if interval is None:
+        interval = 'D'
     
     # Filter data for selected stock
     df_stock = df_stocks[df_stocks['Ticker'] == selected_ticker].copy()
     
+    # Ensure index is DatetimeIndex and handle timezone issues
+    if not isinstance(df_stock.index, pd.DatetimeIndex):
+        df_stock.index = pd.to_datetime(df_stock.index, utc=True)
+    else:
+        # Remove timezone info if present to avoid conversion issues
+        if df_stock.index.tz is not None:
+            df_stock.index = df_stock.index.tz_localize(None)
+    
     if df_stock.empty:
-        return {}, {}, [], []
+        # Get stock name from predictions if available
+        pred_row = df_predictions[df_predictions['Ticker'] == selected_ticker]
+        stock_name = pred_row['Stock'].iloc[0] if not pred_row.empty else selected_ticker
+        
+        # Create empty figure with message
+        empty_fig = go.Figure()
+        empty_fig.add_annotation(
+            text=f"📊 No historical price data available for {stock_name} ({selected_ticker})<br><br>Run: python download_stock_data.py",
+            xref="paper", yref="paper",
+            x=0.5, y=0.5,
+            showarrow=False,
+            font=dict(size=16, color=colors['text']),
+            align='center'
+        )
+        empty_fig.update_layout(
+            template='plotly_dark',
+            paper_bgcolor=colors['card'],
+            plot_bgcolor=colors['background'],
+            xaxis={'visible': False},
+            yaxis={'visible': False}
+        )
+        
+        # Create message card
+        message_card = html.Div([
+            html.H3('⚠️ No Price Data Available', style={'color': colors['red'], 'textAlign': 'center'}),
+            html.P(f'Historical price data for {stock_name} ({selected_ticker}) has not been downloaded yet.',
+                   style={'color': colors['text'], 'textAlign': 'center', 'marginTop': '20px'}),
+            html.P('Predictions are available, but charts require price history.',
+                   style={'color': colors['text'], 'textAlign': 'center', 'fontSize': '14px'}),
+        ], style={'backgroundColor': colors['background'], 'padding': '40px', 'borderRadius': '10px', 'textAlign': 'center'})
+        
+        return empty_fig, empty_fig, message_card
     
     # Get prediction data
-    pred_data = df_predictions[df_predictions['Ticker'] == selected_ticker].iloc[0]
+    pred_rows = df_predictions[df_predictions['Ticker'] == selected_ticker]
+    if pred_rows.empty:
+        pred_data = None
+    else:
+        pred_data = pred_rows.iloc[0]
     
     # Filter by period
     if period_days < 9999:
         df_stock = df_stock.tail(period_days)
     
+    # Check if we have data after filtering
+    if df_stock.empty:
+        empty_fig = go.Figure()
+        empty_fig.add_annotation(
+            text=f"No data available for the selected period",
+            xref="paper", yref="paper",
+            x=0.5, y=0.5,
+            showarrow=False,
+            font=dict(size=16, color=colors['text'])
+        )
+        empty_fig.update_layout(
+            template='plotly_dark',
+            paper_bgcolor=colors['card'],
+            plot_bgcolor=colors['background']
+        )
+        return empty_fig, empty_fig, []
+    
     stock_name = df_stock['Stock'].iloc[0]
     sector = df_stock['Sector'].iloc[0]
+    
+    # Resample data based on interval
+    print(f"[DEBUG] Resampling {selected_ticker} to interval: {interval}")
+    try:
+        if interval == 'W':
+            # Weekly resampling
+            print(f"[DEBUG] Before weekly resample: {len(df_stock)} rows")
+            df_resampled = df_stock.resample('W').agg({
+                'Open': 'first',
+                'High': 'max',
+                'Low': 'min',
+                'Close': 'last',
+                'Volume': 'sum'
+            }).dropna()
+            print(f"[DEBUG] After weekly resample: {len(df_resampled)} rows")
+            # Preserve metadata
+            df_resampled['Stock'] = stock_name
+            df_resampled['Ticker'] = selected_ticker
+            df_resampled['Sector'] = sector
+            df_stock = df_resampled
+        elif interval == 'M':
+            # Monthly resampling
+            print(f"[DEBUG] Before monthly resample: {len(df_stock)} rows")
+            df_resampled = df_stock.resample('M').agg({
+                'Open': 'first',
+                'High': 'max',
+                'Low': 'min',
+                'Close': 'last',
+                'Volume': 'sum'
+            }).dropna()
+            print(f"[DEBUG] After monthly resample: {len(df_resampled)} rows")
+            # Preserve metadata
+            df_resampled['Stock'] = stock_name
+            df_resampled['Ticker'] = selected_ticker
+            df_resampled['Sector'] = sector
+            df_stock = df_resampled
+        # else: interval == 'D', use daily data as-is
+        
+        # Verify we still have data after resampling
+        if df_stock.empty:
+            raise ValueError("No data after resampling")
+            
+    except Exception as e:
+        # If resampling fails, fall back to daily data
+        print(f"[ERROR] Resampling error for {selected_ticker}: {e}")
+        df_stock = df_stocks[df_stocks['Ticker'] == selected_ticker].copy()
+        if period_days < 9999:
+            df_stock = df_stock.tail(period_days)
+        interval = 'D'  # Reset to daily
     
     # Calculate technical indicators for the chart
     df_stock['SMA_20'] = df_stock['Close'].rolling(window=20).mean()
@@ -1701,8 +1855,12 @@ def update_charts(selected_ticker, period_days):
             annotation_font_color="red"
         )
     
+    # Get interval label for chart title
+    interval_labels = {'D': 'Daily', 'W': 'Weekly', 'M': 'Monthly'}
+    interval_label = interval_labels.get(interval, 'Daily')
+    
     fig_candle.update_layout(
-        title=f'{stock_name} ({selected_ticker}) - {sector}',
+        title=f'{stock_name} ({selected_ticker}) - {sector} [{interval_label}]',
         yaxis_title='Price ($)',
         xaxis_title='Date',
         template='plotly_dark',
@@ -1802,29 +1960,29 @@ def update_charts(selected_ticker, period_days):
                 html.H4('AI Prediction', style={'color': colors['text'], 'marginBottom': '8px', 'fontSize': '14px'}),
                 html.Div([
                     html.Span('1d: ', style={'color': colors['text'], 'fontSize': '11px'}),
-                    html.Span(pred_data.get('d1_Direction', 'N/A'), 
-                             style={'color': colors['green'] if 'UP' in str(pred_data.get('d1_Direction', '')) else colors['red'],
+                    html.Span(pred_data.get('d1_Direction', 'N/A') if pred_data is not None else 'N/A', 
+                             style={'color': colors['green'] if pred_data is not None and 'UP' in str(pred_data.get('d1_Direction', '')) else colors['red'],
                                     'fontWeight': 'bold', 'fontSize': '12px'}),
-                    html.Span(f" {pred_data.get('d1_Prob_Up', 0):.0%}", 
+                    html.Span(f" {pred_data.get('d1_Prob_Up', 0):.0%}" if pred_data is not None else '', 
                              style={'color': colors['text'], 'fontSize': '10px'}),
                     html.Br(),
                     
                     html.Span('5d: ', style={'color': colors['text'], 'fontSize': '11px'}),
-                    html.Span(pred_data.get('d5_Direction', 'N/A'), 
-                             style={'color': colors['green'] if 'UP' in str(pred_data.get('d5_Direction', '')) else colors['red'],
+                    html.Span(pred_data.get('d5_Direction', 'N/A') if pred_data is not None else 'N/A', 
+                             style={'color': colors['green'] if pred_data is not None and 'UP' in str(pred_data.get('d5_Direction', '')) else colors['red'],
                                     'fontWeight': 'bold', 'fontSize': '12px'}),
-                    html.Span(f" {pred_data.get('d5_Prob_Up', 0):.0%}", 
+                    html.Span(f" {pred_data.get('d5_Prob_Up', 0):.0%}" if pred_data is not None else '', 
                              style={'color': colors['text'], 'fontSize': '10px'}),
                     html.Br(),
                     
                     html.Span('21d: ', style={'color': colors['text'], 'fontSize': '11px'}),
-                    html.Span(pred_data.get('d21_Direction', 'N/A'), 
-                             style={'color': colors['green'] if 'UP' in str(pred_data.get('d21_Direction', '')) else colors['red'],
+                    html.Span(pred_data.get('d21_Direction', 'N/A') if pred_data is not None else 'N/A', 
+                             style={'color': colors['green'] if pred_data is not None and 'UP' in str(pred_data.get('d21_Direction', '')) else colors['red'],
                                     'fontWeight': 'bold', 'fontSize': '12px'}),
-                    html.Span(f" {pred_data.get('d21_Prob_Up', 0):.0%}", 
+                    html.Span(f" {pred_data.get('d21_Prob_Up', 0):.0%}" if pred_data is not None else '', 
                              style={'color': colors['text'], 'fontSize': '10px'}),
                 ]),
-                html.P(f"Acc: {pred_data.get('d21_Accuracy', pred_data.get('d1_Accuracy', 0)):.0%}" if is_refined else '',
+                html.P(f"Acc: {pred_data.get('d21_Accuracy', pred_data.get('d1_Accuracy', 0)):.0%}" if is_refined and pred_data is not None else '',
                        style={'color': colors['accent'], 'fontSize': '11px', 'marginTop': '5px'})
             ], style={'display': 'inline-block', 'verticalAlign': 'middle', 'width': '55%', 'textAlign': 'left'}),
         ], style={
@@ -1837,46 +1995,9 @@ def update_charts(selected_ticker, period_days):
         }),
     ])
     
-    # Create predictions table - show daily predictions (d1, d5, d21)
-    prediction_cards = []
+    # predictions_table removed - predictions now shown in KPI cards
     
-    # Daily predictions configuration
-    pred_configs = [
-        ('d1', '1-Day'),
-        ('d5', '5-Day'),
-        ('d21', '21-Day'),
-    ]
-    
-    # Build cards for available predictions
-    for key, label in pred_configs:
-        dir_col = f'{key}_Direction'
-        prob_col = f'{key}_Prob_Up'
-        conf_col = f'{key}_Confidence'
-        acc_col = f'{key}_Accuracy'
-        
-        if dir_col in pred_data.index and pd.notna(pred_data[dir_col]):
-            prediction_cards.append(
-                html.Div([
-                    html.H4(f'{label} Prediction', style={'color': colors['text'], 'textAlign': 'center'}),
-                    html.H2(pred_data[dir_col], 
-                           style={'color': colors['green'] if 'UP' in str(pred_data[dir_col]) else colors['red'],
-                                  'textAlign': 'center', 'fontSize': '36px'}),
-                    html.P(f"Probability: {pred_data[prob_col]:.1%}", 
-                          style={'color': colors['text'], 'textAlign': 'center'}),
-                    html.P(f"Confidence: {pred_data[conf_col]:.1%}", 
-                          style={'color': colors['text'], 'textAlign': 'center'}),
-                    html.P(f"Accuracy: {pred_data[acc_col]:.1%}", 
-                          style={'color': colors['accent'], 'textAlign': 'center'})
-                ], style={'width': '31%', 'display': 'inline-block', 'marginRight': '2%',
-                         'backgroundColor': colors['background'], 'padding': '20px', 'borderRadius': '10px'})
-            )
-    
-    predictions_table = html.Div([html.Div(prediction_cards)]) if prediction_cards else html.Div([
-        html.P('No predictions available for this stock', 
-               style={'color': colors['text'], 'textAlign': 'center', 'padding': '20px'})
-    ])
-    
-    return fig_candle, fig_volume, kpi_cards, predictions_table
+    return fig_candle, fig_volume, kpi_cards
 
 # Callback to update stock dropdown based on selected sector (Sentiment tab)
 @app.callback(

@@ -1,0 +1,386 @@
+nohup: ignoring input
+================================================================================
+ENSEMBLE STACKING MODEL TRAINING
+================================================================================
+
+Architecture:
+  Layer 1: LightGBM + XGBoost + RandomForest (base models)
+  Layer 2: Logistic Regression (meta-learner)
+  Expected: 2-5% accuracy improvement over single models
+================================================================================
+
+📂 Loading data...
+✓ Loaded HISTORICAL sentiment data
+  Records: 490, Dates: 14
+
+Training ensemble models for 60 stocks
+
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - AAPL
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training AAPL: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - AMC
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training AMC: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - AMD
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training AMD: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - AMZN
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training AMZN: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - AVGO
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training AVGO: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - AZN.L
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training AZN.L: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - BA.L
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training BA.L: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - BAC
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training BAC: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - BARC.L
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training BARC.L: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - BB
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training BB: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - BLK
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training BLK: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - CAT
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training CAT: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - COIN
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training COIN: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - COP
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training COP: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - COST
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training COST: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - CVX
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training CVX: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - GE
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training GE: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - GME
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training GME: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - GOOGL
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training GOOGL: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - GS
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training GS: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - GSK.L
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training GSK.L: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - HON
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training HON: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - HOOD
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training HOOD: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - HSBA.L
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training HSBA.L: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - INTC
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training INTC: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - JNJ
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training JNJ: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - JPM
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training JPM: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - KO
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training KO: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - LCID
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training LCID: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - LLOY.L
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training LLOY.L: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - LMT
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training LMT: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - MARA
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training MARA: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - MMM
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training MMM: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - MRNA
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training MRNA: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - MS
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training MS: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - MSFT
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training MSFT: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - NIO
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training NIO: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - NOC
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training NOC: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - NVDA
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training NVDA: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - NWG.L
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training NWG.L: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - OXY
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training OXY: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - PEP
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training PEP: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - PFE
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training PFE: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - PG
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training PG: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - PLTR
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training PLTR: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - PLUG
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training PLUG: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - QCOM
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training QCOM: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - RIOT
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training RIOT: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - RIVN
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training RIVN: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - RR.L
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training RR.L: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - RTX
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training RTX: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - SLB
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training SLB: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - SOFI
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training SOFI: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - SPCE
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training SPCE: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - STAN.L
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training STAN.L: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - TLRY
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training TLRY: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - TSM
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training TSM: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - UPS
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training UPS: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - WMT
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training WMT: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - XOM
+================================================================================
+  ⚠️ Could not load market data: Missing column provided to 'parse_dates': 'Date'
+❌ Error training XOM: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING SUMMARY
+================================================================================
+
+⚠️  No models trained successfully
+
+================================================================================
+================================================================================

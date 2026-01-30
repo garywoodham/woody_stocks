@@ -1,0 +1,441 @@
+================================================================================
+ENHANCED MULTI-TIMEPERIOD STOCK PREDICTION
+================================================================================
+
+This training approach matches data granularity to prediction horizon:
+  • Daily data → Short-term predictions (days)
+  • Weekly data → Medium-term predictions (weeks)
+  • Monthly data → Long-term predictions (months)
+================================================================================
+✓ Found daily data: data/multi_sector_stocks.csv
+✓ Found weekly data: data/multi_sector_stocks_weekly.csv
+✓ Found monthly data: data/multi_sector_stocks_monthly.csv
+
+================================================================================
+PROCESSING DAILY DATA
+================================================================================
+Loaded 140,611 records from 2016-01-11 00:00:00+00:00 to 2026-01-09 00:00:00+00:00
+Stocks: 60
+
+================================================================================
+TRAINING DAILY MODELS FOR 3M Company
+================================================================================
+Data points: 2514
+Date range: 2016-01-11 00:00:00-05:00 to 2026-01-08 00:00:00-05:00
+Horizons: [1, 5, 21]
+
+Creating features...
+Clean samples: 2444
+Features: 46
+
+------------------------------------------------------------
+Training 1-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.691454
+Test Accuracy: 52.97%
+
+------------------------------------------------------------
+Training 5-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.690438
+Test Accuracy: 52.97%
+
+------------------------------------------------------------
+Training 21-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[2]	valid_0's binary_logloss: 0.654691
+Test Accuracy: 66.67%
+✓ Saved to models/MMM_daily_models.joblib
+
+================================================================================
+TRAINING DAILY MODELS FOR AMC Entertainment
+================================================================================
+Data points: 2514
+Date range: 2016-01-11 00:00:00-05:00 to 2026-01-08 00:00:00-05:00
+Horizons: [1, 5, 21]
+
+Creating features...
+Clean samples: 2444
+Features: 46
+
+------------------------------------------------------------
+Training 1-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.685721
+Test Accuracy: 58.69%
+
+------------------------------------------------------------
+Training 5-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[13]	valid_0's binary_logloss: 0.675408
+Test Accuracy: 59.71%
+
+------------------------------------------------------------
+Training 21-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[14]	valid_0's binary_logloss: 0.63759
+Test Accuracy: 63.39%
+✓ Saved to models/AMC_daily_models.joblib
+
+================================================================================
+TRAINING DAILY MODELS FOR Advanced Micro Devices
+================================================================================
+Data points: 2514
+Date range: 2016-01-11 00:00:00-05:00 to 2026-01-08 00:00:00-05:00
+Horizons: [1, 5, 21]
+
+Creating features...
+Clean samples: 2444
+Features: 46
+
+------------------------------------------------------------
+Training 1-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[4]	valid_0's binary_logloss: 0.691576
+Test Accuracy: 51.74%
+
+------------------------------------------------------------
+Training 5-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[9]	valid_0's binary_logloss: 0.686003
+Test Accuracy: 53.78%
+
+------------------------------------------------------------
+Training 21-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[17]	valid_0's binary_logloss: 0.668643
+Test Accuracy: 58.49%
+✓ Saved to models/AMD_daily_models.joblib
+
+================================================================================
+TRAINING DAILY MODELS FOR Alphabet
+================================================================================
+Data points: 2514
+Date range: 2016-01-11 00:00:00-05:00 to 2026-01-08 00:00:00-05:00
+Horizons: [1, 5, 21]
+
+Creating features...
+Clean samples: 2444
+Features: 46
+
+------------------------------------------------------------
+Training 1-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[3]	valid_0's binary_logloss: 0.686284
+Test Accuracy: 57.87%
+
+------------------------------------------------------------
+Training 5-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.679614
+Test Accuracy: 58.69%
+
+------------------------------------------------------------
+Training 21-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.630442
+Test Accuracy: 69.53%
+✓ Saved to models/GOOGL_daily_models.joblib
+
+================================================================================
+TRAINING DAILY MODELS FOR Amazon
+================================================================================
+Data points: 2514
+Date range: 2016-01-11 00:00:00-05:00 to 2026-01-08 00:00:00-05:00
+Horizons: [1, 5, 21]
+
+Creating features...
+Clean samples: 2444
+Features: 46
+
+------------------------------------------------------------
+Training 1-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[17]	valid_0's binary_logloss: 0.690363
+Test Accuracy: 54.60%
+
+------------------------------------------------------------
+Training 5-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[3]	valid_0's binary_logloss: 0.681375
+Test Accuracy: 58.28%
+
+------------------------------------------------------------
+Training 21-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.645305
+Test Accuracy: 65.44%
+✓ Saved to models/AMZN_daily_models.joblib
+
+================================================================================
+TRAINING DAILY MODELS FOR Apple
+================================================================================
+Data points: 2514
+Date range: 2016-01-11 00:00:00-05:00 to 2026-01-08 00:00:00-05:00
+Horizons: [1, 5, 21]
+
+Creating features...
+Clean samples: 2444
+Features: 46
+
+------------------------------------------------------------
+Training 1-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[2]	valid_0's binary_logloss: 0.689067
+Test Accuracy: 53.78%
+
+------------------------------------------------------------
+Training 5-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[10]	valid_0's binary_logloss: 0.683028
+Test Accuracy: 53.17%
+
+------------------------------------------------------------
+Training 21-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[2]	valid_0's binary_logloss: 0.655147
+Test Accuracy: 63.19%
+✓ Saved to models/AAPL_daily_models.joblib
+
+================================================================================
+TRAINING DAILY MODELS FOR AstraZeneca
+================================================================================
+Data points: 2527
+Date range: 2016-01-11 00:00:00+00:00 to 2026-01-09 00:00:00+00:00
+Horizons: [1, 5, 21]
+
+Creating features...
+Clean samples: 2456
+Features: 46
+
+------------------------------------------------------------
+Training 1-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[3]	valid_0's binary_logloss: 0.690036
+Test Accuracy: 53.05%
+
+------------------------------------------------------------
+Training 5-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[3]	valid_0's binary_logloss: 0.679382
+Test Accuracy: 56.10%
+
+------------------------------------------------------------
+Training 21-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[5]	valid_0's binary_logloss: 0.671431
+Test Accuracy: 60.98%
+✓ Saved to models/AZN.L_daily_models.joblib
+
+================================================================================
+TRAINING DAILY MODELS FOR BAE Systems
+================================================================================
+Data points: 2527
+Date range: 2016-01-11 00:00:00+00:00 to 2026-01-09 00:00:00+00:00
+Horizons: [1, 5, 21]
+
+Creating features...
+Clean samples: 2456
+Features: 46
+
+------------------------------------------------------------
+Training 1-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[29]	valid_0's binary_logloss: 0.686198
+Test Accuracy: 52.44%
+
+------------------------------------------------------------
+Training 5-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.690707
+Test Accuracy: 51.63%
+
+------------------------------------------------------------
+Training 21-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[11]	valid_0's binary_logloss: 0.68802
+Test Accuracy: 57.52%
+✓ Saved to models/BA.L_daily_models.joblib
+
+================================================================================
+TRAINING DAILY MODELS FOR Bank of America
+================================================================================
+Data points: 2514
+Date range: 2016-01-11 00:00:00-05:00 to 2026-01-08 00:00:00-05:00
+Horizons: [1, 5, 21]
+
+Creating features...
+Clean samples: 2444
+Features: 46
+
+------------------------------------------------------------
+Training 1-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.692001
+Test Accuracy: 52.97%
+
+------------------------------------------------------------
+Training 5-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.680342
+Test Accuracy: 62.17%
+
+------------------------------------------------------------
+Training 21-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.649684
+Test Accuracy: 69.73%
+✓ Saved to models/BAC_daily_models.joblib
+
+================================================================================
+TRAINING DAILY MODELS FOR Barclays
+================================================================================
+Data points: 2526
+Date range: 2016-01-11 00:00:00+00:00 to 2026-01-09 00:00:00+00:00
+Horizons: [1, 5, 21]
+
+Creating features...
+Clean samples: 2456
+Features: 46
+
+------------------------------------------------------------
+Training 1-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[2]	valid_0's binary_logloss: 0.69078
+Test Accuracy: 51.63%
+
+------------------------------------------------------------
+Training 5-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[2]	valid_0's binary_logloss: 0.68835
+Test Accuracy: 57.32%
+
+------------------------------------------------------------
+Training 21-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.685899
+Test Accuracy: 46.14%
+✓ Saved to models/BARC.L_daily_models.joblib
+
+================================================================================
+TRAINING DAILY MODELS FOR BlackBerry
+================================================================================
+Data points: 2514
+Date range: 2016-01-11 00:00:00-05:00 to 2026-01-08 00:00:00-05:00
+Horizons: [1, 5, 21]
+
+Creating features...
+Clean samples: 2444
+Features: 46
+
+------------------------------------------------------------
+Training 1-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[6]	valid_0's binary_logloss: 0.687783
+Test Accuracy: 54.81%
+
+------------------------------------------------------------
+Training 5-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.697261
+Test Accuracy: 49.28%
+
+------------------------------------------------------------
+Training 21-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[6]	valid_0's binary_logloss: 0.687311
+Test Accuracy: 56.85%
+✓ Saved to models/BB_daily_models.joblib
+
+================================================================================
+TRAINING DAILY MODELS FOR BlackRock
+================================================================================
+Data points: 2514
+Date range: 2016-01-11 00:00:00-05:00 to 2026-01-08 00:00:00-05:00
+Horizons: [1, 5, 21]
+
+Creating features...
+Clean samples: 2444
+Features: 46
+
+------------------------------------------------------------
+Training 1-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.69264
+Test Accuracy: 53.17%
+
+------------------------------------------------------------
+Training 5-d horizon
+------------------------------------------------------------
+Training until validation scores don't improve for 50 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.679787
+Test Accuracy: 59.30%

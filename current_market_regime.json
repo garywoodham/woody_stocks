@@ -1,0 +1,11 @@
+{
+  "date": "2026-01-07",
+  "regime": "BULL",
+  "confidence": 100.0,
+  "score": 75.0,
+  "spy_price": 692.280029296875,
+  "vix": 15.039999961853027,
+  "should_trade": true,
+  "position_multiplier": 1.0,
+  "signals": "Above 200 SMA; Above 50 SMA; Golden Cross; 20 SMA > 50 SMA; MACD bullish"
+}

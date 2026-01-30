@@ -1,0 +1,140 @@
+======================================================================
+SENTIMENT DATA IMPACT ANALYSIS
+======================================================================
+
+1. SENTIMENT DATA COVERAGE:
+----------------------------------------------------------------------
+Total records: 156,840
+Columns: ['ticker', 'date', 'news_count', 'sentiment_compound', 'sentiment_positive', 'sentiment_negative', 'sentiment_neutral', 'sentiment_score']
+
+Sentiment columns found: ['sentiment_compound', 'sentiment_positive', 'sentiment_negative', 'sentiment_neutral', 'sentiment_score']
+
+Sample data (first 3 rows):
+  ticker        date  ...  sentiment_neutral  sentiment_score
+0   AAPL  2016-01-06  ...                1.0              0.0
+1   AAPL  2016-01-07  ...                1.0              0.0
+2   AAPL  2016-01-08  ...                1.0              0.0
+
+[3 rows x 8 columns]
+
+Missing values in sentiment columns:
+  sentiment_compound: 0 (0.00%)
+  sentiment_positive: 0 (0.00%)
+  sentiment_negative: 0 (0.00%)
+  sentiment_neutral: 0 (0.00%)
+  sentiment_score: 0 (0.00%)
+
+Sentiment value statistics:
+
+  sentiment_compound:
+    Mean: 0.0741
+    Std: 0.1983
+    Min: -0.9531
+    Max: 0.9747
+
+  sentiment_positive:
+    Mean: 0.0613
+    Std: 0.0529
+    Min: 0.0000
+    Max: 0.4880
+
+  sentiment_negative:
+    Mean: 0.0375
+    Std: 0.0398
+    Min: 0.0000
+    Max: 0.4790
+
+  sentiment_neutral:
+    Mean: 0.9012
+    Std: 0.0716
+    Min: 0.4170
+    Max: 1.0000
+
+  sentiment_score:
+    Mean: 0.0741
+    Std: 0.1983
+    Min: -0.9531
+    Max: 0.9747
+
+
+2. SENTIMENT FEATURE IMPORTANCE:
+----------------------------------------------------------------------
+Found 21 sentiment feature entries
+
+sentiment_change_1d:
+  Mean importance: 0.000000
+  Mean % importance: 0.000000%
+  ⚠️ ZERO IMPORTANCE - Not being used by models!
+sentiment_compound:
+  Mean importance: 0.000000
+  Mean % importance: 0.000000%
+  ⚠️ ZERO IMPORTANCE - Not being used by models!
+sentiment_momentum:
+  Mean importance: 0.000000
+  Mean % importance: 0.000000%
+  ⚠️ ZERO IMPORTANCE - Not being used by models!
+sentiment_negative:
+  Mean importance: 0.000000
+  Mean % importance: 0.000000%
+  ⚠️ ZERO IMPORTANCE - Not being used by models!
+sentiment_positive:
+  Mean importance: 0.000000
+  Mean % importance: 0.000000%
+  ⚠️ ZERO IMPORTANCE - Not being used by models!
+sentiment_rsi:
+  Mean importance: 0.000000
+  Mean % importance: 0.000000%
+  ⚠️ ZERO IMPORTANCE - Not being used by models!
+sentiment_trend:
+  Mean importance: 0.000000
+  Mean % importance: 0.000000%
+  ⚠️ ZERO IMPORTANCE - Not being used by models!
+
+
+Comparison to other features (top 10):
+  OBV_ema: 205.12 (12.98%)
+  SMA_50: 107.14 (8.16%)
+  AD: 81.35 (4.16%)
+  ADX: 74.39 (4.56%)
+  volume_ma_20: 73.89 (5.32%)
+  month_sin: 73.50 (4.99%)
+  volatility_20: 67.54 (4.27%)
+  volume_std_20: 64.37 (1.36%)
+  OBV: 57.37 (1.45%)
+  EMA_50: 52.28 (4.14%)
+
+
+3. CURRENT PREDICTIONS SENTIMENT DATA:
+----------------------------------------------------------------------
+Sentiment columns in predictions: ['sentiment_label', 'sentiment_score']
+
+sentiment_label:
+  Unique values: 2
+  Sample values: ['POSITIVE', 'POSITIVE', 'NEUTRAL', 'POSITIVE', 'NEUTRAL']
+  Value distribution:
+sentiment_label
+POSITIVE    13
+NEUTRAL      7
+Name: count, dtype: int64
+
+sentiment_score:
+  Unique values: 14
+  Sample values: [0.2889, 0.1682, 0.0, 0.2295, 0.0]
+  Mean: 0.1816
+  Std: 0.1680
+
+
+4. RECOMMENDATIONS:
+======================================================================
+✅ Sufficient sentiment data collected (156k+ records)
+
+======================================================================
+
+⚠️ RECOMMENDATION: IMPROVE SENTIMENT DATA FIRST
+
+Sentiment data quality issues detected.
+Consider improving data collection before retraining.
+
+======================================================================
+Analysis complete!
+======================================================================

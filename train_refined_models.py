@@ -394,18 +394,57 @@ def train_refined_model(df, time_period, horizons, stock_name, sentiment_df=None
         scaler = RobustScaler()
         X_scaled = scaler.fit_transform(X)
         
-        # Train/test split
+        # USE TIME SERIES CROSS-VALIDATION (more realistic)
+        # This prevents look-ahead bias and gives honest accuracy estimates
+        tscv = TimeSeriesSplit(n_splits=5)
+        cv_accuracies = []
+        cv_up_accuracies = []
+        cv_down_accuracies = []
+        
+        # Train final model on last 80% of data
         split_idx = int(len(X_scaled) * 0.8)
         X_train, X_test = X_scaled[:split_idx], X_scaled[split_idx:]
         y_train, y_test = y[:split_idx], y[split_idx:]
         
-        # Check class balance
+        # FIRST: Run cross-validation to get HONEST accuracy estimates
+        print(f"Running {tscv.n_splits}-fold time series cross-validation...")
+        params = get_best_lgb_params(horizon)
+        
+        for fold, (train_idx, val_idx) in enumerate(tscv.split(X_scaled)):
+            X_cv_train, X_cv_val = X_scaled[train_idx], X_scaled[val_idx]
+            y_cv_train, y_cv_val = y[train_idx], y[val_idx]
+            
+            # Train model on this fold
+            cv_train_data = lgb.Dataset(X_cv_train, label=y_cv_train)
+            cv_model = lgb.train(
+                params,
+                cv_train_data,
+                num_boost_round=300,
+                verbose_eval=False
+            )
+            
+            # Evaluate on validation fold
+            y_cv_pred = (cv_model.predict(X_cv_val) > 0.5).astype(int)
+            fold_acc = np.mean(y_cv_pred == y_cv_val)
+            cv_accuracies.append(fold_acc)
+            
+            # Direction-specific
+            up_mask = y_cv_val == 1
+            down_mask = y_cv_val == 0
+            fold_up_acc = np.mean(y_cv_pred[up_mask] == y_cv_val[up_mask]) if up_mask.sum() > 0 else 0
+            fold_down_acc = np.mean(y_cv_pred[down_mask] == y_cv_val[down_mask]) if down_mask.sum() > 0 else 0
+            cv_up_accuracies.append(fold_up_acc)
+            cv_down_accuracies.append(fold_down_acc)
+        
+        cv_mean_acc = np.mean(cv_accuracies)
+        cv_std_acc = np.std(cv_accuracies)
+        print(f"CV Accuracy: {cv_mean_acc:.2%} ± {cv_std_acc:.2%} | UP: {np.mean(cv_up_accuracies):.2%} | DOWN: {np.mean(cv_down_accuracies):.2%}")
+        
+        # NOW: Train final model on 80% for holdout testing
         train_pos = y_train.sum() / len(y_train)
         test_pos = y_test.sum() / len(y_test)
         print(f"Class balance - Train: {train_pos:.1%} UP | Test: {test_pos:.1%} UP")
         
-        # Train LightGBM
-        params = get_best_lgb_params(horizon)
         train_data = lgb.Dataset(X_train, label=y_train)
         test_data = lgb.Dataset(X_test, label=y_test, reference=train_data)
         
@@ -417,18 +456,19 @@ def train_refined_model(df, time_period, horizons, stock_name, sentiment_df=None
             callbacks=[lgb.early_stopping(stopping_rounds=30), lgb.log_evaluation(period=200)]
         )
         
-        # Evaluate
+        # Evaluate on holdout test set
         y_pred_proba = model.predict(X_test)
         y_pred = (y_pred_proba > 0.5).astype(int)
-        accuracy = np.mean(y_pred == y_test)
+        test_accuracy = np.mean(y_pred == y_test)
         
         # Direction-specific accuracy
         up_mask = y_test == 1
         down_mask = y_test == 0
-        up_acc = np.mean(y_pred[up_mask] == y_test[up_mask]) if up_mask.sum() > 0 else 0
-        down_acc = np.mean(y_pred[down_mask] == y_test[down_mask]) if down_mask.sum() > 0 else 0
+        test_up_acc = np.mean(y_pred[up_mask] == y_test[up_mask]) if up_mask.sum() > 0 else 0
+        test_down_acc = np.mean(y_pred[down_mask] == y_test[down_mask]) if down_mask.sum() > 0 else 0
         
-        print(f"Accuracy: {accuracy:.2%} | UP: {up_acc:.2%} | DOWN: {down_acc:.2%}")
+        print(f"Test Accuracy: {test_accuracy:.2%} | UP: {test_up_acc:.2%} | DOWN: {test_down_acc:.2%}")
+        print(f"⚠️  Use CV accuracy ({cv_mean_acc:.2%}) as realistic estimate, not test ({test_accuracy:.2%})")
         
         # Feature importance (top 10)
         importance = model.feature_importance(importance_type='gain')
@@ -441,11 +481,14 @@ def train_refined_model(df, time_period, horizons, stock_name, sentiment_df=None
         
         models[horizon] = {
             'model': model,
+            'cv_accuracy': cv_mean_acc,  # Store realistic CV accuracy
+            'cv_std': cv_std_acc,
+            'test_accuracy': test_accuracy,  # Store test accuracy for comparison
             'scaler': scaler,
             'feature_cols': feature_cols,
-            'accuracy': accuracy,
-            'up_accuracy': up_acc,
-            'down_accuracy': down_acc,
+            'accuracy': cv_mean_acc,  # Use CV accuracy as the reported accuracy
+            'up_accuracy': np.mean(cv_up_accuracies),
+            'down_accuracy': np.mean(cv_down_accuracies),
             'time_period': time_period,
             'feature_importance': feature_imp
         }

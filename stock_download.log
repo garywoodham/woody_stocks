@@ -1,0 +1,160 @@
+nohup: ignoring input
+================================================================================
+DOWNLOADING MULTI-SECTOR STOCK DATA
+================================================================================
+Sectors: Defence, Banking, Pharma, Technology, Meme/Speculative
+Total stocks: 35
+================================================================================
+
+
+[DEFENCE]
+Downloading BAE Systems (BA.L)...
+Downloading Lockheed Martin (LMT)...
+Downloading Northrop Grumman (NOC)...
+Downloading Raytheon Technologies (RTX)...
+Downloading Rolls-Royce (RR.L)...
+
+[BANKING]
+
+[PHARMA]
+
+[TECHNOLOGY]
+
+[MEME/SPECULATIVE]
+  ✓ Downloaded 2527 records for BAE Systems
+Downloading Barclays (BARC.L)...
+  ✓ Downloaded 2526 records for Barclays
+Downloading HSBC (HSBA.L)...
+  ✓ Downloaded 2515 records for Northrop Grumman
+Downloading Lloyds Banking (LLOY.L)...
+  ✓ Downloaded 2526 records for Rolls-Royce
+Downloading NatWest Group (NWG.L)...
+  ✓ Downloaded 2515 records for Raytheon Technologies
+  ✓ Downloaded 2527 records for HSBC
+Downloading Standard Chartered (STAN.L)...
+Downloading AstraZeneca (AZN.L)...
+  ✓ Downloaded 2515 records for Lockheed Martin
+Downloading GSK (GSK.L)...
+  ✓ Downloaded 2527 records for Standard Chartered
+Downloading Pfizer (PFE)...
+  ✓ Downloaded 2527 records for Lloyds Banking
+Downloading Johnson & Johnson (JNJ)...
+  ✓ Downloaded 2527 records for NatWest Group
+Downloading Moderna (MRNA)...
+  ✓ Downloaded 2527 records for AstraZeneca
+Downloading Apple (AAPL)...
+  ✓ Downloaded 2527 records for GSK
+Downloading Microsoft (MSFT)...
+  ✓ Downloaded 2515 records for Pfizer
+Downloading NVIDIA (NVDA)...
+  ✓ Downloaded 1780 records for Moderna
+Downloading Alphabet (GOOGL)...
+  ✓ Downloaded 2515 records for Johnson & Johnson
+Downloading Amazon (AMZN)...
+  ✓ Downloaded 2515 records for Microsoft
+Downloading GameStop (GME)...
+  ✓ Downloaded 2515 records for Apple
+Downloading AMC Entertainment (AMC)...
+  ✓ Downloaded 2515 records for NVIDIA
+Downloading BlackBerry (BB)...
+  ✓ Downloaded 2515 records for Amazon
+Downloading Palantir Technologies (PLTR)...
+  ✓ Downloaded 1324 records for Palantir Technologies
+Downloading SoFi Technologies (SOFI)...
+  ✓ Downloaded 2515 records for Alphabet
+Downloading Rivian Automotive (RIVN)...
+  ✓ Downloaded 1259 records for SoFi Technologies
+  ✓ Downloaded 2515 records for BlackBerry
+Downloading NIO Inc (NIO)...
+Downloading Lucid Group (LCID)...
+  ✓ Downloaded 2515 records for GameStop
+Downloading Virgin Galactic (SPCE)...
+  ✓ Downloaded 2515 records for AMC Entertainment
+Downloading Plug Power (PLUG)...
+  ✓ Downloaded 1043 records for Rivian Automotive
+Downloading Robinhood Markets (HOOD)...
+  ✓ Downloaded 2079 records for Virgin Galactic
+Downloading Coinbase Global (COIN)...
+  ✓ Downloaded 1840 records for NIO Inc
+Downloading Riot Platforms (RIOT)...
+  ✓ Downloaded 1332 records for Lucid Group
+Downloading Marathon Digital (MARA)...
+  ✓ Downloaded 1116 records for Robinhood Markets
+Downloading Tilray Brands (TLRY)...
+  ✓ Downloaded 1190 records for Coinbase Global
+  ✓ Downloaded 2515 records for Plug Power
+  ✓ Downloaded 2515 records for Marathon Digital
+  ✓ Downloaded 2458 records for Riot Platforms
+  ✓ Downloaded 1878 records for Tilray Brands
+
+================================================================================
+CONSOLIDATING DATA
+================================================================================
+
+✓ All data saved to: data/multi_sector_stocks.csv
+Total records: 77,765
+Date range: 2016-01-07 to 2026-01-07
+Stocks downloaded: 35
+
+================================================================================
+SUMMARY BY SECTOR
+================================================================================
+
+Defence:
+  Stocks: 5
+  Records: 12,598
+    • BAE Systems (BA.L): 2527 days, Latest: $1926.25
+    • Rolls-Royce (RR.L): 2526 days, Latest: $1263.50
+    • Raytheon Technologies (RTX): 2515 days, Latest: $192.23
+    • Lockheed Martin (LMT): 2515 days, Latest: $526.63
+    • Northrop Grumman (NOC): 2515 days, Latest: $612.96
+
+Banking:
+  Stocks: 5
+  Records: 12,634
+    • Lloyds Banking (LLOY.L): 2527 days, Latest: $98.74
+    • Standard Chartered (STAN.L): 2527 days, Latest: $1807.50
+    • NatWest Group (NWG.L): 2527 days, Latest: $636.20
+    • HSBC (HSBA.L): 2527 days, Latest: $1195.60
+    • Barclays (BARC.L): 2526 days, Latest: $481.45
+
+Pharma:
+  Stocks: 5
+  Records: 11,864
+    • GSK (GSK.L): 2527 days, Latest: $1899.00
+    • AstraZeneca (AZN.L): 2527 days, Latest: $14212.00
+    • Johnson & Johnson (JNJ): 2515 days, Latest: $207.46
+    • Pfizer (PFE): 2515 days, Latest: $25.70
+    • Moderna (MRNA): 1780 days, Latest: $36.12
+
+Technology:
+  Stocks: 5
+  Records: 12,575
+    • Microsoft (MSFT): 2515 days, Latest: $487.11
+    • Amazon (AMZN): 2515 days, Latest: $243.26
+    • Apple (AAPL): 2515 days, Latest: $261.95
+    • Alphabet (GOOGL): 2515 days, Latest: $320.21
+    • NVIDIA (NVDA): 2515 days, Latest: $190.02
+
+Meme/Speculative:
+  Stocks: 15
+  Records: 28,094
+    • AMC Entertainment (AMC): 2515 days, Latest: $1.52
+    • BlackBerry (BB): 2515 days, Latest: $3.95
+    • Plug Power (PLUG): 2515 days, Latest: $2.30
+    • GameStop (GME): 2515 days, Latest: $21.92
+    • Marathon Digital (MARA): 2515 days, Latest: $9.98
+    • Riot Platforms (RIOT): 2458 days, Latest: $15.17
+    • Virgin Galactic (SPCE): 2079 days, Latest: $3.22
+    • Tilray Brands (TLRY): 1878 days, Latest: $9.06
+    • NIO Inc (NIO): 1840 days, Latest: $4.82
+    • Lucid Group (LCID): 1332 days, Latest: $11.00
+    • Palantir Technologies (PLTR): 1324 days, Latest: $181.59
+    • SoFi Technologies (SOFI): 1259 days, Latest: $26.66
+    • Coinbase Global (COIN): 1190 days, Latest: $242.68
+    • Robinhood Markets (HOOD): 1116 days, Latest: $118.43
+    • Rivian Automotive (RIVN): 1043 days, Latest: $19.59
+
+================================================================================
+✓ DOWNLOAD COMPLETE!
+================================================================================

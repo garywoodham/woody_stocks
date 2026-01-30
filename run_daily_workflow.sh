@@ -10,39 +10,45 @@ echo ""
 echo "Started: $(date)"
 echo ""
 
-# Step 0: Fetch sentiment data (using FREE RSS feeds)
-echo "0️⃣  Fetching latest news sentiment..."
-python collect_daily_sentiment.py
-echo "   ✓ Sentiment data updated (RSS-based, no API key needed)"
+# Step 0: Download latest stock data (incremental update only)
+echo "0️⃣  Updating stock price data (incremental)..."
+python update_stock_data.py
+echo "   ✓ Stock data updated"
 echo ""
 
-# Step 1: Generate predictions
-echo "1️⃣  Generating stock predictions..."
+# Step 1: Update sentiment data from historical records
+echo "1️⃣  Updating sentiment data from historical records..."
+python update_sentiment_from_history.py
+echo "   ✓ Sentiment data updated"
+echo ""
+
+# Step 2: Generate predictions
+echo "2️⃣  Generating stock predictions..."
 python predict_refined.py
 echo "   ✓ Predictions complete"
 echo ""
 
-# Step 2: Generate recommendations
-echo "2️⃣  Generating BUY/HOLD/SELL recommendations..."
+# Step 3: Generate recommendations
+echo "3️⃣  Generating BUY/HOLD/SELL recommendations..."
 python generate_recommendations.py
 echo "   ✓ Recommendations complete"
 echo ""
 
-# Step 3: Generate portfolio allocation
-echo "3️⃣  Generating optimal portfolio allocation..."
+# Step 4: Generate portfolio allocation
+echo "4️⃣  Generating optimal portfolio allocation..."
 python portfolio_manager.py
 echo "   ✓ Portfolio allocation complete"
 echo ""
 
-# Step 4: Generate trading signals
-echo "4️⃣  Generating daily trading signals..."
+# Step 5: Generate trading signals
+echo "5️⃣  Generating daily trading signals..."
 python generate_daily_signals.py
 echo "   ✓ Trading signals complete"
 echo ""
 
-# Step 5: Run backtest (if requested)
+# Step 6: Run backtest (if requested)
 if [ "$1" == "--backtest" ]; then
-    echo "5️⃣  Running backtest on recommendations..."
+    echo "6️⃣  Running backtest on recommendations..."
     python backtest_recommendations.py
     echo "   ✓ Backtest complete"
     echo ""

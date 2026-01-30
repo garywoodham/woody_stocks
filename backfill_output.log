@@ -1,0 +1,217 @@
+================================================================================
+INTELLIGENT SENTIMENT BACKFILL - ALL 60 STOCKS
+================================================================================
+Date range: 2016-01-06 to 2026-01-11
+Total stocks: 60
+Strategy: Detect gaps and fill only missing data
+================================================================================
+
+✓ Found existing data: data/sentiment_history_complete.csv
+  Total records: 60799
+  Stocks with data: 24
+
+Total trading days in range: 2613
+From 2016-01-06 to 2026-01-09
+
+================================================================================
+WORK PLAN: 37 stocks need updates
+================================================================================
+Total dates to fill: 95,981
+
+Stocks needing updates:
+  PLTR     Palantir Technologies          - 1913 dates
+  SOFI     SoFi Technologies              - 2613 dates
+  RIVN     Rivian Automotive              - 2613 dates
+  NIO      NIO Inc                        - 2613 dates
+  LCID     Lucid Group                    - 2613 dates
+  SPCE     Virgin Galactic                - 2613 dates
+  PLUG     Plug Power                     - 2613 dates
+  HOOD     Robinhood Markets              - 2613 dates
+  COIN     Coinbase Global                - 2613 dates
+  RIOT     Riot Platforms                 - 2613 dates
+  ... and 27 more
+
+
+================================================================================
+SECTOR: DEFENCE
+================================================================================
+
+[1/60] BAE Systems (BA.L)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[2/60] Lockheed Martin (LMT)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[3/60] Northrop Grumman (NOC)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[4/60] Raytheon Technologies (RTX)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[5/60] Rolls-Royce (RR.L)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+================================================================================
+SECTOR: BANKING
+================================================================================
+
+[6/60] Barclays (BARC.L)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[7/60] HSBC (HSBA.L)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[8/60] Lloyds Banking (LLOY.L)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[9/60] NatWest Group (NWG.L)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[10/60] Standard Chartered (STAN.L)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+================================================================================
+SECTOR: PHARMA
+================================================================================
+
+[11/60] AstraZeneca (AZN.L)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[12/60] GSK (GSK.L)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[13/60] Pfizer (PFE)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[14/60] Johnson & Johnson (JNJ)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[15/60] Moderna (MRNA)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+================================================================================
+SECTOR: TECHNOLOGY
+================================================================================
+
+[16/60] Apple (AAPL)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[17/60] Microsoft (MSFT)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[18/60] NVIDIA (NVDA)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[19/60] Alphabet (GOOGL)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[20/60] Amazon (AMZN)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+================================================================================
+SECTOR: MEME/SPECULATIVE
+================================================================================
+
+[21/60] GameStop (GME)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[22/60] AMC Entertainment (AMC)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[23/60] BlackBerry (BB)
+  Existing: 2613 records
+  Range: 2016-01-06 to 2026-01-09
+  Missing: 0 dates
+  ✓ COMPLETE - No gaps to fill
+
+[24/60] Palantir Technologies (PLTR)
+  Existing: 700 records
+  Range: 2016-01-06 to 2018-09-11
+  Missing: 1913 dates
+  ────────────────────────────────────────────────────────────
+  Week 50: 2020-01-06 | Filled: 350
+  Week 100: 2021-05-10 | Filled: 700
+  Week 150: 2022-09-12 | Filled: 1050
+  Week 200: 2024-01-15  Week 200: 2024  Week 250: 2025-05-19 | Filled: 1750
+  ✓ Filled 1913 miss  ✓ Fill
+[25/60] SoFi Technolo
+[25/60] SoFi Technologies (SOFI)
+  NEW STOCK - Need all 2613 dates
+  ─────────────────────────────────────────────────────  Week 50: 2017-05-01   Week 50: 201  Week 100: 2018-09-03 | Filled: 700
+  Week 150: 2020-01-06  Week 150: 202
+  Week 200: 2021-05-10 | Filled: 1400
+  Week 250: 2022-09-12  Week 250: 2022  Week 300: 2024-01-15  Week 300: 2024  Week 350: 2025-05-19 | Filled: 2450
+  ✓ Filled 2613 missing dates
+
+[26/60] Rivian Automotive (RIVN)
+  NEW STOCK - Need all 2613 dates
+  ────────────────────────────────────────────────────────────
+  Week 50: 2017-05-01   Week 50: 201  Week 100: 2018-09-03 | Filled: 700
+  Week 150: 2020-01-06 | Filled: 1050
+-01-06 | Filled: 1050

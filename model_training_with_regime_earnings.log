@@ -1,0 +1,802 @@
+================================================================================
+REFINED MODEL TRAINING
+================================================================================
+
+Optimizations:
+  ✓ LightGBM only (best individual performer)
+  ✓ ~55 technical + 7 sentiment + 9 regime + 5 earnings features (~76 total)
+  ✓ Market regime detection (BULL/BEAR/SIDEWAYS)
+  ✓ Earnings calendar integration
+  ✓ Optimized hyperparameters per horizon
+  ✓ Class balancing
+  ✓ Better regularization
+================================================================================
+✓ Loaded COMPLETE sentiment history (10 years)
+  Records: 67,886, Dates: 2,611, Range: 2016-01-06 00:00:00 to 2026-01-07 00:00:00
+✓ Using STATIC sentiment (run fetch_sentiment_historical.py for better results)
+  Stocks with sentiment: 26
+✓ Loaded market regime history: 303 days
+✓ Loaded earnings calendar: 35 stocks
+
+Training models for 35 stocks
+
+================================================================================
+REFINED TRAINING: DAILY - BAE Systems
+================================================================================
+  ✓ Added market regime features
+Samples: 2456 | Features: 99
+
+------------------------------------------------------------
+Horizon: 1-d
+Class balance - Train: 51.4% UP | Test: 55.5% UP
+Applying scale_pos_weight: 0.94
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[5]	valid_0's binary_logloss: 0.688134
+Accuracy: 51.63% | UP: 79.49% | DOWN: 16.89%
+Top 5 features: volume_ma_10, BB_lower, ADX, sentiment_trend, volume_zscore
+
+------------------------------------------------------------
+Horizon: 5-d
+Class balance - Train: 52.9% UP | Test: 51.6% UP
+Applying scale_pos_weight: 0.89
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.697563
+Accuracy: 51.63% | UP: 100.00% | DOWN: 0.00%
+Top 5 features: volatility_20, SMA_20, MACD, volume_ma_20, mfi_rsi_divergence
+
+------------------------------------------------------------
+Horizon: 21-d
+Class balance - Train: 54.7% UP | Test: 58.1% UP
+Applying scale_pos_weight: 0.83
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.685652
+Accuracy: 58.13% | UP: 100.00% | DOWN: 0.00%
+Top 5 features: EMA_10, SMA_20, RSI_14, BB_upper, CMF
+
+✓ Saved to models/BA.L_daily_refined.joblib
+
+================================================================================
+REFINED TRAINING: DAILY - AstraZeneca
+================================================================================
+  ✓ Added market regime features
+  ✓ Added earnings features for AZN.L
+Samples: 2456 | Features: 99
+
+------------------------------------------------------------
+Horizon: 1-d
+Class balance - Train: 52.0% UP | Test: 52.4% UP
+Applying scale_pos_weight: 0.92
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[2]	valid_0's binary_logloss: 0.692526
+Accuracy: 51.42% | UP: 88.37% | DOWN: 10.68%
+Top 5 features: BB_width, OBV_slope, volume_trend, obv_price_divergence, volatility_20
+
+------------------------------------------------------------
+Horizon: 5-d
+Class balance - Train: 53.5% UP | Test: 57.1% UP
+Applying scale_pos_weight: 0.87
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.688862
+Accuracy: 52.44% | UP: 76.87% | DOWN: 19.91%
+Top 5 features: sentiment_negative, MACD_hist, BB_upper, MACD, mfi_rsi_divergence
+
+------------------------------------------------------------
+Horizon: 21-d
+Class balance - Train: 56.3% UP | Test: 59.1% UP
+Applying scale_pos_weight: 0.78
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[6]	valid_0's binary_logloss: 0.667478
+Accuracy: 61.18% | UP: 76.29% | DOWN: 39.30%
+Top 5 features: price_to_sma_50, SMA_20, AD, volatility_20, OBV_ema
+
+✓ Saved to models/AZN.L_daily_refined.joblib
+
+================================================================================
+REFINED TRAINING: DAILY - Rolls-Royce
+================================================================================
+  ✓ Added market regime features
+Samples: 2456 | Features: 99
+
+------------------------------------------------------------
+Horizon: 1-d
+Class balance - Train: 50.2% UP | Test: 52.6% UP
+Applying scale_pos_weight: 0.99
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.69463
+Accuracy: 46.75% | UP: 32.05% | DOWN: 63.09%
+Top 5 features: volume_price_trend, STOCH_K, volatility_5, sentiment_positive, hl_spread
+
+------------------------------------------------------------
+Horizon: 5-d
+Class balance - Train: 48.7% UP | Test: 62.0% UP
+Applying scale_pos_weight: 1.05
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.702505
+Accuracy: 38.01% | UP: 21.97% | DOWN: 64.17%
+Top 5 features: volume_ma_10, MACD_hist, sentiment_rsi, OBV, month_sin
+
+------------------------------------------------------------
+Horizon: 21-d
+Class balance - Train: 49.3% UP | Test: 75.2% UP
+Applying scale_pos_weight: 1.03
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.707992
+Accuracy: 24.80% | UP: 0.00% | DOWN: 100.00%
+Top 5 features: SMA_20, volatility_20, volume_std_20, volume_ma_5, OBV_ema
+
+✓ Saved to models/RR.L_daily_refined.joblib
+
+================================================================================
+REFINED TRAINING: DAILY - Lloyds Banking
+================================================================================
+  ✓ Added market regime features
+  ✓ Added earnings features for LLOY.L
+Samples: 2457 | Features: 99
+
+------------------------------------------------------------
+Horizon: 1-d
+Class balance - Train: 47.7% UP | Test: 56.3% UP
+Applying scale_pos_weight: 1.09
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.699019
+Accuracy: 44.11% | UP: 1.08% | DOWN: 99.53%
+Top 5 features: OBV_ema, SMA_5, price_vs_vwap, trend_momentum, volume_ma_5
+
+------------------------------------------------------------
+Horizon: 5-d
+Class balance - Train: 49.4% UP | Test: 61.4% UP
+Applying scale_pos_weight: 1.03
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.700165
+Accuracy: 40.65% | UP: 8.61% | DOWN: 91.58%
+Top 5 features: days_to_earnings, price_to_sma_50, BB_width, BB_upper, CMF
+
+------------------------------------------------------------
+Horizon: 21-d
+Class balance - Train: 48.8% UP | Test: 68.7% UP
+Applying scale_pos_weight: 1.05
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.709962
+Accuracy: 38.62% | UP: 17.16% | DOWN: 85.71%
+Top 5 features: days_to_earnings, EMA_20, BB_upper, MACD, price_to_sma_50
+
+✓ Saved to models/LLOY.L_daily_refined.joblib
+
+================================================================================
+REFINED TRAINING: DAILY - Standard Chartered
+================================================================================
+  ✓ Added market regime features
+  ✓ Added earnings features for STAN.L
+Samples: 2457 | Features: 99
+
+------------------------------------------------------------
+Horizon: 1-d
+Class balance - Train: 50.7% UP | Test: 55.9% UP
+Applying scale_pos_weight: 0.97
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.694641
+Accuracy: 48.17% | UP: 65.82% | DOWN: 25.81%
+Top 5 features: sentiment_change_1d, price_to_sma_5, hl_spread, sentiment_positive, price_vs_vwap
+
+------------------------------------------------------------
+Horizon: 5-d
+Class balance - Train: 50.9% UP | Test: 62.0% UP
+Applying scale_pos_weight: 0.96
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.687051
+Accuracy: 61.59% | UP: 93.77% | DOWN: 9.09%
+Top 5 features: sentiment_trend, AD, volume_ma_5, volatility_5, price_to_sma_10
+
+------------------------------------------------------------
+Horizon: 21-d
+Class balance - Train: 53.3% UP | Test: 78.7% UP
+Applying scale_pos_weight: 0.88
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.676929
+Accuracy: 78.66% | UP: 100.00% | DOWN: 0.00%
+Top 5 features: days_to_earnings, SMA_5, AD, CMF, regime_rsi
+
+✓ Saved to models/STAN.L_daily_refined.joblib
+
+================================================================================
+REFINED TRAINING: DAILY - HSBC
+================================================================================
+  ✓ Added market regime features
+  ✓ Added earnings features for HSBA.L
+Samples: 2456 | Features: 99
+
+------------------------------------------------------------
+Horizon: 1-d
+Class balance - Train: 50.5% UP | Test: 60.6% UP
+Applying scale_pos_weight: 0.98
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.69399
+Accuracy: 48.78% | UP: 56.38% | DOWN: 37.11%
+Top 5 features: volatility_10, volatility_20, mfi_rsi_divergence, returns, MACD_hist
+
+------------------------------------------------------------
+Horizon: 5-d
+Class balance - Train: 53.0% UP | Test: 65.7% UP
+Applying scale_pos_weight: 0.89
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.680762
+Accuracy: 65.65% | UP: 100.00% | DOWN: 0.00%
+Top 5 features: MACD_hist, momentum_20, OBV, days_to_earnings, MACD
+
+------------------------------------------------------------
+Horizon: 21-d
+Class balance - Train: 52.3% UP | Test: 67.9% UP
+Applying scale_pos_weight: 0.91
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.686812
+Accuracy: 67.89% | UP: 100.00% | DOWN: 0.00%
+Top 5 features: days_to_earnings, SMA_10, OBV_ema, price_to_sma_50, CMF
+
+✓ Saved to models/HSBA.L_daily_refined.joblib
+
+================================================================================
+REFINED TRAINING: DAILY - NatWest Group
+================================================================================
+  ✓ Added market regime features
+  ✓ Added earnings features for NWG.L
+Samples: 2457 | Features: 99
+
+------------------------------------------------------------
+Horizon: 1-d
+Class balance - Train: 50.3% UP | Test: 60.0% UP
+Applying scale_pos_weight: 0.99
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.692738
+Accuracy: 48.37% | UP: 51.19% | DOWN: 44.16%
+Top 5 features: ATR_pct, mfi_rsi_divergence, MACD_hist, OBV_slope, trend_momentum
+
+------------------------------------------------------------
+Horizon: 5-d
+Class balance - Train: 51.3% UP | Test: 63.0% UP
+Applying scale_pos_weight: 0.95
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.690394
+Accuracy: 52.64% | UP: 58.71% | DOWN: 42.31%
+Top 5 features: SMA_5, volume_ma_10, OBV, volume_zscore, BB_width
+
+------------------------------------------------------------
+Horizon: 21-d
+Class balance - Train: 53.2% UP | Test: 76.2% UP
+Applying scale_pos_weight: 0.88
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.680766
+Accuracy: 76.22% | UP: 100.00% | DOWN: 0.00%
+Top 5 features: SMA_5, ADX_strong_trend, volume_ma_10, days_to_earnings, EMA_20
+
+✓ Saved to models/NWG.L_daily_refined.joblib
+
+================================================================================
+REFINED TRAINING: DAILY - Barclays
+================================================================================
+  ✓ Added market regime features
+  ✓ Added earnings features for BARC.L
+Samples: 2456 | Features: 99
+
+------------------------------------------------------------
+Horizon: 1-d
+Class balance - Train: 50.3% UP | Test: 56.7% UP
+Applying scale_pos_weight: 0.99
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[2]	valid_0's binary_logloss: 0.691385
+Accuracy: 53.86% | UP: 49.10% | DOWN: 60.09%
+Top 5 features: volatility_10, sentiment_rsi, OBV, ATR_pct, BB_upper
+
+------------------------------------------------------------
+Horizon: 5-d
+Class balance - Train: 51.0% UP | Test: 66.5% UP
+Applying scale_pos_weight: 0.96
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.700534
+Accuracy: 35.57% | UP: 7.03% | DOWN: 92.12%
+Top 5 features: SMA_20, price_to_sma_10, BB_lower, days_to_earnings, OBV
+
+------------------------------------------------------------
+Horizon: 21-d
+Class balance - Train: 51.7% UP | Test: 75.6% UP
+Applying scale_pos_weight: 0.93
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.673398
+Accuracy: 75.00% | UP: 98.66% | DOWN: 1.67%
+Top 5 features: SMA_5, AD, days_to_earnings, MACD_signal, volume_std_20
+
+✓ Saved to models/BARC.L_daily_refined.joblib
+
+================================================================================
+REFINED TRAINING: DAILY - GSK
+================================================================================
+  ✓ Added market regime features
+  ✓ Added earnings features for GSK.L
+Samples: 2457 | Features: 99
+
+------------------------------------------------------------
+Horizon: 1-d
+Class balance - Train: 50.2% UP | Test: 53.3% UP
+Applying scale_pos_weight: 0.99
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[2]	valid_0's binary_logloss: 0.69523
+Accuracy: 49.39% | UP: 23.28% | DOWN: 79.13%
+Top 5 features: position_in_range_5, oc_spread, hl_spread, AD, price_to_sma_5
+
+------------------------------------------------------------
+Horizon: 5-d
+Class balance - Train: 51.1% UP | Test: 53.0% UP
+Applying scale_pos_weight: 0.96
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.692525
+Accuracy: 51.22% | UP: 94.25% | DOWN: 2.60%
+Top 5 features: SMA_20, trend_momentum, volume_ma_5, OBV_ema, BB_lower
+
+------------------------------------------------------------
+Horizon: 21-d
+Class balance - Train: 53.1% UP | Test: 60.0% UP
+Applying scale_pos_weight: 0.88
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[3]	valid_0's binary_logloss: 0.67546
+Accuracy: 56.71% | UP: 40.68% | DOWN: 80.71%
+Top 5 features: days_to_earnings, OBV, volume_std_20, SMA_10, OBV_ema
+
+✓ Saved to models/GSK.L_daily_refined.joblib
+
+================================================================================
+REFINED TRAINING: DAILY - Johnson & Johnson
+================================================================================
+  ✓ Added market regime features
+  ✓ Added earnings features for JNJ
+Samples: 2444 | Features: 99
+
+------------------------------------------------------------
+Horizon: 1-d
+Class balance - Train: 51.5% UP | Test: 55.4% UP
+Applying scale_pos_weight: 0.94
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[2]	valid_0's binary_logloss: 0.689093
+Accuracy: 56.44% | UP: 62.36% | DOWN: 49.08%
+Top 5 features: MACD, volatility_10, rsi_volume, momentum_1, sentiment_momentum
+
+------------------------------------------------------------
+Horizon: 5-d
+Class balance - Train: 53.1% UP | Test: 56.9% UP
+Applying scale_pos_weight: 0.88
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[3]	valid_0's binary_logloss: 0.683469
+Accuracy: 59.10% | UP: 76.26% | DOWN: 36.49%
+Top 5 features: EMA_50, ADX, sentiment_positive, BB_lower, MACD
+
+------------------------------------------------------------
+Horizon: 21-d
+Class balance - Train: 57.2% UP | Test: 57.3% UP
+Applying scale_pos_weight: 0.75
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.683289
+Accuracy: 57.26% | UP: 100.00% | DOWN: 0.00%
+Top 5 features: OBV_ema, VWAP_approx, MACD_signal, AD, days_to_earnings
+
+✓ Saved to models/JNJ_daily_refined.joblib
+
+================================================================================
+REFINED TRAINING: DAILY - Plug Power
+================================================================================
+  ✓ Added market regime features
+  ✓ Added earnings features for PLUG
+Samples: 2444 | Features: 99
+
+------------------------------------------------------------
+Horizon: 1-d
+Class balance - Train: 44.6% UP | Test: 41.3% UP
+Applying scale_pos_weight: 1.24
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.68132
+Accuracy: 58.69% | UP: 0.00% | DOWN: 100.00%
+Top 5 features: SMA_20, BB_width, price_to_sma_10, AD_slope, volatility_5
+
+------------------------------------------------------------
+Horizon: 5-d
+Class balance - Train: 47.1% UP | Test: 41.1% UP
+Applying scale_pos_weight: 1.12
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[4]	valid_0's binary_logloss: 0.675143
+Accuracy: 55.21% | UP: 13.93% | DOWN: 84.03%
+Top 5 features: AD, EMA_50, ATR_pct, BB_width, days_to_earnings
+
+------------------------------------------------------------
+Horizon: 21-d
+Class balance - Train: 47.0% UP | Test: 40.3% UP
+Applying scale_pos_weight: 1.13
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[43]	valid_0's binary_logloss: 0.655518
+Accuracy: 64.62% | UP: 31.98% | DOWN: 86.64%
+Top 5 features: days_to_earnings, AD, volume_std_20, volatility_20, MACD_hist
+
+✓ Saved to models/PLUG_daily_refined.joblib
+
+================================================================================
+REFINED TRAINING: DAILY - Marathon Digital
+================================================================================
+  ✓ Added market regime features
+  ✓ Added earnings features for MARA
+Samples: 2444 | Features: 99
+
+------------------------------------------------------------
+Horizon: 1-d
+Class balance - Train: 41.8% UP | Test: 45.6% UP
+Applying scale_pos_weight: 1.39
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[3]	valid_0's binary_logloss: 0.688712
+Accuracy: 54.40% | UP: 0.00% | DOWN: 100.00%
+Top 5 features: momentum_20, BB_position, OBV, days_to_earnings, volume_ma_10
+
+------------------------------------------------------------
+Horizon: 5-d
+Class balance - Train: 42.0% UP | Test: 45.8% UP
+Applying scale_pos_weight: 1.38
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.689241
+Accuracy: 54.19% | UP: 0.00% | DOWN: 100.00%
+Top 5 features: OBV, volatility_10, ADX, MACD_signal, ATR
+
+------------------------------------------------------------
+Horizon: 21-d
+Class balance - Train: 43.0% UP | Test: 45.2% UP
+Applying scale_pos_weight: 1.33
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[52]	valid_0's binary_logloss: 0.684903
+Accuracy: 56.65% | UP: 49.32% | DOWN: 62.69%
+Top 5 features: AD, days_to_earnings, SMA_50, OBV, OBV_ema
+
+✓ Saved to models/MARA_daily_refined.joblib
+
+================================================================================
+REFINED TRAINING: DAILY - Northrop Grumman
+================================================================================
+  ✓ Added market regime features
+  ✓ Added earnings features for NOC
+Samples: 2444 | Features: 99
+
+------------------------------------------------------------
+Horizon: 1-d
+Class balance - Train: 53.0% UP | Test: 53.4% UP
+Applying scale_pos_weight: 0.89
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.690683
+Accuracy: 53.37% | UP: 100.00% | DOWN: 0.00%
+Top 5 features: momentum_5, MACD_signal, volatility_5, sentiment_positive, RSI_14
+
+------------------------------------------------------------
+Horizon: 5-d
+Class balance - Train: 55.9% UP | Test: 55.8% UP
+Applying scale_pos_weight: 0.79
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.681689
+Accuracy: 55.83% | UP: 100.00% | DOWN: 0.00%
+Top 5 features: AD, sentiment_rsi, MACD_signal, volatility_5, returns
+
+------------------------------------------------------------
+Horizon: 21-d
+Class balance - Train: 58.3% UP | Test: 56.9% UP
+Applying scale_pos_weight: 0.71
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[7]	valid_0's binary_logloss: 0.674112
+Accuracy: 54.81% | UP: 70.14% | DOWN: 34.60%
+Top 5 features: volume_std_20, RSI_14, days_to_earnings, month_sin, SMA_50
+
+✓ Saved to models/NOC_daily_refined.joblib
+
+================================================================================
+REFINED TRAINING: DAILY - Amazon
+================================================================================
+  ✓ Added market regime features
+  ✓ Added earnings features for AMZN
+Samples: 2444 | Features: 99
+
+------------------------------------------------------------
+Horizon: 1-d
+Class balance - Train: 54.0% UP | Test: 52.1% UP
+Applying scale_pos_weight: 0.85
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[2]	valid_0's binary_logloss: 0.690146
+Accuracy: 52.15% | UP: 100.00% | DOWN: 0.00%
+Top 5 features: OBV, MACD_hist, BB_width, sentiment_positive, hl_spread
+
+------------------------------------------------------------
+Horizon: 5-d
+Class balance - Train: 56.8% UP | Test: 55.6% UP
+Applying scale_pos_weight: 0.76
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.68702
+Accuracy: 55.62% | UP: 100.00% | DOWN: 0.00%
+Top 5 features: BB_upper, MACD, SMA_5, price_vs_vwap, trend_momentum
+
+------------------------------------------------------------
+Horizon: 21-d
+Class balance - Train: 64.6% UP | Test: 65.4% UP
+Applying scale_pos_weight: 0.55
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.646095
+Accuracy: 65.44% | UP: 100.00% | DOWN: 0.00%
+Top 5 features: OBV_ema, days_to_earnings, AD, SMA_5, volume_ma_10
+
+✓ Saved to models/AMZN_daily_refined.joblib
+
+================================================================================
+REFINED TRAINING: DAILY - NVIDIA
+================================================================================
+  ✓ Added market regime features
+  ✓ Added earnings features for NVDA
+Samples: 2444 | Features: 99
+
+------------------------------------------------------------
+Horizon: 1-d
+Class balance - Train: 54.6% UP | Test: 55.0% UP
+Applying scale_pos_weight: 0.83
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.687714
+Accuracy: 55.01% | UP: 100.00% | DOWN: 0.00%
+Top 5 features: OBV_slope, sentiment_positive, volume_zscore, volatility_10, returns
+
+------------------------------------------------------------
+Horizon: 5-d
+Class balance - Train: 60.0% UP | Test: 61.1% UP
+Applying scale_pos_weight: 0.67
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.667029
+Accuracy: 61.15% | UP: 100.00% | DOWN: 0.00%
+Top 5 features: sentiment_trend, days_to_earnings, EMA_10, volatility_5, volatility_20
+
+------------------------------------------------------------
+Horizon: 21-d
+Class balance - Train: 68.1% UP | Test: 63.8% UP
+Applying scale_pos_weight: 0.47
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[6]	valid_0's binary_logloss: 0.657103
+Accuracy: 63.80% | UP: 100.00% | DOWN: 0.00%
+Top 5 features: days_to_earnings, volume_std_20, ATR, AD, OBV_ema
+
+✓ Saved to models/NVDA_daily_refined.joblib
+
+================================================================================
+REFINED TRAINING: DAILY - Pfizer
+================================================================================
+  ✓ Added market regime features
+  ✓ Added earnings features for PFE
+Samples: 2444 | Features: 99
+
+------------------------------------------------------------
+Horizon: 1-d
+Class balance - Train: 49.5% UP | Test: 49.7% UP
+Applying scale_pos_weight: 1.02
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.693925
+Accuracy: 49.49% | UP: 21.81% | DOWN: 76.83%
+Top 5 features: volume_ratio, sentiment_positive, volatility_5, volume_ma_5, sentiment_trend
+
+------------------------------------------------------------
+Horizon: 5-d
+Class balance - Train: 51.7% UP | Test: 50.5% UP
+Applying scale_pos_weight: 0.94
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[3]	valid_0's binary_logloss: 0.690196
+Accuracy: 49.08% | UP: 14.57% | DOWN: 84.30%
+Top 5 features: SMA_5, days_to_earnings, volume_ma_10, BB_width, MACD_hist
+
+------------------------------------------------------------
+Horizon: 21-d
+Class balance - Train: 51.3% UP | Test: 52.1% UP
+Applying scale_pos_weight: 0.95
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[5]	valid_0's binary_logloss: 0.686631
+Accuracy: 56.24% | UP: 91.37% | DOWN: 17.95%
+Top 5 features: AD, EMA_50, days_to_earnings, volume_std_20, EMA_20
+
+✓ Saved to models/PFE_daily_refined.joblib
+
+================================================================================
+REFINED TRAINING: DAILY - BlackBerry
+================================================================================
+  ✓ Added market regime features
+  ✓ Added earnings features for BB
+Samples: 2444 | Features: 99
+
+------------------------------------------------------------
+Horizon: 1-d
+Class balance - Train: 46.6% UP | Test: 47.6% UP
+Applying scale_pos_weight: 1.15
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.691098
+Accuracy: 52.35% | UP: 0.00% | DOWN: 100.00%
+Top 5 features: trend_momentum, MACD, MACD_signal, BB_lower, MACD_hist
+
+------------------------------------------------------------
+Horizon: 5-d
+Class balance - Train: 47.6% UP | Test: 50.5% UP
+Applying scale_pos_weight: 1.10
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.69435
+Accuracy: 51.12% | UP: 6.48% | DOWN: 96.69%
+Top 5 features: MACD_signal, OBV, news_volume, OBV_ema, BB_width
+
+------------------------------------------------------------
+Horizon: 21-d
+Class balance - Train: 46.1% UP | Test: 51.3% UP
+Applying scale_pos_weight: 1.17
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[3]	valid_0's binary_logloss: 0.688556
+Accuracy: 52.35% | UP: 53.78% | DOWN: 50.84%
+Top 5 features: volume_std_20, MACD, OBV_ema, days_to_earnings, OBV
+
+✓ Saved to models/BB_daily_refined.joblib
+
+================================================================================
+REFINED TRAINING: DAILY - GameStop
+================================================================================
+  ✓ Added market regime features
+  ✓ Added earnings features for GME
+Samples: 2442 | Features: 99
+
+------------------------------------------------------------
+Horizon: 1-d
+Class balance - Train: 48.3% UP | Test: 48.5% UP
+Applying scale_pos_weight: 1.07
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.693276
+Accuracy: 52.76% | UP: 6.75% | DOWN: 96.03%
+Top 5 features: days_to_earnings, mfi_rsi_divergence, volume_ratio, volatility_5, sentiment_trend
+
+------------------------------------------------------------
+Horizon: 5-d
+Class balance - Train: 44.8% UP | Test: 48.9% UP
+Applying scale_pos_weight: 1.23
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[8]	valid_0's binary_logloss: 0.688689
+Accuracy: 54.40% | UP: 27.62% | DOWN: 80.00%
+Top 5 features: sentiment_negative, SMA_20, volatility_10, BB_width, price_to_sma_50
+
+------------------------------------------------------------
+Horizon: 21-d
+Class balance - Train: 43.1% UP | Test: 47.2% UP
+Applying scale_pos_weight: 1.32
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[2]	valid_0's binary_logloss: 0.695838
+Accuracy: 52.76% | UP: 0.00% | DOWN: 100.00%
+Top 5 features: BB_width, MACD_signal, AD, CMF, SMA_5
+
+✓ Saved to models/GME_daily_refined.joblib
+
+================================================================================
+REFINED TRAINING: DAILY - Alphabet
+================================================================================
+  ✓ Added market regime features
+  ✓ Added earnings features for GOOGL
+Samples: 2444 | Features: 99
+
+------------------------------------------------------------
+Horizon: 1-d
+Class balance - Train: 53.0% UP | Test: 56.6% UP
+Applying scale_pos_weight: 0.89
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.689288
+Accuracy: 56.65% | UP: 100.00% | DOWN: 0.00%
+Top 5 features: mfi_rsi_divergence, volume_zscore, volatility_5, momentum_10, sentiment_trend
+
+------------------------------------------------------------
+Horizon: 5-d
+Class balance - Train: 57.5% UP | Test: 58.7% UP
+Applying scale_pos_weight: 0.74
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.6812
+Accuracy: 58.69% | UP: 100.00% | DOWN: 0.00%
+Top 5 features: SMA_5, sentiment_positive, trend_momentum, sentiment_rsi, volatility_10
+
+------------------------------------------------------------
+Horizon: 21-d
+Class balance - Train: 62.7% UP | Test: 69.7% UP
+Applying scale_pos_weight: 0.60
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[2]	valid_0's binary_logloss: 0.629411
+Accuracy: 69.73% | UP: 100.00% | DOWN: 0.00%
+Top 5 features: volume_std_20, days_to_earnings, volatility_20, OBV, BB_upper
+
+✓ Saved to models/GOOGL_daily_refined.joblib
+
+================================================================================
+REFINED TRAINING: DAILY - AMC Entertainment
+================================================================================
+  ✓ Added market regime features
+  ✓ Added earnings features for AMC
+Samples: 2444 | Features: 99
+
+------------------------------------------------------------
+Horizon: 1-d
+Class balance - Train: 46.1% UP | Test: 41.7% UP
+Applying scale_pos_weight: 1.17
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.68351
+Accuracy: 58.28% | UP: 0.00% | DOWN: 100.00%
+Top 5 features: OBV_ema, returns, EMA_20, price_to_sma_10, hl_spread
+
+------------------------------------------------------------
+Horizon: 5-d
+Class balance - Train: 46.1% UP | Test: 37.6% UP
+Applying scale_pos_weight: 1.17
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[1]	valid_0's binary_logloss: 0.679153
+Accuracy: 62.37% | UP: 0.00% | DOWN: 100.00%
+Top 5 features: OBV, price_to_sma_50, sentiment_trend, volume_ma_5, sentiment_positive
+
+------------------------------------------------------------
+Horizon: 21-d
+Class balance - Train: 43.0% UP | Test: 32.9% UP
+Applying scale_pos_weight: 1.32
+Training until validation scores don't improve for 30 rounds
+Early stopping, best iteration is:
+[9]	valid_0's binary_logloss: 0.643282
+Accuracy: 65.64% | UP: 0.00% | DOWN: 97.87%
+Top 5 features: OBV_ema, OBV, days_to_earnings, ADX, ATR_pct
+
+✓ Saved to models/AMC_daily_refined.joblib
+
+================================================================================
+REFINED TRAINING: DAILY - Lockheed Martin

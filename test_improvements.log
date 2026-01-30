@@ -1,0 +1,273 @@
+================================================================================
+TESTING SHORT-TERM ACCURACY IMPROVEMENTS
+================================================================================
+
+Testing 6 stocks across 3 horizons and 7 feature sets
+
+
+================================================================================
+Testing: Apple (AAPL)
+================================================================================
+
+  Horizon: 1-day
+  ------------------------------------------------------------
+    baseline            :  49.56%
+    intraday            :  49.56%
+    order_flow          :  49.88%
+    microstructure      :  49.41%
+    mean_reversion      : ERROR - 'gap'
+    time                :  50.83%
+  Warning: Could not add enhanced sentiment features: Cannot join tz-naive with tz-aware DatetimeIndex
+    all                 :  50.27%
+
+  Horizon: 5-day
+  ------------------------------------------------------------
+    baseline            :  48.29%
+    intraday            :  47.51%
+    order_flow          :  48.07%
+    microstructure      :  47.80%
+    mean_reversion      : ERROR - 'gap'
+    time                :  47.51%
+  Warning: Could not add enhanced sentiment features: Cannot join tz-naive with tz-aware DatetimeIndex
+    all                 :  48.02%
+
+  Horizon: 21-day
+  ------------------------------------------------------------
+    baseline            :  45.32%
+    intraday            :  44.49%
+    order_flow          :  44.55%
+    microstructure      :  45.07%
+    mean_reversion      : ERROR - 'gap'
+    time                :  44.49%
+  Warning: Could not add enhanced sentiment features: Cannot join tz-naive with tz-aware DatetimeIndex
+    all                 :  44.11%
+
+================================================================================
+Testing: Alphabet (GOOGL)
+================================================================================
+
+  Horizon: 1-day
+  ------------------------------------------------------------
+    baseline            :  52.73%
+    intraday            :  52.39%
+    order_flow          :  51.85%
+    microstructure      :  51.32%
+    mean_reversion      : ERROR - 'gap'
+    time                :  51.90%
+  Warning: Could not add enhanced sentiment features: Cannot join tz-naive with tz-aware DatetimeIndex
+    all                 :  53.27%
+
+  Horizon: 5-day
+  ------------------------------------------------------------
+    baseline            :  48.63%
+    intraday            :  49.12%
+    order_flow          :  48.93%
+    microstructure      :  50.10%
+    mean_reversion      : ERROR - 'gap'
+    time                :  48.83%
+  Warning: Could not add enhanced sentiment features: Cannot join tz-naive with tz-aware DatetimeIndex
+    all                 :  49.56%
+
+  Horizon: 21-day
+  ------------------------------------------------------------
+    baseline            :  49.80%
+    intraday            :  48.49%
+    order_flow          :  48.68%
+    microstructure      :  49.07%
+    mean_reversion      : ERROR - 'gap'
+    time                :  49.32%
+  Warning: Could not add enhanced sentiment features: Cannot join tz-naive with tz-aware DatetimeIndex
+    all                 :  49.07%
+
+================================================================================
+Testing: Tilray (TLRY)
+================================================================================
+
+  Horizon: 1-day
+  ------------------------------------------------------------
+    baseline            :  53.64%
+    intraday            :  52.59%
+    order_flow          :  50.95%
+    microstructure      :  54.16%
+    mean_reversion      : ERROR - 'gap'
+    time                :  53.44%
+  Warning: Could not add enhanced sentiment features: Cannot join tz-naive with tz-aware DatetimeIndex
+    all                 :  51.22%
+
+  Horizon: 5-day
+  ------------------------------------------------------------
+    baseline            :  49.97%
+    intraday            :  50.89%
+    order_flow          :  47.41%
+    microstructure      :  50.10%
+    mean_reversion      : ERROR - 'gap'
+    time                :  49.64%
+  Warning: Could not add enhanced sentiment features: Cannot join tz-naive with tz-aware DatetimeIndex
+    all                 :  47.35%
+
+  Horizon: 21-day
+  ------------------------------------------------------------
+    baseline            :  54.43%
+    intraday            :  53.18%
+    order_flow          :  43.20%
+    microstructure      :  53.25%
+    mean_reversion      : ERROR - 'gap'
+    time                :  52.98%
+  Warning: Could not add enhanced sentiment features: Cannot join tz-naive with tz-aware DatetimeIndex
+    all                 :  43.33%
+
+================================================================================
+Testing: Raytheon (RTX)
+================================================================================
+
+  Horizon: 1-day
+  ------------------------------------------------------------
+    baseline            :  47.90%
+    intraday            :  48.34%
+    order_flow          :  48.53%
+    microstructure      :  47.41%
+    mean_reversion      : ERROR - 'gap'
+    time                :  48.15%
+  Warning: Could not add enhanced sentiment features: Cannot join tz-naive with tz-aware DatetimeIndex
+    all                 :  47.01%
+
+  Horizon: 5-day
+  ------------------------------------------------------------
+    baseline            :  49.76%
+    intraday            :  50.59%
+    order_flow          :  50.54%
+    microstructure      :  50.05%
+    mean_reversion      : ERROR - 'gap'
+    time                :  49.71%
+  Warning: Could not add enhanced sentiment features: Cannot join tz-naive with tz-aware DatetimeIndex
+    all                 :  49.75%
+
+  Horizon: 21-day
+  ------------------------------------------------------------
+    baseline            :  49.80%
+    intraday            :  48.24%
+    order_flow          :  47.94%
+    microstructure      :  48.24%
+    mean_reversion      : ERROR - 'gap'
+    time                :  47.27%
+  Warning: Could not add enhanced sentiment features: Cannot join tz-naive with tz-aware DatetimeIndex
+    all                 :  49.61%
+
+================================================================================
+Testing: Pfizer (PFE)
+================================================================================
+
+  Horizon: 1-day
+  ------------------------------------------------------------
+    baseline            :  49.12%
+    intraday            :  49.22%
+    order_flow          :  48.98%
+    microstructure      :  49.41%
+    mean_reversion      : ERROR - 'gap'
+    time                :  49.17%
+  Warning: Could not add enhanced sentiment features: Cannot join tz-naive with tz-aware DatetimeIndex
+    all                 :  50.34%
+
+  Horizon: 5-day
+  ------------------------------------------------------------
+    baseline            :  46.88%
+    intraday            :  46.88%
+    order_flow          :  47.41%
+    microstructure      :  48.44%
+    mean_reversion      : ERROR - 'gap'
+    time                :  47.32%
+  Warning: Could not add enhanced sentiment features: Cannot join tz-naive with tz-aware DatetimeIndex
+    all                 :  48.24%
+
+  Horizon: 21-day
+  ------------------------------------------------------------
+    baseline            :  49.51%
+    intraday            :  49.95%
+    order_flow          :  49.51%
+    microstructure      :  49.66%
+    mean_reversion      : ERROR - 'gap'
+    time                :  48.98%
+  Warning: Could not add enhanced sentiment features: Cannot join tz-naive with tz-aware DatetimeIndex
+    all                 :  49.37%
+
+================================================================================
+Testing: Standard Chartered (STAN.L)
+================================================================================
+
+  Horizon: 1-day
+  ------------------------------------------------------------
+    baseline            :  50.80%
+    intraday            :  51.19%
+    order_flow          :  51.13%
+    microstructure      :  49.39%
+    mean_reversion      : ERROR - 'gap'
+    time                :  50.31%
+  Warning: Could not add enhanced sentiment features: Cannot join tz-naive with tz-aware DatetimeIndex
+    all                 :  51.57%
+
+  Horizon: 5-day
+  ------------------------------------------------------------
+    baseline            :  46.83%
+    intraday            :  46.63%
+    order_flow          :  47.75%
+    microstructure      :  46.30%
+    mean_reversion      : ERROR - 'gap'
+    time                :  46.39%
+  Warning: Could not add enhanced sentiment features: Cannot join tz-naive with tz-aware DatetimeIndex
+    all                 :  46.81%
+
+  Horizon: 21-day
+  ------------------------------------------------------------
+    baseline            :  45.42%
+    intraday            :  44.41%
+    order_flow          :  45.34%
+    microstructure      :  45.52%
+    mean_reversion      : ERROR - 'gap'
+    time                :  45.47%
+  Warning: Could not add enhanced sentiment features: Cannot join tz-naive with tz-aware DatetimeIndex
+    all                 :  45.83%
+
+================================================================================
+RESULTS SUMMARY
+================================================================================
+
+1-Day Predictions:
+------------------------------------------------------------
+  time                :  50.63% (+0.01%) ✅
+  baseline            :  50.63% (BASELINE)
+  all                 :  50.61% (-0.01%) ❌
+  intraday            :  50.55% (-0.08%) ❌
+  order_flow          :  50.22% (-0.41%) ❌
+  microstructure      :  50.19% (-0.44%) ❌
+
+5-Day Predictions:
+------------------------------------------------------------
+  microstructure      :  48.80% (+0.40%) ✅
+  intraday            :  48.60% (+0.21%) ✅
+  baseline            :  48.39% (BASELINE)
+  order_flow          :  48.35% (-0.04%) ❌
+  all                 :  48.29% (-0.10%) ❌
+  time                :  48.23% (-0.16%) ❌
+
+21-Day Predictions:
+------------------------------------------------------------
+  baseline            :  49.05% (BASELINE)
+  microstructure      :  48.47% (-0.58%) ❌
+  intraday            :  48.13% (-0.92%) ❌
+  time                :  48.08% (-0.96%) ❌
+  all                 :  46.89% (-2.16%) ❌
+  order_flow          :  46.54% (-2.51%) ❌
+
+================================================================================
+BEST IMPROVEMENTS PER HORIZON
+================================================================================
+
+1-Day: time → 50.63% (+0.01%)
+
+5-Day: microstructure → 48.80% (+0.40%)
+
+21-Day: microstructure → 48.47% (-0.58%)
+
+================================================================================
+Results saved to: short_term_improvement_results.csv
+================================================================================

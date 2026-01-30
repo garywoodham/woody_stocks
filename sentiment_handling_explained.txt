@@ -1,0 +1,152 @@
+================================================================================
+        HOW SENTIMENT DATA IS HANDLED IN YOUR MODELS
+================================================================================
+
+📊 YOUR QUESTION:
+   "We only download sentiment a few times per week - is this considered?"
+
+✅ ANSWER: YES! The model uses FORWARD-FILL strategy
+
+================================================================================
+HOW IT WORKS:
+================================================================================
+
+1. RAW DATA STRUCTURE:
+   ┌────────────┬─────────────┬────────────────────┐
+   │    Date    │ News Count  │   Sentiment        │
+   ├────────────┼─────────────┼────────────────────┤
+   │ 2026-01-02 │     21      │   +0.065 (pos)     │
+   │ 2026-01-03 │     21      │   +0.065 (same)    │
+   │ 2026-01-06 │     21      │   +0.065 (same)    │
+   │ 2026-01-07 │      0      │    0.000 (none)    │
+   └────────────┴─────────────┴────────────────────┘
+   
+   → Same sentiment for multiple days = we use cached/batched data
+
+2. FORWARD-FILL PROCESSING (in train_refined_models.py line 285):
+   
+   Code: df['sentiment_compound'].fillna(method='ffill')
+   
+   ┌────────────┬─────────────┬────────────────────┐
+   │    Date    │   Raw       │   After Forward-Fill│
+   ├────────────┼─────────────┼────────────────────┤
+   │ 2026-01-02 │   +0.065    │   +0.065           │
+   │ 2026-01-03 │   +0.065    │   +0.065           │
+   │ 2026-01-06 │   +0.065    │   +0.065           │
+   │ 2026-01-07 │    0.000    │   +0.065 (filled!) │
+   └────────────┴─────────────┴────────────────────┘
+   
+   → Last known sentiment persists until new data arrives
+   → More realistic: market sentiment doesn't reset to zero
+
+3. SMOOTHING WITH MOVING AVERAGES (line 291-293):
+   
+   • 5-day MA:  Recent sentiment trend
+   • 20-day MA: Longer-term sentiment baseline
+   • Trend = 5-day MA - 20-day MA
+   
+   Example:
+   ┌────────────┬─────────────┬──────────┬───────────┬────────────┐
+   │    Date    │   Raw       │  5-day MA│  20-day MA│   Trend    │
+   ├────────────┼─────────────┼──────────┼───────────┼────────────┤
+   │ 2025-12-20 │   +0.045    │  +0.052  │  +0.038   │   +0.014   │
+   │ 2025-12-25 │   +0.026    │  +0.048  │  +0.041   │   +0.007   │
+   │ 2026-01-02 │   +0.065    │  +0.055  │  +0.044   │   +0.011   │
+   └────────────┴─────────────┴──────────┴───────────┴────────────┘
+   
+   → Smooths daily noise
+   → Captures sentiment DIRECTION not just absolute value
+
+4. ADDITIONAL FEATURES CREATED:
+   
+   ✓ sentiment_compound      : Raw sentiment score
+   ✓ sentiment_positive      : Positive news ratio
+   ✓ sentiment_negative      : Negative news ratio
+   ✓ sentiment_trend         : 5-day vs 20-day MA direction ⭐
+   ✓ sentiment_momentum      : Sentiment × price momentum
+   ✓ sentiment_rsi           : Sentiment × RSI indicator ⭐
+   
+   → Models use DERIVED features more than raw sentiment
+   → Trends and momentum more predictive than snapshots
+
+================================================================================
+WHY THIS APPROACH IS GOOD:
+================================================================================
+
+✅ ADVANTAGES:
+   
+   1. Realistic: Sentiment doesn't instantly evaporate
+      → Market psychology persists between news cycles
+   
+   2. Avoids false neutrality: 
+      → Not having fresh data ≠ neutral sentiment
+      → Previous sentiment still influences market
+   
+   3. Smooth signals:
+      → Moving averages reduce noise
+      → Trends capture direction, not just level
+   
+   4. Computational efficiency:
+      → Don't need to fetch news every single day
+      → 2-3 times per week is sufficient
+      → Forward-fill handles gaps intelligently
+
+❌ ALTERNATIVE (WORSE) APPROACHES:
+   
+   ✗ Use 0.0 for missing days
+     → Falsely signals "neutral" when we just don't have data
+   
+   ✗ Skip those days entirely
+     → Creates gaps in training data
+   
+   ✗ Fetch news every day
+     → API rate limits, costs, unnecessary
+
+================================================================================
+PRACTICAL EXAMPLE:
+================================================================================
+
+Scenario: News collected Mon, Wed, Fri only
+
+Monday:     Fetch → Sentiment = +0.08 (positive)
+Tuesday:    No fetch → Use +0.08 (forward-fill)
+Wednesday:  Fetch → Sentiment = +0.06 (still positive)
+Thursday:   No fetch → Use +0.06 (forward-fill)
+Friday:     Fetch → Sentiment = -0.02 (turned negative!)
+
+Model sees:
+  • Mon: +0.08, trend: rising
+  • Tue: +0.08, trend: stable (same as Mon)
+  • Wed: +0.06, trend: slight decline (5-day MA decreasing)
+  • Thu: +0.06, trend: continuing decline
+  • Fri: -0.02, trend: sharp drop (SIGNAL!)
+
+→ The TREND catches the shift, not just the absolute value
+→ Forward-fill prevents gaps without falsifying data
+
+================================================================================
+CODE REFERENCE:
+================================================================================
+
+File: train_refined_models.py
+Lines 285-293: Forward-fill strategy
+Lines 301-303: Sentiment feature engineering
+
+Key line:
+  df['sentiment_compound'].fillna(method='ffill').fillna(0.0)
+                                    ↑                    ↑
+                            Fill gaps with last value    Only if NO data exists
+
+================================================================================
+CONCLUSION:
+================================================================================
+
+✅ Your concern is ADDRESSED in the code
+✅ Forward-fill strategy is the industry standard
+✅ Smoothing with MAs makes this even more robust
+✅ Trend features > raw sentiment values
+
+The model handles missing days intelligently - sentiment persists until new
+information arrives, which accurately reflects how market psychology works.
+
+================================================================================

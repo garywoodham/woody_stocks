@@ -1,0 +1,127 @@
+Ticker,Stock,Sector,Horizon,Feature_Set,Accuracy
+AAPL,Apple,Technology,1,baseline,49.5609756097561
+AAPL,Apple,Technology,1,intraday,49.5609756097561
+AAPL,Apple,Technology,1,order_flow,49.877750611246945
+AAPL,Apple,Technology,1,microstructure,49.41463414634146
+AAPL,Apple,Technology,1,mean_reversion,50.0
+AAPL,Apple,Technology,1,time,50.829268292682926
+AAPL,Apple,Technology,1,all,49.731051344743285
+AAPL,Apple,Technology,5,baseline,48.292682926829265
+AAPL,Apple,Technology,5,intraday,47.512195121951216
+AAPL,Apple,Technology,5,order_flow,48.06845965770171
+AAPL,Apple,Technology,5,microstructure,47.80487804878049
+AAPL,Apple,Technology,5,mean_reversion,47.70731707317073
+AAPL,Apple,Technology,5,time,47.512195121951216
+AAPL,Apple,Technology,5,all,47.67726161369193
+AAPL,Apple,Technology,21,baseline,45.3170731707317
+AAPL,Apple,Technology,21,intraday,44.48780487804878
+AAPL,Apple,Technology,21,order_flow,44.54767726161369
+AAPL,Apple,Technology,21,microstructure,45.073170731707314
+AAPL,Apple,Technology,21,mean_reversion,44.78048780487804
+AAPL,Apple,Technology,21,time,44.48780487804878
+AAPL,Apple,Technology,21,all,44.205378973105134
+GOOGL,Alphabet,Technology,1,baseline,52.73170731707317
+GOOGL,Alphabet,Technology,1,intraday,52.390243902439025
+GOOGL,Alphabet,Technology,1,order_flow,51.85365853658537
+GOOGL,Alphabet,Technology,1,microstructure,51.31707317073171
+GOOGL,Alphabet,Technology,1,mean_reversion,52.146341463414636
+GOOGL,Alphabet,Technology,1,time,51.90243902439025
+GOOGL,Alphabet,Technology,1,all,51.65853658536585
+GOOGL,Alphabet,Technology,5,baseline,48.63414634146341
+GOOGL,Alphabet,Technology,5,intraday,49.1219512195122
+GOOGL,Alphabet,Technology,5,order_flow,48.92682926829268
+GOOGL,Alphabet,Technology,5,microstructure,50.09756097560975
+GOOGL,Alphabet,Technology,5,mean_reversion,48.4390243902439
+GOOGL,Alphabet,Technology,5,time,48.829268292682926
+GOOGL,Alphabet,Technology,5,all,49.170731707317074
+GOOGL,Alphabet,Technology,21,baseline,49.80487804878049
+GOOGL,Alphabet,Technology,21,intraday,48.48780487804878
+GOOGL,Alphabet,Technology,21,order_flow,48.68292682926829
+GOOGL,Alphabet,Technology,21,microstructure,49.073170731707314
+GOOGL,Alphabet,Technology,21,mean_reversion,48.09756097560975
+GOOGL,Alphabet,Technology,21,time,49.3170731707317
+GOOGL,Alphabet,Technology,21,all,48.8780487804878
+TLRY,Tilray,Meme,1,baseline,53.63934426229508
+TLRY,Tilray,Meme,1,intraday,52.59016393442623
+TLRY,Tilray,Meme,1,order_flow,50.95238095238096
+TLRY,Tilray,Meme,1,microstructure,54.163934426229496
+TLRY,Tilray,Meme,1,mean_reversion,52.98360655737705
+TLRY,Tilray,Meme,1,time,53.442622950819676
+TLRY,Tilray,Meme,1,all,52.312925170068034
+TLRY,Tilray,Meme,5,baseline,49.96721311475409
+TLRY,Tilray,Meme,5,intraday,50.88524590163935
+TLRY,Tilray,Meme,5,order_flow,47.414965986394556
+TLRY,Tilray,Meme,5,microstructure,50.09836065573771
+TLRY,Tilray,Meme,5,mean_reversion,50.42622950819672
+TLRY,Tilray,Meme,5,time,49.63934426229509
+TLRY,Tilray,Meme,5,all,48.02721088435374
+TLRY,Tilray,Meme,21,baseline,54.42622950819672
+TLRY,Tilray,Meme,21,intraday,53.18032786885245
+TLRY,Tilray,Meme,21,order_flow,43.19727891156463
+TLRY,Tilray,Meme,21,microstructure,53.24590163934426
+TLRY,Tilray,Meme,21,mean_reversion,51.54098360655739
+TLRY,Tilray,Meme,21,time,52.98360655737705
+TLRY,Tilray,Meme,21,all,43.40136054421769
+RTX,Raytheon,Defence,1,baseline,47.90243902439024
+RTX,Raytheon,Defence,1,intraday,48.34146341463415
+RTX,Raytheon,Defence,1,order_flow,48.529411764705884
+RTX,Raytheon,Defence,1,microstructure,47.41463414634146
+RTX,Raytheon,Defence,1,mean_reversion,47.02439024390244
+RTX,Raytheon,Defence,1,time,48.14634146341463
+RTX,Raytheon,Defence,1,all,47.79411764705882
+RTX,Raytheon,Defence,5,baseline,49.75609756097561
+RTX,Raytheon,Defence,5,intraday,50.58536585365854
+RTX,Raytheon,Defence,5,order_flow,50.53921568627451
+RTX,Raytheon,Defence,5,microstructure,50.048780487804876
+RTX,Raytheon,Defence,5,mean_reversion,50.829268292682926
+RTX,Raytheon,Defence,5,time,49.70731707317073
+RTX,Raytheon,Defence,5,all,50.34313725490196
+RTX,Raytheon,Defence,21,baseline,49.80487804878049
+RTX,Raytheon,Defence,21,intraday,48.24390243902439
+RTX,Raytheon,Defence,21,order_flow,47.94117647058823
+RTX,Raytheon,Defence,21,microstructure,48.24390243902439
+RTX,Raytheon,Defence,21,mean_reversion,47.36585365853658
+RTX,Raytheon,Defence,21,time,47.26829268292683
+RTX,Raytheon,Defence,21,all,49.31372549019608
+PFE,Pfizer,Pharma,1,baseline,49.1219512195122
+PFE,Pfizer,Pharma,1,intraday,49.21951219512195
+PFE,Pfizer,Pharma,1,order_flow,48.97560975609756
+PFE,Pfizer,Pharma,1,microstructure,49.41463414634146
+PFE,Pfizer,Pharma,1,mean_reversion,50.0
+PFE,Pfizer,Pharma,1,time,49.170731707317074
+PFE,Pfizer,Pharma,1,all,50.09756097560975
+PFE,Pfizer,Pharma,5,baseline,46.8780487804878
+PFE,Pfizer,Pharma,5,intraday,46.8780487804878
+PFE,Pfizer,Pharma,5,order_flow,47.41463414634146
+PFE,Pfizer,Pharma,5,microstructure,48.4390243902439
+PFE,Pfizer,Pharma,5,mean_reversion,47.41463414634146
+PFE,Pfizer,Pharma,5,time,47.3170731707317
+PFE,Pfizer,Pharma,5,all,49.1219512195122
+PFE,Pfizer,Pharma,21,baseline,49.51219512195122
+PFE,Pfizer,Pharma,21,intraday,49.951219512195124
+PFE,Pfizer,Pharma,21,order_flow,49.51219512195122
+PFE,Pfizer,Pharma,21,microstructure,49.65853658536585
+PFE,Pfizer,Pharma,21,mean_reversion,49.75609756097561
+PFE,Pfizer,Pharma,21,time,48.97560975609756
+PFE,Pfizer,Pharma,21,all,48.73170731707317
+STAN.L,Standard Chartered,Banking,1,baseline,50.79903147699759
+STAN.L,Standard Chartered,Banking,1,intraday,51.186440677966104
+STAN.L,Standard Chartered,Banking,1,order_flow,51.127450980392155
+STAN.L,Standard Chartered,Banking,1,microstructure,49.39467312348668
+STAN.L,Standard Chartered,Banking,1,mean_reversion,50.799031476997584
+STAN.L,Standard Chartered,Banking,1,time,50.31476997578692
+STAN.L,Standard Chartered,Banking,1,all,50.931372549019606
+STAN.L,Standard Chartered,Banking,5,baseline,46.82808716707022
+STAN.L,Standard Chartered,Banking,5,intraday,46.634382566585955
+STAN.L,Standard Chartered,Banking,5,order_flow,47.745098039215684
+STAN.L,Standard Chartered,Banking,5,microstructure,46.295399515738495
+STAN.L,Standard Chartered,Banking,5,mean_reversion,46.92493946731234
+STAN.L,Standard Chartered,Banking,5,time,46.39225181598062
+STAN.L,Standard Chartered,Banking,5,all,47.69607843137255
+STAN.L,Standard Chartered,Banking,21,baseline,45.42372881355933
+STAN.L,Standard Chartered,Banking,21,intraday,44.40677966101695
+STAN.L,Standard Chartered,Banking,21,order_flow,45.34313725490196
+STAN.L,Standard Chartered,Banking,21,microstructure,45.52058111380145
+STAN.L,Standard Chartered,Banking,21,mean_reversion,45.181598062953995
+STAN.L,Standard Chartered,Banking,21,time,45.47215496368039
+STAN.L,Standard Chartered,Banking,21,all,44.36274509803922

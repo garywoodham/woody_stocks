@@ -1,0 +1,61 @@
+Ticker,Stock,Horizon,Accuracy
+BA.L,BAE Systems,1-d,51.63
+BA.L,BAE Systems,5-d,51.63
+BA.L,BAE Systems,21-d,58.13
+AZN.L,AstraZeneca,1-d,51.42
+AZN.L,AstraZeneca,5-d,52.44
+AZN.L,AstraZeneca,21-d,61.18
+RR.L,Rolls-Royce,1-d,46.75
+RR.L,Rolls-Royce,5-d,38.01
+RR.L,Rolls-Royce,21-d,24.8
+LLOY.L,Lloyds Banking,1-d,44.11
+LLOY.L,Lloyds Banking,5-d,40.65
+LLOY.L,Lloyds Banking,21-d,38.62
+STAN.L,Standard Chartered,1-d,48.17
+STAN.L,Standard Chartered,5-d,61.59
+STAN.L,Standard Chartered,21-d,78.66
+HSBA.L,HSBC,1-d,48.78
+HSBA.L,HSBC,5-d,65.65
+HSBA.L,HSBC,21-d,67.89
+NWG.L,NatWest Group,1-d,48.37
+NWG.L,NatWest Group,5-d,52.64
+NWG.L,NatWest Group,21-d,76.22
+BARC.L,Barclays,1-d,53.86
+BARC.L,Barclays,5-d,35.57
+BARC.L,Barclays,21-d,75.0
+GSK.L,GSK,1-d,49.39
+GSK.L,GSK,5-d,51.22
+GSK.L,GSK,21-d,56.71
+JNJ,Johnson & Johnson,1-d,56.44
+JNJ,Johnson & Johnson,5-d,59.1
+JNJ,Johnson & Johnson,21-d,57.26
+PLUG,Plug Power,1-d,58.69
+PLUG,Plug Power,5-d,55.21
+PLUG,Plug Power,21-d,64.62
+MARA,Marathon Digital,1-d,54.4
+MARA,Marathon Digital,5-d,54.19
+MARA,Marathon Digital,21-d,56.65
+NOC,Northrop Grumman,1-d,53.37
+NOC,Northrop Grumman,5-d,55.83
+NOC,Northrop Grumman,21-d,54.81
+AMZN,Amazon,1-d,52.15
+AMZN,Amazon,5-d,55.62
+AMZN,Amazon,21-d,65.44
+NVDA,NVIDIA,1-d,55.01
+NVDA,NVIDIA,5-d,61.15
+NVDA,NVIDIA,21-d,63.8
+PFE,Pfizer,1-d,49.49
+PFE,Pfizer,5-d,49.08
+PFE,Pfizer,21-d,56.24
+BB,BlackBerry,1-d,52.35
+BB,BlackBerry,5-d,51.12
+BB,BlackBerry,21-d,52.35
+GME,GameStop,1-d,52.76
+GME,GameStop,5-d,54.4
+GME,GameStop,21-d,52.76
+GOOGL,Alphabet,1-d,56.65
+GOOGL,Alphabet,5-d,58.69
+GOOGL,Alphabet,21-d,69.73
+AMC,AMC Entertainment,1-d,58.28
+AMC,AMC Entertainment,5-d,62.37
+AMC,AMC Entertainment,21-d,65.64

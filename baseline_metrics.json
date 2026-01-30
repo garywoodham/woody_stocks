@@ -1,0 +1,49 @@
+{
+  "timestamp": "2026-01-14 08:25:48",
+  "description": "Pre-sentiment retraining baseline",
+  "overall_accuracy": 0.5508,
+  "sentiment_importance": 0.0,
+  "top_10_features": [
+    {
+      "feature": "OBV_ema",
+      "importance_pct_mean": 12.976914193348115
+    },
+    {
+      "feature": "SMA_50",
+      "importance_pct_mean": 8.160702634481233
+    },
+    {
+      "feature": "AD",
+      "importance_pct_mean": 4.157060131982832
+    },
+    {
+      "feature": "ADX",
+      "importance_pct_mean": 4.557914912815397
+    },
+    {
+      "feature": "volume_ma_20",
+      "importance_pct_mean": 5.324908665684814
+    },
+    {
+      "feature": "month_sin",
+      "importance_pct_mean": 4.993750362610117
+    },
+    {
+      "feature": "volatility_20",
+      "importance_pct_mean": 4.270922991427008
+    },
+    {
+      "feature": "volume_std_20",
+      "importance_pct_mean": 1.359709718049196
+    },
+    {
+      "feature": "OBV",
+      "importance_pct_mean": 1.448777336664358
+    },
+    {
+      "feature": "EMA_50",
+      "importance_pct_mean": 4.141384370990685
+    }
+  ],
+  "model_count": 58
+}

@@ -1,0 +1,147 @@
+nohup: ignoring input
+================================================================================
+MULTI-PERIOD STOCK PREDICTIONS
+================================================================================
+
+Loading data...
+✓ Loaded daily data: 77765 records
+✓ Loaded weekly data: 10297 records
+✓ Loaded monthly data: 2385 records
+
+Generating predictions for 35 stocks...
+Time periods: daily, weekly, monthly
+================================================================================
+
+AAPL:
+  ✓ Generated 3 predictions
+
+AMC:
+  ✗ No predictions generated
+
+AMZN:
+  ✓ Generated 3 predictions
+
+AZN.L:
+  ✓ Generated 3 predictions
+
+BA.L:
+  ✓ Generated 3 predictions
+
+BARC.L:
+  ✓ Generated 3 predictions
+
+BB:
+  ✗ No predictions generated
+
+COIN:
+  ✗ No predictions generated
+
+GME:
+  ✗ No predictions generated
+
+GOOGL:
+  ✓ Generated 3 predictions
+
+GSK.L:
+  ✓ Generated 3 predictions
+
+HOOD:
+  ✗ No predictions generated
+
+HSBA.L:
+  ✓ Generated 3 predictions
+
+JNJ:
+  ✓ Generated 3 predictions
+
+LCID:
+  ✗ No predictions generated
+
+LLOY.L:
+  ✓ Generated 3 predictions
+
+LMT:
+  ✓ Generated 3 predictions
+
+MARA:
+  ✗ No predictions generated
+
+MRNA:
+  ✗ No predictions generated
+
+MSFT:
+  ✗ No predictions generated
+
+NIO:
+  ✗ No predictions generated
+
+NOC:
+  ✗ No predictions generated
+
+NVDA:
+  ✗ No predictions generated
+
+NWG.L:
+  ✗ No predictions generated
+
+PFE:
+  ✗ No predictions generated
+
+PLTR:
+  ✗ No predictions generated
+
+PLUG:
+  ✗ No predictions generated
+
+RIOT:
+  ✗ No predictions generated
+
+RIVN:
+  ✗ No predictions generated
+
+RR.L:
+  ✗ No predictions generated
+
+RTX:
+  ✗ No predictions generated
+
+SOFI:
+  ✗ No predictions generated
+
+SPCE:
+  ✗ No predictions generated
+
+STAN.L:
+  ✗ No predictions generated
+
+TLRY:
+  ✗ No predictions generated
+
+================================================================================
+CREATING SUMMARY
+================================================================================
+
+✓ Saved predictions to: predictions_multiperiod.csv
+  Stocks: 11
+  Columns: 17
+
+================================================================================
+PREDICTION SUMMARY
+================================================================================
+
+DAILY:
+  d1: 6 UP (54.5%), 5 DOWN (45.5%)
+  d21: 7 UP (63.6%), 4 DOWN (36.4%)
+  d5: 10 UP (90.9%), 1 DOWN (9.1%)
+
+================================================================================
+✓ COMPLETE!
+================================================================================
+
+Top 5 stocks with highest 1-day UP probability:
+          Stock Ticker d1_Direction  d1_Prob_Up  d1_Confidence
+Lockheed Martin    LMT         UP ↑    0.540862       0.081724
+         Amazon   AMZN         UP ↑    0.525834       0.051667
+       Alphabet  GOOGL         UP ↑    0.525324       0.050648
+    AstraZeneca  AZN.L         UP ↑    0.521271       0.042543
+          Apple   AAPL         UP ↑    0.519420       0.038840

@@ -1,0 +1,484 @@
+================================================================================
+STACKED ENSEMBLE TRAINING
+================================================================================
+
+Strategy: Use existing refined models as base learners
+  Base Layer: Refined LightGBM models (already trained)
+  Meta Layer: Logistic Regression (combines base predictions)
+  Expected: +1-2% accuracy improvement
+================================================================================
+
+📂 Loading data...
+✓ Loaded COMPLETE sentiment history
+  Records: 67,886, Dates: 2,611, Range: 2016-01-06 00:00:00 to 2026-01-07 00:00:00
+
+✓ Data loaded: 35 stocks
+
+================================================================================
+TRAINING STACKED ENSEMBLES
+================================================================================
+
+================================================================================
+STACKING ENSEMBLE: Apple
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: AMC Entertainment
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: Amazon
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: AstraZeneca
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: BAE Systems
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: Barclays
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: BlackBerry
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: Coinbase Global
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: GameStop
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: Alphabet
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: GSK
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: Robinhood Markets
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: HSBC
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: Johnson & Johnson
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: Lucid Group
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: Lloyds Banking
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: Lockheed Martin
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: Marathon Digital
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: Moderna
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: Microsoft
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: NIO Inc
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: Northrop Grumman
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: NVIDIA
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: NatWest Group
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: Pfizer
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: Palantir Technologies
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: Plug Power
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: Riot Platforms
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: Rivian Automotive
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: Rolls-Royce
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: Raytheon Technologies
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: SoFi Technologies
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: Virgin Galactic
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: Standard Chartered
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKING ENSEMBLE: Tilray Brands
+================================================================================
+
+Horizon: 1-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 5-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy'] not in index"
+
+Horizon: 21-d
+  ❌ Error: "['spy_returns', 'spy_trend', 'vix_level', 'vix_regime', 'vix_change', 'vix_trend', 'vix_spike', 'vix_rsi', 'vix_momentum', 'vix_volatility', 'spy_correlation', 'excess_return', 'beta_proxy', 'market_regime', 'regime_confidence', 'regime_score', 'regime_rsi', 'regime_momentum', 'days_to_earnings', 'is_earnings_week', 'pre_earnings', 'post_earnings', 'earnings_volatility'] not in index"
+
+================================================================================
+STACKED ENSEMBLE RESULTS
+================================================================================
+
+⚠️  No models trained successfully
+
+================================================================================
+✅ STACKED ENSEMBLE TRAINING COMPLETE!
+================================================================================

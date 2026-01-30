@@ -1,0 +1,48 @@
+nohup: ignoring input
+✓ Loaded stock recommendations
+✓ Loaded REFINED model predictions with trading metrics
+✓ Loaded risk management data
+✓ Loaded earnings calendar
+
+================================================================================
+🚀 Starting Stock Prediction Dashboard
+================================================================================
+
+📊 Dashboard will be available at: http://localhost:8050
+
+✨ Features:
+   • Interactive candlestick charts with technical indicators
+   • Filter by sector and stock
+   • AI-powered predictions for 1, 5, 21 days ahead
+   • BUY/HOLD/SELL recommendations based on multi-period analysis
+   • Real-time data visualization
+   • Comprehensive stock overview table
+   • Backtest results and trading signals
+
+================================================================================
+
+Dash is running on http://0.0.0.0:8050/
+
+ * Serving Flask app 'dashboa✓ Loaded stock recommendations
+✓ Loaded REFINED model predictions with trading metrics
+✓ Loaded risk management data
+✓ Loaded earnings calendar
+
+================================================================================
+🚀 Starting Stock Prediction Dashboard
+================================================================================
+
+📊 Dashboard will be available at: http://localhost:8050
+
+✨ Features:
+   • Interactive candlestick charts with technical indicators
+   • Filter by sector and stock
+   • AI-powered predictions for 1, 5, 21 days ahead
+   • BUY/HOLD/SELL recommendations based on multi-period analysis
+   • Real-time data visualization
+   • Comprehensive stock overview table
+   • Backtest results and trading signals
+
+================================================================================
+
+[DEBUG] Resampling BARC.L to interval: D

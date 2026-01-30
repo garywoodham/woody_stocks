@@ -1,0 +1,200 @@
+================================================================================
+ENSEMBLE STACKING MODEL TRAINING
+================================================================================
+
+Architecture:
+  Layer 1: LightGBM + XGBoost + RandomForest (base models)
+  Layer 2: Logistic Regression (meta-learner)
+  Expected: 2-5% accuracy improvement over single models
+================================================================================
+
+📂 Loading data...
+✓ Loaded HISTORICAL sentiment data
+  Records: 35, Dates: 1
+
+Training ensemble models for 35 stocks
+
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - AAPL
+================================================================================
+❌ Error training AAPL: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - AMC
+================================================================================
+❌ Error training AMC: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - AMZN
+================================================================================
+❌ Error training AMZN: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - AZN.L
+================================================================================
+❌ Error training AZN.L: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - BA.L
+================================================================================
+❌ Error training BA.L: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - BARC.L
+================================================================================
+❌ Error training BARC.L: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - BB
+================================================================================
+❌ Error training BB: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - COIN
+================================================================================
+❌ Error training COIN: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - GME
+================================================================================
+❌ Error training GME: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - GOOGL
+================================================================================
+❌ Error training GOOGL: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - GSK.L
+================================================================================
+❌ Error training GSK.L: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - HOOD
+================================================================================
+❌ Error training HOOD: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - HSBA.L
+================================================================================
+❌ Error training HSBA.L: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - JNJ
+================================================================================
+❌ Error training JNJ: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - LCID
+================================================================================
+❌ Error training LCID: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - LLOY.L
+================================================================================
+❌ Error training LLOY.L: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - LMT
+================================================================================
+❌ Error training LMT: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - MARA
+================================================================================
+❌ Error training MARA: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - MRNA
+================================================================================
+❌ Error training MRNA: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - MSFT
+================================================================================
+❌ Error training MSFT: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - NIO
+================================================================================
+❌ Error training NIO: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - NOC
+================================================================================
+❌ Error training NOC: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - NVDA
+================================================================================
+❌ Error training NVDA: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - NWG.L
+================================================================================
+❌ Error training NWG.L: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - PFE
+================================================================================
+❌ Error training PFE: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - PLTR
+================================================================================
+❌ Error training PLTR: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - PLUG
+================================================================================
+❌ Error training PLUG: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - RIOT
+================================================================================
+❌ Error training RIOT: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - RIVN
+================================================================================
+❌ Error training RIVN: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - RR.L
+================================================================================
+❌ Error training RR.L: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - RTX
+================================================================================
+❌ Error training RTX: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - SOFI
+================================================================================
+❌ Error training SOFI: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - SPCE
+================================================================================
+❌ Error training SPCE: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - STAN.L
+================================================================================
+❌ Error training STAN.L: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING: DAILY - TLRY
+================================================================================
+❌ Error training TLRY: "['sentiment_score', 'positive_ratio', 'negative_ratio'] not in index"
+
+================================================================================
+ENSEMBLE TRAINING SUMMARY
+================================================================================
+
+⚠️  No models trained successfully
+
+================================================================================
+================================================================================

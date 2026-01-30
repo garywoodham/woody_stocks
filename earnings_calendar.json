@@ -1,0 +1,212 @@
+{
+  "BARC.L": {
+    "earnings_date": "2026-02-18",
+    "days_until": 44,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "HSBA.L": {
+    "earnings_date": "2026-01-16",
+    "days_until": 11,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "LLOY.L": {
+    "earnings_date": "2026-01-10",
+    "days_until": 5,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "NWG.L": {
+    "earnings_date": "2026-01-26",
+    "days_until": 21,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "STAN.L": {
+    "earnings_date": "2026-01-24",
+    "days_until": 19,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "BA.L": {
+    "earnings_date": "2026-01-23",
+    "days_until": 18,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "LMT": {
+    "earnings_date": "2026-01-17",
+    "days_until": 12,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "NOC": {
+    "earnings_date": "2026-01-15",
+    "days_until": 10,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "RTX": {
+    "earnings_date": "2026-02-12",
+    "days_until": 38,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "RR.L": {
+    "earnings_date": "2026-01-14",
+    "days_until": 9,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "AMC": {
+    "earnings_date": "2026-02-15",
+    "days_until": 41,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "BB": {
+    "earnings_date": "2026-02-05",
+    "days_until": 31,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "COIN": {
+    "earnings_date": "2026-01-11",
+    "days_until": 6,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "GME": {
+    "earnings_date": "2026-01-10",
+    "days_until": 5,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "LCID": {
+    "earnings_date": "2026-01-14",
+    "days_until": 9,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "MARA": {
+    "earnings_date": "2026-01-22",
+    "days_until": 17,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "NIO": {
+    "earnings_date": "2026-01-23",
+    "days_until": 18,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "PLTR": {
+    "earnings_date": "2026-02-10",
+    "days_until": 36,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "PLUG": {
+    "earnings_date": "2026-02-16",
+    "days_until": 42,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "RIOT": {
+    "earnings_date": "2026-01-10",
+    "days_until": 5,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "RIVN": {
+    "earnings_date": "2026-02-13",
+    "days_until": 39,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "HOOD": {
+    "earnings_date": "2026-01-21",
+    "days_until": 16,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "SOFI": {
+    "earnings_date": "2026-02-19",
+    "days_until": 45,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "TLRY": {
+    "earnings_date": "2026-02-12",
+    "days_until": 38,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "SPCE": {
+    "earnings_date": "2026-02-04",
+    "days_until": 30,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "AZN.L": {
+    "earnings_date": "2026-01-23",
+    "days_until": 18,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "GSK.L": {
+    "earnings_date": "2026-02-06",
+    "days_until": 32,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "JNJ": {
+    "earnings_date": "2026-02-15",
+    "days_until": 41,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "MRNA": {
+    "earnings_date": "2026-01-26",
+    "days_until": 21,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "PFE": {
+    "earnings_date": "2026-01-09",
+    "days_until": 4,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "GOOGL": {
+    "earnings_date": "2026-01-19",
+    "days_until": 14,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "AMZN": {
+    "earnings_date": "2026-02-05",
+    "days_until": 31,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "AAPL": {
+    "earnings_date": "2026-01-30",
+    "days_until": 25,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "MSFT": {
+    "earnings_date": "2026-01-26",
+    "days_until": 21,
+    "in_danger_zone": false,
+    "estimated": true
+  },
+  "NVDA": {
+    "earnings_date": "2026-01-18",
+    "days_until": 13,
+    "in_danger_zone": false,
+    "estimated": true
+  }
+}
