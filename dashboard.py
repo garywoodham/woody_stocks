@@ -1588,6 +1588,21 @@ def update_filters_from_table_click(active_cell, table_data):
     
     raise PreventUpdate
 
+# Callback to filter table by selected sector
+@app.callback(
+    Output('stocks-table', 'data'),
+    Input('sector-dropdown', 'value')
+)
+def update_stocks_table(selected_sector):
+    df_source = df_recommendations if has_recommendations else df_predictions
+
+    if selected_sector and selected_sector != 'ALL':
+        df_filtered = df_source[df_source['Sector'] == selected_sector]
+    else:
+        df_filtered = df_source
+
+    return df_filtered.to_dict('records')
+
 # Callback to update all charts and tables
 @app.callback(
     Output('candlestick-chart', 'figure'),

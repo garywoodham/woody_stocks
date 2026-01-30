@@ -74,6 +74,21 @@ jobs:
       run: |
         python generate_recommendations.py
       continue-on-error: true
+
+    - name: Email BUY/SELL recommendations
+      run: |
+        python send_recommendations_email.py
+      env:
+        SMTP_HOST: ${{ secrets.SMTP_HOST }}
+        SMTP_PORT: ${{ secrets.SMTP_PORT }}
+        SMTP_USER: ${{ secrets.SMTP_USER }}
+        SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+        EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        EMAIL_CC: ${{ secrets.EMAIL_CC }}
+        EMAIL_ATTACH: ${{ secrets.EMAIL_ATTACH }}
+        MAX_ITEMS: ${{ secrets.EMAIL_MAX_ITEMS }}
+      continue-on-error: true
     
     - name: Generate portfolio allocation
       run: |

@@ -62,12 +62,27 @@ The following files are automatically updated and committed:
 
 - **Success**: Updated files are automatically committed to the repository
 - **Failure**: An issue is automatically created in the repository
+ - **Email**: BUY/SELL recommendations can be emailed after daily updates (see SMTP settings below)
 
 ## Setup Requirements
 
 1. Ensure GitHub Actions are enabled for your repository
 2. No additional secrets required (uses default `GITHUB_TOKEN`)
 3. The workflow runs on Ubuntu with Python 3.12
+
+### Optional Email Settings
+
+Add these repository secrets to enable email delivery:
+
+- `SMTP_HOST`
+- `SMTP_PORT` (e.g., 587)
+- `SMTP_USER`
+- `SMTP_PASS`
+- `EMAIL_FROM`
+- `EMAIL_TO` (comma-separated recipients)
+- `EMAIL_CC` (optional)
+- `EMAIL_ATTACH` (optional: true/false)
+- `EMAIL_MAX_ITEMS` (optional: number of BUY/SELL rows to include)
 
 ## Monitoring
 
