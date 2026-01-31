@@ -1,4 +1,2 @@
 Type,Severity,Message,Recommendation
-Position Concentration,HIGH,PLTR exceeds 15% limit (26.1%),Reduce PLTR position
-Sector Concentration,MEDIUM,Technology exceeds 40% limit (60.8%),Diversify away from Technology
-High-Risk Exposure,MEDIUM,Meme stocks are 26.1% of portfolio (recommend <20%),Consider reducing speculative positions
+Position Concentration,HIGH,COP exceeds 15% limit (35.6%),Reduce COP position
