@@ -1,3 +1,3 @@
 Ticker,Stock,Recommendation,Score,Earnings_Date,Days_Until,Severity,Message,Action
-COP,ConocoPhillips,BUY,0.157,2026-02-05,2,HIGH,Earnings in 2 days - expect high volatility,WAIT
-QCOM,Qualcomm,BUY,0.0629,2026-02-04,1,HIGH,Earnings in 1 days - expect high volatility,WAIT
+COP,ConocoPhillips,BUY,0.157,2026-02-05,1,HIGH,Earnings in 1 days - expect high volatility,WAIT
+QCOM,Qualcomm,BUY,0.0629,2026-02-04,0,HIGH,Earnings in 0 days - expect high volatility,WAIT
