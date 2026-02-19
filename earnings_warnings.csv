@@ -1,2 +1,2 @@
 Ticker,Stock,Recommendation,Score,Earnings_Date,Days_Until,Severity,Message,Action
-COP,ConocoPhillips,BUY,0.157,2026-02-05,0,HIGH,Earnings in 0 days - expect high volatility,WAIT
+STAN.L,Standard Chartered,BUY,0.0516,2026-02-24,5,MEDIUM,Earnings in 5 days - expect high volatility,REDUCE_SIZE
