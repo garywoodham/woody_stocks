@@ -1,2 +1,2 @@
 Ticker,Stock,Recommendation,Score,Earnings_Date,Days_Until,Severity,Message,Action
-STAN.L,Standard Chartered,BUY,0.0516,2026-02-24,2,HIGH,Earnings in 2 days - expect high volatility,WAIT
+STAN.L,Standard Chartered,BUY,0.0516,2026-02-24,1,HIGH,Earnings in 1 days - expect high volatility,WAIT
