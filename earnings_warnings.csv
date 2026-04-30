@@ -1,5 +1,4 @@
 Ticker,Stock,Recommendation,Score,Earnings_Date,Days_Until,Severity,Message,Action
-COP,ConocoPhillips,BUY,0.157,2026-04-30,1,HIGH,Earnings in 1 days - expect high volatility,WAIT
-CAT,Caterpillar,BUY,0.0691,2026-04-30,1,HIGH,Earnings in 1 days - expect high volatility,WAIT
-QCOM,Qualcomm,BUY,0.0629,2026-04-29,0,HIGH,Earnings in 0 days - expect high volatility,WAIT
-STAN.L,Standard Chartered,BUY,0.0516,2026-04-30,1,HIGH,Earnings in 1 days - expect high volatility,WAIT
+COP,ConocoPhillips,BUY,0.157,2026-04-30,0,HIGH,Earnings in 0 days - expect high volatility,WAIT
+CAT,Caterpillar,BUY,0.0691,2026-04-30,0,HIGH,Earnings in 0 days - expect high volatility,WAIT
+STAN.L,Standard Chartered,BUY,0.0516,2026-04-30,0,HIGH,Earnings in 0 days - expect high volatility,WAIT
