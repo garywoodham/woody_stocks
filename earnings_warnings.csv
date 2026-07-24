@@ -1,3 +1,3 @@
 Ticker,Stock,Recommendation,Score,Earnings_Date,Days_Until,Severity,Message,Action
-MS,Morgan Stanley,BUY,0.0844,2026-07-15,0,HIGH,Earnings in 0 days - expect high volatility,WAIT
-BLK,BlackRock,BUY,0.0667,2026-07-15,0,HIGH,Earnings in 0 days - expect high volatility,WAIT
+QCOM,Qualcomm,BUY,0.0629,2026-07-29,5,MEDIUM,Earnings in 5 days - expect high volatility,REDUCE_SIZE
+STAN.L,Standard Chartered,BUY,0.0516,2026-07-29,5,MEDIUM,Earnings in 5 days - expect high volatility,REDUCE_SIZE
