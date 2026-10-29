@@ -1,3 +1,2 @@
 Ticker,Stock,Recommendation,Score,Earnings_Date,Days_Until,Severity,Message,Action
-CAT,Caterpillar,BUY,0.0691,2026-10-29,1,HIGH,Earnings in 1 days - expect high volatility,WAIT
-STAN.L,Standard Chartered,BUY,0.0516,2026-10-28,0,HIGH,Earnings in 0 days - expect high volatility,WAIT
+CAT,Caterpillar,BUY,0.0691,2026-10-29,0,HIGH,Earnings in 0 days - expect high volatility,WAIT
