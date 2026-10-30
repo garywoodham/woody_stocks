@@ -1,2 +1,2 @@
 Ticker,Stock,Recommendation,Score,Earnings_Date,Days_Until,Severity,Message,Action
-CAT,Caterpillar,BUY,0.0691,2026-10-29,0,HIGH,Earnings in 0 days - expect high volatility,WAIT
+QCOM,Qualcomm,BUY,0.0629,2026-11-04,5,MEDIUM,Earnings in 5 days - expect high volatility,REDUCE_SIZE
